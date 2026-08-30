@@ -1,0 +1,70 @@
+cff-version: 1.2.0
+title: "Iterated Digit-Sum Power Maps: A Lower Bound Theorem, an Exact Basin Density Law, and the Oscillation of Intra-Signature Basin Splits"
+message: "If you use this work, please cite the paper and, where relevant, the software."
+type: software
+authors:
+  - family-names: Martins
+    given-names: Alex
+version: 1.0.0
+date-released: "2026-08-28"
+license: MIT
+keywords:
+  - discrete dynamical systems
+  - digit-sum functions
+  - generalized happy numbers
+  - modular arithmetic
+  - attractor basins
+  - natural density
+  - power digraphs
+abstract: >-
+  Reference implementation and verification suite for the family of discrete
+  dynamical systems f_{k,b}(n) = S_b(n^k), where S_b is the base-b digit-sum
+  function. Provides the exhaustive attractor/basin miner over the rigorous
+  trapping region, the modular power map with closed forms for both the
+  periodic-point count and the cycle count, the Monte-Carlo measurement of the
+  intra-signature basin split, and a parameter-free model of its oscillation.
+references:
+  - type: article
+    title: "Generalized happy numbers"
+    authors:
+      - family-names: Grundman
+        given-names: H. G.
+      - family-names: Teeple
+        given-names: E. A.
+    journal: "The Fibonacci Quarterly"
+    volume: 39
+    year: 2001
+    start: 462
+    end: 466
+  - type: article
+    title: "On the density of happy numbers"
+    authors:
+      - family-names: Gilmer
+        given-names: J.
+    journal: "Integers"
+    volume: 13
+    year: 2013
+  - type: article
+    title: "La somme des chiffres des carres"
+    authors:
+      - family-names: Mauduit
+        given-names: C.
+      - family-names: Rivat
+        given-names: J.
+    journal: "Acta Mathematica"
+    volume: 203
+    year: 2009
+    start: 107
+    end: 148
+  - type: article
+    title: "On a connection of number theory with graph theory"
+    authors:
+      - family-names: Somer
+        given-names: L.
+      - family-names: "K\u0159\u00ed\u017eek"
+        given-names: M.
+    journal: "Czechoslovak Mathematical Journal"
+    volume: 54
+    year: 2004
+    start: 465
+    end: 485

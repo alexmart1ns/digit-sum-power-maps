@@ -1,0 +1,28 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.deepeval/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+paper/**/*.pdf
+
+# Sweep output is regenerable; the committed datasets under data/ are the
+# archived ones referenced by the paper. Keep new large runs out of git.
+data/sweeps/results_*.jsonl
+!data/sweeps/results_*.jsonl.gz

@@ -1,0 +1,12 @@
+# The library and every verification script run on the standard library alone.
+# The entries below are optional accelerators and dev tooling.
+
+# Big-integer speedup for the sweep (pure-Python fallback exists and agrees exactly).
+gmpy2>=2.1
+
+# Only scripts/analyze_patterns.py needs this.
+numpy>=1.24
+
+# Test and lint.
+pytest>=7.4
+ruff>=0.4

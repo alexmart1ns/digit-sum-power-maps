@@ -1,0 +1,496 @@
+# Iterated Digit-Sum Power Maps: A Lower Bound Theorem, an Exact Basin Density Law, and the Oscillation of Intra-Signature Basin Splits
+
+**Alex Martins**
+
+*Independent Research, August 2026 (v2, corrected; see Appendix B)*
+
+**MSC 2020:** 37P35, 11A63, 11K06, 11A25, 05C20
+**Keywords:** discrete dynamical systems, digit-sum functions, generalized happy numbers, modular arithmetic, attractor basins, natural density, equidistribution, functional graphs, digital functions.
+
+---
+
+## Abstract
+
+This paper studies the family of discrete dynamical systems $f_{k,b}(n) = S_b(n^k)$, where $S_b$ is the base-$b$ digit-sum function and $k \ge 1$ a fixed exponent. The map is related to, but distinct from, the generalized happy functions $S_{e,b}(n) = \sum_i d_i^{\,e}$ of Grundman and Teeple; the distinction, and the modular structure that follows from it, is made precise in §1. Every orbit is eventually periodic, and the system is organized by an algebraic skeleton: the functional graph of the modular power map $\varphi_{k,b-1}(x) = x^k \bmod (b-1)$.
+
+Three structural results are proved. **(I) Lower Bound Theorem.** The number of attractors satisfies $|C(k,b)| \ge \mathrm{Cyc}(\varphi_{k,b-1})$, the number of cycles of the modular map. **(II) Basin Density Law.** For each modular cycle $\gamma_i$ with residue basin $R_i$, the aggregate basin $\mathcal{N}_i$ of all attractors carrying the residue signature $\gamma_i$ has a natural density, equal exactly to the modular weight $p_i = |R_i|/(b-1)$; over a window $[1,M]$ the empirical proportion deviates by at most $\min(|R_i|,\,b-2)/M$, and the underlying finite-window statement is an exact identity between integers. **(III)** Both counting functions of $\varphi_{k,m}$ admit closed forms: the periodic-point count is the classical $\prod_{p^e \| m}\big(1 + \kappa_k(\varphi(p^e))\big)$, with $\kappa_k(N)$ the largest divisor of $N$ coprime to $k$, while the cycle count (the quantity required by the lower bound) is obtained by combining local cycle types through the Chinese remainder theorem. The distinction matters and was missed in an earlier draft: the periodic-point count depends on $k$ only through $\mathrm{rad}(k)$, whereas the cycle count does not.
+
+Results (I) and (II) are elementary consequences of the digit-sum congruence ("casting out nines") and of residue equidistribution. The novelty of the present work lies in the organization of these consequences and in isolating the remaining problem: how the mass $p_i$ splits among several physical attractors that share a signature. That partition is not elementary. It is resolved here empirically and mechanistically. The individual basin densities do not appear to exist; along fixed digit-length they oscillate quasi-periodically, in antiphase between competing attractors, while always summing to $p_i$. A parameter-free model, the Gaussian law of $S_b(n^k)$ (local limit theorem) convolved with the exact integer-to-attractor labelling, reproduces the oscillation to within Monte-Carlo noise (MAE $= 0.0030$). The oscillation is an instance of the classical log-periodic fluctuation of digital functions (Delange; Drmota–Grabner).
+
+All claims are verified computationally: an exhaustive sweep of 19,500 parameter pairs $(k,b)$ with $k \le 500$, $b \le 40$, with zero lower-bound violations and with the exact integer form of the aggregate law holding without exception, together with an independent re-implementation reported in Appendix A.
+
+*Erratum.* This version corrects four errors in the July 2026 draft: a false statement about the modular cycle count, a misclassification of which signatures oscillate, an overstated claim of sharpness for the error bound, and a confounded statistic. Each is documented in Appendix B, with the reasoning that produced it, since the failure modes are instructive.
+
+---
+
+## 1. Introduction
+
+### 1.1 The map, and how it differs from happy functions
+
+Fix a base $b \ge 2$ and set $m = b-1$. The **generalized happy function** studied by Grundman and Teeple [2,3] and surveyed in [7] is
+
+$$S_{e,b}(n) \;=\; \sum_i d_i^{\,e}, \qquad n = \sum_i d_i\, b^i,$$
+
+the sum of the $e$-th powers of the base-$b$ *digits* of $n$. The object of the present work is the different map
+
+$$f_{k,b}(n) \;=\; S_b\big(n^k\big),$$
+
+the base-$b$ **digit sum of $n^k$**. These are distinct dynamical systems. For $(k,b) = (2,10)$, the happy map sends $13 \mapsto 1^2+3^2 = 10 \mapsto 1$ (so 13 is happy), whereas $f_{2,10}(13) = S_{10}(169) = 16$ and $f_{2,10}(16) = S_{10}(256) = 13$: a $2$-cycle. The classic happy-number iteration and $f_{2,10}$ are not the same system.
+
+What the two families share is the arithmetic that drives everything below: the classical congruence
+
+$$S_b(N) \equiv N \pmod{m}, \qquad m = b-1, \tag{CO9}$$
+
+("casting out nines"), valid for every $N$, since $b \equiv 1 \pmod{m}$ implies $d_i b^i \equiv d_i \pmod m$ digit by digit. For $f_{k,b}$ this yields the identity
+
+$$f_{k,b}(n) \;=\; S_b(n^k) \;\equiv\; n^k \pmod{m}, \tag{1}$$
+
+so reducing the dynamics mod $m$ gives exactly the modular power map $\varphi_{k,m}(x) = x^k \bmod m$. (For the happy map $S_{e,b}$ the mod-$m$ reduction is $\sum_i d_i^{\,e}$, which is not a function of $n \bmod m$ alone; this is the reason $f_{k,b}$ admits a simpler modular skeleton than the happy family.) The invariance (1) is elementary and classical. Novelty is not claimed for it, only for the structural and distributional consequences assembled below, and for isolating the split problem of §7.
+
+### 1.2 The questions
+
+A systematic treatment of the family $f_{k,b}$ parametrized by exponent $k$ and base $b$ appears to be absent from the literature. The questions addressed here are:
+
+1. **Count.** How many distinct attractors does $f_{k,b}$ possess, and can the count be bounded from the algebraic parameters alone? (Answer: the Lower Bound Theorem, §4.)
+2. **Distribution.** How much mass, in the sense of natural density, does each attractor's basin carry? (Answer, at the aggregate level: the Basin Density Law, §5.)
+3. **Split.** When several attractors share a residue signature, how does the (exactly determined) aggregate mass divide among them? (Answer, empirical and mechanistic: the split does not settle; it oscillates; §7.)
+
+The classic instance $(k,b) = (2,10)$ already displays the distributional phenomenon. The three attractors $\{1\}$, $\{9\}$, $\{13,16\}$ capture positive integers in proportions $22.2\%,\,33.3\%,\,44.4\%$, precisely $2/9,\,3/9,\,4/9$, the sizes of the residue classes modulo $9$ feeding each attractor. Section 5 shows this is forced by (1) together with equidistribution, hence a law for aggregate mass, not a coincidence. Section 7 shows that the freedom the law leaves untouched, the intra-signature split, is where the remaining difficulty lies.
+
+The following separation is used throughout:
+
+- **Determined by modular arithmetic (exactly, elementarily):** a lower bound on the number of attractors, and the total basin mass per residue signature.
+- **Not determined by modular arithmetic:** the excess attractor count $\Delta(k,b)$, and whether each signature's mass splits into convergent individual densities.
+
+### 1.3 Scope and contribution
+
+The theorems on aggregate mass and on cycle counts are short corollaries of the digit-sum congruence and of residue equidistribution. The proofs are elementary for a reader familiar with the casting-out-nines identity. The article records four things.
+
+Theorem 4.1 gives the lower bound $|C(k,b)| \ge \mathrm{Cyc}(\varphi_{k,b-1})$. Theorem 5.3 gives the aggregate basin density of each residue signature exactly, $p_i = |R_i|/(b-1)$, with the finite-window bound $\min(|R_i|,\,b-2)/M$ and with an exact integer identity underneath (Proposition 5.2). Proposition 6.3 gives a closed form for the cycle count of the modular map, which is the quantity Theorem 4.1 requires and which is not a function of $\mathrm{rad}(k)$. Observation 7.6 records that, when several attractors share a signature, the individual basin densities do not appear to exist: along fixed digit-length the masses oscillate quasi-periodically, in antiphase, always summing to $p_i$.
+
+The aggregate law turns patterns such as $22/33/44$ into a theorem rather than folklore, and it isolates the remaining object, the intra-signature split. That split is an instance of the log-periodic fluctuation of digital functions (Delange [13], Drmota–Grabner [15]). The periodic-point formula of §6 is classical power-digraph theory (Somer–Křížek [11], Chou–Shparlinski [12]). The cycle-count formula of the same section is elementary; I have not found it stated for this purpose.
+
+Both exact theorems were checked without exception on an exhaustive grid of $19{,}500$ pairs $(k,b)$ with $k \le 500$ and $b \le 40$ (Appendix A). This version corrects four errors of the July 2026 draft (Appendix B).
+
+---
+
+## 2. Definitions and Notation
+
+Fix $b \ge 2$ and set $m = b-1$.
+
+**Definition 2.1 (Digit sum).** For $n \ge 1$, $S_b(n)$ is the sum of the digits of $n$ in the standard base-$b$ representation.
+
+**Definition 2.2 (The map).** The **iterated digit-sum power map** is $f_{k,b}\colon \mathbb{Z}^+ \to \mathbb{Z}^+$, $f_{k,b}(n) = S_b(n^k)$.
+
+**Definition 2.3 (Attractors).** The **orbit** of $n$ is $(f_{k,b}^{\,t}(n))_{t \ge 0}$. An **attractor** is a minimal periodic orbit: a finite set $A = \{a_1,\dots,a_L\}$ with $f(a_i) = a_{i+1}$ (indices mod $L$), no proper subset periodic. $C(k,b)$ denotes the set of all attractors of $f_{k,b}$.
+
+**Definition 2.4 (Modular power map).** $\varphi_{k,m}(x) = x^k \bmod m$ on $\mathbb{Z}/m\mathbb{Z}$; $G(\varphi_{k,m})$ is its functional graph (every vertex has out-degree $1$, so each component is a $\rho$-shape: a cycle with in-trees). Its cycles are $\gamma_1,\dots,\gamma_c$, $c = \mathrm{Cyc}(\varphi_{k,m})$.
+
+**Definition 2.5 (Modular basin and weight).** For each cycle $\gamma_i$,
+
+$$R_i = \{\, r \in \mathbb{Z}/m\mathbb{Z} : \varphi_{k,m}^{\,t}(r) \in \gamma_i \text{ for some } t \ge 0 \,\}.$$
+
+By construction $\{0,\dots,m-1\} = \bigsqcup_{i=1}^{c} R_i$. The **modular weight** of $\gamma_i$ is $p_i = |R_i|/m = |R_i|/(b-1)$; note $\sum_i p_i = 1$.
+
+**Definition 2.6 (Residue signature).** For a physical attractor $A = \{a_1,\dots,a_L\} \in C(k,b)$, its **residue signature** is
+
+$$\sigma(A) = \{\, a_j \bmod m : 1 \le j \le L \,\} \subseteq \mathbb{Z}/m\mathbb{Z}.$$
+
+**Definition 2.7 (Basin and density).** $B(A) = \{\, n \in \mathbb{Z}^+ : f_{k,b}^{\,t}(n) \in A \text{ for some } t \ge 0 \,\}$; its **natural density**, *when the limit exists*, is $\delta(A) = \lim_{M\to\infty} |B(A) \cap [1,M]|/M$.
+
+**Definition 2.8 (Bifurcation excess).** $\Delta(k,b) = |C(k,b)| - \mathrm{Cyc}(\varphi_{k,b-1})$.
+
+---
+
+## 3. The Modular Skeleton
+
+**Lemma 3.1 (Modular invariance).** *For every $n \in \mathbb{Z}^+$, $f_{k,b}(n) \equiv n^k \pmod{m}$. Hence the residue sequence $\big(f_{k,b}^{\,t}(n) \bmod m\big)_{t\ge 0}$ is exactly the $\varphi_{k,m}$-orbit of $n \bmod m$.*
+
+*Proof.* By (CO9), $f_{k,b}(n) = S_b(n^k) \equiv n^k \pmod m$, and induction on $t$ gives the orbit statement. $\square$
+
+**Lemma 3.2 (Contraction).** *There is a threshold $N^*(k,b)$ such that $f_{k,b}(n) < n$ for all $n > N^*$. Consequently every orbit enters the finite set $[1, N^*]$ and is eventually periodic.*
+
+*Proof.* If $n$ has $D$ base-$b$ digits then $n \ge b^{D-1}$, while $n^k < b^{kD}$ has at most $kD$ digits, each at most $b-1$, so $S_b(n^k) \le (b-1)\,k\,D$. Since $b^{D-1}$ grows exponentially in $D$ and $(b-1)kD$ linearly, there is $D_0$ with $(b-1)kD < b^{D-1}$ for all $D \ge D_0$; take $N^* = b^{D_0 - 1}$. $\square$
+
+**Corollary 3.3 (Finite trapping region).** *Every attractor of $f_{k,b}$ lies in $[1, N^*(k,b)]$, and every basin $B(A)$ is determined by the first iterate landing in that window.* (The sweep of §8 computes the least such fixed-point bound $M(k,b)$, described in §8.1, and works entirely inside $[1,M]$.)
+
+---
+
+## 4. The Lower Bound Theorem
+
+**Theorem 4.1 (Lower Bound Theorem).** *For all $k \ge 1$ and $b \ge 2$,*
+
+$$|C(k,b)| \;\ge\; \mathrm{Cyc}\big(\varphi_{k,\,b-1}\big).$$
+
+*Proof.* Three steps.
+
+**Step 1 (Modular invariance).** By Lemma 3.1, the residue class of $f_{k,b}(n)$ modulo $m$ is determined by that of $n$: the map $f_{k,b}$ respects the partition of $\mathbb{Z}^+$ into residue classes mod $m$, and the induced map on residues is exactly $\varphi_{k,m}$.
+
+**Step 2 (Disjoint invariant subsets).** The cycles of $G(\varphi_{k,m})$ induce the basin partition $\{0,\dots,m-1\} = \bigsqcup_{i=1}^{c} R_i$ of Definition 2.5. Set
+
+$$\mathcal{N}_i = \{\, n \in \mathbb{Z}^+ : n \bmod m \in R_i \,\}.$$
+
+Each $R_i$ is forward-invariant under $\varphi_{k,m}$ (if $r$ flows to $\gamma_i$, so does $\varphi(r)$), hence by Step 1 each $\mathcal{N}_i$ is forward-invariant under $f_{k,b}$, and the $\mathcal{N}_i$ are pairwise disjoint.
+
+**Step 3 (One attractor per subset).** Fix $i$ and any $n_0 \in \mathcal{N}_i$. By Lemma 3.2 the orbit of $n_0$ enters the finite set $[1,N^*] \cap \mathcal{N}_i$, which is forward-invariant by Step 2; being finite, the orbit eventually becomes periodic. The resulting periodic orbit is an attractor contained in $\mathcal{N}_i$.
+
+**Conclusion.** The $\mathcal{N}_1,\dots,\mathcal{N}_c$ are pairwise disjoint and each contains at least one attractor, so $|C(k,b)| \ge c = \mathrm{Cyc}(\varphi_{k,b-1})$. $\blacksquare$
+
+**Remark 4.2.** The bound is typically strict: in the verification of §8 exact equality $|C| = \mathrm{Cyc}$ is the exception, not the rule. The excess $\Delta(k,b) \ge 0$ is a digit-dynamics effect (several attractors at different numerical scales sharing one residue signature) and is studied empirically in §7 and §9.
+
+**Example 4.3 (the classic case $(k,b) = (2,10)$).** The modular map $x \mapsto x^2 \bmod 9$ on $\{0,\dots,8\}$:
+
+$$0\to 0,\quad 1\to 1,\quad 2\to 4,\quad 3\to 0,\quad 4\to 7,\quad 5\to 7,\quad 6\to 0,\quad 7\to 4,\quad 8\to 1,$$
+
+with cycles $\{0\},\{1\},\{4,7\}$ and basins $R = \{0,3,6\},\{1,8\},\{2,4,5,7\}$. The physical attractors are $\{1\},\{9\},\{13,16\}$, exactly $3 = \mathrm{Cyc}(\varphi_{2,9})$, so $\Delta(2,10) = 0$: this is one of the rare exact-match systems.
+
+**Example 4.4 (a bifurcating case $(k,b) = (3,10)$).** The modular map on $\mathbb{Z}/9\mathbb{Z}$ has three fixed points $\{0\},\{1\},\{8\}$, predicting $\ge 3$ attractors. The physical system has seven: $\{1\},\{8\},\{17\},\{18\},\{19,28\},\{26\},\{27\}$. Within signature $\{0\}$ alone:
+
+$$9 \to S_{10}(729) = 18 \to S_{10}(5832) = 18 \ (\text{fixed}), \qquad 27 \to S_{10}(19683) = 27 \ (\text{fixed}).$$
+
+Both 18 and 27 are $\equiv 0 \pmod 9$ but are distinct fixed points at different scales: the modular theory counts one cycle for class $0$ while the real dynamics bifurcates. Hence $\Delta(3,10) = 7 - 3 = 4$.
+
+---
+
+## 5. The Basin Density Law (Aggregate Form)
+
+**Lemma 5.1 (Signature determinacy).** *For every $n \in \mathbb{Z}^+$, the attractor $A(n)$ eventually entered by the orbit of $n$ has residue signature*
+
+$$\sigma\big(A(n)\big) = \gamma_i, \quad \text{where } i \text{ is the unique index with } (n \bmod m) \in R_i.$$
+
+*Proof.* By Lemma 3.1 the residue sequence of the orbit is the $\varphi_{k,m}$-orbit of $r = n \bmod m$, which enters the cycle $\gamma_i$ with $r \in R_i$. Once the physical orbit is on the attractor $A(n)$ (a cycle of period $L$), its residues are $\varphi$-periodic; travelling once around $A(n)$ returns to the start, so the residue period divides $L$, and since $\varphi$ restricted to a cycle is a cyclic permutation of that cycle, the residues traced out are the entire cycle $\gamma_i$. Hence $\sigma(A(n)) = \gamma_i$. $\square$
+
+**Proposition 5.2 (Exact finite-window mass partition).** *Fix $(k,b)$. For every $M \ge 1$,*
+
+$$\sum_{\substack{A \in C(k,b) \\ \sigma(A) = \gamma_i}} \big|\, B(A) \cap [1,M] \,\big| \;=\; \big|\, \mathcal{N}_i \cap [1,M] \,\big|.$$
+
+*Proof.* The basins $\{B(A)\}_{A \in C(k,b)}$ partition $\mathbb{Z}^+$ (every orbit reaches a unique attractor, by Lemma 3.2). By Lemma 5.1, $n \in \mathcal{N}_i$ iff $\sigma(A(n)) = \gamma_i$; thus the union of basins with signature $\gamma_i$ is exactly $\mathcal{N}_i$. Intersect with $[1,M]$ and count. $\square$
+
+**Theorem 5.3 (Basin Density Law, aggregate form).** *For every $k \ge 1$, $b \ge 2$, and every modular cycle $\gamma_i$ of $\varphi_{k,b-1}$, the aggregate basin $\mathcal{N}_i = \bigcup_{\sigma(A) = \gamma_i} B(A)$ has a natural density, equal to the modular weight exactly:*
+
+$$q_i \;:=\; \delta(\mathcal{N}_i) \;=\; p_i \;=\; \frac{|R_i|}{b-1}.$$
+
+*Moreover, writing $M = qm + s$ with $0 \le s < m$, the empirical proportion $\hat q_i(M) = |\mathcal{N}_i \cap [1,M]|/M$ satisfies*
+
+$$\big|\, \hat q_i(M) - p_i \,\big| \;\le\; \frac{\min\big(|R_i|,\; m - |R_i|,\; s\big)}{M} \;\le\; \frac{\min(|R_i|,\, b-2)}{M} \;\le\; \frac{b-1}{M}.$$
+
+*Proof.* By Proposition 5.2, $\hat q_i(M) = |\mathcal{N}_i \cap [1,M]|/M$, and $\mathcal{N}_i \cap [1,M]$ is the set of integers in $[1,M]$ whose residue mod $m$ lies in $R_i$. Among $\{1,\dots,M\}$, exactly $s$ residue classes contain $q+1$ elements and the remaining $m-s$ contain $q$. Hence
+
+$$\big| \mathcal{N}_i \cap [1,M] \big| = |R_i| \cdot \frac{M}{m} + \theta, \qquad \theta = \sigma_i - \frac{s\,|R_i|}{m},$$
+
+where $\sigma_i = |R_i \cap S| \in \{0,\dots,\min(|R_i|,s)\}$ is an integer counting the classes of $R_i$ among the $s$ over-represented residue classes $S$. Since $0 \le \sigma_i \le \min(|R_i|, s)$ and $\theta$ is a convex combination bounded by both endpoints, $|\theta| \le \min(|R_i|,\, s)$. Applying the same argument to the complement $\mathbb{Z}/m\mathbb{Z} \setminus R_i$, whose deviation is $-\theta$, gives $|\theta| \le m - |R_i|$ as well. Dividing by $M$ and letting $M \to \infty$ yields $\delta(\mathcal{N}_i) = p_i$. $\blacksquare$
+
+**Remark 5.3a (the bound is not $(b-1)/M$).** The crude form $|\theta| \le |R_i| \le m$ gives $(b-1)/M$, which is what an earlier draft reported and described as saturated. It is not: since $s \le m-1$ and $\min(|R_i|, m-|R_i|) \le \lfloor m/2 \rfloor$, the constant $b-1$ is never attained, and over the sweep of §8 the worst observed ratio of actual error to $(b-1)/M$ is $0.25$. The sharp constant $\min(|R_i|, b-2)$ is approached, with observed ratio $0.95$. The practical consequence is that a verification reporting "100% of measurements within $(b-1)/M$" tests very little; the statement with content is the integer identity of Proposition 5.2, which has no slack.
+
+**Remark 5.3b (Scope of Theorem 5.3).** The theorem asserts the density of the union $\mathcal{N}_i$. It does not assert that the individual basins $B(A)$ of the several attractors sharing signature $\gamma_i$ each have a natural density. When the local bifurcation excess is zero (one attractor per signature) the two coincide trivially. When it is positive, the decomposition $q_i = \sum_{\sigma(A)=\gamma_i} \delta(A)$ presupposes that the individual limits exist, which is false in general, as §7 shows: the individual densities oscillate and do not converge, while their sum remains exactly $p_i$. (A finite family of oscillating densities can sum to a set with exact density.) In the adjacent happy-number family the natural density of the happy set is likewise known not to converge (Gilmer [7]).
+
+**Corollary 5.4 (Conservation of mass between spaces).** *Modular arithmetic determines the total basin mass of each residue signature exactly, independently of the bifurcation excess $\Delta(k,b)$. The excess governs only the internal partition of each mass $p_i$ among the $\ge 1$ physical attractors of signature $\gamma_i$, including whether that partition is well-defined as a vector of densities.*
+
+**Example 5.5 (the $22/33/44$ law).** For $(k,b) = (2,10)$, Theorem 5.3 with the basins of Example 4.3 predicts aggregate densities $3/9, 2/9, 4/9$ for signatures $\{0\},\{1\},\{4,7\}$, realized by the attractors $\{9\},\{1\},\{13,16\}$. Measured over $[1,3000]$: $33.33\% / 22.23\% / 44.43\%$, within the bound $9/3000 = 0.003$ of the exact values, as the theorem requires.
+
+---
+
+## 6. Periodic Points and Cycles of the Modular Power Map
+
+Theorem 4.1 bounds below by $\mathrm{Cyc}(\varphi_{k,b-1})$, so the modular side of the counting problem reduces to two quantities: how many points are periodic under $x \mapsto x^k$ modulo $m$, and into how many cycles they organize. Both admit closed forms. The distinction between them is essential and was conflated in an earlier draft of this work (Appendix B.1).
+
+**Proposition 6.1 (Periodic-point count).** *For $k \ge 2$ and $m \ge 2$, the number of periodic points of $x \mapsto x^k$ on $\mathbb{Z}/m\mathbb{Z}$ is*
+
+$$\#\mathrm{Per}(k,m) \;=\; \prod_{p^{e} \,\|\, m} \Big( 1 + \kappa_k\big(\varphi(p^{e})\big) \Big),$$
+
+*where $\varphi$ is Euler's totient and $\kappa_k(N)$ is the largest divisor of $N$ coprime to $k$.*
+
+*Proof.* By the Chinese remainder theorem it suffices to treat $\mathbb{Z}/p^e\mathbb{Z}$. A nonzero non-unit is nilpotent under $x \mapsto x^k$ for $k \ge 2$: its $p$-adic valuation multiplies by $k$ at each step and reaches $\ge e$, so it flows to $0$; thus $0$ is the only periodic non-unit. On the unit group $(\mathbb{Z}/p^e\mathbb{Z})^\times$, of order $\varphi(p^e)$, an element $x$ is periodic under $g \mapsto g^k$ iff $x^{k^t} = x$ for some $t \ge 1$, iff $\mathrm{ord}(x) \mid k^t - 1$, iff $\gcd(\mathrm{ord}(x), k) = 1$. The set of such elements is the unique Hall subgroup of $k'$-torsion, whose order is the largest divisor of $\varphi(p^e)$ coprime to $k$, namely $\kappa_k(\varphi(p^e))$. Adding the point $0$ gives the local factor $1 + \kappa_k(\varphi(p^e))$; the factors multiply over primes by CRT. $\square$
+
+*Example.* For $(k,m) = (2,9)$: $\varphi(9) = 6$, $\kappa_2(6) = 3$, so $\#\mathrm{Per} = 1 + 3 = 4$, namely $\{0,1,4,7\}$, matching Example 4.3.
+
+*Verification.* Checked against brute-force enumeration with 0 discrepancies across all $k \in [2,79]$, $m \in [2,300)$ (`scripts/cycle_structure.py`), and independently re-verified across $k \in [2,39]$, $m \in [2,199)$ (Appendix A). The formula is classical in the theory of power digraphs $x \mapsto x^k \bmod n$ (Somer–Křížek [11]; Chou–Shparlinski [12]); it is included to fix notation and because it is the input to Proposition 6.3, not as a new result.
+
+**Corollary 6.2 (Radical dependence of the periodic-point count).** *$\#\mathrm{Per}(k,m)$ depends on $k$ only through $\mathrm{rad}(k)$, the set of primes dividing $k$; in particular its $2$-part collapses entirely at the single transition $2 \nmid k \to 2 \mid k$ and is unchanged for all higher $2$-adic valuations $v_2(k)$.*
+
+*Proof.* Immediate from Proposition 6.1, since $\kappa_k(N)$ strips from $N$ exactly the primes dividing $k$. $\square$
+
+This property does not transfer to the cycle count. Corollary 6.2 concerns periodic points; Theorem 4.1 needs $\mathrm{Cyc}$. The two are not interchangeable, because a set of periodic points of known size can be organized into very different numbers of cycles. The correct statement on the cycle side is the following.
+
+**Proposition 6.3 (Cycle count).** *Let $k \ge 2$ and $m \ge 2$. For each prime power $p^e \,\|\, m$ let $H_{p^e} \le (\mathbb{Z}/p^e\mathbb{Z})^\times$ be the subgroup of elements whose order is coprime to $k$, and let $c_d$ be the number of elements of $H_{p^e}$ of order exactly $d$. The local cycle type of $\varphi_{k,p^e}$ on its periodic set is the multiset*
+
+$$T_{p^e} \;=\; \{1\} \;\cup\; \bigcup_{d \,\mid\, \exp H_{p^e}} \Big\{\, \underbrace{\mathrm{ord}_d(k), \dots, \mathrm{ord}_d(k)}_{c_d/\mathrm{ord}_d(k) \ \text{times}} \,\Big\},$$
+
+*where $\mathrm{ord}_d(k)$ is the multiplicative order of $k$ modulo $d$ (and $\mathrm{ord}_1(k) = 1$), and the singleton $\{1\}$ is the fixed point $0$. Then*
+
+$$\mathrm{Cyc}(\varphi_{k,m}) \;=\; \sum_{(\ell_1,\dots,\ell_t) \,\in\, T_{p_1^{e_1}} \times \cdots \times T_{p_t^{e_t}}} \frac{\ell_1 \cdots \ell_t}{\mathrm{lcm}(\ell_1,\dots,\ell_t)}.$$
+
+*Proof.* By Proposition 6.1 the periodic set of $\varphi_{k,p^e}$ is $\{0\} \sqcup H_{p^e}$, and $\varphi_{k,m}$ restricted to it is a bijection. An element $x \in H_{p^e}$ of order $d$ satisfies $\varphi^{\,t}(x) = x^{k^t} = x$ iff $k^t \equiv 1 \pmod d$, so its cycle length is exactly $\mathrm{ord}_d(k)$; the $c_d$ elements of order $d$ therefore fill $c_d/\mathrm{ord}_d(k)$ cycles. By the Chinese remainder theorem the periodic set of $\varphi_{k,m}$ is the product of the local ones and $\varphi$ acts coordinatewise. A tuple of local cycles of lengths $\ell_1,\dots,\ell_t$ spans $\prod \ell_i$ periodic points, on which the product permutation has order $\mathrm{lcm}(\ell_i)$ and acts with all orbits of that common length; hence it decomposes into $\prod \ell_i / \mathrm{lcm}(\ell_i)$ cycles. Summing over tuples gives the formula. $\square$
+
+*Verification.* Checked against brute-force enumeration with 0 discrepancies for all $k \in [1,60]$, $m \in [1,259]$ (`scripts/cycle_structure.py`, `tests/test_modular.py`).
+
+**Corollary 6.4 (The cycle count is not a function of $\mathrm{rad}(k)$).** *$\mathrm{Cyc}(\varphi_{k,m})$ depends on $k$ through the multiplicative orders $\mathrm{ord}_d(k)$, hence on $k$ modulo the element orders $d$, not merely on the primes dividing $k$.*
+
+The dependence is not a marginal effect. For $m = 41$ the periodic set is $\{0\}$ together with the subgroup of order $5$, on which $x \mapsto x^k$ acts as multiplication by $k$ modulo $5$; since $\mathrm{ord}_5(2) = 4$, $\mathrm{ord}_5(4) = 2$ and $16 \equiv 1 \pmod 5$,
+
+$$\mathrm{Cyc}(\varphi_{2,41}) = 3, \qquad \mathrm{Cyc}(\varphi_{4,41}) = 4, \qquad \mathrm{Cyc}(\varphi_{16,41}) = 6,$$
+
+while $\#\mathrm{Per} = 6$ throughout. Likewise $\mathrm{Cyc}(\varphi_{2,37}) = 4$ but $\mathrm{Cyc}(\varphi_{4,37}) = 6$, with $\#\mathrm{Per} = 10$ in both cases. Across $m \in [2,500)$ there are $421$ moduli with $\mathrm{Cyc}(\varphi_{2,m}) \ne \mathrm{Cyc}(\varphi_{4,m})$, every one of them with $\#\mathrm{Per}$ identical, and $21$ of the $38$ moduli $m = b-1 \le 39$ inside the sweep grid of §8 behave this way.
+
+**Remark 6.5 (Scope).** Proposition 6.3 closes the modular count side completely: both $\#\mathrm{Per}$ and $\mathrm{Cyc}$ are now computable without building a graph. It says nothing about the physical excess $\Delta = |C| - \mathrm{Cyc}$, whose extra attractors are a digit-dynamics effect rather than a modular one; that remains open (Problem 10.7). It also does not license any claim that $\mathrm{Cyc}$ is monotone or flat in $v_2(k)$; see Appendix B.1 for the retracted statement.
+
+---
+
+## 7. Oscillation of the Intra-Signature Split
+
+Theorem 5.3 fixes each aggregate mass $p_i$ exactly. The remaining question is how $p_i$ divides among the physical attractors sharing $\gamma_i$.
+
+### 7.1 Formulation
+
+Fix $(k,b)$ and a signature $\gamma_i$ hosting physical attractors $A_1,\dots,A_r$ ($r = 1 + {}$local excess), whose basins partition $\mathcal{N}_i$. Two questions:
+
+- **(Existence)** Does each $\delta(A_j) = \lim_M |B(A_j) \cap [1,M]|/M$ exist?
+- **(Value)** If so, what is the vector $(\delta(A_1),\dots,\delta(A_r))$? By Proposition 5.2 it must satisfy $\sum_j \delta(A_j) = p_i$.
+
+### 7.2 Reduction to a digit-sum distribution
+
+By Corollary 3.3, every attractor lies in $[1,M(k,b)]$, and one iterate already lands the orbit near that scale: $f_{k,b}(n) = S_b(n^k) \le (b-1)(1 + k \log_b n)$. Let $F = f_{k,b}\big|_{[1,M]}$ be the finite restricted map; each $A_j$ has a finite basin $\beta_j = B(A_j) \cap [1,M]$, and the $\beta_j$ partition $[1,M]$ within signature $\gamma_i$. Because basin membership of $n$ is decided by where its first iterate falls,
+
+$$B(A_j) = \{\, n : f_{k,b}^{\,t}(n) \in \beta_j \text{ for the first } t \text{ with } f^{\,t}(n) \le M \,\},$$
+
+so, tracking the first-passage landing site, the individual density would be
+
+$$\delta(A_j) \;=\; \sum_{v \in \beta_j} \operatorname{dens}\big\{\, n : \text{first iterate of } n \text{ into } [1,M] \text{ equals } v \,\big\},$$
+
+whenever the right-hand densities exist. The problem is thereby reduced to the asymptotic distribution of the digit sum $S_b(n^k)$ (and of its first few iterates) as $n$ ranges over a residue class, a well-studied object.
+
+### 7.3 Available analytic control
+
+The distribution of digit sums of polynomial sequences is a mature subject. For $k=2$, Mauduit and Rivat [8] proved $S_b(n^2)$ is asymptotically equidistributed in residue classes and satisfies a central limit theorem; Drmota–Mauduit–Rivat [9] give local limit theorems for $S_b(n^k)$; Drmota [14] treats the summatory function. These control the pushforward measure in §7.2, and they also predict fluctuations, which turns out to be the essential point.
+
+### 7.4 Empirical resolution: the split oscillates
+
+Monte-Carlo measurement of the split restricted to $n$ with exactly $D$ base-$b$ digits (`scripts/split_scale.py`, $(k,b) = (3,10)$, $4 \le D \le 90$, $60{,}000$ samples per band, sampling $\sigma \approx 0.002$) yields the following sharp, reproducible picture:
+
+- The aggregate mass per signature is $1/3$ at every digit-length $D$ (Theorem 5.3, as expected).
+- No signature's split converges; all seven curves are non-monotone. For signature $\{0\}$ the two fixed points $\{18\}$ and $\{27\}$ exchange mass in antiphase, quasi-periodically in $D$, over the ranges $[0.060,0.239]$ and $[0.091,0.269]$, amplitude $\approx 0.179$, always summing to $1/3$. This is the largest and most visible instance.
+- The other two signatures oscillate as well, with smaller amplitude but the same qualitative behaviour. Within signature $\{1\}$ the $2$-cycle $\{19,28\}$ carries most of the mass but varies over $[0.266,0.338]$; within signature $\{8\}$ the fixed point $\{26\}$ varies over $[0.227,0.337]$.
+- The three small fixed points $\{1\},\{8\},\{17\}$ do not decay to zero. Each sits at or near zero for long stretches of $D$ and then returns: $\{17\}$ reaches $0.100$ at $D = 10$, is numerically zero throughout $22 \le D \le 70$, and comes back to $0.027$ at $D = 79$; $\{8\}$ is zero throughout $13 \le D \le 49$ and peaks at $0.028$ at $D = 58$; $\{1\}$ reaches $0.068$ at $D = 7$, vanishes over $13 \le D \le 64$, and returns to $0.026$ at $D = 73$. The returns are two orders of magnitude above the sampling noise $\sigma \approx 0.002$.
+
+![Intra-signature split for $(k,b)=(3,10)$](../figures/split_oscillation.svg)
+
+**Figure 1.** Measured intra-signature split for $(k,b)=(3,10)$ as a function of digit length $D$. Competing attractors exchange mass in antiphase; the per-signature totals remain $1/3$.
+
+**Mechanism.** In the reduction of §7.2 the landing site is governed by the iterates $m_1 = S_b(n^k) \approx \tfrac{b-1}{2} k D$, which grows linearly in $D$, and then $m_2 = S_b(m_1^{\,k})$, whose mean grows only like $\log D$. Because the trapping region $[1,M]$ is a fixed window (here $M = 57$), the first-passage landing distribution lives on a fixed finite set and never escapes to infinity; it merely drifts and spreads slowly. As it sweeps across the fixed basin labelling of the integers, comparable basins alternate capture, and small basins sitting low in the window are revisited whenever the multi-step cascade produces a low landing value. The relevant basins inside $[1,57]$ are
+
+$$\beta_{\{1\}} = \{1,4,7,10,40\}, \quad \beta_{\{8\}} = \{2,5,8,11,20,50\}, \quad \beta_{\{17\}} = \{14,17,23,47\},$$
+
+each small but containing an element well above the others; those high elements are what the drifting landing distribution sweeps back across at large $D$. That is why the small fixed points recur instead of dying out.
+
+**Methodological note.** An earlier version of this section reported that signatures $\{1\}$ and $\{8\}$ converge. That conclusion came from a verdict rule which examined the drift of the split over a single step of $D$ and declared stabilization when it fell below the sampling noise. A quasi-periodic curve has long flat stretches, so such a rule reports convergence whenever the sampled window happens to lie inside one. The corrected measurement reports the whole curve and the amplitude over the full range of $D$, and never infers convergence from a local slope. See Appendix B.2.
+
+### 7.5 A parameter-free predictive model
+
+The oscillation is accounted for by a parameter-free model (`scripts/split_predict.py`): model $m_1 = S_b(n^k)$ as Gaussian with mean $\tfrac{b-1}{2}L$ and variance $L\,\tfrac{b^2-1}{12}$ (the digit count $L$ being a computable mixture over the $D$-digit band; this is the local limit theorem of [8,9]), restrict to the residue classes feeding the signature, convolve with the exact integer-to-attractor labelling $a(v)$, and scale by $p_i$. For signature $\{0\}$ of $(3,10)$ this reproduces the measured split curve $\delta_j(D)$ to MAE $= 0.0030$ across $4 \le D \le 60$, with no fitted parameters. The oscillation is therefore the Gaussian sweep of the digit-sum $m_1$ across the fixed basin labelling of the integers.
+
+![Gaussian-sweep prediction overlaid on the measured split](../figures/split_predict_overlay.svg)
+
+**Figure 2.** Parameter-free Gaussian-sweep prediction (curves) against the Monte-Carlo split of Figure 1 for signature $\{0\}$, $(k,b)=(3,10)$. MAE $= 0.0030$ on $4 \le D \le 60$.
+
+With $40{,}000$ samples per band the measurement noise floor is $0.5/\sqrt{40000} = 0.0025$, so an MAE of $0.0030$ says the model is consistent with the data. This does not distinguish the model from other candidates that also reproduce the phase and amplitude. The content of the model is mechanistic rather than statistical: it predicts the oscillation from the local limit theorem plus the exact labelling, with nothing tuned. Discriminating it from alternatives would require either a much larger sample or a prediction of the higher-order structure, which is what Problem 10.6 asks for.
+
+**Observation 7.6 (empirical, with a mechanism).** *No individual basin density $\delta(A_j)$ appears to exist: along fixed digit-length the masses oscillate quasi-periodically in $D$, for every signature with a positive local excess. Only the per-signature aggregate has a density, equal to $p_i$ (Theorem 5.3).*
+
+This is recorded as an observation rather than a result: non-existence of a limit is a statement about all $D$, and finitely many bands cannot establish it. What the data does establish is that the individual masses have not settled by $D = 90$, with amplitudes two orders of magnitude above the sampling noise.
+
+The step from oscillation in $D$ to non-existence of the cumulative density is elementary. Writing $\delta_j(d)$ for the mass of $A_j$ among $d$-digit integers, the cumulative proportion up to $M = b^D$ is a weighted average $\sum_{d \le D} w_d \, \delta_j(d)$ with $w_d \propto b^{d}$, so band $D$ alone carries weight $1 - 1/b$. A persistent oscillation of amplitude $a$ in $\delta_j(D)$ therefore survives in the cumulative average with amplitude at least $(1-1/b)\,a$ minus the contribution of the geometrically damped tail. For $(3,10)$ with $a \approx 0.18$ this is far too large to be washed out.
+
+### 7.6 Relation to the theory of digital functions
+
+The basin-split oscillation does not appear to have been recorded verbatim for the $S_b(n^k)$ map. It is not a new kind of phenomenon: it is a manifestation of the classical log-periodic fluctuation of digital functions (Delange [13], 1975), and the driving distribution $m_1 = S_b(n^k)$ is exactly the object of Drmota, Mauduit, and Rivat's work on the sum of digits of polynomial sequences [14] and of the Drmota–Grabner monograph [15]. The Gaussian-sweep model above is the standard Mellin–Perron / polynomial-digit-sum machinery of that theory, applied numerically to this map. Within the theory of digital functions, the oscillation is an expected consequence of the Fourier analysis of digit-sum distributions, and the tools to make it rigorous are standard. What is claimed here is therefore: (i) an exact, elementary, computationally verified aggregate law (Theorem 5.3); (ii) an empirical and modelled description of why the individual densities fail to exist for this family, realized as an instance of digital-function oscillation. The next step is to check [13–15] for whether the specific basin-split statement is already implied, and, if a note is warranted, to derive the exact Fourier/fractal oscillation term via Mellin–Perron rather than the numerical Gaussian.
+
+---
+
+## 8. Computational Verification
+
+### 8.1 Method
+
+An exhaustive, finite-by-construction sweep (`scripts/sweep.py`). For each $(k,b)$ it computes the contraction bound $M(k,b)$, the fixed point of $S_b(n^k) \le (b-1)\cdot\mathrm{digits}_b(n^k)$, which by Lemma 3.2 guarantees every attractor lies in $[1,M]$. It builds the full functional graph of $f_{k,b}$ on $[1,M]$, extracts all attractors, basins, and residue signatures $\sigma(A) \bmod (b-1)$; an independent engine reconstructs $G(\varphi_{k,b-1})$ and the weights $p_i$. Arbitrary precision via `gmpy2`; the sweep is parallelized over 28 processes.
+
+### 8.2 Results of the exhaustive sweep
+
+| Parameter | Value |
+|-----------|-------|
+| Exponents $k$ | $1$ to $500$ |
+| Bases $b$ | $2$ to $40$ |
+| Total pairs swept (exhaustive) | $19{,}500$ |
+| Lower-bound violations ($|C| < \mathrm{Cyc}$) | $0$ |
+| Failures of the exact integer identity (Prop. 5.2) | $0$ |
+| Failures of Lemma 5.1 (signature $=$ full modular cycle) | $0$ |
+| Signature-density comparisons | $152{,}276$ |
+| Points with error $\le \min(|R_i|,b-2)/M$ (sharp bound) | $152{,}276$ (100.00%) |
+| Mean absolute error $|\hat q_i - p_i|$ | $0.0001$ |
+| Worst single error | $0.10$ at $(k,b,M) = (1,3,5)$ |
+| Maximum observed excess | $\Delta = 98$ at $(k,b) = (451,32)$ |
+
+The first three rows are the substantive ones: they are exact integer statements, so a single counterexample anywhere in the grid would falsify a theorem. The density rows are weaker than they look. The bound $(b-1)/M$ of Theorem 5.3 is not approached (over the grid the worst ratio of actual error to bound is $0.25$), so "$100.00\%$ within the bound" is close to automatic and should not be read as a stringent test. Reporting $152{,}276$ comparisons inflates the apparent evidence for the same reason: the comparisons are not independent, since all signatures of one pair share a window.
+
+The sharp form is the integer identity of Proposition 5.2: for every $(k,b)$ and every window $[1,M]$, the number of $n \le M$ whose orbit reaches an attractor of signature $\gamma_i$ equals, exactly, the number of $n \le M$ with $n \bmod (b-1) \in R_i$. No floating point is involved and there is no slack to absorb an error. That identity held without exception across the grid, and it is what the verification should be judged on.
+
+This verifies the aggregate law; it says nothing about the split, which §7.4 resolves separately.
+
+### 8.3 Earlier sampled verification (superseded)
+
+An earlier prototype sweep tested $1{,}990$ sampled pairs (an incremental sample, not an exhaustive grid) with $k$ reaching $158$ and $b$ reaching $20$, using a finite sample $n \le 500$ per cell: zero violations, with exact equality $|C| = \mathrm{Cyc}$ in only $2$ of $1{,}990$ pairs ($\approx 0.1\%$). An independent denser re-sample over $k \in [1,25]$, $b \in [2,12]$ (275 pairs, $N = 300$) found 0 violations and a $7.64\%$ exact-match rate. The exact-match frequency is sensitive to the sampled range, itself an open question (Problem 10.2). These figures are superseded by the exhaustive sweep of §8.2 but are reported for provenance.
+
+### 8.4 Bifurcation heatmap phenomenology
+
+A systematic rendering of $|C(k,b)|$ over the $(k,b)$ grid shows:
+
+1. **Vertical gradient:** larger bases produce more attractors, consistent with $\mathrm{Cyc}(\varphi_{k,b-1})$ growing with $b-1$.
+2. **Columnar periodicity:** certain $k$ produce systematically fewer or more attractors across all bases, reflecting the structure of $\gcd(k, b-1)$.
+3. **Diagonal resonances:** hot spots follow diagonal trajectories, suggesting dependence on $k \bmod (b-1)$ or $\gcd(k, \varphi(b-1))$.
+
+---
+
+## 9. Structural Predictors of the Attractor Count (Empirical)
+
+Theorem 5.3 fixes the $p_i$ but is silent on how many physical attractors share $\gamma_i$. I report empirical predictors of the count side (the excess $\Delta$), stated as correlations, not closed forms, with flags where they overlap known happy-number structure.
+
+**9.1 $\omega(b-1)$ is the master structural predictor.** With $\omega(m)$ the number of distinct prime factors of $m = b-1$: Pearson $R = +0.436$ with $\mathrm{Cyc}$, $+0.419$ with $|C|$, $+0.391$ with $\Delta$. To maximize macro-states, take $b-1$ with many distinct primes ($b-1 = 2\cdot3\cdot5 = 30 \Rightarrow b = 31$).
+
+**9.2 The $2$-adic structure of $\gcd(k, b-1)$ controls the excess in a single step.** The linear correlation of $\gcd$ with $\Delta$ is negligible ($-0.05$), masking a strong pattern under grouping:
+
+| $\gcd(k,b-1)$ | mean $\Delta$ | | $\gcd$ | mean $\Delta$ |
+|---|---|---|---|---|
+| $1$ | $14.46$ | | $3$ | $14.15$ |
+| $2$ | $8.79$ | | $5$ | $16.55$ |
+| $4$ | $6.90$ | | $15$ | $26.88$ (max) |
+| $8$ | $5.16$ | | | |
+| $16$ | $4.06$ | | | |
+| $32$ | $3.73$ (min) | | | |
+
+Powers of two lower $\Delta$; odd gcds (especially with several odd primes) inflate it.
+
+**Caution on reading this table.** Each row pools pairs from many different moduli, and $v_2(\gcd(k,b-1))$ is large only when $b-1$ itself carries $2$-power structure, so the rows are not comparable populations. Within a single modulus the cycle count is neither monotone nor flat in $v_2(k)$: by Corollary 6.4, $m=41$ gives $\mathrm{Cyc} = 3, 4, 3, 6, 3$ for $k = 2, 4, 8, 16, 32$. The decreasing trend down the powers-of-two column is therefore an aggregation effect across moduli, and no per-system law should be read off it. `scripts/analyze_patterns.py` reports the within-group standard deviation and the number of distinct moduli in each row for exactly this reason.
+
+An earlier draft went further and asserted a graded geometric collapse $\overline{\Delta}(v_2) \approx 12.68 \cdot (0.764)^{v_2}$; a later one replaced it with the claim that the cycle count is flat for all $v_2 \ge 1$. Both are withdrawn; see Appendix B.1.
+
+**Relation to known results.** This is not independent of the happy-number literature: Grundman–Teeple [3] show arbitrarily long runs of consecutive $(e,b)$-happy numbers exist precisely when $e-1$ is not divisible by $p-1$ for any prime $p \mid b-1$, a coprimality condition on the exponent against the prime structure of $b-1$ of the same flavour as the pattern above. Sections 9.1–9.2 are an empirical, quantitative counterpart for the digit-sum-power family, not a claim independent of that circle of ideas.
+
+**9.3 The parity of $k$, not its primality, amplifies attractors.** The raw contrast replicates (prime $k$: mean $|C| = 31.82$ against $18.26$ for composite, about $74\%$ more) but it is confounded. Two is the only even prime, while roughly half of the composites are even, and $2 \mid k$ collapses the $2$-part of every local unit group (Proposition 6.1: $\kappa_k$ strips it), cutting both $\mathrm{Cyc}$ and $|C|$. Controlling for parity on an exhaustive grid of $1{,}298$ pairs ($2 \le k \le 60$, $3 \le b \le 24$):
+
+| class of $k$ | $n$ | mean $|C|$ | mean $\mathrm{Cyc}$ |
+|---|---|---|---|
+| prime (raw) | $374$ | $17.27$ | $7.97$ |
+| composite (raw) | $924$ | $11.40$ | $4.82$ |
+| odd prime | $352$ | $18.09$ | $8.25$ |
+| odd composite | $286$ | $17.16$ | $7.35$ |
+| odd (any) | $638$ | $17.67$ | $7.85$ |
+| even (any) | $660$ | $8.66$ | $3.68$ |
+
+Odd primes and odd composites differ by $0.93$ in mean $|C|$, against a within-class standard deviation of about $9.7$; odd and even differ by $9.01$. The effect is parity. The related correlation $R = -0.391$ between the number-of-divisors function of $k$ and $\mathrm{Cyc}$ is subject to the same confound, since even $k$ tends to have more divisors. (`verification/audit/audit_04_parity_confound.py`; Appendix B.4.)
+
+**9.4 Transient depth scales with $k$.** Maximum transient depth correlates $R = +0.540$ with $k$; deepest observed: $133$ steps.
+
+---
+
+## 10. Open Problems
+
+**Problem 10.1 (Exact formula).** Find a closed-form expression or efficient algorithm for $|C(k,b)|$ beyond Theorem 4.1. In particular, characterize the bifurcation excess $\Delta(k,b)$.
+
+**Problem 10.2 (Tightness characterization).** For which pairs $(k,b)$ does equality $|C(k,b)| = \mathrm{Cyc}(\varphi_{k,b-1})$ hold? Data suggests small $b$ (especially $b = 2,3$) or trivial modular dynamics; the exact-match frequency is itself range-sensitive (§8.3).
+
+**Problem 10.3 (Orbit length asymptotics).** Let $L(k,b,N)$ be the maximum orbit length (transient + cycle) among $n \le N$. What is its growth rate? Is $L(k,b,N) = O(\log N)$ for all fixed $(k,b)$?
+
+**Problem 10.4 (Predecessor graph structure).** For fixed $(k,b)$ and $A \in C(k,b)$, the basin tree rooted at $A$: what is its degree distribution? Does it follow a power law?
+
+**Problem 10.5 (Upper bound).** Prove a complementary upper bound on $|C(k,b)|$; a natural candidate is the contraction threshold $N^*(k,b)$ of Lemma 3.2.
+
+**Problem 10.6 (Rigorous theory of the split).** Replace the numerical Gaussian of §7.5 by the exact Mellin–Perron Fourier term for $S_b(n^k)$ and prove the quasi-periodic oscillation of the per-digit split rigorously; determine whether the statement is already implied by [13–15].
+
+**Problem 10.7 (Count side of the excess).** The modular count side is now fully closed: both the periodic-point count (Proposition 6.1) and the cycle count (Proposition 6.3) have closed forms. Characterize the physical excess $\Delta = |C| - \mathrm{Cyc}$, extra attractors from digit dynamics rather than modular structure. Empirically $\Delta$ responds to the parity of $k$ and to $\omega(b-1)$ (§9), but no closed form is known.
+
+**Problem 10.8 (Complexity of the cycle count).** Proposition 6.3 evaluates $\mathrm{Cyc}(\varphi_{k,m})$ from the factorization of $m$ and multiplicative orders modulo divisors of $\lambda(m)$, so it is polynomial given the factorization; the naive sum over tuples of local cycles is not. Is there an evaluation whose cost is polynomial in $\log m$ and the number of prime factors, without enumerating tuples?
+
+---
+
+## 11. Conclusion
+
+For the family $f_{k,b}(n) = S_b(n^k)$, modular arithmetic modulo $b-1$ determines, exactly and elementarily, both a lower bound on the number of attractors (Theorem 4.1) and the total basin mass of each residue signature (Theorem 5.3, whose finite-window content is an exact identity between integers, with the sharp bound $\min(|R_i|,b-2)/M$). Both were verified without exception across the exhaustive sweep of 19,500 systems. The modular count side is closed in both of its counting functions: the classical periodic-point formula of Proposition 6.1, and the cycle-count formula of Proposition 6.3, which is the one Theorem 4.1 needs, and which shows that $\mathrm{Cyc}$, unlike $\#\mathrm{Per}$, is not a function of $\mathrm{rad}(k)$.
+
+These exact results quotient out the elementary part of the distribution and isolate the remaining object: the intra-signature split. That split does not settle. Along fixed digit-length the individual basin masses oscillate quasi-periodically, in antiphase between competing attractors, always summing to the exact aggregate $p_i$ (Observation 7.6). This holds for every signature with a positive local excess, including the ones an earlier draft classified as convergent. A parameter-free Gaussian-sweep model reproduces the oscillation to within Monte-Carlo noise. The oscillation is an instance of the classical log-periodic fluctuation of digital functions (Delange; Drmota–Grabner). The contribution of the present work is a correctly stated, computationally verified aggregate law, a closed form for the cycle count, and a characterization of why the f
+## References
+
+[1] R. K. Guy, "Happy Numbers," §E34 in *Unsolved Problems in Number Theory*, 3rd ed., Springer, 2004, pp. 358–359.
+
+[2] H. G. Grundman and E. A. Teeple, "Generalized happy numbers," *The Fibonacci Quarterly* **39** (2001), 462–466.
+
+[3] H. G. Grundman and E. A. Teeple, "Sequences of consecutive happy numbers," *Rocky Mountain J. Math.* **37** (2007), no. 6, 1905–1916.
+
+[4] H. G. Grundman and E. A. Teeple, "Sequences of generalized happy numbers with small bases," *J. Integer Sequences* **10** (2007), Article 07.1.8.
+
+[5] G. H. Hardy and E. M. Wright, *An Introduction to the Theory of Numbers*, 6th ed., Oxford University Press, 2008.
+
+[6] H. G. Grundman and L. L. Hall-Seelig, "Happy Numbers, Happy Functions, and Their Variations: A Survey," *La Matematica* **1** (2021), 404–430.
+
+[7] J. Gilmer, "On the density of happy numbers," *Integers* **13** (2013), #A48 (arXiv:1110.3836).
+
+[8] C. Mauduit and J. Rivat, "La somme des chiffres des carrés," *Acta Mathematica* **203** (2009), 107–148.
+
+[9] M. Drmota, C. Mauduit, and J. Rivat, "The sum-of-digits function of polynomial sequences," *J. London Math. Soc.* **84** (2011), no. 1, 81–102.
+
+[10] J. H. Silverman, *The Arithmetic of Dynamical Systems*, Graduate Texts in Mathematics 241, Springer, 2007.
+
+[11] L. Somer and M. Křížek, "On a connection of number theory with graph theory," *Czechoslovak Math. J.* **54** (2004), 465–485; and "Structure of digraphs associated with quadratic congruences with composite moduli," *Discrete Math.* **306** (2006), 2174–2185.
+
+[12] W.-S. Chou and I. E. Shparlinski, "On the cycle structure of repeated exponentiation modulo a prime," *J. Number Theory* **107** (2004), 345–356.
+
+[13] H. Delange, "Sur la fonction sommatoire de la fonction 'somme des chiffres'," *Enseign. Math.* **21** (1975), 31–47.
+
+[14] M. Drmota, *The Distribution of Patterns in Digital Expansions*, in P. Grabner and W. Woess (eds.), *Fractals in Graz 2001*, Birkhäuser, Basel, 2003, pp. 83–114.
+
+[15] M. Drmota and P. Grabner, *Analysis of Digital Functions and Applications*, Encyclopedia of Mathematics and Its Applications, Cambridge University Press, 2010.
+
+[16] R. L. Devaney, *An Introduction to Chaotic Dynamical Systems*, 2nd ed., Westview Press, 2003.
+
+[17] A. Porges, "A set of eight numbers," *American Mathematical Monthly* **52** (1945), 379–382.
+
+
+---
+
+## Appendix A: Reproducibility and Independent Verification
+
+**Primary pipeline.** Everything is reproducible from the `dspm` package accompanying this article. The exhaustive sweep behind §8.2 is `scripts/sweep.py`, producing `data/sweeps/results_k1-500_b2-40_*.jsonl.gz` (19,500 records). The split programme of §7 is `scripts/split_scale.py` (measurement) and `scripts/split_predict.py` (the parameter-free model); the count side of §6 is `scripts/cycle_structure.py`. Statistics of §9 are `scripts/analyze_patterns.py`. Figures: `paper/figures/split_oscillation.svg`, `split_predict_overlay.svg`.
+
+```
+pip install -e ".[fast,dev]"
+pytest                                        # theorem-level test suite
+python verification/verify_theorems.py        # independent re-derivation
+python scripts/cycle_structure.py             # both closed forms vs brute force
+python scripts/split_scale.py --k 3 --b 10 --d-max 90 --samples 60000
+```
+
+**Independent re-verification.** `verification/verify_theorems.py` reimplements the digit sum, the trapping region, both functional graphs and the modular structure from scratch, importing nothing from `dspm`, so a bug in the package cannot make a theorem appear to hold. On $b \in [2,11]$, $k \in [1,15]$ it reports:
+
+- Lemma 3.1 (modular invariance): $40{,}365$ tests, 0 failures.
+- Theorem 4.1 ($|C| \ge \mathrm{Cyc}$): exhaustive over $150$ pairs, 0 violations; exact equality in $19$ of them.
+- Lemma 5.1 (signature is a full modular cycle): 0 violations.
+- Proposition 5.2 (exact integer identity), over three windows per pair: 0 violations.
+- Theorem 5.3, against both the stated bound and the sharp $\min(|R_i|,b-2)/M$: 0 violations; worst error-to-bound ratio $0.25$ for the former and $0.90$ for the latter, which is the evidence that the original bound was not sharp.
+- Proposition 6.1: closed form against brute force, $7{,}722$ pairs, 0 discrepancies.
+- $(k,b)=(2,10)$: attractors $\{1\},\{9\},\{13,16\}$ with measured basin proportions $0.2223/0.3333/0.4443$ on $[1,3000]$, matching $2/9, 3/9, 4/9$.
+- $(k,b)=(3,10)$: attractors $\{1\},\{8\},\{17\},\{18\},\{19,28\},\{26\},\{27\}$, matching Example 4.4.
+
+Proposition 6.3 is checked separately against brute-force enumeration for all $k \in [1,60]$, $m \in [1,259]$: $15{,}540$ pairs, 0 discrepancies.
+
+---
+
+## Appendix B: Errata
+
+Four claims in the July 2026 draft were wrong. Each is recorded with the reasoning that produced it, because in three of the four cases the error was in the verification method rather than in the mathematics, and those failure modes generalize.
+
+**B.1. The modular cycle count is flat for $v_2(k) \ge 1$.** *Withdrawn.* The claim was stated as a consequence of Proposition 6.1 and "verified for $m = 16, 17, 32, 37, 41, 64$". Two independent defects. First, Proposition 6.1 counts periodic points, and $\#\mathrm{Per}$ is indeed a function of $\mathrm{rad}(k)$; the cycle count is not, because cycle lengths are multiplicative orders $\mathrm{ord}_d(k)$ (Proposition 6.3, Corollary 6.4). Second, the supporting computation grouped $k$ by the odd part and $v_2$ of $\gcd(k,\lambda(m))$ and compared group means. For the two non-degenerate moduli in the list the within-group values are $\{4,6,10\}$ for $m=37$ and $\{3,4,6\}$ for $m=41$; the means agree across $v_2$ groups because each group contains the same multiset in the same proportions. The other four moduli are degenerate: $\kappa_k$ collapses the unit part, $\#\mathrm{Per} = 2$, and flatness is vacuous. The lesson is that a test comparing group means cannot detect non-constancy, and that four of six test cases were incapable of failing. Replaced by Proposition 6.3 and Corollary 6.4.
+
+**B.2. Signatures $\{1\}$ and $\{8\}$ have convergent splits.** *Withdrawn.* The measurement script decided convergence from the change in the split across one step of $D$, calling it stabilized when that change fell below the sampling noise. Because the curves are quasi-periodic with long flat stretches, the rule reports convergence whenever the window sampled lies inside one, and the original run stopped at $D = 60$, inside such a stretch for two of the three fixed points. Re-measuring on $4 \le D \le 90$ with $60{,}000$ samples per band shows all three "vanishing" fixed points returning after long silences, with peaks of $0.027$ at $D = 79$ for $\{17\}$, $0.028$ at $D = 58$ for $\{8\}$, and $0.026$ at $D = 73$ for $\{1\}$; all seven curves are non-monotone. Corrected in §7.4. The correction strengthens the main empirical claim: every individual density fails to settle, not merely the one in signature $\{0\}$.
+
+**B.3. The finite-window bound $(b-1)/M$ is "saturated".** *Withdrawn.* It is not: over the grid the worst ratio of actual error to bound is $0.25$. The proof of Theorem 5.3 bounds the deviation of one residue class by $|R_i|$, but the deviations across all $m$ classes sum to zero, so the sharp constant is $\min(|R_i|,\,m-|R_i|)$, and in a window $M = qm + s$ it is $\min(|R_i|, s) \le \min(|R_i|, b-2)$. Section 8.2 already displayed the gap (worst error $0.10$ against a bound of $0.40$) without drawing the conclusion. Corrected in §1.3, §8.2 and §11; the sharp bound is verified in `verification/audit/audit_03_bound_sharpness.py`.
+
+**B.4. Prime exponents amplify attractors by $\approx 74\%$.** *Reinterpreted.* The number replicates but the contrast is confounded with the parity of $k$, which is the actual driver (Proposition 6.1). Controlled comparison in §9.3.
+
+**A methodological note.** Three of the four errors survived because the verification was run against a statistic that could not distinguish the claim from its negation: a comparison of means where constancy was at issue, a local slope where a limit was at issue, and a loose inequality where sharpness was at issue. The countermeasure adopted throughout the accompanying code is to prefer exact integer identities where they exist, as in Proposition 5.2, and, where they do not, to report amplitude, spread and noise floor next to every verdict.
