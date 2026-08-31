@@ -8,6 +8,8 @@ authors:
 version: 1.0.0
 date-released: "2026-08-28"
 license: MIT
+repository-code: "https://github.com/alexmart1ns/digit-sum-power-maps"
+url: "https://zenodo.org/records/22181953"
 keywords:
   - discrete dynamical systems
   - digit-sum functions
@@ -23,6 +25,16 @@ abstract: >-
   trapping region, the modular power map with closed forms for both the
   periodic-point count and the cycle count, the Monte-Carlo measurement of the
   intra-signature basin split, and a parameter-free model of its oscillation.
+preferred-citation:
+  type: article
+  title: "Iterated Digit-Sum Power Maps: A Lower Bound Theorem, an Exact Basin Density Law, and the Oscillation of Intra-Signature Basin Splits"
+  authors:
+    - family-names: Martins
+      given-names: Alex
+  doi: 10.5281/zenodo.22181953
+  url: "https://zenodo.org/records/22181953"
+  year: 2026
+  month: 8
 references:
   - type: article
     title: "Generalized happy numbers"

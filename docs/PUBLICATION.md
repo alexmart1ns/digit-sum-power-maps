@@ -39,4 +39,7 @@ cd paper/pt-BR && pdflatex paper.tex
 
 ## Citation
 
-See [`CITATION.cff`](../CITATION.cff). Code: MIT. Paper and docs: CC BY 4.0.
+Article (Zenodo): [https://zenodo.org/records/22181953](https://zenodo.org/records/22181953) ·
+DOI [10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953)
+
+See also [`CITATION.cff`](../CITATION.cff). Code: MIT. Paper and docs: CC BY 4.0.

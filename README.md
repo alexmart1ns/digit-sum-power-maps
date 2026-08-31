@@ -23,6 +23,8 @@ fluctuation of digital functions.
 The current paper is **v2**. It corrects four errors in the July 2026 draft; see
 [`docs/ERRATA.md`](docs/ERRATA.md) and [`docs/AUDIT.md`](docs/AUDIT.md).
 
+**Zenodo:** [https://zenodo.org/records/22181953](https://zenodo.org/records/22181953) · DOI [10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953)
+
 ## Install
 
 ```bash
@@ -78,7 +80,7 @@ data/sweeps/            sweep datasets (19,500 records for k ≤ 500, b ≤ 40)
 data/split/             measured split curves
 docs/AUDIT.md           how the four v1 errors were found
 docs/ERRATA.md          what changed between v1 and v2
-docs/PUBLICATION.md     publication bundle: kept vs removed, archive tag
+docs/PUBLICATION.md     publication bundle layout and Zenodo link
 ```
 
 Inside the package:
@@ -104,8 +106,10 @@ to every numerical verdict where they do not. `docs/AUDIT.md` has the details.
 
 ## Publication
 
-The article is available in English ([`paper/en/paper.md`](paper/en/paper.md)) and Brazilian Portuguese
-([`paper/pt-BR/paper.md`](paper/pt-BR/paper.md)). To build a PDF from LaTeX:
+The article is published on Zenodo ([record](https://zenodo.org/records/22181953),
+[DOI 10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953)) with PDFs in English and Brazilian Portuguese.
+Source versions: [`paper/en/paper.md`](paper/en/paper.md) and [`paper/pt-BR/paper.md`](paper/pt-BR/paper.md).
+To build a PDF from LaTeX locally:
 
 ```bash
 cd paper/en && pdflatex paper.tex    # English
@@ -118,6 +122,7 @@ measurements for §7 are in [`data/split/`](data/split/). Both are regenerable v
 
 See [`docs/PUBLICATION.md`](docs/PUBLICATION.md) for the publication bundle layout.
 
-## Citing
+## Citation
 
-See [`CITATION.cff`](CITATION.cff). MIT licensed; see [`LICENSE`](LICENSE).
+See [`CITATION.cff`](CITATION.cff). Article DOI: [10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953).
+MIT licensed; see [`LICENSE`](LICENSE).

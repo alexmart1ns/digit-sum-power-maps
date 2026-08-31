@@ -2,7 +2,8 @@
 
 **Alex Martins**
 
-*Independent Research, August 2026 (v2, corrected; see Appendix B)*
+*Independent Research, August 2026 (v2, corrected; see Appendix B)* ·
+[Zenodo](https://zenodo.org/records/22181953) · [10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953)
 
 **MSC 2020:** 37P35, 11A63, 11K06, 11A25, 05C20
 **Keywords:** discrete dynamical systems, digit-sum functions, generalized happy numbers, modular arithmetic, attractor basins, natural density, equidistribution, functional graphs, digital functions.
