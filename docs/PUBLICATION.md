@@ -42,6 +42,7 @@ python scripts/plot_split_figures.py --k 3 --b 10 --oscillation
 python scripts/qclass_universality_grid.py
 python scripts/qclass_split_monomial_compare.py
 python scripts/qclass_excess.py
+python scripts/bridge_check.py --k 3 --b 10
 python scripts/mine_topic10.py --quick
 python scripts/analyze_topic10.py --skip-tightness --skip-deep
 ruff check src scripts tests verification

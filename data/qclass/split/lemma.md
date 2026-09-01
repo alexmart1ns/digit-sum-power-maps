@@ -75,4 +75,5 @@ LM(Q,b,j) for labelling Ψ_j(V)  ──┘         (bridge)              (§7.5 
 B, Remark after LM). Do not use.
 
 **Pilot:** `(k,b)=(3,10)`, signature `{0}`. DMR covers LLT for `n^3`; LM remains
-the analytic gap.
+the analytic gap. See also [`bridge_lemma.md`](bridge_lemma.md) and
+[`proof_pilot_3_10.md`](proof_pilot_3_10.md).

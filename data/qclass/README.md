@@ -18,16 +18,21 @@ Does **not** write into `data/sweeps/`, `data/mining/`, or `data/split/`.
 3. **Monomial bridge.** For $Q=x^k$, `predict_split_Q` agrees with `predict_split`
    (image lattice $r^k$); see `split/monomial_compare_latest.md`.
 
-4. **Excess identity holds** on the pilot grid; $\Delta\neq$ visible split in general
-   ($x+x^2$ splits with $\Delta=0$ in-window; $1+x^3$ has $\Delta=0$, no split).
+4. **Excess identity holds** on the pilot grid; $\Delta$ and band split are
+   **different objects** (see `excess/HYPOTHESES.md`: H2a tautology vs H2b rejected).
 
-5. **Universality grid** (`universality/grid_latest.md`): monomials $x^2,x^3,x^4$ and
-   quadratics/cubics at bases $8,10,16$ — split presence, antiphase $r$, post-lattice
-   $F_j$ MAE. Run `python scripts/qclass_universality_grid.py`.
+5. **Universality grid** (`universality/grid_latest.md` + `THEORY_NOTE.md`): monomials
+   $x^2,x^3,x^4$ and quadratics/cubics at bases $8,10,16$ — split presence,
+   antiphase $r$, post-lattice $F_j$ MAE. Run `python scripts/qclass_universality_grid.py`.
 
-6. **Excess campaign** (`excess/excess_latest.md`): 35 $(Q,b)$ pairs; Spearman
-   (digit layers, $\delta_i$) $\approx 0.89$ on signatures — empirical only, not a
-   closed conjecture. $\Delta=0$ with split still occurs ($x+x^2$, $b=10$).
+6. **Excess campaign** (`excess/excess_latest.md`, `excess/HYPOTHESES.md`): 35
+   $(Q,b)$ pairs; Spearman (digit layers, $\delta_i$) $\approx 0.89$ — empirical
+   only. $\Delta>0$ iff split signature exists (tautology); does not predict
+   oscillation amplitude.
+
+7. **Problem B programme** (`split/bridge_lemma.md`, `split/proof_pilot_3_10.md`,
+   `checks/LITERATURE.md` LM verdict): bridge $\delta_j=F_j+o(1)$ sketched; LM open.
+   Validate bridge: `python scripts/bridge_check.py --k 3 --b 10`.
 
 Results promoted to paper §7.5 and Appendix B.5 (`paper/*/paper.md`).
 
@@ -43,8 +48,20 @@ Results promoted to paper §7.5 and Appendix B.5 (`paper/*/paper.md`).
 | `scripts/qclass_split_monomial_compare.py` | `split/monomial_compare_latest.*` |
 | `scripts/qclass_excess.py` | `excess/` — $\Delta$ / digit layers |
 | `scripts/qclass_universality_grid.py` | `universality/` — $Q\times b$ grid |
+| `scripts/bridge_check.py` | (stdout) — per-D $\|\delta_j-F_j\|$ on measured curves |
 
 Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
+
+## Key sidecar notes (Problem B / C / A)
+
+| Path | Role |
+|------|------|
+| `split/bridge_lemma.md` | Draft bridge δ_j = F_j + o(1) |
+| `split/proof_pilot_3_10.md` | Checklist for (3,10); LM gap |
+| `split/lemma.md` | Conditional LLT + LM ⇒ no limit |
+| `checks/LITERATURE.md` | [13]–[15] vs Hypothesis LM |
+| `universality/THEORY_NOTE.md` | S_b(Q(n)) synthesis |
+| `excess/HYPOTHESES.md` | Pre-registered Δ tests H1–H5 |
 
 ## Retention
 

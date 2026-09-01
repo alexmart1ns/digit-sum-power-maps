@@ -1,8 +1,7 @@
 # Q-class excess
 
-**Observations only** — not a closed conjecture. Spearman correlation between
-digit-layer count and local $\delta_i$ is reported for exploration; $\Delta=0$
-does not rule out visible split (e.g. $x+x^2$, $b=10$).
+**Observations only** — not a closed conjecture. See [`HYPOTHESES.md`](HYPOTHESES.md)
+for pre-registered tests H1–H5.
 
 Stamp: 20260901T170030Z
 Pairs: **35**; Δ = 0 on **12**

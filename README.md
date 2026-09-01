@@ -25,7 +25,8 @@ The current paper is **v2**. It corrects five errors in the July 2026 draft; see
 
 **Q-class sidecar** (2026-09): `src/dspm/qmaps.py` and `data/qclass/` study
 $S_b(Q(n))$ for general polynomials $Q$ with positive leading coefficient, isolated from the main
-`data/split/` records. See [`data/qclass/README.md`](data/qclass/README.md).
+`data/split/` records. Post-v2.1 **Problem B** proof notes (bridge lemma, LM verdict) live in
+`data/qclass/split/` — sidecar only until external review. See [`data/qclass/README.md`](data/qclass/README.md).
 
 **Zenodo:** [https://zenodo.org/records/22181953](https://zenodo.org/records/22181953) · DOI [10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953)
 
@@ -66,6 +67,7 @@ python scripts/split_predict.py --k 3 --b 10
 python scripts/sweep_label.py --k 3 --b 10 --d-max 300
 python scripts/local_mean.py --k 3 --b 10 --v-max 1000000
 python scripts/plot_split_figures.py --k 3 --b 10 --oscillation
+python scripts/bridge_check.py --k 3 --b 10      # |delta_j - F_j| per D (Problem B pilot)
 python scripts/analyze_patterns.py              # the correlation tables of §9
 python scripts/qclass_split_refine.py           # Q-class split / F_j (writes data/qclass/)
 python scripts/mine_topic10.py --quick          # §10 stratified grid (writes data/mining/)
