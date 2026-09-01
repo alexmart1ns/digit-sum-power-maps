@@ -18,11 +18,11 @@ a completed proof.
 
 | # | Step | Status | Evidence |
 |---|------|--------|----------|
-| 1 | **LLT** for `S_b(n^3)` on `N_D ∩ (r+9ℤ)` feeding `{0}` | Input [9] | `llt_bands.md` (G2 draft) |
+| 1 | **LLT** for `S_b(n^3)` on `N_D ∩ (r+9ℤ)` feeding `{0}` | **Open** (G2d) | CLT: [15] §8.3.2; LLT: no citation — `llt_bands.md` §6.3 |
 | 2 | **Image lattice** `v ≡ r^3 (mod 9)` | Done | Errata B.5; audit_05 MAE 0.002 vs 0.033 |
 | 3 | **F_j** = `predict_split` (parameter-free) | Done | `split_predict.py`; MAE ≈ 0.002 |
 | 4 | **Bridge** δ_j(D) = F_j(D) + o(1) | Open (sketch) | Gaps G2, G4 in `bridge_lemma.md` |
-| 5 | **LM** for Ψ_{18}, Ψ_{27} | Open (empirical gap ≥0.315) | `lm_pilot.md` §4.1, `lm_liminf_latest.md` |
+| 5 | **LM** for Ψ_{18}, Ψ_{27} | Open — trap ρ_L **proven** (amp 0.6); decade Ψ **exact** (gap ≥0.315, n≤7); limit **open** | `lm_pilot.md` §4.2, `lm_deterministic_latest.md` |
 | 6 | **Non-convergence** of δ_j | Conditional | Conjecture 10.6; needs (4)+(5) |
 | 7 | **10.6′ pilot** antiphase, sum 1/3 | Empirical | MC + Gaussian sweep SURVIVES |
 
@@ -39,6 +39,7 @@ a completed proof.
 | Gaussian label sweep D≤1000 | amp survives; cross-decade r=**0.26** | `label_sweep_latest.md` |
 | Bridge MAE | ≈ 0.002 (F_j vs MC) | `audit_05_lattice.py`, `bridge_check.py` |
 | Local mean LM | gap ≥0.315 on `V=10^n`; global range 0.67 | `lm_liminf_latest.md` |
+| Deterministic trap partition | `ρ_1=1.0`, `ρ_2=0.4`, amp **0.6**; exact decade Ψ gap **0.315** | `lm_deterministic_latest.md` |
 
 **Nuance (D=1000):** amplitude does not collapse, but **phase correlation**
 between decades weakens (0.26 vs 0.735). Do not overclaim long-scale phase
@@ -49,10 +50,11 @@ stability; amplitude survival alone supports 10.6′ under LLT, not full LM.
 ## Proof dependency graph
 
 ```text
-[9] DMR LLT on progressions
+[15] §8.3.2 CLT (composite b=10) ──► partial
+[9]  AP equidist. (prime q only; no LLT k≥3)
         │
         ▼
-  bridge_lemma (δ_j = F_j + o(1))  ◄── gaps G2, G4
+  bridge_lemma (δ_j = F_j + o(1))  ◄── gaps G2a–G2d, G4
         │
         ├──► F_j explicit (predict_split)     ✓ empirical
         │
@@ -66,7 +68,8 @@ stability; amplitude survival alone supports 10.6′ under LLT, not full LM.
 
 ## Suggested order of attack
 
-1. Formalize **G2**: uniform LLT remainder on dyadic bands `N_D` for `n^3`.
+1. Formalize **G2**: CLT via [15] Thm 8.3.13 on `N_D^{(r)}`; prove **G2d** LLT
+   for `s_{10}(n³)` directly (no [9]/[15] citation).
 2. Prove **LM** for `h_{18}, h_{27}` OR find a counterexample (would refute 10.6).
 3. Only then promote bridge + conditional lemma to the main paper.
 
@@ -78,5 +81,6 @@ stability; amplitude survival alone supports 10.6′ under LLT, not full LM.
 python scripts/bridge_check.py --k 3 --b 10
 python scripts/split_predict.py --k 3 --b 10 --d-max 90 --samples-hint 120000
 python scripts/local_mean.py --k 3 --b 10 --v-max 10000000
+python scripts/lm_deterministic.py --k 3 --b 10 --signature 0
 python verification/audit/audit_05_lattice.py
 ```

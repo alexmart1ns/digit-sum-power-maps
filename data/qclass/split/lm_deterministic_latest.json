@@ -1,0 +1,245 @@
+{
+  "k": 3,
+  "b": 10,
+  "signature": [
+    0
+  ],
+  "feeding": [
+    0,
+    3,
+    6
+  ],
+  "v_max": 10000000,
+  "attractors": [
+    "[18]",
+    "[27]"
+  ],
+  "finite_region": {
+    "M": 57,
+    "by_digit_length": [
+      {
+        "L": 1,
+        "counts": {
+          "[18]": 1
+        },
+        "total": 1,
+        "frac_primary": 1.0
+      },
+      {
+        "L": 2,
+        "counts": {
+          "[18]": 2,
+          "[27]": 3
+        },
+        "total": 5,
+        "frac_primary": 0.4
+      }
+    ],
+    "frac_primary_amplitude": 0.6,
+    "preimages": {
+      "[18]": [
+        9,
+        18,
+        45
+      ],
+      "[27]": [
+        27,
+        36,
+        54
+      ]
+    }
+  },
+  "decade_windows": [
+    {
+      "V": 100,
+      "window": [
+        90,
+        110
+      ],
+      "total_on_lattice": 7,
+      "fracs": {
+        "[18]": 0.285714,
+        "[27]": 0.714286
+      },
+      "by_digit_length": [
+        {
+          "L": 2,
+          "counts": {
+            "[18]": 1,
+            "[27]": 3
+          },
+          "total": 4,
+          "frac_primary": 0.25
+        },
+        {
+          "L": 3,
+          "counts": {
+            "[18]": 1,
+            "[27]": 2
+          },
+          "total": 3,
+          "frac_primary": 0.333333
+        }
+      ]
+    },
+    {
+      "V": 1000,
+      "window": [
+        969,
+        1031
+      ],
+      "total_on_lattice": 21,
+      "fracs": {
+        "[18]": 0.238095,
+        "[27]": 0.761905
+      },
+      "by_digit_length": [
+        {
+          "L": 3,
+          "counts": {
+            "[18]": 2,
+            "[27]": 9
+          },
+          "total": 11,
+          "frac_primary": 0.181818
+        },
+        {
+          "L": 4,
+          "counts": {
+            "[18]": 3,
+            "[27]": 7
+          },
+          "total": 10,
+          "frac_primary": 0.3
+        }
+      ]
+    },
+    {
+      "V": 10000,
+      "window": [
+        9900,
+        10100
+      ],
+      "total_on_lattice": 67,
+      "fracs": {
+        "[18]": 0.41791,
+        "[27]": 0.58209
+      },
+      "by_digit_length": [
+        {
+          "L": 4,
+          "counts": {
+            "[18]": 13,
+            "[27]": 21
+          },
+          "total": 34,
+          "frac_primary": 0.382353
+        },
+        {
+          "L": 5,
+          "counts": {
+            "[18]": 15,
+            "[27]": 18
+          },
+          "total": 33,
+          "frac_primary": 0.454545
+        }
+      ]
+    },
+    {
+      "V": 100000,
+      "window": [
+        99684,
+        100316
+      ],
+      "total_on_lattice": 211,
+      "fracs": {
+        "[18]": 0.521327,
+        "[27]": 0.478673
+      },
+      "by_digit_length": [
+        {
+          "L": 5,
+          "counts": {
+            "[18]": 61,
+            "[27]": 45
+          },
+          "total": 106,
+          "frac_primary": 0.575472
+        },
+        {
+          "L": 6,
+          "counts": {
+            "[18]": 49,
+            "[27]": 56
+          },
+          "total": 105,
+          "frac_primary": 0.466667
+        }
+      ]
+    },
+    {
+      "V": 1000000,
+      "window": [
+        999000,
+        1001000
+      ],
+      "total_on_lattice": 667,
+      "fracs": {
+        "[18]": 0.553223,
+        "[27]": 0.446777
+      },
+      "by_digit_length": [
+        {
+          "L": 6,
+          "counts": {
+            "[18]": 180,
+            "[27]": 154
+          },
+          "total": 334,
+          "frac_primary": 0.538922
+        },
+        {
+          "L": 7,
+          "counts": {
+            "[18]": 189,
+            "[27]": 144
+          },
+          "total": 333,
+          "frac_primary": 0.567568
+        }
+      ]
+    },
+    {
+      "V": 10000000,
+      "window": [
+        9996838,
+        10000000
+      ],
+      "total_on_lattice": 1054,
+      "fracs": {
+        "[18]": 0.454459,
+        "[27]": 0.545541
+      },
+      "by_digit_length": [
+        {
+          "L": 7,
+          "counts": {
+            "[18]": 479,
+            "[27]": 575
+          },
+          "total": 1054,
+          "frac_primary": 0.454459
+        }
+      ]
+    }
+  ],
+  "decade_gap_primary": 0.315128,
+  "verdict": "deterministic_gap_positive",
+  "proof_status": {
+    "finite_M_partition": "proven_exact",
+    "window_psi_at_finite_V": "proven_exact_matches_local_mean",
+    "liminf_ne_limsup": "open_requires_infinite_sequence"
+  },
+  "note": "Exact counts on finite windows (psi_sharp parity with local_mean); does not prove LM theorem (lim inf != lim sup along V->infty)."
+}

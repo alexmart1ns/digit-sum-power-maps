@@ -47,6 +47,7 @@ infinite sequences `V_n, V'_n` with `Ψ_j(V_n) − Ψ_j(V'_n) ≥ c > 0`.
 **Subtasks:**
 
 1. ~~Run `lm_structure.py`~~ — done; amplitude **0.6** across `L=1,2` in `[1,M]`.
+   `lm_deterministic.py` now gives explicit `β_j`, `ρ_L`, and exact decade `Ψ`.
 2. ~~Extract `liminf`/`limsup` via `lm_liminf.py`~~ — done; see §2.
 3. **Open:** relate window `[V±√V]` to digit-length layers as `V` grows (§4.1).
 
@@ -103,8 +104,24 @@ Target: show two residue/digit-length regimes with `Ψ_j` differing by ≥ `c_j`
    log-periodicity pushed to `h_j`, not just `s_b`).
 4. Conclude `Ψ_{18}(b^n) − Ψ_{18}(b^{n'}) ≥ c` for infinitely many pairs `(n,n')`.
 
-**Status:** steps 1–2 are finite combinatorics on `[1,M]`; step 3 is the hard
-analytic gap (no Delange theorem for `h_j`).
+**Status (2026-09-01, `lm_deterministic.py`):**
+
+| Step | Status | Result |
+|------|--------|--------|
+| 4.2.1 partition on trap | **Proven** | `β_{18}={3,6,9,12,15,18,21,24,30,45,48,51}`, `β_{27}={27,33,36,39,42,54,57}`; lattice in `[1,M]` has 6 points, split by `L` below |
+| 4.2.2 rho_L on trap | **Proven** | `L=1`: `ρ_1=1.0` (`9→18`); `L=2`: `ρ_2=0.4` (`18,45→18`; `27,36,54→27`); amplitude **0.6** |
+| 4.2.2 exact Ψ on `V=b^n` | **Exact** (finite compute) | `n=2…7`: `Ψ_{18}∈[0.238,0.553]`, gap **≥0.315**; antiphase `Ψ_{18}+Ψ_{27}=1` |
+| 4.2.3 weights `w_L(V)` | **Open** | At `V=10^n`, dominant strata are `L=n,n+1` (not trap `L=1,2`); weights ≈50/50 |
+| 4.2.4 infinite liminf/limsup | **Open** | Exact decade gap matches §4.1 empirical bound; limit argument still needed |
+
+**Proven (finite):** trap-lattice oscillation `ρ_1−ρ_2=0.6` and explicit `g(v)` map on
+`{9,18,27,36,45,54}` (`lm_deterministic_latest.md`).
+
+**Exact (computable, not limit theorem):** decade-anchor `Ψ_j(b^n)` for `n≤7` via
+sharp-window lattice counts (confirms §4.1 gap **0.315** without MC).
+
+**Still empirical / conditional:** connecting large-`L` window strata to trap `ρ_L`;
+step 4.2.3–4 (no Delange theorem for `h_j`).
 
 ---
 
@@ -114,6 +131,7 @@ analytic gap (no Delange theorem for `h_j`).
 python scripts/local_mean.py --k 3 --b 10 --v-max 10000000
 python scripts/lm_structure.py --k 3 --b 10 --signature 0
 python scripts/lm_liminf.py
+python scripts/lm_deterministic.py --k 3 --b 10 --signature 0
 ```
 
 ---
