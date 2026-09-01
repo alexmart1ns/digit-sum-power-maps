@@ -68,3 +68,37 @@ Mirror patches 1–4 in `paper/pt-BR/paper.md` with equivalent Portuguese prose.
 ---
 
 *Draft 2026-09-01. Sidecar only until sign-off.*
+
+---
+
+## REVISED patches (post 3-reviewer validation)
+
+See [`VALIDATION_REPORT.md`](VALIDATION_REPORT.md). **Conditional NO-GO** until B1–B7 closed.
+
+### Patch 1 (revised) — §7.5 bridge MAE
+
+> Comparing Monte-Carlo measured splits to the parameter-free prediction
+> (`scripts/bridge_check.py`; `split_scale_k3_b10_latest.json`, 120 000 samples per band)
+> gives mean per-attractor absolute error `|δ_j(D) − F_j(D)|` over D=4…90 (87 bands) of
+> **≈0.0017**, at the measurement noise floor (≈0.0014).
+
+Harmonize abstract/§7.5 prior **0.003** references; update noise-floor paragraph to 120k samples.
+
+### Patch 2 (revised) — §10.6′ D=1000
+
+> Extending the Gaussian-window diagnostic to D=1000
+> (`data/split/label_sweep_k3_b10_sig0_D1000_*.md`) shows **amplitude survival**
+> (0.19 on 10≤D≤99; 0.13 on 100≤D≤1000), but cross-decade phase correlation on the
+> overlapping 10¹–10² interval weakens to Pearson **r≈0.26** (cf. **r≈0.735** for D≤300).
+> Antiphase and sum 1/3 persist at every D. Tagged **amplitude_only** — do **not** claim
+> Conjecture 10.6′ phase stability at D=1000.
+
+**B1:** freeze D≤300 citation path separately from `label_sweep_latest` (currently D=1000).
+
+### Patch 3 (revised) — landing depth
+
+> For `(k,b)=(3,10)`, every sampled `v` on the feeding lattice reaches `[1,M]` under at most
+> **two** applications of `f_{3,10}` (`first_landing`; scan to **v≤10⁶** in `g4_landing.py`).
+> Proof for all `v` open.
+
+### Patches 4–5: **APPROVED** (unchanged)

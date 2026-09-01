@@ -1,7 +1,7 @@
 # G4 landing analysis (pilot)
 
 M=57  minimal consistent T: **None**
-Landing depth (samples): max **2**, mean **1.8307**
+Landing depth (samples): max **2**, mean **1.8919**
 
 ## Basins in [1,M]
 
@@ -17,9 +17,9 @@ Landing depth (samples): max **2**, mean **1.8307**
 | 3 | 9000 | 330333 | 157288 | False |
 | 4 | 90000 | 303333 | 143771 | False |
 | 5 | 900000 | 33333 | 16722 | False |
-| 6 | 9000000 | 0 | 0 | False |
-| 7 | 90000000 | 0 | 0 | False |
-| 8 | 900000000 | 0 | 0 | False |
+| 6 | 9000000 | 0 | 0 | None |
+| 7 | 90000000 | 0 | 0 | None |
+| 8 | 900000000 | 0 | 0 | None |
 
 **Verdict:** no_T_found_in_range
 

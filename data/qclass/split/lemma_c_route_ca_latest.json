@@ -13,7 +13,7 @@
       "V": 100,
       "suffix_pow": 2,
       "suffix_mod": 100,
-      "min_count_used": 3,
+      "min_count_used": 20,
       "stratum_total": 4,
       "stratum_rho": 0.25,
       "buckets_used": 0,
@@ -30,7 +30,7 @@
       "V": 100,
       "suffix_pow": 3,
       "suffix_mod": 1000,
-      "min_count_used": 3,
+      "min_count_used": 20,
       "stratum_total": 4,
       "stratum_rho": 0.25,
       "buckets_used": 0,
@@ -47,7 +47,7 @@
       "V": 1000,
       "suffix_pow": 2,
       "suffix_mod": 100,
-      "min_count_used": 3,
+      "min_count_used": 20,
       "stratum_total": 11,
       "stratum_rho": 0.181818,
       "buckets_used": 0,
@@ -64,7 +64,7 @@
       "V": 1000,
       "suffix_pow": 3,
       "suffix_mod": 1000,
-      "min_count_used": 3,
+      "min_count_used": 20,
       "stratum_total": 11,
       "stratum_rho": 0.181818,
       "buckets_used": 0,
@@ -81,7 +81,7 @@
       "V": 10000,
       "suffix_pow": 2,
       "suffix_mod": 100,
-      "min_count_used": 3,
+      "min_count_used": 20,
       "stratum_total": 34,
       "stratum_rho": 0.382353,
       "buckets_used": 0,
@@ -98,7 +98,7 @@
       "V": 10000,
       "suffix_pow": 3,
       "suffix_mod": 1000,
-      "min_count_used": 3,
+      "min_count_used": 20,
       "stratum_total": 34,
       "stratum_rho": 0.382353,
       "buckets_used": 0,
@@ -115,7 +115,7 @@
       "V": 100000,
       "suffix_pow": 2,
       "suffix_mod": 100,
-      "min_count_used": 3,
+      "min_count_used": 20,
       "stratum_total": 106,
       "stratum_rho": 0.575472,
       "buckets_used": 0,
@@ -132,7 +132,7 @@
       "V": 100000,
       "suffix_pow": 3,
       "suffix_mod": 1000,
-      "min_count_used": 3,
+      "min_count_used": 20,
       "stratum_total": 106,
       "stratum_rho": 0.575472,
       "buckets_used": 0,
@@ -149,127 +149,24 @@
       "V": 1000000,
       "suffix_pow": 2,
       "suffix_mod": 100,
-      "min_count_used": 4,
+      "min_count_used": 20,
       "stratum_total": 334,
       "stratum_rho": 0.538922,
-      "buckets_used": 34,
+      "buckets_used": 0,
       "buckets_all": 100,
-      "max_suffix_gap": 1.0,
-      "best_pair": [
-        0,
-        30
-      ],
-      "best_rhos": [
-        0.0,
-        1.0
-      ],
-      "bucket_rhos": {
-        "0": 0.0,
-        "3": 0.75,
-        "6": 0.5,
-        "9": 0.5,
-        "12": 0.25,
-        "15": 0.0,
-        "18": 0.75,
-        "21": 0.5,
-        "24": 0.75,
-        "27": 0.25,
-        "30": 1.0,
-        "33": 0.25,
-        "36": 0.25,
-        "39": 0.5,
-        "42": 0.5,
-        "45": 0.5,
-        "48": 0.5,
-        "51": 1.0,
-        "54": 0.75,
-        "57": 0.25,
-        "60": 1.0,
-        "63": 0.5,
-        "66": 0.25,
-        "69": 0.75,
-        "72": 1.0,
-        "75": 0.5,
-        "78": 0.5,
-        "81": 0.75,
-        "84": 0.5,
-        "87": 0.75,
-        "90": 0.75,
-        "93": 0.25,
-        "96": 0.5,
-        "99": 0.0
-      },
-      "top_buckets": [
-        {
-          "suffix": 30,
-          "suffix_mod": 100,
-          "count": 4,
-          "rho_18": 1.0
-        },
-        {
-          "suffix": 51,
-          "suffix_mod": 100,
-          "count": 4,
-          "rho_18": 1.0
-        },
-        {
-          "suffix": 60,
-          "suffix_mod": 100,
-          "count": 4,
-          "rho_18": 1.0
-        },
-        {
-          "suffix": 72,
-          "suffix_mod": 100,
-          "count": 4,
-          "rho_18": 1.0
-        },
-        {
-          "suffix": 3,
-          "suffix_mod": 100,
-          "count": 4,
-          "rho_18": 0.75
-        }
-      ],
-      "bottom_buckets": [
-        {
-          "suffix": 0,
-          "suffix_mod": 100,
-          "count": 4,
-          "rho_18": 0.0
-        },
-        {
-          "suffix": 15,
-          "suffix_mod": 100,
-          "count": 4,
-          "rho_18": 0.0
-        },
-        {
-          "suffix": 99,
-          "suffix_mod": 100,
-          "count": 4,
-          "rho_18": 0.0
-        },
-        {
-          "suffix": 12,
-          "suffix_mod": 100,
-          "count": 4,
-          "rho_18": 0.25
-        },
-        {
-          "suffix": 27,
-          "suffix_mod": 100,
-          "count": 4,
-          "rho_18": 0.25
-        }
-      ]
+      "max_suffix_gap": 0.0,
+      "best_pair": null,
+      "best_rhos": null,
+      "bucket_rhos": {},
+      "top_buckets": [],
+      "bottom_buckets": []
     },
     {
       "n": 6,
       "V": 1000000,
       "suffix_pow": 3,
       "suffix_mod": 1000,
-      "min_count_used": 4,
+      "min_count_used": 20,
       "stratum_total": 334,
       "stratum_rho": 0.538922,
       "buckets_used": 0,
@@ -286,7 +183,7 @@
       "V": 10000000,
       "suffix_pow": 2,
       "suffix_mod": 100,
-      "min_count_used": 13,
+      "min_count_used": 20,
       "stratum_total": 1054,
       "stratum_rho": 0.454459,
       "buckets_used": 0,
@@ -303,7 +200,7 @@
       "V": 10000000,
       "suffix_pow": 3,
       "suffix_mod": 1000,
-      "min_count_used": 13,
+      "min_count_used": 20,
       "stratum_total": 1054,
       "stratum_rho": 0.454459,
       "buckets_used": 0,
@@ -5847,7 +5744,8 @@
   "summary": {
     "mod100_gap_min_over_n": 0.0,
     "mod100_gap_min_n_ge_9": 0.174573,
-    "mod100_gap_max_over_n": 1.0,
+    "mod100_gap_max_n_ge_9": 0.371428,
+    "mod100_gap_max_over_n": 0.371428,
     "mod100_gap_at_n14": 0.289158,
     "stable_pairs": {
       "n_lo": 9,

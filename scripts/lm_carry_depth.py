@@ -189,7 +189,8 @@ def run(k: int, b: int, sig_residue: int, n_lo: int, n_max: int) -> dict:
     drift = drift_analysis(decades, suffix_mod)
     witness = witness_pair(decades)
     tail_checks = [
-        landing_digit_dependence(system, feeding, v_max=200_000, tail_digits=d) for d in (2, 3, 4)
+        landing_digit_dependence(system, feeding, v_max=2_000_000, tail_digits=d)
+        for d in (2, 3, 4)
     ]
 
     # Analytic verdict: intrinsic gap + mixture drift explains rho_n oscillation

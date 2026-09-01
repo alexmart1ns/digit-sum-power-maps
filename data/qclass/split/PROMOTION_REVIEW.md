@@ -83,8 +83,8 @@ If approving a **documentation-only** paper patch (no new theorems):
 3. §10 pipeline: list `lm_stratum.py`, `lm_oscillation.py`, `g4_landing.py`.
 4. Optional Appendix: **Lemma (band cardinality)** from Tier C.
 
-**Draft patches:** [`paper_v22_tier_b_proposed.md`](paper_v22_tier_b_proposed.md)
-(apply after author sign-off §8).
+**Draft patches:** [`paper_v22_tier_b_proposed.md`](paper_v22_tier_b_proposed.md) (revised §post-validation).  
+**Validation:** [`VALIDATION_REPORT.md`](VALIDATION_REPORT.md) — **conditional NO-GO** until checklist §7.
 
 **Do not merge:** Lemmas B–D as theorems, conditional non-convergence chain, G2d claims.
 

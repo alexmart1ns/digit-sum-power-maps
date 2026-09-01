@@ -32,8 +32,9 @@ For each residue `r` feeding signature `γ_i` (`a_i ≥ 2`), and `n` uniform on
 with `μ_L = (b−1)L/2`, `σ_L = √{L(b²−1)/12}`, and mixture weights `w_L(D)` from
 `digit_count_mixture(D,k,b)` (continuous band overlap model).
 
-**Status:** Input from Drmota–Mauduit–Rivat [9] for monomials, restricted to
-dyadic bands and progressions. Not claimed as a theorem in the paper.
+**Status:** **Hypothesis** — not citable as theorem. CLT leg may cite [15] §8.3.2;
+pointwise LLT (G2d) is **open** for `k≥3` at `b=10` ([9] Problem 2; see
+[`llt_bands.md`](llt_bands.md) §6.3). Do not cite [9] Thm 2 as LLT for composite base.
 
 ---
 

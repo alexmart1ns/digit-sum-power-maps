@@ -46,6 +46,18 @@ def periodicity_scan(
     rows = []
     for T in range(1, t_max + 1):
         step = m * (system.b**T)
+        if step > v_sample_max:
+            rows.append(
+                {
+                    "T": T,
+                    "modulus": step,
+                    "checked_pairs": 0,
+                    "mismatches": 0,
+                    "consistent": None,
+                    "status": "untested_range",
+                }
+            )
+            continue
         mismatches = 0
         checked = 0
         for r in feeding:
@@ -77,7 +89,7 @@ def periodicity_scan(
 
 def landing_depth_stats(system, feeding: list[int], v_max: int) -> dict:
     depths: list[int] = []
-    for v in range(1, min(v_max, 500_000) + 1):
+    for v in range(1, v_max + 1):
         if all(v % system.m != r for r in feeding):
             continue
         _, steps = first_landing(v, system)

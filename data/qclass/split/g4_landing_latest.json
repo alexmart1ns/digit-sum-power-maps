@@ -37,8 +37,8 @@
   },
   "landing_depth": {
     "max_steps": 2,
-    "mean_steps": 1.8307,
-    "samples": 166666
+    "mean_steps": 1.8919,
+    "samples": 333333
   },
   "periodicity_scan": [
     {
@@ -81,21 +81,24 @@
       "modulus": 9000000,
       "checked_pairs": 0,
       "mismatches": 0,
-      "consistent": false
+      "consistent": null,
+      "status": "untested_range"
     },
     {
       "T": 7,
       "modulus": 90000000,
       "checked_pairs": 0,
       "mismatches": 0,
-      "consistent": false
+      "consistent": null,
+      "status": "untested_range"
     },
     {
       "T": 8,
       "modulus": 900000000,
       "checked_pairs": 0,
       "mismatches": 0,
-      "consistent": false
+      "consistent": null,
+      "status": "untested_range"
     }
   ],
   "minimal_consistent_T": null,

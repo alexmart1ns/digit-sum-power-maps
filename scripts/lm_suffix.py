@@ -36,8 +36,8 @@ def num_digits(v: int, b: int) -> int:
 
 
 def effective_min_count(stratum_total: int, min_count: int) -> int:
-    """Scale threshold so small strata and mod-1000 buckets remain usable."""
-    return max(3, min(min_count, stratum_total // 80))
+    """Scale threshold; floor 20 avoids 4-sample rho bins at small n."""
+    return max(20, min(min_count, stratum_total // 80))
 
 
 def suffix_scan_decade(
@@ -207,6 +207,7 @@ def run(k: int, b: int, sig_residue: int, n_max: int, min_count: int) -> dict:
         "summary": {
             "mod100_gap_min_over_n": round(min(mod100_gaps), 6) if mod100_gaps else 0,
             "mod100_gap_min_n_ge_9": stable.get("min_max_gap_n_ge_lo", 0),
+            "mod100_gap_max_n_ge_9": round(max(mod100_large_gaps), 6) if mod100_large_gaps else 0,
             "mod100_gap_max_over_n": round(global_max, 6),
             "mod100_gap_at_n14": round(mod100[-1]["max_suffix_gap"], 6) if mod100 else 0,
             "stable_pairs": stable,
@@ -244,7 +245,7 @@ def main() -> int:
         f"Stratum `L=n` at `V=10^n`, `n=2…{args.n_max}`. Buckets `v mod b^d`, `d=2,3`.",
         "",
         f"**Min max-suffix-gap (mod 100), n≥9:** **{s.get('mod100_gap_min_n_ge_9', 0)}**",
-        f"**Max suffix-gap (mod 100):** {s['mod100_gap_max_over_n']}",
+        f"**Max suffix-gap (mod 100), n≥9:** {s.get('mod100_gap_max_n_ge_9', 0)}",
         f"**At n={args.n_max} (mod 100):** {s['mod100_gap_at_n14']}",
         "",
         f"**Verdict:** {payload['verdict']}",

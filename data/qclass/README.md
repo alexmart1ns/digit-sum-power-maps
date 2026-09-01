@@ -74,6 +74,7 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | `split/ATTACK_PLAN.md` | PhD roadmap: G2d, G4, LM attack routes |
 | `split/EXECUTION_PLAN.md` | 4-week execution tracker (**complete**) |
 | `split/PROMOTION_REVIEW.md` | Sidecar → paper tier review (W4.4) |
+| `split/VALIDATION_REPORT.md` | 3-reviewer pre-merge validation (NO-GO checklist) |
 | `split/clt_citation.md` | CLT leg [15] + Lemma A |
 | `split/lemma_d_g4.md` | Lemma D (G4 landing) draft |
 | `split/lemma_b_stratum.md` | Lemma B: stratum weights + rho_L |
