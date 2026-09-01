@@ -54,6 +54,7 @@ signature {0}: idx 2 → {18}, basin 12; idx 6 → {27}, basin 7
   attractor_labels_upto → psi_sharp → Ψ_j(V) → data/split/local_mean_latest.json
        → lm_liminf.py → liminf/limsup → data/qclass/split/lm_liminf_latest.*
        → lm_structure.py → labelling vs digit length L in [1,M]
+       → lm_deterministic.py → trap ρ_L + exact decade Ψ (psi_sharp parity)
 ```
 
 ### `predict_split` — model `F_j(D)`
@@ -75,6 +76,7 @@ signature {0}: idx 2 → {18}, basin 12; idx 6 → {27}, basin 7
 | Feeding residues | `feeding_residues` → uses `v ≡ r (mod m)`; **coincides with image lattice** for sig `{0}` on (3,10) |
 | Post-process | `scripts/lm_liminf.py` (liminf/limsup, decade anchors `V=10^n`) |
 | Finite-window structure | `scripts/lm_structure.py` (label fractions by digit length `L` in `[1,M]`) |
+| Deterministic bounds | `scripts/lm_deterministic.py` (trap `β_j`, `ρ_L`, exact decade `Ψ_j(b^n)`) |
 
 ### `bridge_check` — empirical bridge `δ_j ≈ F_j`
 
@@ -117,32 +119,33 @@ Other audits (not B.5): `audit_01`–`audit_04` in `verification/audit/` (cycle 
 | `data/qclass/split/lm_pilot.md` | LM attack plan, empirical gaps |
 | `data/qclass/split/bridge_lemma.md` | Bridge sketch (G1–G4) |
 | `data/qclass/split/llt_bands.md` | G2: LLT on dyadic bands |
+| `data/qclass/split/lm_deterministic_latest.md` | Trap ρ_L + exact decade Ψ |
+| `data/qclass/split/CODE_MAP.md` | This file |
 | `data/qclass/checks/LITERATURE.md` | LM literature verdict |
 
 ---
 
 ## 5. Gaps for LM deterministic proof
 
-What **exists** (computational / finite-window):
+What **exists** (proven finite / exact compute):
 
-- `Ψ_j(V)` range 0.67 on `V ≤ 10^7`; decade-anchor gap ≥ 0.315 (`lm_liminf_latest.md`)
-- Labelling amplitude 0.6 across digit lengths L in `[1,M]` (`lm_structure_latest.md`)
-- Bridge MAE ≈ 0.002 (F_j tracks MC); image lattice fixed (B.5)
+- Trap partition `β_{18}`, `β_{27}` and `ρ_L` on `[1,M]`: amplitude **0.6** (`lm_deterministic_latest.md`)
+- Exact decade `Ψ_j(10^n)` for `n=2…7`: gap **≥ 0.315**, antiphase (`lm_deterministic.py`, confirms `lm_liminf`)
+- `Ψ_j(V)` range 0.67 on `V ≤ 10^7` (`lm_liminf_latest.md`)
+- Labelling amplitude 0.6 across `L` in `[1,M]` (`lm_structure_latest.md`)
+- Bridge MAE ≈ 0.002; image lattice fixed (B.5)
 
 What **does not exist** (analytic / proof blockers):
 
-| Gap | Description | Missing implementation |
-|-----|-------------|------------------------|
-| **No `g(v)` API** | First-landing map not exported; only folded into `attractor_labels_upto` | Need explicit `first_landing(v,M)` + basin membership on strata |
-| **No Delange for `h_j`** | Literature [13–15] covers digit sums, not dynamics-induced labelling | `data/qclass/checks/LITERATURE.md` |
-| **Step 3 of lm_pilot §4.2** | Show mixture weights `w_ℓ(V)` oscillate along `V=b^n` with explicit `c_j` | No script proves log-periodic weights for `h_j`; only empirical `local_mean` |
-| **Window → digit-length partition** | Deterministic bounds on `\|{v : L(v)=ℓ, g(v)∈β_{18}}\| / \|{v : L(v)=ℓ}\|` inside `[V±√V]` | `lm_structure` covers finite `[1,M]` only, not growing windows |
-| **LM formal lemma** | `liminf Ψ_j < limsup Ψ_j` along an explicit infinite sequence | Empirical subsequence only; no proof in repo |
-| **Bridge G2** | Uniform LLT remainder on dyadic bands `N_D` | Open in `bridge_lemma.md`, `llt_bands.md` |
-| **Bridge G4** | First-landing mass ≡ labelling `a(v)` on Gaussian window | Sketch only; no formal bound |
-| **`local_mean` lattice** | Uses feeding residues in code; image lattice matters for general signatures | For (3,10) sig `{0}` they coincide; other pilots need audit |
-
-**Suggested deterministic path** (from `lm_pilot.md`): finite combinatorics on `[1,M]` for steps 1–2; analytic gap at step 3 (no theorem for `h_j∘g` Delange factors).
+| Gap | Description | Status |
+|-----|-------------|--------|
+| **No `g(v)` API** | First-landing map not exported | Workaround: `lm_deterministic.py` enumerates trap + window counts |
+| **No Delange for `h_j`** | Literature [13–15] covers digit sums only | `checks/LITERATURE.md` |
+| **Step 4.2.3** (`lm_pilot`) | Large-`L` window strata vs trap `ρ_L` along `V=b^n` | **Open** — weights `w_L(V)` not proven oscillatory |
+| **LM formal lemma** | `liminf Ψ_j < limsup Ψ_j` along infinite sequence | **Open** — exact finite gap only |
+| **Bridge G2d** | Pointwise LLT for `S_b(n^k)`, `k≥3` | **Open** — CLT via [15] §8.3.2; see `llt_bands.md` §6.3 |
+| **Bridge G4** | First-landing mass ≡ labelling `a(v)` on Gaussian window | Sketch only |
+| **`local_mean` lattice** | Feeding vs image lattice for general signatures | For (3,10) sig `{0}` they coincide |
 
 ---
 
