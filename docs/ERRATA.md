@@ -81,7 +81,7 @@ New in v2.1 (Q-class, 2026-09): `dspm.qmaps` (sidecar for $S_b(Q(n))$), `scripts
 
 ```bash
 python verification/audit/audit_01_cycle_count.py                        # B.1
-python verification/audit/audit_02_split_convergence.py --samples 60000  # B.2
+python verification/audit/audit_02_split_convergence.py --samples 120000  # B.2 (paper uses 120k; 60k was original errata run)
 python verification/audit/audit_03_bound_sharpness.py                    # B.3
 python verification/audit/audit_04_parity_confound.py                    # B.4
 python verification/audit/audit_05_lattice.py                            # B.5

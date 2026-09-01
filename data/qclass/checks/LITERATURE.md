@@ -125,7 +125,7 @@ Pilot `(3,10)`, signature `{0}`, `V ∈ [100, 10^7]`:
 3. LM as theorem — only motivates **Hypothesis LM** as an explicit gap.
 
 **Extended note (D=1000 Gaussian sweep, sidecar only):** cross-decade phase
-Pearson drops to **0.26** for `D ≤ 1000` vs **0.735** for `D ≤ 300` (paper).
+Pearson drops to **0.26** for `D ≤ 1000` vs **0.37** for `D ≤ 300` (paper).
 Amplitude survives; long-scale phase stability remains open.
 
 ---

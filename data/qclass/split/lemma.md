@@ -52,9 +52,10 @@ statement. `F_j` is explicit and parameter-free. Delange's period-1 factor remai
 the wrong shape for this labelling. Long-band refine (`refine_latest.md`): MAE
 ≈ 0.006 on `1+3x+2x^2`, ≈ 0.003 on `x^3` at `b=10` (12k samples/band, D=8..64).
 
-Gaussian-window diagnostic (`data/split/label_sweep_latest.md`): model oscillation
-survives to `D=300` (Pearson phase 0.735 across decades); under LLT, Conjecture
-10.6′ follows computationally.
+Gaussian-window diagnostic (`data/split/label_sweep_k3_b10_sig0_D300_latest.md`): model oscillation
+survives to `D=300` (Pearson phase ≈0.37 across decades); extending to D=1000 weakens phase
+correlation to ≈0.26 (`label_sweep_k3_b10_sig0_D1000_latest.md`, `amplitude_only`). Under LLT,
+amplitude survival supports Conjecture 10.6′ computationally; long-scale phase lock is not claimed.
 
 ## Proof roadmap (open)
 

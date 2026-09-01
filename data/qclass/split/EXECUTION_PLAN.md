@@ -1,5 +1,8 @@
 # Execution plan — pilot (3,10) proof programme
 
+> **COMPLETE (2026-09-01).** Tier B merged into paper. See [`PAPER_FROZEN.md`](../PAPER_FROZEN.md)
+> and [`PROMOTION_REVIEW.md`](PROMOTION_REVIEW.md). This tracker is archived.
+
 Sidecar tracker for [`ATTACK_PLAN.md`](ATTACK_PLAN.md). Paper frozen.
 
 **Start:** 2026-09-01 | **Status:** programme **complete** (W4.4 done 2026-09-01)

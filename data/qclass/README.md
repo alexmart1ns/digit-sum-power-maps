@@ -73,8 +73,8 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | `split/proof_pilot_3_10.md` | Checklist for (3,10); LM gap |
 | `split/ATTACK_PLAN.md` | PhD roadmap: G2d, G4, LM attack routes |
 | `split/EXECUTION_PLAN.md` | 4-week execution tracker (**complete**) |
-| `split/PROMOTION_REVIEW.md` | Sidecar → paper tier review (W4.4) |
-| `split/VALIDATION_REPORT.md` | 3-reviewer pre-merge validation (NO-GO checklist) |
+| `split/PROMOTION_REVIEW.md` | Sidecar → paper tier review (W4.4); Tier B **merged** |
+| `split/VALIDATION_REPORT.md` | 3-reviewer pre-merge validation (B1–B7 closed) |
 | `split/clt_citation.md` | CLT leg [15] + Lemma A |
 | `split/lemma_d_g4.md` | Lemma D (G4 landing) draft |
 | `split/lemma_b_stratum.md` | Lemma B: stratum weights + rho_L |
@@ -85,7 +85,7 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | `scripts/lm_carry_depth.py` | `split/lemma_c_analytic_latest.*` — Route C-A mixture analytic |
 | `split/lemma_c_analytic.md` | Lemma C analytic (mixture + witness) |
 | `split/g2b_peter_notes.md` | Route C-B / G2b Peter (2002) programme |
-| `split/paper_v22_tier_b_proposed.md` | Draft Tier B paper patches (not merged) |
+| `split/paper_v22_tier_b_proposed.md` | Tier B patch history (**merged** 2026-09-01) |
 | `split/lemma.md` | Conditional LLT + LM ⇒ no limit |
 | `checks/LITERATURE.md` | [13]–[15] vs Hypothesis LM |
 | `universality/THEORY_NOTE.md` | S_b(Q(n)) synthesis |
@@ -96,3 +96,7 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 Scripts may write both `*_YYYYMMDDTHHMMSSZ.*` and `*_latest.*`. Only `*_latest`
 (and static notes like `lemma.md`, `checks/LITERATURE.md`) are kept in git.
 Timestamped copies are regenerable and gitignored.
+
+**Label sweep naming:** `sweep_label.py` writes
+`label_sweep_k{k}_b{b}_sig{σ}_D{d_max}_latest.{json,md}` (e.g. D300 and D1000 are
+separate frozen archives). The legacy alias `label_sweep_latest` was removed.

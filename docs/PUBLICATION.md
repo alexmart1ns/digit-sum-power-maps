@@ -29,12 +29,12 @@ After `pip install -e ".[fast,stats,dev]"`:
 pytest
 python verification/verify_theorems.py
 python verification/audit/audit_01_cycle_count.py
-python verification/audit/audit_02_split_convergence.py --samples 60000
+python verification/audit/audit_02_split_convergence.py --samples 120000
 python verification/audit/audit_03_bound_sharpness.py
 python verification/audit/audit_04_parity_confound.py
 python verification/audit/audit_05_lattice.py
 python scripts/cycle_structure.py
-python scripts/split_scale.py --k 3 --b 10 --d-max 90 --samples 60000
+python scripts/split_scale.py --k 3 --b 10 --d-max 90 --samples 120000
 python scripts/sweep_label.py --k 3 --b 10 --d-max 300
 python scripts/sweep_label.py --k 3 --b 10 --d-max 1000   # extended diagnostic
 python scripts/local_mean.py --k 3 --b 10 --v-max 10000000

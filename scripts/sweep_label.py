@@ -338,8 +338,9 @@ def main(argv=None) -> int:
     stem = f"label_sweep_k{k}_b{b}_sig{args.signature}_D{args.d_max}_{stamp}"
     json_path = args.out_dir / f"{stem}.json"
     md_path = args.out_dir / f"{stem}.md"
-    latest_json = args.out_dir / "label_sweep_latest.json"
-    latest_md = args.out_dir / "label_sweep_latest.md"
+    latest_stem = f"label_sweep_k{k}_b{b}_sig{args.signature}_D{args.d_max}_latest"
+    latest_json = args.out_dir / f"{latest_stem}.json"
+    latest_md = args.out_dir / f"{latest_stem}.md"
 
     meta = {
         "k": k,
@@ -402,6 +403,8 @@ def main(argv=None) -> int:
     print("-" * 78)
     print(f"  wrote {json_path.relative_to(REPO_ROOT)}")
     print(f"  wrote {md_path.relative_to(REPO_ROOT)}")
+    print(f"  wrote {latest_json.relative_to(REPO_ROOT)}")
+    print(f"  wrote {latest_md.relative_to(REPO_ROOT)}")
     print("=" * 78)
     return 0
 

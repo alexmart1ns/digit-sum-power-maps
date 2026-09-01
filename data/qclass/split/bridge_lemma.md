@@ -131,7 +131,7 @@ Monomial bridge: `monomial_compare_latest.md` (classic ≡ sidecar for k=3,4).
 ## 5. What this does NOT claim
 
 - No single Delange factor `P_j({log_b D})` with `δ_j = P_j + o(1)` (decade
-  collapse fails; `label_sweep_latest.md`).
+  collapse fails; `label_sweep_k3_b10_sig0_D300_latest.md`).
 - LM is **not** proved by bridge agreement (Gaussian vs Fourier at noise floor).
 - Non-convergence of `δ_j` is **conditional** on LM until a new lemma is proved.
 

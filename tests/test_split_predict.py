@@ -35,7 +35,7 @@ def test_normalize_split_scale_v1_legacy():
 
 
 def test_load_split_scale_file_committed_legacy():
-    path = Path("data/split/split_scale_k3_b10_20260731T123355Z.json")
+    path = Path("data/split/split_scale_k3_b10_latest.json")
     if not path.exists():
         return
     loaded = load_split_scale_file(path)
@@ -48,7 +48,7 @@ def test_split_predict_main_runs_on_legacy(tmp_path):
     import subprocess
     import sys
 
-    legacy = Path("data/split/split_scale_k3_b10_20260731T123355Z.json")
+    legacy = Path("data/split/split_scale_k3_b10_latest.json")
     if not legacy.exists():
         return
     tmp_path.joinpath(legacy.name).write_text(

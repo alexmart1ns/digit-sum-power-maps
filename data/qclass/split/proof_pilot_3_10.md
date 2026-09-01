@@ -24,7 +24,7 @@ a completed proof.
 | 4 | **Bridge** δ_j(D) = F_j(D) + o(1) | Open (conditional) | G2d + G4-depth in `bridge_lemma.md` §7 |
 | 5 | **LM** for Ψ_{18}, Ψ_{27} | **Empirical** Lemma B+C | `lemma_b_stratum.md`, `lemma_c_oscillation.md` |
 | 6 | **Non-convergence** of δ_j | Conditional | Conjecture 10.6; needs (4)+(5) |
-| 7 | **10.6′ pilot** antiphase, sum 1/3 | Empirical | MC + Gaussian sweep SURVIVES |
+| 7 | **10.6′ pilot** antiphase, sum 1/3 | Empirical | MC + Gaussian sweep; amplitude survives (D≤1000: `amplitude_only`) |
 
 ---
 
@@ -35,15 +35,15 @@ a completed proof.
 | Diagnostic | Key numbers | File |
 |------------|-------------|------|
 | MC split scale | amp ≈ 0.19, 120k samples/band, D≤90 | `data/split/split_scale_k3_b10_latest.json` |
-| Gaussian label sweep D≤300 | amp 0.11–0.19, cross-decade r=0.735 | paper §10.6′ |
-| Gaussian label sweep D≤1000 | amp survives; cross-decade r=**0.26** | `label_sweep_latest.md` |
+| Gaussian label sweep D≤300 | amp 0.19/0.13, cross-decade r≈**0.37** | `label_sweep_k3_b10_sig0_D300_latest.md` |
+| Gaussian label sweep D≤1000 | amp survives; cross-decade r≈**0.26** | `label_sweep_k3_b10_sig0_D1000_latest.md` |
 | Bridge MAE | ≈ **0.0017** mean over D=4…90 (87 bands) | `bridge_check.py` |
 | Local mean LM | gap ≥0.315 on `V=10^n`; global range 0.67 | `lm_liminf_latest.md` |
 | Deterministic trap + decade Ψ | gap **≥0.32** for `n=2…14`; Route C-C refutes `ρ_n→L` | `lemma_c_oscillation_latest.md` |
 | G4 landing depth | max **2** steps; no simple `b^T` period | `g4_landing_latest.md` |
 
 **Nuance (D=1000):** amplitude does not collapse, but **phase correlation**
-between decades weakens (0.26 vs 0.735). Do not overclaim long-scale phase
+between decades weakens (0.26 vs 0.37 at D≤300). Do not overclaim long-scale phase
 stability; amplitude survival alone supports 10.6′ under LLT, not full LM.
 
 ---

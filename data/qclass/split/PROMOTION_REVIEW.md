@@ -1,10 +1,11 @@
 # Sidecar → paper promotion review (W4.4)
 
 **Date:** 2026-09-01 | **Pilot:** `(k,b)=(3,10)`, signature `{0}`  
-**Constraint:** [`PAPER_FROZEN.md`](../PAPER_FROZEN.md) — no `paper/` edits without explicit approval.
+**Status:** Tier B empirical patches **MERGED** into `paper/` on 2026-09-01 (`e67692b`).  
+**Constraint:** [`PAPER_FROZEN.md`](../PAPER_FROZEN.md) — further `paper/` edits need explicit approval.
 
 This document closes the 4-week execution programme ([`EXECUTION_PLAN.md`](EXECUTION_PLAN.md)).
-It classifies sidecar artifacts for a future paper merge review.
+It classifies sidecar artifacts for paper merge review.
 
 ---
 
@@ -13,7 +14,7 @@ It classifies sidecar artifacts for a future paper merge review.
 | Tier | Count | Action |
 |------|-------|--------|
 | **A — Already in paper** | 6 | None |
-| **B — Safe to promote** (empirical / reproducibility) | 4 | Optional v2.2 footnotes |
+| **B — Safe to promote** (empirical / reproducibility) | 4 | **Merged** (v2.2 Tier B, 2026-09-01) |
 | **C — Promote as conditional / remark** | 2 | Needs reviewer sign-off |
 | **D — Blocked** (no theorem claim) | 8 | Stay sidecar until analytic closure |
 
@@ -29,22 +30,25 @@ and Conjecture 10.6 proof remain **open** (G2d + analytic LM).
 | Image lattice `v ≡ Q(r) (mod m)` | §7.5, Appendix B.5 |
 | `F_j` / `predict_split` mechanistic model | §7.5 |
 | Hypotheses LLT, LM; Conjecture 10.6 / 10.6′ | §10 (Problem 10.6) |
-| Gaussian label sweep `D≤300`, `r=0.735` | §10.6′ |
+| Gaussian label sweep `D≤300`, `r≈0.37` | §10.6′ |
 | MC split scale amplitude ≈0.18, `D≤90` | §7.5 observation |
 | `local_mean.py` as LM diagnostic | §10 pipeline |
 
 ---
 
-## 3. Tier B — Safe to promote (low risk)
+## 3. Tier B — Merged 2026-09-01
 
-Empirical refinements and reproducibility; do not change theorem status.
+Empirical refinements and reproducibility; theorem status unchanged.
 
-| Item | Sidecar evidence | Suggested paper edit | Caveat |
-|------|------------------|----------------------|--------|
-| **Bridge MAE** | `bridge_check.py`: mean **0.0017**, 87 bands `D=4…90` | Footnote in §7.5: refine “≈0.002” → “≈0.0017” | Still MC noise floor ~0.0025 |
-| **Label sweep D=1000** | `label_sweep_latest.md`: amplitude survives; cross-decade **r=0.26** | Add sentence to §10.6′ after D=300 paragraph | Phase correlation weakens; do not claim long-scale phase lock |
-| **Landing depth ≤2** | `g4_landing_latest.md`, `first_landing()` API | One-line remark in §7.5 or Appendix B: “every `v≥1` reaches `[1,M]` in ≤2 digit-sum steps for `(3,10)`” | Finite `v` scan to `10^6`; not a proof for all `v` |
-| **New scripts** | `lm_stratum.py`, `lm_oscillation.py`, `g4_landing.py`, `lm_deterministic.py` | Add to §10 reproducibility pipeline paragraph | Sidecar paths `data/qclass/split/` |
+| Item | Sidecar evidence | Paper edit | Status |
+|------|------------------|------------|--------|
+| **Bridge MAE** | `bridge_check.py`: mean **0.0017**, 87 bands `D=4…90` | §7.5 + abstract | **Merged** |
+| **Label sweep D=1000** | `label_sweep_k3_b10_sig0_D1000_latest.md`: amp survives; **r≈0.26** | §10.6′ `amplitude_only` caveat | **Merged** |
+| **Landing depth ≤2** | `g4_landing_latest.md`, `first_landing()` API | §7.5 remark | **Merged** |
+| **LM scripts** | `lm_stratum.py`, `lm_oscillation.py`, `lm_suffix.py`, `lm_carry_depth.py`, `g4_landing.py` | Appendix A pipeline | **Merged** |
+
+Frozen data paths: `label_sweep_k3_b10_sig0_D300_latest.*` (D≤300, r≈0.37) and
+`label_sweep_k3_b10_sig0_D1000_latest.*` (D≤1000, r≈0.26).
 
 ---
 
@@ -74,17 +78,17 @@ Do **not** promote as theorems: Lemma B, C, D, or the conditional chain in `lemm
 
 ---
 
-## 6. Recommended v2.2 merge package (minimal)
+## 6. v2.2 merge package — **MERGED 2026-09-01**
 
-If approving a **documentation-only** paper patch (no new theorems):
+Patches applied to `paper/{en,pt-BR}/paper.{md,tex}`:
 
-1. §7.5 footnote: bridge MAE **0.0017** (`bridge_check.py`, 87 bands).
-2. §10.6′: one sentence on **D=1000** amplitude survival + **r=0.26** phase caveat.
-3. §10 pipeline: list `lm_stratum.py`, `lm_oscillation.py`, `g4_landing.py`.
-4. Optional Appendix: **Lemma (band cardinality)** from Tier C.
+1. §7.5: bridge MAE **0.0017** (`bridge_check.py`, 120k samples, 87 bands).
+2. §10.6′: D=1000 amplitude survival + **r≈0.26** phase caveat (`amplitude_only`).
+3. §7.5: G4 landing depth ≤2 remark.
+4. Appendix A: LM sidecar scripts listed.
 
-**Draft patches:** [`paper_v22_tier_b_proposed.md`](paper_v22_tier_b_proposed.md) (revised §post-validation).  
-**Validation:** [`VALIDATION_REPORT.md`](VALIDATION_REPORT.md) — **conditional NO-GO** until checklist §7.
+**Validation:** [`VALIDATION_REPORT.md`](VALIDATION_REPORT.md) — checklist B1–B7 **closed**.  
+**Historical draft:** [`paper_v22_tier_b_proposed.md`](paper_v22_tier_b_proposed.md) (superseded).
 
 **Do not merge:** Lemmas B–D as theorems, conditional non-convergence chain, G2d claims.
 
@@ -99,17 +103,18 @@ Execution programme **complete**. Open work ranked:
 | 1 | Analytic Lemma C | Route C-A (suffix classes, depth ≤2) |
 | 2 | G2b covariance | Peter (2002) extraction → Route C-B |
 | 3 | G2d | Literature / collaboration ([9] Problem 2) |
-| 4 | Paper v2.2 | Tier B footnotes after reviewer approval |
+| 4 | Paper v2.2 Tier C | Lemma A appendix after external review |
 
 ---
 
 ## 8. Sign-off checklist
 
-- [ ] Author approves Tier B text patches
+- [x] Tier B text patches merged (`e67692b`)
+- [x] `PAPER_FROZEN.md` updated after merge
+- [x] No promotion of empirical Lemma C as theorem
+- [ ] Author formal sign-off
 - [ ] External reviewer confirms Lemma A appendix if included
-- [ ] No promotion of empirical Lemma C as theorem
-- [ ] `PAPER_FROZEN.md` updated after merge
 
 ---
 
-*Sidecar only until checklist complete.*
+*Tier B merge complete. Author sign-off pending.*

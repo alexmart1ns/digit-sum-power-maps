@@ -62,10 +62,12 @@ pytest                                          # theorem-level test suite
 python verification/verify_theorems.py          # independent re-derivation, imports nothing from dspm
 python scripts/cycle_structure.py               # both closed forms vs. brute force
 python scripts/sweep.py --k-max 500 --b-max 40  # the exhaustive sweep behind §8 (hours; 28 workers)
-python scripts/split_scale.py --k 3 --b 10 --d-max 90 --samples 60000
+python scripts/split_scale.py --k 3 --b 10 --d-max 90 --samples 120000
+python scripts/bridge_check.py --k 3 --b 10
 python scripts/split_predict.py --k 3 --b 10
 python scripts/sweep_label.py --k 3 --b 10 --d-max 300
-python scripts/local_mean.py --k 3 --b 10 --v-max 1000000
+python scripts/sweep_label.py --k 3 --b 10 --d-max 1000
+python scripts/local_mean.py --k 3 --b 10 --v-max 10000000
 python scripts/plot_split_figures.py --k 3 --b 10 --oscillation
 python scripts/bridge_check.py --k 3 --b 10      # |delta_j - F_j| per D (Problem B pilot)
 python scripts/analyze_patterns.py              # the correlation tables of §9

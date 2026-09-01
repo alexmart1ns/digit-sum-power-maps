@@ -21,7 +21,7 @@ fix for F_j, and audit B.5.
 |------|------|
 | Split loader v1→v2 | `src/dspm/split.py`, `tests/test_split_predict.py` |
 | Figures | `scripts/plot_split_figures.py`, `paper/figures/*.svg` |
-| Label sweep | `data/split/label_sweep_latest.*` (D≤300 in paper; D≤1000 extended) |
+| Label sweep | `data/split/label_sweep_k3_b10_sig0_D300_latest.*` (paper); `_D1000_latest.*` (extended) |
 | Local mean LM | `data/split/local_mean_latest.*` (V≤10⁷) |
 | MC split scale | `data/split/split_scale_k3_b10_latest.json` (120k samples) |
 | Q-class grid | `data/qclass/universality/grid_latest.*` |
