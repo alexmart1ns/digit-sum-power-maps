@@ -1,274 +1,331 @@
-# Attack plan: open gaps for pilot (3,10) — PhD roadmap
+# Attack plan: pilot (k,b)=(3,10), signature {0}
 
-Sidecar only. Not peer-reviewed. Companion to [`proof_pilot_3_10.md`](proof_pilot_3_10.md),
-[`llt_bands.md`](llt_bands.md), [`lm_pilot.md`](lm_pilot.md), [`bridge_lemma.md`](bridge_lemma.md).
+Sidecar only. Consolidates open gaps from [`proof_pilot_3_10.md`](proof_pilot_3_10.md),
+[`llt_bands.md`](llt_bands.md), [`lm_pilot.md`](lm_pilot.md), [`bridge_lemma.md`](bridge_lemma.md),
+[`lemma.md`](lemma.md), [`lm_deterministic_latest.md`](lm_deterministic_latest.md), and
+[`checks/LITERATURE.md`](../checks/LITERATURE.md).
 
-**Audience:** researcher with analytic number theory + finite dynamics background.
+**Pilot objects.** `f_{3,10}(n)=s_{10}(n^3)`, `M=57`, trapping region `[1,M]`, attractors
+`A_{18}=(18)`, `A_{27}=(27)`, modular weight `p_i=1/3`. Signature `{0}` feeds residues
+`r∈{0,3,6}`; image lattice `v≡0 (mod 9)`.
 
----
+**Proven (finite / empirical).**
 
-## 1. Executive summary
+| Item | Result |
+|------|--------|
+| `F_j` vs MC | MAE ≈ 0.002 (`predict_split`, audit_05) |
+| Trap labelling `ρ_L` | `ρ_1=1.0`, `ρ_2=0.4`, amplitude **0.6** on `[1,M]` |
+| Exact `Ψ_j(10^n)` | gap **≥ 0.315** for `n=2…7`; antiphase `Ψ_{18}+Ψ_{27}=1` |
+| `β_{18}`, `β_{27}`, `g(v)` | Explicit finite partition (`lm_deterministic.py`) |
 
-| Gap | Blocks | Feasibility | Impact | **Priority** |
-|-----|--------|-------------|--------|--------------|
-| **LM 4.2.3–4** (non-convergence of Ψ_j) | Conjecture 10.6 directly | **Medium** — finite trap data + exact decade Ψ constrain the lemma; no Delange for `h_j` | High | **1** |
-| **G4** (first-landing ≡ labelling) | Bridge `δ_j = F_j + o(1)` | **Medium–high** — combinatorics on fixed `M` + tail bounds | High | **2** |
-| **G2d** (pointwise LLT, `k≥3`) | Hypothesis LLT / bridge error budget | **Low** — explicitly open in [9] Problem 2 and [15] §8.4.1 | High | **3** |
-| **G2a–G2b** (uniform band LLT + mixture) | Polish of G2d | Low (depends on G2d) | Medium | 4 |
-
-**Recommendation:** attack **LM first** with a *finite shadow lemma* lifting trap
-oscillation `ρ_L` (proven for `L=1,2`) to large-`L` windows via periodicity of
-`g(v)` modulo a scale dependent on `M`. Parallel track: close **G4** as a
-deterministic finite-`M` lemma (should be provable in-house). Reserve **G2d**
-for external collaboration or a dedicated LLT paper — literature does not
-currently supply a citation for `s_{10}(n³)`.
-
-Empirical constraints any lemma must respect:
-
-- Trap amplitude `|ρ_1 − ρ_2| = 0.6` on image lattice in `[1,M]`
-- Decade-anchor gap `≥ 0.315` for `Ψ_{18}(10^n)`, `n=2…7` (exact, not MC)
-- Bridge MAE `≈ 0.002` — any LM lemma incompatible with `F_j` is falsified
+**Open (blocks Conjecture 10.6).** G2d (pointwise LLT), G4 (first landing ≡ labelling),
+LM §4.2.3–4 (`w_L` oscillation / `liminf≠limsup`).
 
 ---
 
-## 2. G2d — pointwise LLT for `s_{10}(n³)`
+## 1. Executive summary — gaps ranked by feasibility × impact
 
-**Target.** For each feeding residue `r ∈ {0,3,6}`, each digit length `L` in the
-active band, and `v` on the image progression `v ≡ 0 (mod 9)` near
-`μ_L = 9(L−1)/2`, `σ_L = √(10²−1)L/12`:
+Score: **F** (feasibility 1–5) × **I** (impact 1–5) = **F×I**. Higher = attack first.
 
-`#{ n ∈ N_D^{(r)} : s_{10}(n³) = v } = |N_D^{(r)}| · w_L(D) · φ_L(v) / m + o(|N_D^{(r)}|)`
+| Rank | Gap | F | I | F×I | One-line status |
+|------|-----|---|---|-----|-----------------|
+| **1** | **LM 4.2.3** — mixture weights `w_L(V)` at `V=b^n` | 4 | 5 | **20** | Trap `ρ_L` proven; need large-`L` stratum → trap amplitude transfer |
+| **2** | **G4** — first landing mass ≡ `a(v)` on Gaussian window | 4 | 4 | **16** | Fixed `M=57`; likely a finite-dynamics + tail bound lemma |
+| **3** | **LM 4.2.4** — `liminf Ψ_j < limsup Ψ_j` along `V→∞` | 3 | 5 | **15** | Decade gap ≥0.315 exact to `n=7`; limit argument missing |
+| **4** | **G2a** — uniform LLT on dyadic band index `D` | 3 | 4 | **12** | Combinatorial **G2-band** ready; error transfer from `[1,b^D]` |
+| **5** | **G2b** — digit-layer covariance / Gaussian mixture | 2 | 4 | **8** | Mechanistic in `predict.py`; Peter (2002) summatory input |
+| **6** | **G2d** — pointwise LLT for `s_{10}(n³)`, `k≥3` | 1 | 5 | **5** | [9] Problem 2 open; no citation in [15]; blocks bridge rigorously |
 
-with `w_L(D)` from `digit_count_mixture` and `φ_L` Gaussian.
+**Strategic read.**
 
-### Route G2d-A — Extend DMR Problem 2 methods (hard)
+- **LM 4.2.3–4** is the highest-leverage *pilot-specific* work: finite trap data are complete;
+  the remaining step is analytic geometry of the window `[V±√V]` on the image lattice, not
+  a global open problem in digit-sum theory.
+- **G4** is a *local* finite-dynamics identification; should close in parallel with LM once
+  the Gaussian window scale is fixed relative to `M`.
+- **G2d** is the deepest gap (literature-level). For the pilot, a **weaker band-CLT + lattice
+  discretization** route may suffice for a *conditional* bridge if LM is proved independently;
+  pointwise LLT remains mandatory for an unconditional `δ_j=F_j+o(1)` theorem.
 
-- **Idea:** DMR [9] solve pointwise counts for `deg P = 2`; Problem 2 is open
-  for `deg ≥ 3` because Fourier estimates in `α` are not uniform.
-- **Pilot task:** specialise their generating-function setup to `P(n)=n³`, `q=10`,
-  and `N_D^{(r)}` instead of `n ≤ x`.
-- **Difficulty:** Research-level; likely needs new exponential-sum bound uniform
-  in `α` near the mean. Prime-base remark does not help at `q=10`.
-- **Payoff:** Closes G2d and G2a simultaneously.
-
-### Route G2d-B — CLT + discretisation lemma (medium-hard)
-
-- **Idea:** Accept [15] Thm 8.3.13 CLT on `Ω_N = N_D^{(r)}`. Prove a
-  **Berry–Esseen-type** bound with explicit constant for the digit-sum of `n³`
-  at scale `σ_L`, then discretise: point mass at integer `v` differs from
-  Gaussian density by `O(1/σ_L)`.
-- **Gap:** CLT gives interval probabilities, not point masses. Need local
-  mod-`m` equidistribution of `s_{10}(n³)` at scale `1` near the mean — exactly
-  what [9] Problem 2 asks for.
-- **Honest verdict:** CLT alone is **insufficient** for bridge; documents why
-  G2d cannot be deferred to [15].
-
-### Route G2d-C — Carry / layer decomposition (pilot-specific)
-
-- **Idea:** Write `s_{10}(n³) = Σ_{ℓ=0}^{L−1} d_ℓ(n³)` with digits `d_ℓ`.
-  For `n` in a narrow band of digit length `L`, higher digits of `n` are
-  constrained; use Peter (2002) summatory asymptotics for `s_{10}(⌊α n³⌋)` to
-  control **mean and variance** of each layer, then prove weak dependence across
-  layers (covariance G2b).
-- **Pilot deliverable:** Lemma giving Gaussian **mixture** with explicit
-  `w_L(D)` matching `digit_count_mixture` — even a **lower-bound** LLT
-  (sandwich between two Gaussians) may suffice for bridge error `o(1)`.
-- **Difficulty:** Medium; mostly in-house if layer covariance is tame for `k=3`.
-
-### Route G2d-D — Computational verification as hypothesis (fallback)
-
-- Document Hypothesis LLT as **computationally validated** (MAE 0.002, survives
-  D=1000) and pursue 10.6′ conditionally. Does **not** close the proof chain.
+**Recommended order:** LM 4.2.3 → G4 → LM 4.2.4 → G2a/G2-band → G2d (parallel literature
+track). Promote bridge + conditional lemma only after (LM + G4) or full G2d.
 
 ---
 
-## 3. G4 — first-landing mass ≡ labelling `a(v)`
+## 2. G2d attack routes (pointwise LLT for `s_{10}(n³)`)
 
-**Target.** For `v` in the LLT window `I_L = [μ_L − Cσ_L, μ_L + Cσ_L]` on the
-image lattice,
+[9] Problem 2: local counts for `deg P≥3` open even for large prime `q`. [15] Thm 8.3.17
+covers completely additive `f` on full intervals, not `n↦n^k`. CLT for composite `b=10` is
+**citable** via [15] §8.3.13 + Ex. 8.3.15; LLT is not.
 
-`#{ n ∈ N_D^{(r)} : S_{10}(n³) = v }`  induces the same first-landing
-distribution as counting `v` with label `a(v)` in the trapping region.
+### Route G2d-A — Sharpen DMR Fourier/saddle bounds for `P(n)=n³`, `q=10`
 
-### Route G4-A — Fixed-`M` sufficiency (should be provable)
+**Idea.** Extend [9] Thm 2 AP machinery from prime large `q` to `q=10` (Remark 2: hypotheses
+not essential, but small `q` excluded). Target
 
-**Lemma G4-finite (candidate).** Fix `(k,b)=(3,10)`, `M=57`. For all `v ≥ 1`,
-let `g(v)` be the unique `w ∈ [1,M]` reached by iterating `f_{3,10}` until
-`w ≤ M`. Then `a(v) = label[g(v)]` depends only on `v mod M'` for an explicit
-`M' = M · b^{t(k,b)}` (preperiod bound from contraction).
+`#{n ∈ N_D^{(r)} : s_{10}(n³)=v} = |N_D^{(r)}| · φ((v−μ_D)/σ_D)/σ_D + E_{D,v}`
 
-*Proof sketch.* Forward invariance of `[1,M]` and monotonicity of digit length
-imply that for `v > M`, the first landing is determined by the `t`-th iterate
-where `t = O(log v)` but only through `v mod b^t` in the low digits. For the
-pilot, enumerate preimages of `[1,M]` under `t` steps — finite computation
-generalises to a periodicity statement.
+with `sup_{|v−μ_D|≤Cσ_D} |E_{D,v}| = O(D^{-1/2} log D)`.
 
-**Status:** In-house; needs formalising `t(k,b)` from `contraction_bound`.
+**Steps.**
 
-### Route G4-B — Error from values outside window
+1. Verify BK-Property 8.3.11 on progression slices `N_D^{(r)}` (same exponential-sum input as
+   Ex. 8.3.15).
+2. Adapt DMR §3–4 digit-layer generating functions at `q=10`; track non-coprime leading
+   coefficient issues via CRT over `{2,5}`.
+3. Use **Lemma G2-band** to transfer interval bounds to `N_D^{(r)}`.
 
-- Truncation at `μ ± 6σ` (G3): exponential tail `o(1)`.
-- Boundary: mass at `v` with `L(v) ≠ L` contributes `O(1/b)` per band — controlled
-  by `digit_count_mixture` overlap bounds already in `predict.py`.
+**Risk.** Problem 2 is explicitly open for `deg≥3`; cubic may need new uniform-in-`α` estimate.
 
-### Route G4-C — Coupling to G2d
+### Route G2d-B — Digit-layer covariance (Peter / Delange → local)
 
-- If only **weak** LLT (interval CLT) is available, G4 still needs that
-  conditional law of `g(v) | S_{10}(n³)=v` concentrates on `a(v)`. This is
-  a **conditional independence** claim — strictly harder than G4-A.
+**Idea.** [15] §8.2 + Peter (2002): summatory asymptotics for `s_q(⌊αn^k⌋)` at any `q≥2`.
+Extract **covariance structure** of digit layers for `s_{10}(n³)`; prove multivariate CLT
+then **Cramér-type** local limit via Edgeworth with bounded third cumulants per layer.
 
-**Recommendation:** prove **G4-finite** first, independent of G2d.
+**Steps.**
 
----
+1. Write `s_{10}(n³)` as sum of dependent digit contributions per length layer `L`.
+2. Bound cross-layer covariances `O(D^{-1/2})` (G2b).
+3. Apply Berry–Esseen on lattice with modulus-9 constraint (image lattice exact).
 
-## 4. LM — steps 4.2.3–4 (non-convergence of Ψ_j)
+**Risk.** Dependence across layers for `n³` is strong; may yield CLT only, not pointwise LLT.
 
-**Target.** `liminf_{V→∞} Ψ_{18}(V) < limsup_{V→∞} Ψ_{18}(V)`, or equivalently
-`(Ψ_{18}(10^n))` does not converge with gap `≥ c > 0`.
+### Route G2d-C — Saddle-point / large deviations on carry chains
 
-### What is already proved
+**Idea.** Model base-10 expansion of `n³` via carry propagation (Mauduit–Rivat philosophy for
+`n²`). Large-deviation rate function for digit-sum of `n³` near `μ_D`; local limit from
+quadratic approximation of rate function at minimum.
 
-- `β_{18}`, `β_{27}` explicit in `[1,M]`; `ρ_1=1`, `ρ_2=0.4` on image lattice
-- `Ψ_j(10^n)` exact for `n≤7`; gap `0.315`
+**Steps.**
 
-### Route LM-A — Shadow lemma (periodic extension of trap labelling)
+1. Build finite-state transducer or carry Markov chain for cubing mod `10^L`.
+2. Prove LDP for `S_{10}(n³)/D` on `N_D^{(r)}` (cf. [14] pattern methods).
+3. Integrate local CLT from [15] Thm 8.3.17 as **template** for one layer; patch layers.
 
-**Lemma LM-shadow (candidate).** There exists `c_* > 0` and a sequence
-`n_k → ∞` such that for `V = 10^{n_k}`, the sharp window
-`W(V) = [V−√V, V+√V] ∩ (0+9ℤ)` satisfies:
+**Risk.** High technical overhead; composite base carries are messy.
 
-`Ψ_{18}(V) = Σ_{ℓ ∈ {n_k, n_k+1}} w_ℓ(V) · ρ̃_ℓ + O(b^{−n_k/2})`
+### Route G2d-D — Conditional bridge (weaken G2d)
 
-where `ρ̃_ℓ` are **periodic** in `ℓ mod T` for some `T = T(k,b,M)`, and
-`|ρ̃_ℓ − ρ̃_{ℓ+T}| ≥ c_*` for some phase of `ℓ`.
+**Idea.** If **LM** is proved, Conjecture 10.6 needs only that `F_j` captures oscillation,
+not a sharp LLT. Use **band CLT** + discretization error `O(σ_D^{-1})` on the image lattice;
+accept `δ_j=F_j+O(D^{-1/2})` if bridge error swamps lattice discretization.
 
-*Mechanism.* For `v ∈ W(V)` with `L(v) = ℓ ≫ log M`, the first landing
-`g(v)` depends on the **low `O(log M)` base-`b` digits** of `v` (carry
-propagation length bounded by contraction). The map `v ↦ g(v) mod M` is
-eventually periodic in the high-digit skeleton; `ρ̃_ℓ` is the average of
-`h_{18}` over one period.
-
-**Why plausible.** Trap `ρ_1, ρ_2` are the `ℓ=1,2` instances. Decade anchors
-show `Ψ_{18}` does not stabilise — consistent with non-zero `c_*`.
-
-**Tasks:** (i) bound carry depth for `(3,10)`; (ii) prove periodicity of
-`v ↦ g(v)` on each digit-length stratum; (iii) compute `T` and `ρ̃_ℓ` for
-`ℓ mod T` numerically then prove.
-
-### Route LM-B — Delange push-through (hard)
-
-- Peter (2002) + Delange (1975) give log-periodic fluctuation for **summatory**
-  functions of `s_b(n^k)`. Attempt to push to `h_j ∘ g` via Mellin–Perron.
-- **Obstacle:** `h_j` is not a digital function of `n`; it is a function of
-  **orbit** of `n`. No theorem in [13]–[15] covers this composition.
-- **Possible sub-lemma:** if `g(v)` depends only on `v mod b^L`, then `h_j`
-  is a digital function of the **digits of `v`** — reduces to LM-A.
-
-### Route LM-C — Two-scale subsequence (medium)
-
-- Exhibit two infinite subsequences `V_n = 10^{3n}` and `V'_n = 10^{3n+1}` with
-  `Ψ_{18}(V_n) − Ψ_{18}(V'_n) ≥ c` for explicit `c` from limit of exact
-  finite computations + periodicity lemma.
-- **Weaker than full LM** but enough for Conjecture 10.6 if bridge is proved.
-
-### Route LM-D — Refutation search (sanity)
-
-- If `Ψ_{18}(V) → L` exists, predict `L` from Gaussian sweep; test against
-  `local_mean` at `V = 10^8, 10^9` (compute). A convergence trend would
-  **refute** LM and force revision of 10.6.
+**Use.** Interim sidecar proposition; not a substitute for Hypothesis LLT in the paper.
 
 ---
 
-## 5. Candidate lemmas (precise statements)
+## 3. G4 attack routes (first landing ≡ labelling)
 
-### Lemma 1 — G4-finite (in-house)
+Bridge step 3–4 ([`bridge_lemma.md`](bridge_lemma.md)): identify mass of first iterate
+`g(v)` with attractor label `a(v)` for `v` in the LLT window.
 
-> Fix `k≥2`, `b≥2`, `M = M(k,b)`. There exists `T(k,b) ∈ ℕ` such that for all
-> `v ≥ b^T`, the first landing `g(v) ∈ [1,M]` depends only on the residue
-> `v mod b^T`. Consequently `a(v) = a(v + m·b^T)` on each feeding progression.
+### Route G4-A — Fixed-`M` threshold lemma (pilot)
 
-*Closes G4 for bridge.* Proof: finite preimages + contraction.
+**Idea.** For `M=57` fixed, `g(v)` depends only on `v mod M'` for explicit `M'`. For
+`v ≥ v_0(M,k,b)`, one step of `f_{3,10}` on values `>M` lands in `[1,M]` with the same
+basin as `a(v)`.
 
-### Lemma 2 — LM-shadow (conditional on carry bound)
+**Steps.**
 
-> Under Lemma 1, for `(3,10)` and attractor `18`, the sequence
-> `(Ψ_{18}(10^n))_{n≥2}` is a weighted average of `ρ̃_n` and `ρ̃_{n+1}`
-> with weights in `[0.4, 0.6]`, where `(ρ̃_ℓ)` is periodic in `ℓ` with period `T`
-> and amplitude `≥ 0.3`.
+1. Enumerate preimages of `β_{18}`, `β_{27}` under `g` on `{v : v≡0 (mod 9)}` (done to `M`).
+2. Prove: if `v ≥ C·M` and `|v−μ_D| ≤ 6σ_D`, then `g(v)∈β_j ⟺ a(v)=j`.
+3. Bound `μ_D` and `σ_D` for `D` large so window lies in `v ≥ v_0`.
 
-*Implies LM-pilot* with `c ≥ 0.3` (consistent with observed `0.315`).
+**Feasibility.** High for pilot; `v_0` likely `≪ 10^2`.
 
-### Lemma 3 — G2d-weak (sandwich LLT)
+### Route G4-B — Tail exclusion
 
-> For `n` uniform in `N_D^{(r)}`, the law of `s_{10}(n³)` is sandwiched between
-> two Gaussian mixtures with the same weights `w_L(D)` and means `μ_L`, variances
-> `σ_L^2(1 ± ε_L(D))` with `ε_L(D) → 0` as `D → ∞` uniformly on finitely many `L`.
+**Idea.** Values with `g(v)∉[1,M]` or multiple pre-landing steps have exponentially small
+mass under LLT. Truncation at `μ±6σ` in `predict_split` is already coded (G3).
 
-*Sufficient for bridge* if `ε_L(D) = o(1)` and G4 holds.
+**Steps.**
 
-### Lemma 4 — CLT-on-band (citable now)
+1. Show `P(v > M·10) → 0` faster than Gaussian tail on `N_D^{(r)}`.
+2. Show second-iterate correction is `o(1)` on band mass.
 
-> For `P(n)=n³`, `f=s_{10}$, the set `Ω_{D,r} = N_D ∩ (r+9ℤ)` satisfies the
-> BK-Property of [15] Def. 8.3.11; hence `Σ_{n∈Ω_{D,r}} f(P(n))` obeys CLT
-> with variance `Θ(|Ω_{D,r}| D)`.
+### Route G4-C — Exact finite dynamics on trap lattice
 
-*Closes G2c CLT leg* — write-up only, no new mathematics.
+**Idea.** Restrict to `v` whose base-10 length is `L` with `b^{L-1}≤v < b^L`; for
+`L≥2`, values in `[V±√V]` at `V=10^n` have `L=n` or `n+1`. Combine with trap
+`ρ_1,ρ_2` and **G4-A** on each stratum.
+
+**Coupling.** Aligns with LM 4.2.3 (same partition).
+
+---
+
+## 4. LM attack routes (§4.2.3–4)
+
+**Target.** Hypothesis LM: `Ψ_j(V)` does not converge. Proven on trap: `ρ_1−ρ_2=0.6`.
+Exact decade anchors: `Ψ_{18}(10^n)∈[0.238,0.553]`, gap ≥0.315 (`n≤7`).
+
+### Route LM-1 — Stratum weights `w_L(V)` (§4.2.3)
+
+**Idea.** At `V=b^n`, window width `Θ(b^{n/2})`. Partition
+`[V−√V,V+√V]∩(0+9ℤ)` by digit length `L`. Dominant strata `L=n`, `L=n+1` with
+weights `w_n(V), w_{n+1}(V) ≈ 1/2` (empirical). Labelling fraction on stratum `L` is
+`ρ_L` **only if** `g(v)` sees trap geometry — for `L≥3`, reduce to trap via **`g` stability**
+on long integers (same as G4-A).
+
+**Steps.**
+
+1. Exact count `N_L(V) = #{v ∈ window : L(v)=L, v≡0 (mod 9)}` — combinatorics of
+   `⌊log_{10} v⌋` in `[b^n−b^{n/2}, b^n+b^{n/2}]`.
+2. Prove `w_n(V)+w_{n+1}(V)=1−o(1)` and `w_n(V)` alternates about `1/2` along even/odd `n`
+   (log-periodic digit-boundary effect).
+3. Show effective label rate on stratum `L` equals `ρ_{L mod 2}` or `ρ_1,ρ_2` after
+   projecting `v` through `g` (link to trap table).
+
+**Deliverable.** Explicit formula `Ψ_j(b^n) = w_n ρ^{(n)} + w_{n+1} ρ^{(n+1)} + o(1)` with
+`ρ^{(n)}∈{ρ_1,ρ_2}`.
+
+### Route LM-2 — Antiphase decade subsequence (§4.2.4)
+
+**Idea.** Exhibit infinite sequences `n_k`, `m_k` with `Ψ_{18}(b^{n_k}) ≤ 0.25`,
+`Ψ_{18}(b^{m_k}) ≥ 0.55`. Data: min at `n=3`, max at `n=6`; antiphase with `Ψ_{27}`.
+
+**Steps.**
+
+1. Extend exact computation to `n≤12` via `lm_deterministic.py` (verify gap persists).
+2. Prove **lower bound** on window lattice size `|window ∩ (0+9ℤ)| ≍ b^{n/2}`.
+3. Combine LM-1 with alternating `w_n` to force oscillation of convex combination of
+   `ρ_1=1.0` and `ρ_2=0.4` → amplitude ≥ `0.6·|w_n−w_{n+1}| ≥ c > 0` infinitely often.
+
+### Route LM-3 — Delange-type forbidden convergence
+
+**Idea.** If `Ψ_j(V)→L_j`, then decade scaling `Ψ(bV)−Ψ(V)→0`. Compute shows Pearson
+0.57, MAE 0.09 — not proof. Seek **deterministic** bound `|Ψ_j(b^n)−Ψ_j(b^{n+1})| ≥ c_j`
+from LM-1.
+
+**Contrast.** Delange [13] applies to `s_b`, not `h_j`; do not cite directly.
+
+### Route LM-4 — Refutation track (low priority)
+
+If `Ψ_j` converges, revise Conjecture 10.6. Current data and trap amplitude **oppose**
+convergence; keep as sanity check only.
+
+---
+
+## 5. Candidate lemma statements
+
+### Lemma A (G2-band; promote from `llt_bands.md` §7)
+
+For fixed `b≥2`, `m`, `r`: `|N_D^{(r)}| = (b^D−b^{D−1})/m + O(1)`. Corollary: counting
+errors `O(N^{1−σ})` on `[1,N]` restrict to `o(b^D)` on `N_D^{(r)}`.
+
+*Status:* Proof combinatorial; ready to number.
+
+### Lemma B (LM-stratum; pilot)
+
+Let `(k,b)=(3,10)`, `j∈{18,27}`. For `V=b^n` with `n≥2`, let `w_L(V)` be the fraction of
+`v∈[V−√V,V+√V]∩(0+9ℤ)` with `⌊log_{10}v⌋+1=L`. Then
+
+`Ψ_j(V) = w_n(V)·ρ_n^{*} + w_{n+1}(V)·ρ_{n+1}^{*} + O(b^{-n/2})`,
+
+where `ρ_L^{*}∈{ρ_1,ρ_2}` are the trap labelling rates (§4.2.2) and `ρ_1−ρ_2=0.6`.
+
+*Opens:* Definition of `ρ_L^{*}` for `L>2` (reduction to trap via `g`); proof of weight
+asymptotics.
+
+### Lemma C (LM-decade oscillation; pilot)
+
+`limsup_{n→∞} Ψ_{18}(10^n) − liminf_{n→∞} Ψ_{18}(10^n) ≥ 0.3`.
+
+*Evidence:* Exact `n=2…7` gap 0.315. *Needs:* Lemma B + alternating `w_n`.
+
+### Lemma D (G4 landing; pilot)
+
+There exists `D_0` such that for all `D≥D_0`, all `v` in the LLT window
+`|v−μ_D|≤6σ_D` with `v≡0 (mod 9)`, first landing satisfies `g(v)∈β_j ⟺ a(v)=j`.
+
+*Needs:* Explicit `v_0(M)` and LLT/CLT centering bounds.
 
 ---
 
 ## 6. Literature to read next
 
-| Reference | Relevance |
-|-----------|-----------|
-| **Mauduit–Rivat (2009)** *Ann. Inst. Fourier* — `s_q(n²)` LLT | Template for k=2; shows what a full G2d proof might look like |
-| **Drmota–Mauduit–Rivat (2011)** [9] Problem 2, §3–4 | Direct attack on G2d-A |
-| **Peter (2002)** *Acta Arith.* 104 | Summatory `s_q(⌊α n^k⌋)`; mean/variance for LM-B |
-| **Bassily–Kátai (1995)** | BK-Property backbone for Lemma 4 |
-| **Suria (2020?)** / **Koninck–Luca** digit sums of polynomials | Alternative CLT/LLT routes |
-| **Gelfond (1952)** / **Delange (1975)** | Log-periodic framework; not directly for `h_j` |
-| **Hare–Laishram–Stoll (2011)** | Size bounds; does not replace G2d |
-| **Dartyge–Tenenbaum** | Digit-sum in APs at composite moduli — weak input for AP step |
+| Priority | Reference | Why |
+|----------|-----------|-----|
+| **P1** | [15] Drmota–Grabner 2010, §8.3.2–8.3.3 | BK-Property, Thm 8.3.13, Ex. 8.3.15 — **close CLT citation** for pilot |
+| **P1** | [9] DMR 2011, §2 Problem 2, Thm 2 proof | Understand what blocks `deg≥3` pointwise LLT |
+| **P1** | Peter 2002, *Acta Arith.* **104**, 85–96 | Summatory `s_q(⌊αn^k⌋)`; covariance / log-periodic (G2b) |
+| **P2** | Mauduit–Rivat 2009 (`n²` local limit) | Template for carry/saddle approach (G2d-C) |
+| **P2** | Bassily–Kátai 1995 (via [15]) | CLT backbone for polynomial sequences |
+| **P2** | Dartyge–Tenenbaum (digit sums in AP) | Weak AP bounds at `b=10` if DMR prime restriction bites |
+| **P3** | [14] Drmota 2003 (patterns) | Mellin–Perron for carry chains |
+| **P3** | Füredi–Turán / digital LLL surveys | Alternative local-limit technology |
+| **P3** | Hare–Laishram–Stoll 2011 | Polynomial digit-sum size; Q-class extension, not pilot LLT |
+
+**Not useful for LM:** Delange [13] for `s_b` alone — dynamics labelling `h_j` requires
+Lemma B, not a classical digit-sum theorem.
 
 ---
 
-## 7. Four-week programme (single researcher)
+## 7. Four-week programme
 
-### Week 1 — Finite dynamics formalisation
+### Week 1 — Finite closure and CLT leg
 
-1. Prove **Lemma 1 (G4-finite)**: carry depth + periodicity of `g(v)`.
-2. Export `first_landing(v)` in `src/dspm/predict.py` or `dynamics.py`.
-3. Numerical: compute `ρ̃_ℓ` for `ℓ = 1…20` on image lattice via exact
-   enumeration; check periodicity onset.
+| Day | Task | Output |
+|-----|------|--------|
+| 1–2 | Promote **Lemma A (G2-band)**; draft CLT citation note `[15] Thm 8.3.13 + Ex. 8.3.15` on `N_D^{(r)}` | `llt_bands.md` update |
+| 2–3 | Extend `lm_deterministic.py` to `n≤12`; tabulate `w_L(V)`, `Ψ_j(b^n)` | `lm_deterministic_*.md` |
+| 4–5 | **G4-A:** prove landing ≡ label for `v≥v_0(57)` on image lattice | Lemma D draft |
+| 5 | Read [15] §8.3.2 + verify BK on progression slice | Citation checklist |
 
-### Week 2 — LM-shadow
+### Week 2 — LM 4.2.3 (stratum weights)
 
-4. Draft **Lemma 2** proof conditional on Week 1.
-5. Extend `lm_deterministic.py` to report `ρ̃_ℓ` for `ℓ ≤ 20` and
-   `w_ℓ(V)` at `V = 10^n`.
-6. Optional: run `local_mean` at `V_max = 10^8` for one decade (compute budget).
+| Day | Task | Output |
+|-----|------|--------|
+| 1–2 | Exact combinatorics of `N_L(b^n)` for `L∈{n,n+1}` | Lemma B §weight |
+| 3–4 | Define `ρ_L^{*}` for `L≥3` via `g`-stability; link to `ρ_1,ρ_2` | Lemma B complete draft |
+| 5 | Numerical parity: `Ψ_j` from Lemma B vs `local_mean` / deterministic | Error table |
 
-### Week 3 — Bridge closure
+### Week 3 — LM 4.2.4 + bridge coupling
 
-7. Write **Lemma 4** (CLT citation note) in `llt_bands.md` as numbered lemma.
-8. Combine G4-finite + G2d-weak **or** document G2d as explicit hypothesis.
-9. Update `bridge_lemma.md` error budget with explicit `o(1)` terms.
+| Day | Task | Output |
+|-----|------|--------|
+| 1–2 | Prove alternating lower bound on `|w_n−w_{n+1}|` or `Ψ_j(b^n)−Ψ_j(b^{n+1})` | Lemma C draft |
+| 3 | Integrate **Lemma D (G4)** into bridge sketch | `bridge_lemma.md` §G4 closed |
+| 4–5 | Peter (2002) pass for G2b covariance bounds | G2d-B notes |
+| 5 | Read [9] Problem 2 proof line-by-line | G2d feasibility memo |
 
-### Week 4 — G2d or external
+### Week 4 — G2d literature attack + conditional packaging
 
-10. Attempt **Route G2d-C** (layer covariance) for `(3,10)` only.
-11. If blocked, prepare 2-page **problem sheet** for external expert (Problem 2
-    specialist).
-12. Update `proof_pilot_3_10.md` checklist; do not promote to paper without review.
+| Day | Task | Output |
+|-----|------|--------|
+| 1–2 | Attempt G2d-A at `q=10` CRT split, or document blocker | `llt_bands.md` §G2d |
+| 3 | **Conditional theorem:** LLT (hypothesis) + Lemma C + Lemma D ⇒ no `lim δ_j` | `lemma.md` tighten |
+| 4 | `bridge_check.py` at larger `D`; document `o(1)` budget | `proof_pilot_3_10.md` |
+| 5 | Sidecar review: what can promote to paper §10 vs stay conditional | This file §status |
 
 ---
 
-## 8. What not to do
+## Dependency graph (updated)
 
-- Do not cite [9] Thm 2 as LLT for `b=10`, `k=3`.
-- Do not claim decade gap `0.315` is a proof of LM.
-- Do not reuse retracted thin-window Delange lemma (Appendix B).
-- Do not merge sidecar lemmas into `paper/en/paper.md` until external review.
+```text
+Lemma A (G2-band) ──► [15] CLT on N_D^(r)          ──► G2a closed
+                              │
+Peter / G2b ──────────────────┼──► G2d (open) ──► Hypothesis LLT
+                              │
+Lemma B (w_L) ──► Lemma C (oscillation) ──► LM ──► Conj. 10.6
+       │                                        ▲
+Lemma D (G4) ──► bridge δ_j = F_j + o(1) ──────┘
+```
+
+**Exit criterion (pilot).** Publishable conditional chain when **Lemma B + C + D** are proved
+and CLT leg is cited; unconditional bridge waits on **G2d**.
 
 ---
 
-*Draft v1 — 2026-09-01. Revise after specialist review.*
+## Scripts
+
+```bash
+python scripts/lm_deterministic.py --k 3 --b 10 --signature 0
+python scripts/local_mean.py --k 3 --b 10 --v-max 100000000
+python scripts/bridge_check.py --k 3 --b 10
+python scripts/split_predict.py --k 3 --b 10 --d-max 90
+```
+
+---
+
+*Generated 2026-09-01. Sidecar only — no paper edits.*

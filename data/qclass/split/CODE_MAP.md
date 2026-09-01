@@ -116,6 +116,7 @@ Other audits (not B.5): `audit_01`–`audit_04` in `verification/audit/` (cycle 
 | File | Content |
 |------|---------|
 | `data/qclass/split/proof_pilot_3_10.md` | Checklist + dependency graph |
+| `data/qclass/split/ATTACK_PLAN.md` | PhD roadmap: G2d, G4, LM (Lemmas A–D) |
 | `data/qclass/split/lm_pilot.md` | LM attack plan, empirical gaps |
 | `data/qclass/split/bridge_lemma.md` | Bridge sketch (G1–G4) |
 | `data/qclass/split/llt_bands.md` | G2: LLT on dyadic bands |
