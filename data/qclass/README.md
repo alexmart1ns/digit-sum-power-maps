@@ -81,7 +81,10 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | `split/g2d_feasibility.md` | G2d literature blocker memo |
 | `split/lemma_b_stratum_latest.md` | Compute output for Lemma B |
 | `split/lemma_c_oscillation_latest.md` | Compute output for Lemma C |
-| `split/lemma_c_route_ca_latest.md` | Route C-A suffix-class rho gap |
+| `scripts/lm_carry_depth.py` | `split/lemma_c_analytic_latest.*` — Route C-A mixture analytic |
+| `split/lemma_c_analytic.md` | Lemma C analytic (mixture + witness) |
+| `split/g2b_peter_notes.md` | Route C-B / G2b Peter (2002) programme |
+| `split/paper_v22_tier_b_proposed.md` | Draft Tier B paper patches (not merged) |
 | `split/lemma.md` | Conditional LLT + LM ⇒ no limit |
 | `checks/LITERATURE.md` | [13]–[15] vs Hypothesis LM |
 | `universality/THEORY_NOTE.md` | S_b(Q(n)) synthesis |

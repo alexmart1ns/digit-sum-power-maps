@@ -66,10 +66,10 @@ Sidecar tracker for [`ATTACK_PLAN.md`](ATTACK_PLAN.md). Paper frozen.
 
 | Priority | Target | Doc |
 |----------|--------|-----|
-| 1 | Analytic Lemma C (carry-depth bound on suffix ρ) | `lemma_c_oscillation.md` §4.1 |
-| 2 | G2b / Route C-B | `g2d_feasibility.md` |
+| 1 | Uniform witness gap + Route C-B (G2b) | `lemma_c_analytic.md`, `g2b_peter_notes.md` |
+| 2 | G2b / Route C-B programme | `g2b_peter_notes.md` |
 | 3 | G2d literature | `llt_bands.md` §6.3 |
-| 4 | Paper v2.2 (Tier B footnotes) | `PROMOTION_REVIEW.md` §6 |
+| 4 | Paper v2.2 (Tier B footnotes) | `paper_v22_tier_b_proposed.md` |
 
 ---
 

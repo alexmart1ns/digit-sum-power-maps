@@ -63,7 +63,7 @@ asymptotics for `Σ_{n≤x} s_q(⌊α n^k⌋)`. For `q=10`, `k=3`:
 - Does **not** give `P(s_{10}(n³)=v)` for single `v`
 
 **Use in repo:** validate `digit_count_mixture` / `predict_split` scaling;
-not a substitute for G2d.
+Route C-B programme in [`g2b_peter_notes.md`](g2b_peter_notes.md).
 
 ---
 

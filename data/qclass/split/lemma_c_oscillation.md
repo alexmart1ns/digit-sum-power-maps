@@ -136,7 +136,7 @@ Lemma C is the **last pilot-specific** gap before conditional 10.6.
 | Empirical gap `c ≥ 0.32` | **Done** (`n≤14`) |
 | Route C-C convergence refutation | **Done** (`n≤14`, all models fail) |
 | Route C-A suffix-class gap | **Done** (`c≥0.12` stable, `n=9…14`) | `lemma_c_route_ca_latest.md` |
-| Analytic proof of `limsup ≠ liminf` | **Open** (carry-depth bound) | Route C-A analytic |
+| Analytic proof of `limsup ≠ liminf` | **Open** (uniform witness + rate drift control) | `lemma_c_analytic.md` |
 | Promotion to paper | **Blocked** on analytic Lemma C |
 
 ---
