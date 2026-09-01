@@ -108,20 +108,28 @@ Drmota–Mauduit–Rivat, *J. London Math. Soc.* **84**(1) (2011), 81–102 ([ar
 
 ---
 
-## 7. Band comparison lemma (draft)
+## 7. Lemma G2-band (band vs interval; draft)
 
-**Lemma (band vs interval).** For fixed `b` and `r mod m`,
+**Lemma G2-band.** For fixed `b ≥ 2`, modulus `m`, and residue `r`, let
 
-`|N_D^{(r)}| = (b^D - b^{D-1})/m + O(1)`.
+`N_D^{(r)} = N_D ∩ (r + mℤ) = { n : b^{D-1} ≤ n < b^D, n ≡ r (mod m) }`.
 
-If a digit-sum counting estimate holds on `[1,N]` with error `O(N^{1-σ})`, then on
-`N_D^{(r)}` with `N = b^D` the error is `O(b^{D(1-σ)}) = o(b^D)` for `σ>0`.
+Then
 
-**Proof sketch:** `N_D^{(r)}` is a union of progressions with density `1/m` in the band;
-boundary effects at `b^{D-1}` contribute `O(1)`.
+`|N_D^{(r)}| = (b^D − b^{D-1})/m + O(1)`.
 
-This reduces G2a to verifying that DMR-type bounds apply to **initial segments**
-`n < b^D` restricted to residue `r`, not only `n < N` globally.
+**Corollary (error transfer).** Suppose a counting estimate on `[1, N]` has
+form `count = density · N + O(N^{1−σ})` with `σ > 0`. Restricting to
+`N_D^{(r)}` with `N = b^D` yields error `O(b^{D(1−σ)}) = o(b^D)`.
+
+*Proof sketch.* Each residue class contributes `(b^D − b^{D-1})/m` integers in
+the band, up to `O(1)` boundary correction at `n = b^{D-1}`.
+
+**Use:** Reduces G2a (LLT on `N_D^{(r)}`) to verifying DMR-type bounds on
+initial segments `n < b^D` restricted to progressions, not only global `[1,N]`.
+
+**Status:** Combinatorial; ready to promote as numbered input lemma once G2c
+(composite base `b=10`) is resolved (§6).
 
 ---
 

@@ -1,0 +1,42 @@
+{
+  "k": 3,
+  "b": 10,
+  "signature": [
+    0
+  ],
+  "M": 57,
+  "feeding": [
+    0,
+    3,
+    6
+  ],
+  "image_mod_m": [
+    0
+  ],
+  "attractors": [
+    "[18]",
+    "[27]"
+  ],
+  "on_lattice_count": 6,
+  "by_digit_length": [
+    {
+      "L": 1,
+      "counts": {
+        "[18]": 1
+      },
+      "frac_primary": 1.0,
+      "total": 1
+    },
+    {
+      "L": 2,
+      "counts": {
+        "[18]": 2,
+        "[27]": 3
+      },
+      "frac_primary": 0.4,
+      "total": 5
+    }
+  ],
+  "frac_primary_amplitude_over_L": 0.6,
+  "note": "Oscillation in frac_primary across L supports LM mechanism on finite window; does not prove non-convergence of Psi(V)."
+}

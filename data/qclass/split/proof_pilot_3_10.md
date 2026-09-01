@@ -22,7 +22,7 @@ a completed proof.
 | 2 | **Image lattice** `v ≡ r^3 (mod 9)` | Done | Errata B.5; audit_05 MAE 0.002 vs 0.033 |
 | 3 | **F_j** = `predict_split` (parameter-free) | Done | `split_predict.py`; MAE ≈ 0.002 |
 | 4 | **Bridge** δ_j(D) = F_j(D) + o(1) | Open (sketch) | Gaps G2, G4 in `bridge_lemma.md` |
-| 5 | **LM** for Ψ_{18}, Ψ_{27} | Open | `lm_pilot.md`, `lm_structure_latest.md` |
+| 5 | **LM** for Ψ_{18}, Ψ_{27} | Open (empirical gap ≥0.315) | `lm_pilot.md` §4.1, `lm_liminf_latest.md` |
 | 6 | **Non-convergence** of δ_j | Conditional | Conjecture 10.6; needs (4)+(5) |
 | 7 | **10.6′ pilot** antiphase, sum 1/3 | Empirical | MC + Gaussian sweep SURVIVES |
 
@@ -38,7 +38,7 @@ a completed proof.
 | Gaussian label sweep D≤300 | amp 0.11–0.19, cross-decade r=0.735 | paper §10.6′ |
 | Gaussian label sweep D≤1000 | amp survives; cross-decade r=**0.26** | `label_sweep_latest.md` |
 | Bridge MAE | ≈ 0.002 (F_j vs MC) | `audit_05_lattice.py`, `bridge_check.py` |
-| Local mean LM | suggests non-convergence | `lm_liminf_latest.md`, `local_mean_latest.md` |
+| Local mean LM | gap ≥0.315 on `V=10^n`; global range 0.67 | `lm_liminf_latest.md` |
 
 **Nuance (D=1000):** amplitude does not collapse, but **phase correlation**
 between decades weakens (0.26 vs 0.735). Do not overclaim long-scale phase

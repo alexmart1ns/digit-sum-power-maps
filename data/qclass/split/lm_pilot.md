@@ -46,11 +46,9 @@ infinite sequences `V_n, V'_n` with `Ψ_j(V_n) − Ψ_j(V'_n) ≥ c > 0`.
 
 **Subtasks:**
 
-1. Run `python scripts/lm_structure.py --k 3 --b 10` — finite-window label
-   variation by digit length.
-2. Extend `local_mean` analysis: extract `liminf`/`limsup` along log-spaced
-   `V` (no new sampling).
-3. Relate window `[V±√V]` to digit-length layers crossed as `V` grows.
+1. ~~Run `lm_structure.py`~~ — done; amplitude **0.6** across `L=1,2` in `[1,M]`.
+2. ~~Extract `liminf`/`limsup` via `lm_liminf.py`~~ — done; see §2.
+3. **Open:** relate window `[V±√V]` to digit-length layers as `V` grows (§4.1).
 
 ### Route B — Contrapositive via bridge
 
@@ -74,8 +72,39 @@ If `Ψ_j(V) → L_j` exists, Conjecture 10.6 needs revision. Current data do
 
 for some explicit `c_j`.
 
-**Evidence needed:** deterministic bounds from `g` on `[b^{n−1}, b^n)` —
-not Monte Carlo.
+### 4.1 Empirical lower bounds (compute, not proof)
+
+From `lm_liminf_latest.md` on the decade subsequence `V = 10^n`, `n = 2…7`:
+
+| attractor | min Ψ_j(b^n) | max Ψ_j(b^n) | empirical gap |
+|-----------|--------------|--------------|---------------|
+| [18] | **0.238** at `n=3` (`V=10³`) | **0.553** at `n=6` (`V=10⁶`) | **≥ 0.315** |
+| [27] | **0.447** at `n=6` | **0.762** at `n=3` | **≥ 0.315** |
+
+Antiphase: when Ψ_{18} is low, Ψ_{27} is high (sum ≈ 1 on anchors).
+
+**Mechanism hypothesis:** at `V = b^n`, the window `[V−√V, V+√V]` has width
+`Θ(b^{n/2})` and samples values whose base-`b` digit length is predominantly
+`L = n` or `n±1`. Finite-window labelling (`lm_structure`) shows
+`frac_primary` swings **1.0 → 0.4** between `L=1` and `L=2` (amplitude **0.6**).
+If the mixture weights `w_L` in the bridge (§2 of `bridge_lemma.md`) inherit
+this log-periodic variation, Ψ_j cannot settle to a constant.
+
+**Evidence still needed:** deterministic bounds on `g(v)` and basin membership
+on each digit-length stratum inside `[V±√V]`, not Monte Carlo local means.
+Target: show two residue/digit-length regimes with `Ψ_j` differing by ≥ `c_j`.
+
+### 4.2 Proof strategy (deterministic)
+
+1. Fix `n` large. Partition `[V−√V, V+√V] ∩ (0+9ℤ)` by digit length `L`.
+2. Bound `|{ v : L(v)=ℓ, g(v)∈β_{18} }| / |{ v : L(v)=ℓ }|` using explicit
+   preimages of `β_{18}` under one step of `f_{3,10}` on `[1,M]`.
+3. Show weights `w_ℓ(V)` alternate or oscillate along `V = b^n` (Delange-type
+   log-periodicity pushed to `h_j`, not just `s_b`).
+4. Conclude `Ψ_{18}(b^n) − Ψ_{18}(b^{n'}) ≥ c` for infinitely many pairs `(n,n')`.
+
+**Status:** steps 1–2 are finite combinatorics on `[1,M]`; step 3 is the hard
+analytic gap (no Delange theorem for `h_j`).
 
 ---
 
