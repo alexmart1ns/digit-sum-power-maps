@@ -39,7 +39,7 @@ a completed proof.
 | Gaussian label sweep D≤1000 | amp survives; cross-decade r=**0.26** | `label_sweep_latest.md` |
 | Bridge MAE | ≈ **0.0017** mean over D=4…90 (87 bands) | `bridge_check.py` |
 | Local mean LM | gap ≥0.315 on `V=10^n`; global range 0.67 | `lm_liminf_latest.md` |
-| Deterministic trap + decade Ψ | gap **≥0.32** for `n=2…12`; `w_n→0.5` | `lemma_c_oscillation_latest.md` |
+| Deterministic trap + decade Ψ | gap **≥0.32** for `n=2…14`; Route C-C refutes `ρ_n→L` | `lemma_c_oscillation_latest.md` |
 | G4 landing depth | max **2** steps; no simple `b^T` period | `g4_landing_latest.md` |
 
 **Nuance (D=1000):** amplitude does not collapse, but **phase correlation**
@@ -84,7 +84,7 @@ See [`ATTACK_PLAN.md`](ATTACK_PLAN.md) for the full PhD roadmap. Summary:
 python scripts/bridge_check.py --k 3 --b 10
 python scripts/split_predict.py --k 3 --b 10 --d-max 90 --samples-hint 120000
 python scripts/local_mean.py --k 3 --b 10 --v-max 10000000
-python scripts/lm_stratum.py --k 3 --b 10 --n-max 12
-python scripts/lm_oscillation.py --k 3 --b 10 --n-max 12
+python scripts/lm_stratum.py --k 3 --b 10 --n-max 14
+python scripts/lm_oscillation.py --k 3 --b 10 --n-max 14
 python scripts/g4_landing.py --k 3 --b 10
 ```

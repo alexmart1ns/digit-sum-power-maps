@@ -72,7 +72,7 @@ LM(Q,b,j) for labelling Ψ_j(V)  ──┘         (bridge)              (§7.5 
 | 4. Cumulative density | Elementary given (2)+(3) | §7.5 Remark |
 
 **Pilot conditional chain (2026-09-01):** Hypothesis LLT + Lemma B (`w_n→1/2`) +
-empirical Lemma C (`Ψ_{18}(10^n)` gap `≥0.32`, `n≤12`) + Lemma D-depth (`≤2` steps)
+empirical Lemma C (`Ψ_{18}(10^n)` gap `≥0.32`, `n≤14`) + Lemma D-depth (`≤2` steps)
 ⟹ **conditional** non-existence of `lim δ_j` via bridge + LM.
 
 **Retracted route:** thin-window Delange lemma with `C^1` period-1 factor (Appendix

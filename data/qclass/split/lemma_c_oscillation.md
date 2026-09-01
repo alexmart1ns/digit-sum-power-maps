@@ -18,17 +18,19 @@ Therefore **LM on `Ψ_{18}`** is equivalent to **non-convergence of the sequence
 
 ---
 
-## 2. Empirical oscillation (exact compute, `n=2…12`)
+## 2. Empirical oscillation (exact compute, `n=2…14`)
 
 From `lemma_c_oscillation_latest.json`:
 
 | Metric | Value |
 |--------|-------|
 | `Ψ_{18}(10^n)` min | **0.238** at `n=3` |
-| `Ψ_{18}(10^n)` max | **≥0.562** (see latest run) |
+| `Ψ_{18}(10^n)` max | **0.562** at `n=8` |
 | Gap on subsequence | **≥0.32** |
-| `ρ_n` range | **≈0.18–0.59** (amplitude ~0.16–0.35) |
-| Max adjacent `\|ΔΨ\|` | **≥0.17** |
+| `ρ_n` min / max | **0.182** (`n=3`) / **0.582** (`n=8`) |
+| `ρ_n` full range | **0.400** |
+| Max adjacent `\|ΔΨ\|` | **≥0.18** |
+| Late decades | `ρ_{13}=0.348`, `ρ_{14}=0.241` — new downward leg, not settling |
 
 **Antiphase:** `Ψ_{18} + Ψ_{27} = 1` on every decade anchor (Lemma B parity).
 
@@ -41,13 +43,14 @@ the sequence `(Ψ_{18}(10^n))_{n≥2}` satisfies
 
 `limsup_{n→∞} Ψ_{18}(10^n) − liminf_{n→∞} Ψ_{18}(10^n) ≥ c`
 
-with empirical **c ≥ 0.32** (computed `n ≤ 12`).
+with empirical **c ≥ 0.32** (computed `n ≤ 14`).
 
 **Equivalent form (Lemma B):**
 
 `limsup ρ_n − liminf ρ_n ≥ 2c`  (approximately, since `Ψ ≈ (ρ_n+ρ_{n+1})/2`).
 
-**Status:** **Empirical** on finite `n`; analytic proof **open**.
+**Status:** **Empirical** on finite `n`; analytic proof **open**. Route C-C
+refutes naive convergence hypotheses (§4.3).
 
 ---
 
@@ -59,14 +62,44 @@ Since `g(v)` has landing depth `≤2` ([`g4_landing_latest.md`](g4_landing_lates
 classify `v` by `(v mod 10^2, v mod 10^3)` and show two suffix classes yield
 `ρ` differing by `≥ c`. No simple `b^T` periodicity; use **2-step** digit suffix.
 
+**Status:** open (analytic).
+
 ### Route C-B — Log-periodic inheritance
 
 Peter (2002) log-periodic terms in `s_{10}(n³)` may induce correlated
 oscillation in `ρ_n` via first landing — see [`g2d_feasibility.md`](g2d_feasibility.md) G2b notes.
 
-### Route C-C — Refutation bound
+**Status:** open (needs G2b covariance extraction).
 
-If `ρ_n → L`, predict `L` from regression; extend compute to `n=14` to test.
+### Route C-C — Refutation bound ✓ **closed (empirical)**
+
+**Hypothesis tested:** `ρ_n → L` (constant, `1/n`-decay, linear drift, or
+low-period cosine).
+
+**Protocol:** train on `n=2…8`, hold-out `n=9…14`; tolerance `ε=0.05` on
+`|ρ_n − ρ̂_n|`.
+
+| Model | Fit on `n≤8` | max hold-out error | at worst `n` |
+|-------|--------------|-------------------|--------------|
+| Constant `L̂=0.424` | mean | **0.183** | 14 |
+| `ρ_n = a + b/n` | OLS | **0.354** | 14 |
+| `ρ_n = a + b·n` | OLS | **0.729** | 14 |
+| `ρ_n = L + A·cos(2πn/6)` | best period | **0.315** | 14 |
+
+**Additional checks:**
+
+- Running range `max ρ − min ρ` at `n=8`: **0.400**; at `n=14`: **0.400** (no shrink).
+- `ρ_{14}=0.241` misses every model by `≥0.18` (constant) or predicts upward drift
+  while data falls.
+
+**Verdict:** **`convergence_refuted`** on all tested models. The sequence does not
+settle toward a limit or a simple asymptotic law up to `n=14`.
+
+**Compute:** `python scripts/lm_oscillation.py --n-max 14` (also refreshes
+`lemma_b_stratum_latest.*`).
+
+**Limitation:** empirical refutation only; does not prove `limsup ρ_n ≠ liminf ρ_n`.
+Analytic Lemma C still requires Route C-A or C-B.
 
 ---
 
@@ -87,8 +120,9 @@ Lemma C is the **last pilot-specific** gap before conditional 10.6.
 
 | Item | Status |
 |------|--------|
-| Empirical gap `c ≥ 0.32` | **Done** (`n≤12`) |
-| Analytic proof of `limsup ≠ liminf` | **Open** |
+| Empirical gap `c ≥ 0.32` | **Done** (`n≤14`) |
+| Route C-C convergence refutation | **Done** (`n≤14`, all models fail) |
+| Analytic proof of `limsup ≠ liminf` | **Open** (Route C-A or C-B) |
 | Promotion to paper | **Blocked** on analytic Lemma C |
 
 ---
