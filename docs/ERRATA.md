@@ -84,6 +84,7 @@ python verification/audit/audit_01_cycle_count.py                        # B.1
 python verification/audit/audit_02_split_convergence.py --samples 60000  # B.2
 python verification/audit/audit_03_bound_sharpness.py                    # B.3
 python verification/audit/audit_04_parity_confound.py                    # B.4
+python verification/audit/audit_05_lattice.py                            # B.5
 python scripts/qclass_split_refine.py                                    # B.5 (image lattice)
 ```
 

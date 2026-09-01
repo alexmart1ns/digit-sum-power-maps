@@ -1,0 +1,275 @@
+{
+  "stamp": "20260901T170154Z",
+  "samples_per_band": 8000,
+  "lengths": [
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60,
+    64
+  ],
+  "rows": [
+    {
+      "name": "x^2",
+      "Q": "x^2",
+      "b": 10,
+      "C": 3,
+      "Cyc": 3,
+      "Delta": 0,
+      "has_split": false,
+      "split_signatures": []
+    },
+    {
+      "name": "x^2",
+      "Q": "x^2",
+      "b": 16,
+      "C": 5,
+      "Cyc": 4,
+      "Delta": 1,
+      "has_split": true,
+      "split_signatures": [
+        [
+          6
+        ]
+      ],
+      "signature": [
+        6
+      ],
+      "n_attractors": 2,
+      "amplitude_max": 0.1205,
+      "antiphase_r": -0.9887623440179026,
+      "F_j_mae": 0.004706867898044955
+    },
+    {
+      "name": "x^3",
+      "Q": "x^3",
+      "b": 10,
+      "C": 7,
+      "Cyc": 3,
+      "Delta": 4,
+      "has_split": true,
+      "split_signatures": [
+        [
+          1
+        ],
+        [
+          8
+        ],
+        [
+          0
+        ]
+      ],
+      "signature": [
+        0
+      ],
+      "n_attractors": 2,
+      "amplitude_max": 0.18225000000000002,
+      "antiphase_r": -0.995948471421367,
+      "F_j_mae": 0.0048769967029300325
+    },
+    {
+      "name": "x^3",
+      "Q": "x^3",
+      "b": 16,
+      "C": 17,
+      "Cyc": 12,
+      "Delta": 5,
+      "has_split": true,
+      "split_signatures": [
+        [
+          1
+        ],
+        [
+          4
+        ],
+        [
+          5
+        ],
+        [
+          9
+        ],
+        [
+          11
+        ]
+      ],
+      "signature": [
+        1
+      ],
+      "n_attractors": 2,
+      "amplitude_max": 0.02175,
+      "antiphase_r": -0.8072387462588841,
+      "F_j_mae": 0.001044820450431742
+    },
+    {
+      "name": "x^4",
+      "Q": "x^4",
+      "b": 10,
+      "C": 7,
+      "Cyc": 4,
+      "Delta": 3,
+      "has_split": true,
+      "split_signatures": [
+        [
+          1
+        ],
+        [
+          7
+        ],
+        [
+          0
+        ]
+      ],
+      "signature": [
+        1
+      ],
+      "n_attractors": 2,
+      "amplitude_max": 0.050125,
+      "antiphase_r": -0.9672000232942947,
+      "F_j_mae": 0.001774298447193796
+    },
+    {
+      "name": "x^4",
+      "Q": "x^4",
+      "b": 16,
+      "C": 6,
+      "Cyc": 4,
+      "Delta": 2,
+      "has_split": true,
+      "split_signatures": [
+        [
+          1
+        ],
+        [
+          6
+        ]
+      ],
+      "signature": [
+        1
+      ],
+      "n_attractors": 2,
+      "amplitude_max": 0.34925,
+      "antiphase_r": -0.9970207903400028,
+      "F_j_mae": 0.013065227143815663
+    },
+    {
+      "name": "x+x^2",
+      "Q": "x + x^2",
+      "b": 10,
+      "C": 4,
+      "Cyc": 3,
+      "Delta": 1,
+      "has_split": true,
+      "split_signatures": [
+        [
+          3
+        ]
+      ],
+      "signature": [
+        3
+      ],
+      "n_attractors": 2,
+      "amplitude_max": 0.013499999999999984,
+      "antiphase_r": null,
+      "F_j_mae": 0.0018953703703703736
+    },
+    {
+      "name": "x+x^2",
+      "Q": "x + x^2",
+      "b": 8,
+      "C": 1,
+      "Cyc": 1,
+      "Delta": 0,
+      "has_split": false,
+      "split_signatures": []
+    },
+    {
+      "name": "1+3x+2x^2",
+      "Q": "1 + 3x + 2x^2",
+      "b": 10,
+      "C": 2,
+      "Cyc": 1,
+      "Delta": 1,
+      "has_split": true,
+      "split_signatures": [
+        [
+          1,
+          6
+        ]
+      ],
+      "signature": [
+        1,
+        6
+      ],
+      "n_attractors": 2,
+      "amplitude_max": 0.259125,
+      "antiphase_r": -1.0000000000000002,
+      "F_j_mae": 0.00787787535755604
+    },
+    {
+      "name": "1+3x+2x^2",
+      "Q": "1 + 3x + 2x^2",
+      "b": 8,
+      "C": 2,
+      "Cyc": 1,
+      "Delta": 1,
+      "has_split": true,
+      "split_signatures": [
+        [
+          0,
+          1,
+          6
+        ]
+      ],
+      "signature": [
+        0,
+        1,
+        6
+      ],
+      "n_attractors": 2,
+      "amplitude_max": 0.16274999999999998,
+      "antiphase_r": -0.9999999999999999,
+      "F_j_mae": 0.005048925017373222
+    },
+    {
+      "name": "1+x^3",
+      "Q": "1 + x^3",
+      "b": 10,
+      "C": 1,
+      "Cyc": 1,
+      "Delta": 0,
+      "has_split": false,
+      "split_signatures": []
+    },
+    {
+      "name": "1+x^3",
+      "Q": "1 + x^3",
+      "b": 8,
+      "C": 2,
+      "Cyc": 1,
+      "Delta": 1,
+      "has_split": true,
+      "split_signatures": [
+        [
+          2
+        ]
+      ],
+      "signature": [
+        2
+      ],
+      "n_attractors": 2,
+      "amplitude_max": 0.15987500000000002,
+      "antiphase_r": -1.0,
+      "F_j_mae": 0.004134653611682036
+    }
+  ]
+}

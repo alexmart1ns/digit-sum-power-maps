@@ -1,0 +1,34 @@
+{
+  "generated_at": "20260901T170425Z",
+  "gmpy2": true,
+  "grid": {
+    "k_min": 1,
+    "k_max": 500,
+    "b_min": 2,
+    "b_max": 40,
+    "total_pairs": 19500
+  },
+  "workers": 31,
+  "elapsed_s": 2208.87,
+  "status_counts": {
+    "ok": 19500
+  },
+  "ok_pairs": 19500,
+  "lower_bound_violations": [],
+  "lower_bound_holds": true,
+  "signature_mass_violations": [],
+  "signature_mass_identity_holds": true,
+  "exact_matches": 69,
+  "exact_match_pct": 0.3538,
+  "max_delta": 98,
+  "max_delta_pair": [
+    451,
+    32
+  ],
+  "max_M_seen": 58021,
+  "max_tail_depth_seen": 133,
+  "files": {
+    "results_jsonl": "results_k1-500_b2-40_20260901T170425Z.jsonl",
+    "summary_csv": "summary_k1-500_b2-40_20260901T170425Z.csv"
+  }
+}

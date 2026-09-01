@@ -41,15 +41,20 @@ def digit_count_mixture(D: int, k: int, b: int) -> dict[int, float]:
     Continuous approximation: n^k has L digits exactly when n lies in
     [b^((L-1)/k), b^(L/k)), and n is uniform on the band.
     """
-    lo, hi = b ** (D - 1), b**D
-    total = hi - lo
+    lo_log, hi_log = float(D - 1), float(D)
+    band_log_w = hi_log - lo_log
+    denom = float(b) ** band_log_w - 1.0
     weights: dict[int, float] = {}
     for L in range(k * (D - 1) + 1, k * D + 1):
-        left = b ** ((L - 1) / k)
-        right = b ** (L / k)
-        overlap = max(0.0, min(hi, right) - max(lo, left))
-        if overlap > 0:
-            weights[L] = overlap / total
+        left_log = (L - 1) / k
+        right_log = L / k
+        t_lo = max(lo_log, left_log)
+        t_hi = min(hi_log, right_log)
+        if t_hi <= t_lo:
+            continue
+        num = float(b) ** (t_hi - lo_log) - float(b) ** (t_lo - lo_log)
+        if num > 0:
+            weights[L] = num / denom
     return weights
 
 

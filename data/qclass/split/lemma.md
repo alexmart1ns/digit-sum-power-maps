@@ -51,3 +51,28 @@ Under LLT on the image lattice, `δ_j(D) = F_j(D) + o(1)` is the natural remaind
 statement. `F_j` is explicit and parameter-free. Delange's period-1 factor remains
 the wrong shape for this labelling. Long-band refine (`refine_latest.md`): MAE
 ≈ 0.006 on `1+3x+2x^2`, ≈ 0.003 on `x^3` at `b=10` (12k samples/band, D=8..64).
+
+Gaussian-window diagnostic (`data/split/label_sweep_latest.md`): model oscillation
+survives to `D=300` (Pearson phase 0.735 across decades); under LLT, Conjecture
+10.6′ follows computationally.
+
+## Proof roadmap (open)
+
+```text
+LLT(Q,b,r) on bands N_D          ──┐
+                                   ├──► δ_j(D) = F_j(D) + o(1)  ──► no limit for δ_j
+LM(Q,b,j) for labelling Ψ_j(V)  ──┘         (bridge)              (§7.5 weight 1-1/b)
+```
+
+| Step | Status | Action |
+|------|--------|--------|
+| 1. LLT on dyadic bands + progressions | Input for monomials [9]; open for general `Q` | Restrict DMR to `N_D^(r)`; cite Hare–Laishram–Stoll for size only |
+| 2. Bridge LLT → `F_j` | Open (mechanistic §7.5) | Formalize Gaussian mixture + exact labelling as theorem |
+| 3. LM for dynamics-induced `h_j` | Open; diagnosed by `local_mean.py` | Literature [13–15]; see `checks/LITERATURE.md` |
+| 4. Cumulative density | Elementary given (2)+(3) | §7.5 Remark after Observation 7.6 |
+
+**Retracted route:** thin-window Delange lemma with `C^1` period-1 factor (Appendix
+B, Remark after LM). Do not use.
+
+**Pilot:** `(k,b)=(3,10)`, signature `{0}`. DMR covers LLT for `n^3`; LM remains
+the analytic gap.

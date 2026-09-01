@@ -26,3 +26,18 @@ digital fluctuation of polynomial values, parallel to Mauduit–Rivat for `n^k`.
 Cycle lists for `T_{10,k}`, `2 ≤ k ≤ 10`, checked in-memory against
 `build_system(k, 10)` by `scripts/qclass_check.py`. See `oeis_k2-10.json`.
 Do not merge those tables into the 19.5k sweep.
+
+## Delange / Drmota–Grabner (Hypothesis LM)
+
+Delange (1975): digital functions have Fourier expansions with log-periodic
+fluctuation. Drmota–Grabner monograph [15]: Mellin–Perron machinery for sums of
+digits of polynomial sequences.
+
+**Open question for LM:** does the fixed labelling `h_j(v)=1_{g(v)∈β_j}` inherit
+non-convergence of its window means `Ψ_j(V)` from the digital structure of
+`g`, without a `C^1` Delange factor? The `local_mean` diagnostic tests decade
+collapse `Ψ(V)` vs `Ψ(bV)`; extended runs to `V=10^7` are in
+`data/split/local_mean_latest.md`.
+
+**Not sufficient alone:** comparing Fourier vs Gaussian MAE (both at noise floor)
+does not establish LM — see paper §10.

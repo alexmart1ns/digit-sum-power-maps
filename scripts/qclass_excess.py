@@ -26,11 +26,13 @@ OUT_DIR = REPO_ROOT / "data" / "qclass" / "excess"
 FAMILY: list[tuple[str, tuple[int, ...]]] = [
     ("x^2", monomial_Q(2)),
     ("x^3", monomial_Q(3)),
-    ("x^2+x", (0, 1, 1)),
+    ("x^4", monomial_Q(4)),
+    ("x+x^2", (0, 1, 1)),
     ("x^3+1", (1, 0, 0, 1)),
+    ("1+x^3", (1, 0, 0, 1)),
     ("2x^2+3x+1", (1, 3, 2)),
 ]
-BASES = (2, 3, 10, 16)
+BASES = (2, 3, 8, 10, 16)
 
 
 def spearman(xs: list[float], ys: list[float]) -> float | None:

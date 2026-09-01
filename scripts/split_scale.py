@@ -84,25 +84,23 @@ def main(argv=None) -> int:
 
     args.out_dir.mkdir(parents=True, exist_ok=True)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    payload = {
+        "k": args.k, "b": args.b, "M": system.M,
+        "samples_per_band": args.samples, "seed": args.seed,
+        "digit_lengths": bands,
+        "attractors": curves.labels,
+        "signatures": [sorted(s) for s in curves.signatures],
+        "curves": {curves.labels[i]: curves.curves[i] for i in range(system.count)},
+        "report": report,
+        "elapsed_s": round(time.time() - started, 1),
+    }
+    text = json.dumps(payload, ensure_ascii=False, indent=2)
     out_path = args.out_dir / f"split_scale_k{args.k}_b{args.b}_{stamp}.json"
-    out_path.write_text(
-        json.dumps(
-            {
-                "k": args.k, "b": args.b, "M": system.M,
-                "samples_per_band": args.samples, "seed": args.seed,
-                "digit_lengths": bands,
-                "attractors": curves.labels,
-                "signatures": [sorted(s) for s in curves.signatures],
-                "curves": {curves.labels[i]: curves.curves[i] for i in range(system.count)},
-                "report": report,
-                "elapsed_s": round(time.time() - started, 1),
-            },
-            ensure_ascii=False,
-            indent=2,
-        ),
-        encoding="utf-8",
-    )
+    out_path.write_text(text, encoding="utf-8")
+    latest_path = args.out_dir / f"split_scale_k{args.k}_b{args.b}_latest.json"
+    latest_path.write_text(text, encoding="utf-8")
     print(f"\n  json: {out_path}")
+    print(f"  latest: {latest_path}")
     print("=" * 78)
     return 0
 

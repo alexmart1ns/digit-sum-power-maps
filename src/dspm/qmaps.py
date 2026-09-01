@@ -426,20 +426,24 @@ def digit_count_mixture_Q(D: int, coeffs: Sequence[int], b: int) -> dict[int, fl
     lead = trimmed[-1]
     if deg < 1 or lead <= 0:
         return {1: 1.0}
-    lo, hi = b ** (D - 1), b**D
-    total = hi - lo
+    lo_log, hi_log = float(D - 1), float(D)
+    band_log_w = hi_log - lo_log
+    denom = float(b) ** band_log_w - 1.0
+    log_b_lead = math.log(float(lead)) / math.log(float(b))
     lead_digits = num_digits(lead, b)
     L_lo = max(1, deg * (D - 1) + lead_digits - 2)
     L_hi = deg * D + lead_digits + 2
     weights: dict[int, float] = {}
-    inv_d = 1.0 / deg
-    a = float(lead)
     for L in range(L_lo, L_hi + 1):
-        left = (b ** (L - 1) / a) ** inv_d
-        right = (b**L / a) ** inv_d
-        overlap = max(0.0, min(hi, right) - max(lo, left))
-        if overlap > 0:
-            weights[L] = overlap / total
+        left_log = (L - 1 - log_b_lead) / deg
+        right_log = (L - log_b_lead) / deg
+        t_lo = max(lo_log, left_log)
+        t_hi = min(hi_log, right_log)
+        if t_hi <= t_lo:
+            continue
+        num = float(b) ** (t_hi - lo_log) - float(b) ** (t_lo - lo_log)
+        if num > 0:
+            weights[L] = num / denom
     s = sum(weights.values())
     if s <= 0:
         mid = max(1, deg * D)

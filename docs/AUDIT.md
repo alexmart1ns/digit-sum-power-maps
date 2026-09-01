@@ -1,8 +1,8 @@
 # Audit of the July 2026 draft
 
 This is the record of an adversarial re-reading of the v1 paper, done before the repository was
-assembled. The goal was not to confirm the results but to find the weakest claim and break it. Four
-claims broke. Three of them broke for the same reason: the original verification measured a statistic
+assembled. The goal was not to confirm the results but to find the weakest claim and break it. Five
+claims broke (four in v1, one lattice fix in v2.1). Three of the v1 errors broke for the same reason: the original verification measured a statistic
 that could not have distinguished the claim from its negation.
 
 Each finding has an executable script under `verification/audit/`. They are self-contained and print
@@ -143,6 +143,33 @@ does not.
 
 ---
 
+## 5. The Gaussian lattice used feeding residues of $n$
+
+`verification/audit/audit_05_lattice.py`
+
+**The v1 / early-v2 claim.** The parameter-free model $F_j$ in §7.5 placed Gaussian mass on
+$v \equiv r \pmod m$ for each residue $r$ feeding a signature.
+
+**The defect.** Casting out nines forces $S_b(n^k) \equiv n^k \pmod{b-1}$ exactly. The correct
+congruence classes for the first iterate are $v \equiv r^k \pmod m$ (image lattice), not $v \equiv r$.
+For general polynomials $Q$, the sidecar uses $v \equiv Q(r) \pmod m$ (`predict_split_Q` in
+`dspm.qmaps`).
+
+**Evidence.** On signature $\{0\}$ of $(3,10)$, band $8 \le D \le 64$ against measured Monte Carlo:
+
+| lattice | MAE |
+|---|---|
+| feeding ($v \equiv r$) | $\approx 0.033$ |
+| image ($v \equiv r^k$) | $\approx 0.002$ |
+
+Q-class diagnostics: `data/qclass/split/twostep_latest.md` (lattice diagnosis),
+`data/qclass/split/refine_latest.md` (long-band MAE after fix).
+
+**Replacement.** `predict_split` and `predict_split_Q` use the image lattice; Appendix B.5 and
+§7.5 document the correction. Reproduce: `python scripts/qclass_split_refine.py` or audit 5 above.
+
+---
+
 ## What survived
 
 Everything else. The lower bound theorem, the signature-determinacy lemma, the exact finite-window
@@ -163,6 +190,7 @@ and the number of distinct moduli next to every group mean.
 | cycle count flat | group means | constancy | means agree when groups hold the same multiset |
 | splits converge | slope over one step | a limit | flat stretches look like convergence |
 | bound saturated | pass rate against the bound | sharpness | a loose bound is always passed |
+| $F_j$ lattice | MAE vs measured split | congruence class of $m_1$ | wrong lattice still gives a number |
 
 The countermeasure adopted throughout this repository: prefer exact integer identities where they
 exist, and where they do not, report amplitude, spread and noise floor next to every verdict. Every

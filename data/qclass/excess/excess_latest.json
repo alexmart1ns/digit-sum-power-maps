@@ -1,8 +1,8 @@
 {
-  "stamp": "20260901T154915Z",
-  "n_pairs": 20,
-  "n_tight_Delta0": 8,
-  "spearman_layers_vs_delta_local": 0.8782761354362374,
+  "stamp": "20260901T170030Z",
+  "n_pairs": 35,
+  "n_tight_Delta0": 12,
+  "spearman_layers_vs_delta_local": 0.8851974018787374,
   "records": [
     {
       "name": "x^2",
@@ -110,6 +110,87 @@
         }
       ],
       "max_digit_layers": 2,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "x^2",
+      "Q": "x^2",
+      "coeffs": [
+        0,
+        0,
+        1
+      ],
+      "b": 8,
+      "m": 7,
+      "M": 30,
+      "C": 3,
+      "Cyc": 3,
+      "Delta": 0,
+      "tight": true,
+      "local_excess": [
+        {
+          "signature": [
+            0
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            7
+          ],
+          "cycle_lengths": [
+            1
+          ],
+          "digit_lengths": [
+            1
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            4
+          ]
+        },
+        {
+          "signature": [
+            1
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            1
+          ],
+          "cycle_lengths": [
+            1
+          ],
+          "digit_lengths": [
+            1
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            9
+          ]
+        },
+        {
+          "signature": [
+            2,
+            4
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            2
+          ],
+          "cycle_lengths": [
+            2
+          ],
+          "digit_lengths": [
+            1
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            17
+          ]
+        }
+      ],
+      "max_digit_layers": 1,
       "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
     },
     {
@@ -400,6 +481,95 @@
           "basin_sizes": [
             6,
             3
+          ]
+        }
+      ],
+      "max_digit_layers": 2,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "x^3",
+      "Q": "x^3",
+      "coeffs": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "b": 8,
+      "m": 7,
+      "M": 46,
+      "C": 5,
+      "Cyc": 3,
+      "Delta": 2,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            1
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            1,
+            15
+          ],
+          "cycle_lengths": [
+            1,
+            2
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            9,
+            12
+          ]
+        },
+        {
+          "signature": [
+            6
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            6,
+            13
+          ],
+          "cycle_lengths": [
+            1,
+            1
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            4,
+            15
+          ]
+        },
+        {
+          "signature": [
+            0
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            14
+          ],
+          "cycle_lengths": [
+            1
+          ],
+          "digit_lengths": [
+            2
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            6
           ]
         }
       ],
@@ -785,7 +955,458 @@
       "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
     },
     {
-      "name": "x^2+x",
+      "name": "x^4",
+      "Q": "x^4",
+      "coeffs": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "b": 2,
+      "m": 1,
+      "M": 18,
+      "C": 3,
+      "Cyc": 1,
+      "Delta": 2,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            0
+          ],
+          "a_i": 3,
+          "delta_local": 2,
+          "attractor_mins": [
+            1,
+            3,
+            5
+          ],
+          "cycle_lengths": [
+            1,
+            1,
+            1
+          ],
+          "digit_lengths": [
+            1,
+            2,
+            3
+          ],
+          "n_digit_layers": 3,
+          "basin_sizes": [
+            5,
+            7,
+            6
+          ]
+        }
+      ],
+      "max_digit_layers": 3,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "x^4",
+      "Q": "x^4",
+      "coeffs": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "b": 3,
+      "m": 2,
+      "M": 26,
+      "C": 3,
+      "Cyc": 2,
+      "Delta": 1,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            0
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            4,
+            8
+          ],
+          "cycle_lengths": [
+            1,
+            2
+          ],
+          "digit_lengths": [
+            2
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            9,
+            4
+          ]
+        },
+        {
+          "signature": [
+            1
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            1
+          ],
+          "cycle_lengths": [
+            1
+          ],
+          "digit_lengths": [
+            1
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            13
+          ]
+        }
+      ],
+      "max_digit_layers": 1,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "x^4",
+      "Q": "x^4",
+      "coeffs": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "b": 8,
+      "m": 7,
+      "M": 63,
+      "C": 7,
+      "Cyc": 4,
+      "Delta": 3,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            4
+          ],
+          "a_i": 3,
+          "delta_local": 2,
+          "attractor_mins": [
+            4,
+            11,
+            25
+          ],
+          "cycle_lengths": [
+            1,
+            2,
+            1
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            5,
+            9,
+            4
+          ]
+        },
+        {
+          "signature": [
+            1
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            1,
+            15
+          ],
+          "cycle_lengths": [
+            1,
+            1
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            4,
+            14
+          ]
+        },
+        {
+          "signature": [
+            0
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            7
+          ],
+          "cycle_lengths": [
+            2
+          ],
+          "digit_lengths": [
+            1
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            9
+          ]
+        },
+        {
+          "signature": [
+            2
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            2
+          ],
+          "cycle_lengths": [
+            1
+          ],
+          "digit_lengths": [
+            1
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            18
+          ]
+        }
+      ],
+      "max_digit_layers": 2,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "x^4",
+      "Q": "x^4",
+      "coeffs": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "b": 10,
+      "m": 9,
+      "M": 77,
+      "C": 7,
+      "Cyc": 4,
+      "Delta": 3,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            0
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            18,
+            36
+          ],
+          "cycle_lengths": [
+            2,
+            1
+          ],
+          "digit_lengths": [
+            2
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            23,
+            2
+          ]
+        },
+        {
+          "signature": [
+            1
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            1,
+            28
+          ],
+          "cycle_lengths": [
+            1,
+            1
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            6,
+            11
+          ]
+        },
+        {
+          "signature": [
+            7
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            7,
+            25
+          ],
+          "cycle_lengths": [
+            1,
+            1
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            4,
+            13
+          ]
+        },
+        {
+          "signature": [
+            4
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            22
+          ],
+          "cycle_lengths": [
+            1
+          ],
+          "digit_lengths": [
+            2
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            18
+          ]
+        }
+      ],
+      "max_digit_layers": 2,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "x^4",
+      "Q": "x^4",
+      "coeffs": [
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "b": 16,
+      "m": 15,
+      "M": 119,
+      "C": 6,
+      "Cyc": 4,
+      "Delta": 2,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            1
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            1,
+            31
+          ],
+          "cycle_lengths": [
+            1,
+            1
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            37,
+            27
+          ]
+        },
+        {
+          "signature": [
+            6
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            6,
+            21
+          ],
+          "cycle_lengths": [
+            1,
+            2
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            6,
+            26
+          ]
+        },
+        {
+          "signature": [
+            0
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            30
+          ],
+          "cycle_lengths": [
+            1
+          ],
+          "digit_lengths": [
+            2
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            7
+          ]
+        },
+        {
+          "signature": [
+            10
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            10
+          ],
+          "cycle_lengths": [
+            1
+          ],
+          "digit_lengths": [
+            1
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            16
+          ]
+        }
+      ],
+      "max_digit_layers": 2,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "x+x^2",
       "Q": "x + x^2",
       "coeffs": [
         0,
@@ -829,7 +1450,7 @@
       "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
     },
     {
-      "name": "x^2+x",
+      "name": "x+x^2",
       "Q": "x + x^2",
       "coeffs": [
         0,
@@ -873,7 +1494,47 @@
       "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
     },
     {
-      "name": "x^2+x",
+      "name": "x+x^2",
+      "Q": "x + x^2",
+      "coeffs": [
+        0,
+        1,
+        1
+      ],
+      "b": 8,
+      "m": 7,
+      "M": 30,
+      "C": 1,
+      "Cyc": 1,
+      "Delta": 0,
+      "tight": true,
+      "local_excess": [
+        {
+          "signature": [
+            0
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            7
+          ],
+          "cycle_lengths": [
+            1
+          ],
+          "digit_lengths": [
+            1
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            30
+          ]
+        }
+      ],
+      "max_digit_layers": 1,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "x+x^2",
       "Q": "x + x^2",
       "coeffs": [
         0,
@@ -957,7 +1618,7 @@
       "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
     },
     {
-      "name": "x^2+x",
+      "name": "x+x^2",
       "Q": "x + x^2",
       "coeffs": [
         0,
@@ -1124,6 +1785,51 @@
         0,
         1
       ],
+      "b": 8,
+      "m": 7,
+      "M": 46,
+      "C": 2,
+      "Cyc": 1,
+      "Delta": 1,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            2
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            2,
+            9
+          ],
+          "cycle_lengths": [
+            1,
+            1
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            43,
+            3
+          ]
+        }
+      ],
+      "max_digit_layers": 2,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "x^3+1",
+      "Q": "1 + x^3",
+      "coeffs": [
+        1,
+        0,
+        0,
+        1
+      ],
       "b": 10,
       "m": 9,
       "M": 57,
@@ -1160,6 +1866,266 @@
     },
     {
       "name": "x^3+1",
+      "Q": "1 + x^3",
+      "coeffs": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "b": 16,
+      "m": 15,
+      "M": 88,
+      "C": 2,
+      "Cyc": 2,
+      "Delta": 0,
+      "tight": true,
+      "local_excess": [
+        {
+          "signature": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            6,
+            7,
+            9,
+            10,
+            11,
+            12,
+            14
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            9
+          ],
+          "cycle_lengths": [
+            12
+          ],
+          "digit_lengths": [
+            1
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            70
+          ]
+        },
+        {
+          "signature": [
+            3,
+            8,
+            13
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            23
+          ],
+          "cycle_lengths": [
+            3
+          ],
+          "digit_lengths": [
+            2
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            18
+          ]
+        }
+      ],
+      "max_digit_layers": 1,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "1+x^3",
+      "Q": "1 + x^3",
+      "coeffs": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "b": 2,
+      "m": 1,
+      "M": 12,
+      "C": 4,
+      "Cyc": 1,
+      "Delta": 3,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            0
+          ],
+          "a_i": 4,
+          "delta_local": 3,
+          "attractor_mins": [
+            1,
+            2,
+            3,
+            5
+          ],
+          "cycle_lengths": [
+            1,
+            1,
+            1,
+            2
+          ],
+          "digit_lengths": [
+            1,
+            2,
+            3
+          ],
+          "n_digit_layers": 3,
+          "basin_sizes": [
+            1,
+            5,
+            1,
+            5
+          ]
+        }
+      ],
+      "max_digit_layers": 3,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "1+x^3",
+      "Q": "1 + x^3",
+      "coeffs": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "b": 3,
+      "m": 2,
+      "M": 18,
+      "C": 2,
+      "Cyc": 1,
+      "Delta": 1,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            0,
+            1
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            1,
+            4
+          ],
+          "cycle_lengths": [
+            2,
+            2
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            6,
+            12
+          ]
+        }
+      ],
+      "max_digit_layers": 2,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "1+x^3",
+      "Q": "1 + x^3",
+      "coeffs": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "b": 8,
+      "m": 7,
+      "M": 46,
+      "C": 2,
+      "Cyc": 1,
+      "Delta": 1,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            2
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            2,
+            9
+          ],
+          "cycle_lengths": [
+            1,
+            1
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            43,
+            3
+          ]
+        }
+      ],
+      "max_digit_layers": 2,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "1+x^3",
+      "Q": "1 + x^3",
+      "coeffs": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "b": 10,
+      "m": 9,
+      "M": 57,
+      "C": 1,
+      "Cyc": 1,
+      "Delta": 0,
+      "tight": true,
+      "local_excess": [
+        {
+          "signature": [
+            0,
+            1,
+            2
+          ],
+          "a_i": 1,
+          "delta_local": 0,
+          "attractor_mins": [
+            2
+          ],
+          "cycle_lengths": [
+            3
+          ],
+          "digit_lengths": [
+            1
+          ],
+          "n_digit_layers": 1,
+          "basin_sizes": [
+            57
+          ]
+        }
+      ],
+      "max_digit_layers": 1,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "1+x^3",
       "Q": "1 + x^3",
       "coeffs": [
         1,
@@ -1315,6 +2281,52 @@
         }
       ],
       "max_digit_layers": 1,
+      "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
+    },
+    {
+      "name": "2x^2+3x+1",
+      "Q": "1 + 3x + 2x^2",
+      "coeffs": [
+        1,
+        3,
+        2
+      ],
+      "b": 8,
+      "m": 7,
+      "M": 33,
+      "C": 2,
+      "Cyc": 1,
+      "Delta": 1,
+      "tight": false,
+      "local_excess": [
+        {
+          "signature": [
+            0,
+            1,
+            6
+          ],
+          "a_i": 2,
+          "delta_local": 1,
+          "attractor_mins": [
+            6,
+            13
+          ],
+          "cycle_lengths": [
+            3,
+            3
+          ],
+          "digit_lengths": [
+            1,
+            2
+          ],
+          "n_digit_layers": 2,
+          "basin_sizes": [
+            12,
+            21
+          ]
+        }
+      ],
+      "max_digit_layers": 2,
       "note": "a_i = number of physical cycles in [1,M] \u2229 N_i; \u0394 = \u03a3 (a_i - 1). No closed form is claimed."
     },
     {

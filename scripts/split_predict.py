@@ -29,15 +29,19 @@ import _bootstrap  # noqa: F401
 from dspm.dynamics import build_system
 from dspm.modular import structure
 from dspm.predict import attractor_labels_upto, predict_split
+from dspm.split import load_split_scale_file
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
 
 def load_measured(k: int, b: int, directory: Path) -> dict | None:
+    latest = directory / f"split_scale_k{k}_b{b}_latest.json"
+    if latest.exists():
+        return load_split_scale_file(latest)
     candidates = sorted(directory.glob(f"split_scale_k{k}_b{b}_*.json"))
     if not candidates:
         return None
-    return json.loads(candidates[-1].read_text(encoding="utf-8"))
+    return load_split_scale_file(candidates[-1])
 
 
 def main(argv=None) -> int:
@@ -84,7 +88,7 @@ def main(argv=None) -> int:
     for D in range(args.d_min, args.d_max + 1):
         pred = predict_split(D, system, signature, labels, targets, weight)
         row = f"  {D:3d}  | " + " ".join(f"{pred[i]:14.4f}" for i in targets)
-        if measured and D in measured["digit_lengths"]:
+        if measured and "digit_lengths" in measured and "curves" in measured and D in measured["digit_lengths"]:
             j = measured["digit_lengths"].index(D)
             row += " | " + " ".join(
                 f"{measured['curves'][names[i]][j]:14.4f}" for i in targets

@@ -5,8 +5,8 @@ type: software
 authors:
   - family-names: Martins
     given-names: Alex
-version: 1.0.0
-date-released: "2026-08-28"
+version: 2.1.0
+date-released: "2026-09-01"
 license: MIT
 repository-code: "https://github.com/alexmart1ns/digit-sum-power-maps"
 url: "https://zenodo.org/records/22181953"

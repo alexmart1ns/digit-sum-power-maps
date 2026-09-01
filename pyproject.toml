@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dspm"
-version = "1.0.0"
+version = "2.1.0"
 description = "Iterated digit-sum power maps f_{k,b}(n) = S_b(n^k): attractors, basin densities, and the intra-signature split"
 readme = "README.md"
 requires-python = ">=3.10"

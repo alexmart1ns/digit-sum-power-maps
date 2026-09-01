@@ -28,11 +28,13 @@ OUT_DIR = REPO_ROOT / "data" / "qclass" / "pilot"
 FAMILY: list[tuple[str, tuple[int, ...], int | None]] = [
     ("x^2", monomial_Q(2), 2),
     ("x^3", monomial_Q(3), 3),
-    ("x^2+x", (0, 1, 1), None),
+    ("x^4", monomial_Q(4), 4),
+    ("x+x^2", (0, 1, 1), None),
     ("x^3+1", (1, 0, 0, 1), None),
+    ("1+x^3", (1, 0, 0, 1), None),
     ("2x^2+3x+1", (1, 3, 2), None),
 ]
-BASES = (2, 3, 10, 16)
+BASES = (2, 3, 8, 10, 16)
 
 
 def pair_record(name: str, coeffs: tuple[int, ...], k: int | None, b: int) -> dict:

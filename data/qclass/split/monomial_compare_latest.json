@@ -1,5 +1,5 @@
 {
-  "stamp": "20260901T162154Z",
+  "stamp": "20260901T170425Z",
   "lengths": [
     8,
     12,
@@ -141,6 +141,124 @@
           "D": 64,
           "mae_classic_vs_measured": 0.000556,
           "mae_sidecar_vs_measured": 0.000556,
+          "mae_classic_vs_sidecar": 0.0
+        }
+      ]
+    },
+    {
+      "k": 4,
+      "b": 10,
+      "status": "split",
+      "signature": [
+        1
+      ],
+      "targets": [
+        0,
+        5
+      ],
+      "feeding_residues": [
+        1,
+        8
+      ],
+      "image_mod_m_classic": [
+        1
+      ],
+      "image_mod_m_sidecar": [
+        1
+      ],
+      "engines_agree": true,
+      "mae_classic_vs_measured_mean": 0.001859,
+      "mae_sidecar_vs_measured_mean": 0.001859,
+      "mae_classic_vs_sidecar_mean": 0.0,
+      "per_D": [
+        {
+          "D": 8,
+          "mae_classic_vs_measured": 0.00363,
+          "mae_sidecar_vs_measured": 0.00363,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 12,
+          "mae_classic_vs_measured": 0.006153,
+          "mae_sidecar_vs_measured": 0.006153,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 16,
+          "mae_classic_vs_measured": 0.00046,
+          "mae_sidecar_vs_measured": 0.00046,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 20,
+          "mae_classic_vs_measured": 0.002889,
+          "mae_sidecar_vs_measured": 0.002889,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 24,
+          "mae_classic_vs_measured": 0.001861,
+          "mae_sidecar_vs_measured": 0.001861,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 28,
+          "mae_classic_vs_measured": 0.000861,
+          "mae_sidecar_vs_measured": 0.000861,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 32,
+          "mae_classic_vs_measured": 0.001174,
+          "mae_sidecar_vs_measured": 0.001174,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 36,
+          "mae_classic_vs_measured": 0.000986,
+          "mae_sidecar_vs_measured": 0.000986,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 40,
+          "mae_classic_vs_measured": 0.000764,
+          "mae_sidecar_vs_measured": 0.000764,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 44,
+          "mae_classic_vs_measured": 0.000764,
+          "mae_sidecar_vs_measured": 0.000764,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 48,
+          "mae_classic_vs_measured": 0.000433,
+          "mae_sidecar_vs_measured": 0.000433,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 52,
+          "mae_classic_vs_measured": 0.002424,
+          "mae_sidecar_vs_measured": 0.002424,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 56,
+          "mae_classic_vs_measured": 0.002736,
+          "mae_sidecar_vs_measured": 0.002736,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 60,
+          "mae_classic_vs_measured": 0.002388,
+          "mae_sidecar_vs_measured": 0.002388,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 64,
+          "mae_classic_vs_measured": 0.000361,
+          "mae_sidecar_vs_measured": 0.000361,
           "mae_classic_vs_sidecar": 0.0
         }
       ]

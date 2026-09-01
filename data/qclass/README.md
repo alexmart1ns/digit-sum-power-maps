@@ -21,6 +21,14 @@ Does **not** write into `data/sweeps/`, `data/mining/`, or `data/split/`.
 4. **Excess identity holds** on the pilot grid; $\Delta\neq$ visible split in general
    ($x+x^2$ splits with $\Delta=0$ in-window; $1+x^3$ has $\Delta=0$, no split).
 
+5. **Universality grid** (`universality/grid_latest.md`): monomials $x^2,x^3,x^4$ and
+   quadratics/cubics at bases $8,10,16$ — split presence, antiphase $r$, post-lattice
+   $F_j$ MAE. Run `python scripts/qclass_universality_grid.py`.
+
+6. **Excess campaign** (`excess/excess_latest.md`): 35 $(Q,b)$ pairs; Spearman
+   (digit layers, $\delta_i$) $\approx 0.89$ on signatures — empirical only, not a
+   closed conjecture. $\Delta=0$ with split still occurs ($x+x^2$, $b=10$).
+
 Results promoted to paper §7.5 and Appendix B.5 (`paper/*/paper.md`).
 
 ## Scripts
@@ -34,6 +42,7 @@ Results promoted to paper §7.5 and Appendix B.5 (`paper/*/paper.md`).
 | `scripts/qclass_split_twostep.py` | `split/twostep_latest.*` — lattice diagnosis |
 | `scripts/qclass_split_monomial_compare.py` | `split/monomial_compare_latest.*` |
 | `scripts/qclass_excess.py` | `excess/` — $\Delta$ / digit layers |
+| `scripts/qclass_universality_grid.py` | `universality/` — $Q\times b$ grid |
 
 Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 

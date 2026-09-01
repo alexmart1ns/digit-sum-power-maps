@@ -63,8 +63,13 @@ python scripts/cycle_structure.py               # both closed forms vs. brute fo
 python scripts/sweep.py --k-max 500 --b-max 40  # the exhaustive sweep behind §8 (hours; 28 workers)
 python scripts/split_scale.py --k 3 --b 10 --d-max 90 --samples 60000
 python scripts/split_predict.py --k 3 --b 10
+python scripts/sweep_label.py --k 3 --b 10 --d-max 300
+python scripts/local_mean.py --k 3 --b 10 --v-max 1000000
+python scripts/plot_split_figures.py --k 3 --b 10 --oscillation
 python scripts/analyze_patterns.py              # the correlation tables of §9
 python scripts/qclass_split_refine.py           # Q-class split / F_j (writes data/qclass/)
+python scripts/mine_topic10.py --quick          # §10 stratified grid (writes data/mining/)
+python scripts/analyze_topic10.py --skip-tightness --skip-deep
 ```
 
 `verification/verify_theorems.py` shares no code with the package: it reimplements the
@@ -79,10 +84,11 @@ paper/figures           split_oscillation.svg, split_predict_overlay.svg
 src/dspm/               the package (see below)
 scripts/                command-line entry points; each writes JSON to data/
 verification/           independent re-derivation of the theorems
-verification/audit/     one script per error found in the v1 draft
+verification/audit/     five audit scripts (B.1–B.5)
 tests/                  pytest suite
 data/sweeps/            sweep datasets (19,500 records for k ≤ 500, b ≤ 40)
-data/split/             measured split curves
+data/split/             measured split curves and diagnostics (label_sweep, local_mean)
+data/mining/            Topic-10 mining summaries (JSONL regenerable)
 data/qclass/            Q-class laboratory (isolated from data/split/)
 docs/AUDIT.md           how the v1 errors were found
 docs/ERRATA.md          what changed between v1 and v2 (incl. B.5 lattice fix)
@@ -100,6 +106,7 @@ Inside the package:
 | `analysis` | one JSON record per $(k,b)$ pair, consumed by the sweep |
 | `split` | Monte-Carlo measurement of the intra-signature split |
 | `predict` | the parameter-free Gaussian-sweep model |
+| `mining` | §10 stratified grid, excess, orbit/predecessor extras |
 | `qmaps` | Q-class engine for $S_b(Q(n))$ (sidecar; see `data/qclass/`) |
 | `patterns` | statistics over a sweep dataset |
 

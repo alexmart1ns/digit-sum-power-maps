@@ -17,13 +17,22 @@ convergence. `split_curves` therefore reports the whole curve, and
 
 from __future__ import annotations
 
+import ast
+import json
 import random
 from collections.abc import Sequence
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from .dynamics import FiniteSystem, build_system
 
-__all__ = ["SplitCurves", "split_curves", "oscillation_report"]
+__all__ = [
+    "SplitCurves",
+    "load_split_scale_file",
+    "normalize_split_scale_record",
+    "oscillation_report",
+    "split_curves",
+]
 
 
 @dataclass
@@ -124,3 +133,32 @@ def oscillation_report(curves: SplitCurves, noise: float | None = None) -> list[
             }
         )
     return report
+
+
+def _legacy_attractor_label(key: str) -> str:
+    """Map v1 keys like ``"(18,)"`` to v2 ``"[18]"``."""
+    return str(list(ast.literal_eval(key)))
+
+
+def normalize_split_scale_record(raw: dict) -> dict | None:
+    """Return a v2 split-scale record, or ``None`` if the schema is unknown."""
+    if "digit_lengths" in raw and "curves" in raw:
+        return raw
+    if "split_by_D" not in raw:
+        return None
+    digit_lengths = sorted(int(d) for d in raw["split_by_D"])
+    curves: dict[str, list[float]] = {}
+    for d in digit_lengths:
+        for key, value in raw["split_by_D"][str(d)].items():
+            curves.setdefault(_legacy_attractor_label(key), []).append(value)
+    return {
+        **raw,
+        "digit_lengths": digit_lengths,
+        "curves": curves,
+        "samples_per_band": raw.get("samples_per_band", raw.get("samples")),
+    }
+
+
+def load_split_scale_file(path: Path) -> dict | None:
+    raw = json.loads(path.read_text(encoding="utf-8"))
+    return normalize_split_scale_record(raw)

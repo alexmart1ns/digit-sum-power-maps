@@ -30,7 +30,7 @@ OUT_DIR = REPO_ROOT / "data" / "qclass" / "split"
 
 LENGTHS = tuple(range(8, 65, 4))
 SAMPLES = 8_000
-PAIRS = [(2, 10), (3, 10)]
+PAIRS = [(2, 10), (3, 10), (4, 10)]
 
 
 def _mae(a: dict[int, float], b: dict[int, float]) -> float:
