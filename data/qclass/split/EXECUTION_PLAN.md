@@ -2,7 +2,7 @@
 
 Sidecar tracker for [`ATTACK_PLAN.md`](ATTACK_PLAN.md). Paper frozen.
 
-**Start:** 2026-09-01 | **Current phase:** Week 4
+**Start:** 2026-09-01 | **Status:** programme **complete** (W4.4 done 2026-09-01)
 
 ---
 
@@ -58,7 +58,18 @@ Sidecar tracker for [`ATTACK_PLAN.md`](ATTACK_PLAN.md). Paper frozen.
 | W4.1 | G2d-A at `q=10` or blocker doc | `g2d_feasibility.md`, `llt_bands.md` | **done** (blocker memo) |
 | W4.2 | Conditional theorem (LLT hyp + C + D) | `lemma.md` | **done** (sidecar packaging) |
 | W4.3 | Bridge `o(1)` budget at larger D | `proof_pilot_3_10.md` | **done** (MAE 0.0017, D≤90) |
-| W4.4 | Sidecar → paper promotion review | `ATTACK_PLAN.md` §status | pending |
+| W4.4 | Sidecar → paper promotion review | `PROMOTION_REVIEW.md` | **done** |
+
+---
+
+## Post-programme
+
+| Priority | Target | Doc |
+|----------|--------|-----|
+| 1 | Analytic Lemma C (Route C-A) | `lemma_c_oscillation.md` §4.1 |
+| 2 | G2b / Route C-B | `g2d_feasibility.md` |
+| 3 | G2d literature | `llt_bands.md` §6.3 |
+| 4 | Paper v2.2 (Tier B footnotes) | `PROMOTION_REVIEW.md` §6 |
 
 ---
 
@@ -78,7 +89,8 @@ W4.* ──► conditional packaging
 ## Commands (reproduce Week 1)
 
 ```bash
-python scripts/lm_deterministic.py --k 3 --b 10 --n-max 12
+python scripts/lm_stratum.py --k 3 --b 10 --n-max 14
+python scripts/lm_oscillation.py --k 3 --b 10 --n-max 14
 python scripts/g4_landing.py --k 3 --b 10
 python scripts/bridge_check.py --k 3 --b 10
 pytest tests/test_predict_landing.py -q

@@ -71,7 +71,8 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | `split/CODE_MAP.md` | Symbol → file dependency map for (3,10) pilot |
 | `split/proof_pilot_3_10.md` | Checklist for (3,10); LM gap |
 | `split/ATTACK_PLAN.md` | PhD roadmap: G2d, G4, LM attack routes |
-| `split/EXECUTION_PLAN.md` | 4-week execution tracker |
+| `split/EXECUTION_PLAN.md` | 4-week execution tracker (**complete**) |
+| `split/PROMOTION_REVIEW.md` | Sidecar → paper tier review (W4.4) |
 | `split/clt_citation.md` | CLT leg [15] + Lemma A |
 | `split/lemma_d_g4.md` | Lemma D (G4 landing) draft |
 | `split/lemma_b_stratum.md` | Lemma B: stratum weights + rho_L |

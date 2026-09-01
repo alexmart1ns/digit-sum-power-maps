@@ -13,13 +13,18 @@ Sidecar only. Consolidates open gaps from [`proof_pilot_3_10.md`](proof_pilot_3_
 
 | Item | Result |
 |------|--------|
-| `F_j` vs MC | MAE ≈ 0.002 (`predict_split`, audit_05) |
+| `F_j` vs MC | MAE ≈ **0.0017** (`bridge_check`, 87 bands `D≤90`) |
 | Trap labelling `ρ_L` | `ρ_1=1.0`, `ρ_2=0.4`, amplitude **0.6** on `[1,M]` |
-| Exact `Ψ_j(10^n)` | gap **≥ 0.315** for `n=2…7`; antiphase `Ψ_{18}+Ψ_{27}=1` |
-| `β_{18}`, `β_{27}`, `g(v)` | Explicit finite partition (`lm_deterministic.py`) |
+| Lemma B | `w_n → 1/2` (combinatorial); two-stratum parity **exact** |
+| Lemma C | Gap **≥0.32** on `Ψ_{18}(10^n)`, `n≤14`; Route C-C **refutes** `ρ_n→L` |
+| G4 depth | First landing **≤2** steps; naive `b^T` periodicity **refuted** |
+| Lemma A | Band cardinality `|N_D^{(r)}| = (b^D-b^{D-1})/m + O(1)` |
 
-**Open (blocks Conjecture 10.6).** G2d (pointwise LLT), G4 (first landing ≡ labelling),
-LM §4.2.3–4 (`w_L` oscillation / `liminf≠limsup`).
+**Open (blocks unconditional Conjecture 10.6).** G2d (pointwise LLT), G4-window identification,
+analytic LM (Lemma C limit proof), bridge `δ_j=F_j+o(1)` without hypothesis.
+
+**Programme status (2026-09-01):** 4-week execution **complete**. Promotion review:
+[`PROMOTION_REVIEW.md`](PROMOTION_REVIEW.md).
 
 ---
 
@@ -329,3 +334,15 @@ python scripts/split_predict.py --k 3 --b 10 --d-max 90
 ---
 
 *Generated 2026-09-01. Sidecar only — no paper edits.*
+
+---
+
+## 10. Programme status and promotion (W4.4)
+
+**Execution:** Weeks 1–4 **complete** ([`EXECUTION_PLAN.md`](EXECUTION_PLAN.md)).
+
+**Promotion:** See [`PROMOTION_REVIEW.md`](PROMOTION_REVIEW.md) for tier A–D classification.
+**Paper merge blocked** on analytic Lemma C and G2d. Optional v2.2 footnotes (Tier B):
+bridge MAE 0.0017, D=1000 label sweep caveat, script pipeline, landing depth ≤2 remark.
+
+**Next analytic work:** Route C-A (suffix-class bound on `ρ_n`); parallel G2d literature track.
