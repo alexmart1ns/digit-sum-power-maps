@@ -39,7 +39,8 @@ a completed proof.
 | Gaussian label sweep D≤1000 | amp survives; cross-decade r=**0.26** | `label_sweep_latest.md` |
 | Bridge MAE | ≈ 0.002 (F_j vs MC) | `audit_05_lattice.py`, `bridge_check.py` |
 | Local mean LM | gap ≥0.315 on `V=10^n`; global range 0.67 | `lm_liminf_latest.md` |
-| Deterministic trap partition | `ρ_1=1.0`, `ρ_2=0.4`, amp **0.6**; exact decade Ψ gap **0.315** | `lm_deterministic_latest.md` |
+| Deterministic trap + decade Ψ | gap **0.323** for `n=2…8`; `w_n→0.5` | `lm_deterministic_latest.md` |
+| G4 landing depth | max **2** steps; no simple `b^T` period | `g4_landing_latest.md` |
 
 **Nuance (D=1000):** amplitude does not collapse, but **phase correlation**
 between decades weakens (0.26 vs 0.735). Do not overclaim long-scale phase

@@ -160,9 +160,9 @@ Gaussian sweep in `predict_split` is mechanistic until G2d closes.
 
 ---
 
-## 7. Lemma G2-band (band vs interval; draft)
+## 7. Lemma A (G2-band) — promoted
 
-**Lemma G2-band.** For fixed `b ≥ 2`, modulus `m`, and residue `r`, let
+**Lemma A (band vs interval).** For fixed `b ≥ 2`, modulus `m`, and residue `r`, let
 
 `N_D^{(r)} = N_D ∩ (r + mℤ) = { n : b^{D-1} ≤ n < b^D, n ≡ r (mod m) }`.
 
@@ -170,19 +170,18 @@ Then
 
 `|N_D^{(r)}| = (b^D − b^{D-1})/m + O(1)`.
 
-**Corollary (error transfer).** Suppose a counting estimate on `[1, N]` has
+**Corollary A.1 (error transfer).** Suppose a counting estimate on `[1, N]` has
 form `count = density · N + O(N^{1−σ})` with `σ > 0`. Restricting to
 `N_D^{(r)}` with `N = b^D` yields error `O(b^{D(1−σ)}) = o(b^D)`.
 
-*Proof sketch.* Each residue class contributes `(b^D − b^{D-1})/m` integers in
-the band, up to `O(1)` boundary correction at `n = b^{D-1}`.
+*Proof.* Each residue class contributes `(b^D − b^{D-1})/m` integers in the
+band, up to `O(1)` boundary correction at `n = b^{D-1}`.
 
-**Use:** Reduces G2a (LLT on `N_D^{(r)}`) to verifying DMR-type bounds on
-initial segments `n < b^D` restricted to progressions, not only global `[1,N]`.
+**Use:** Reduces G2a to verifying bounds on initial segments `n < b^D`
+restricted to progressions. CLT citation: [`clt_citation.md`](clt_citation.md).
 
-**Status:** Combinatorial; **independent of G2c/G2d** — promotes to numbered lemma
-when the reduction recipe (§3) is written up. CLT leg of G2c may cite this
-lemma immediately; LLT leg still blocked on G2d.
+**Status:** Combinatorial; **promoted** 2026-09-01. CLT leg cites Lemma A + [15]
+§8.3.2; LLT leg still blocked on G2d.
 
 ---
 
@@ -192,9 +191,8 @@ lemma immediately; LLT leg still blocked on G2d.
    regime (§6.1).
 2. ~~Composite-base survey~~ — [15] §8.3.2 closes **CLT** for `b=10`; no LLT
    theorem (§6.2–6.3).
-3. Promote §7 to numbered **Lemma G2-band** in sidecar.
-4. **Pilot CLT:** draft citation note `[15] Thm 8.3.13 + Ex. 8.3.15` on
-   `N_D^{(r)}` for `(3,10)`; verify BK-Property on progression slices.
+3. ~~Promote §7 to Lemma A~~ — done 2026-09-01; see [`clt_citation.md`](clt_citation.md).
+4. **Pilot CLT:** citation note in progress — verify BK on progression slices (`clt_citation.md` checklist).
 5. **Pilot LLT (G2d):** prove pointwise local limit for `s_{10}(n³)` on bands
    directly, or document why CLT + lattice discretization is insufficient for
    bridge error budget (G4 coupling).

@@ -52,6 +52,7 @@ Results promoted to paper §7.5 and Appendix B.5 (`paper/*/paper.md`).
 | `scripts/lm_structure.py` | `split/lm_structure_latest.*` — labelling vs digit length |
 | `scripts/lm_liminf.py` | `split/lm_liminf_latest.*` — liminf/limsup of Ψ_j |
 | `scripts/lm_deterministic.py` | `split/lm_deterministic_latest.*` — exact trap ρ_L and decade Ψ |
+| `scripts/g4_landing.py` | `split/g4_landing_latest.*` — G4 landing depth / periodicity scan |
 
 Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 
@@ -68,6 +69,9 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | `split/CODE_MAP.md` | Symbol → file dependency map for (3,10) pilot |
 | `split/proof_pilot_3_10.md` | Checklist for (3,10); LM gap |
 | `split/ATTACK_PLAN.md` | PhD roadmap: G2d, G4, LM attack routes |
+| `split/EXECUTION_PLAN.md` | 4-week execution tracker |
+| `split/clt_citation.md` | CLT leg [15] + Lemma A |
+| `split/lemma_d_g4.md` | Lemma D (G4 landing) draft |
 | `split/lemma.md` | Conditional LLT + LM ⇒ no limit |
 | `checks/LITERATURE.md` | [13]–[15] vs Hypothesis LM |
 | `universality/THEORY_NOTE.md` | S_b(Q(n)) synthesis |

@@ -1,0 +1,104 @@
+{
+  "k": 3,
+  "b": 10,
+  "M": 57,
+  "signature": [
+    0
+  ],
+  "feeding": [
+    0,
+    3,
+    6
+  ],
+  "basins": {
+    "[18]": [
+      3,
+      6,
+      9,
+      12,
+      15,
+      18,
+      21,
+      24,
+      30,
+      45,
+      48,
+      51
+    ],
+    "[27]": [
+      27,
+      33,
+      36,
+      39,
+      42,
+      54,
+      57
+    ]
+  },
+  "landing_depth": {
+    "max_steps": 2,
+    "mean_steps": 1.8307,
+    "samples": 166666
+  },
+  "periodicity_scan": [
+    {
+      "T": 1,
+      "modulus": 90,
+      "checked_pairs": 333303,
+      "mismatches": 158333,
+      "consistent": false
+    },
+    {
+      "T": 2,
+      "modulus": 900,
+      "checked_pairs": 333033,
+      "mismatches": 158401,
+      "consistent": false
+    },
+    {
+      "T": 3,
+      "modulus": 9000,
+      "checked_pairs": 330333,
+      "mismatches": 157288,
+      "consistent": false
+    },
+    {
+      "T": 4,
+      "modulus": 90000,
+      "checked_pairs": 303333,
+      "mismatches": 143771,
+      "consistent": false
+    },
+    {
+      "T": 5,
+      "modulus": 900000,
+      "checked_pairs": 33333,
+      "mismatches": 16722,
+      "consistent": false
+    },
+    {
+      "T": 6,
+      "modulus": 9000000,
+      "checked_pairs": 0,
+      "mismatches": 0,
+      "consistent": false
+    },
+    {
+      "T": 7,
+      "modulus": 90000000,
+      "checked_pairs": 0,
+      "mismatches": 0,
+      "consistent": false
+    },
+    {
+      "T": 8,
+      "modulus": 900000000,
+      "checked_pairs": 0,
+      "mismatches": 0,
+      "consistent": false
+    }
+  ],
+  "minimal_consistent_T": null,
+  "verdict": "no_T_found_in_range",
+  "note": "Consistent T means a(v)==a(v+m*b^T) for all checked pairs on feeding lattice; supports Lemma D (G4-finite). Not a proof for all v."
+}

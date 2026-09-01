@@ -21,16 +21,35 @@ from .core import f_kb
 from .dynamics import FiniteSystem
 from .modular import structure
 
-__all__ = ["attractor_labels_upto", "digit_count_mixture", "predict_split"]
+__all__ = [
+    "attractor_labels_upto",
+    "digit_count_mixture",
+    "first_landing",
+    "predict_split",
+]
+
+
+def first_landing(v: int, system: FiniteSystem) -> tuple[int, int]:
+    """First iterate of f_{k,b} that lies in [1, M], and step count.
+
+  Returns ``(w, t)`` with ``w = g(v)`` the landing value and ``t`` the number
+  of map applications (``t = 0`` when ``v <= M``).
+    """
+    if v < 1:
+        raise ValueError("v must be >= 1")
+    steps = 0
+    w = v
+    while w > system.M:
+        w = f_kb(w, system.k, system.b)
+        steps += 1
+    return w, steps
 
 
 def attractor_labels_upto(V: int, system: FiniteSystem) -> list[int]:
     """a(v) for 1 <= v <= V: index of the attractor that v reaches."""
     labels = [-1] * (V + 1)
     for v in range(1, V + 1):
-        w = v
-        while w > system.M:
-            w = f_kb(w, system.k, system.b)
+        w, _ = first_landing(v, system)
         labels[v] = system.label[w]
     return labels
 
