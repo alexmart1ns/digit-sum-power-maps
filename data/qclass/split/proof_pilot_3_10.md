@@ -22,7 +22,7 @@ a completed proof.
 | 2 | **Image lattice** `v ≡ r^3 (mod 9)` | Done | Errata B.5; audit_05 MAE 0.002 vs 0.033 |
 | 3 | **F_j** = `predict_split` (parameter-free) | Done | `split_predict.py`; MAE ≈ 0.002 |
 | 4 | **Bridge** δ_j(D) = F_j(D) + o(1) | Open (sketch) | Gaps G2, G4 in `bridge_lemma.md` |
-| 5 | **LM** for Ψ_{18}, Ψ_{27} | Open — trap ρ_L **proven** (amp 0.6); decade Ψ **exact** (gap ≥0.315, n≤7); limit **open** | `lm_pilot.md` §4.2, `lm_deterministic_latest.md` |
+| 5 | **LM** for Ψ_{18}, Ψ_{27} | Open — **Lemma B done** (`w_n→1/2`); `ρ_n` oscillation open (Lemma C) | `lemma_b_stratum.md`, `lm_pilot.md` §4.2 |
 | 6 | **Non-convergence** of δ_j | Conditional | Conjecture 10.6; needs (4)+(5) |
 | 7 | **10.6′ pilot** antiphase, sum 1/3 | Empirical | MC + Gaussian sweep SURVIVES |
 
@@ -39,7 +39,7 @@ a completed proof.
 | Gaussian label sweep D≤1000 | amp survives; cross-decade r=**0.26** | `label_sweep_latest.md` |
 | Bridge MAE | ≈ 0.002 (F_j vs MC) | `audit_05_lattice.py`, `bridge_check.py` |
 | Local mean LM | gap ≥0.315 on `V=10^n`; global range 0.67 | `lm_liminf_latest.md` |
-| Deterministic trap + decade Ψ | gap **0.323** for `n=2…8`; `w_n→0.5` | `lm_deterministic_latest.md` |
+| Deterministic trap + decade Ψ | gap **0.324** for `n=2…10`; `w_n→0.5` | `lemma_b_stratum_latest.md` |
 | G4 landing depth | max **2** steps; no simple `b^T` period | `g4_landing_latest.md` |
 
 **Nuance (D=1000):** amplitude does not collapse, but **phase correlation**

@@ -2,7 +2,7 @@
 
 Sidecar tracker for [`ATTACK_PLAN.md`](ATTACK_PLAN.md). Paper frozen.
 
-**Start:** 2026-09-01 | **Current phase:** Week 1
+**Start:** 2026-09-01 | **Current phase:** Week 2
 
 ---
 
@@ -34,9 +34,9 @@ Sidecar tracker for [`ATTACK_PLAN.md`](ATTACK_PLAN.md). Paper frozen.
 
 | ID | Task | Output | Status |
 |----|------|--------|--------|
-| W2.1 | Exact `N_L(b^n)` for `L∈{n,n+1}` | `lemma_b_stratum.md` | pending |
-| W2.2 | Define `ρ_L^*` via `g`-stability | same | pending |
-| W2.3 | Parity: Lemma B vs deterministic Ψ | error table | pending |
+| W2.1 | Exact `N_L(b^n)` for `L∈{n,n+1}` | `lemma_b_stratum.md` | **done** |
+| W2.2 | Define `ρ_L^*` via window rates | same + `lemma_b_stratum_latest.*` | **done** |
+| W2.3 | Parity: Lemma B vs deterministic Ψ | error table (parity=0) | **done** |
 
 ---
 

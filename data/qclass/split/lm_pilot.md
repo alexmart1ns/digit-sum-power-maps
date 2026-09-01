@@ -111,8 +111,8 @@ Target: show two residue/digit-length regimes with `Ψ_j` differing by ≥ `c_j`
 | 4.2.1 partition on trap | **Proven** | `β_{18}={3,6,9,12,15,18,21,24,30,45,48,51}`, `β_{27}={27,33,36,39,42,54,57}`; lattice in `[1,M]` has 6 points, split by `L` below |
 | 4.2.2 rho_L on trap | **Proven** | `L=1`: `ρ_1=1.0` (`9→18`); `L=2`: `ρ_2=0.4` (`18,45→18`; `27,36,54→27`); amplitude **0.6** |
 | 4.2.2 exact Ψ on `V=b^n` | **Exact** (finite compute) | `n=2…7`: `Ψ_{18}∈[0.238,0.553]`, gap **≥0.315**; antiphase `Ψ_{18}+Ψ_{27}=1` |
-| 4.2.3 weights `w_L(V)` | **Open** | At `V=10^n`, dominant strata are `L=n,n+1` (not trap `L=1,2`); weights ≈50/50 |
-| 4.2.4 infinite liminf/limsup | **Open** | Exact decade gap matches §4.1 empirical bound; limit argument still needed |
+| 4.2.3 weights `w_L(V)` | **Proven** (asymptotic `w_n→1/2`) | Prop. B-weight in `lemma_b_stratum.md`; exact `n≤10` |
+| 4.2.4 infinite liminf/limsup | **Open** | Reduced to oscillation of `ρ_n`; see Lemma C |
 
 **Proven (finite):** trap-lattice oscillation `ρ_1−ρ_2=0.6` and explicit `g(v)` map on
 `{9,18,27,36,45,54}` (`lm_deterministic_latest.md`).
@@ -132,6 +132,7 @@ python scripts/local_mean.py --k 3 --b 10 --v-max 10000000
 python scripts/lm_structure.py --k 3 --b 10 --signature 0
 python scripts/lm_liminf.py
 python scripts/lm_deterministic.py --k 3 --b 10 --signature 0
+python scripts/lm_stratum.py --k 3 --b 10 --n-max 10
 ```
 
 ---

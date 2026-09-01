@@ -53,6 +53,7 @@ Results promoted to paper §7.5 and Appendix B.5 (`paper/*/paper.md`).
 | `scripts/lm_liminf.py` | `split/lm_liminf_latest.*` — liminf/limsup of Ψ_j |
 | `scripts/lm_deterministic.py` | `split/lm_deterministic_latest.*` — exact trap ρ_L and decade Ψ |
 | `scripts/g4_landing.py` | `split/g4_landing_latest.*` — G4 landing depth / periodicity scan |
+| `scripts/lm_stratum.py` | `split/lemma_b_stratum_latest.*` — Lemma B weights and parity |
 
 Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 
@@ -72,6 +73,8 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | `split/EXECUTION_PLAN.md` | 4-week execution tracker |
 | `split/clt_citation.md` | CLT leg [15] + Lemma A |
 | `split/lemma_d_g4.md` | Lemma D (G4 landing) draft |
+| `split/lemma_b_stratum.md` | Lemma B: stratum weights + rho_L |
+| `split/lemma_b_stratum_latest.md` | Compute output for Lemma B |
 | `split/lemma.md` | Conditional LLT + LM ⇒ no limit |
 | `checks/LITERATURE.md` | [13]–[15] vs Hypothesis LM |
 | `universality/THEORY_NOTE.md` | S_b(Q(n)) synthesis |
