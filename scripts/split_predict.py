@@ -2,8 +2,10 @@
 """Predict the split oscillation from the digit-sum local limit theorem.
 
 No fitted parameters. The first iterate S_b(n^k) is modelled as a digit-count
-mixture of Gaussians, restricted to the residue classes feeding the chosen
-signature, and convolved with the exact integer-to-attractor labelling. The
+mixture of Gaussians, restricted to the image lattice $v \equiv r^k \bmod m$
+for each residue $r$ feeding the chosen signature (digit-sum congruence:
+$S_b(n^k) \equiv n^k \pmod{b-1}$), and convolved with the exact
+integer-to-attractor labelling. The
 result is compared against a measured curve when one is available.
 
 A caveat on interpreting agreement: with N samples per band the measurement

@@ -67,9 +67,10 @@ def predict_split(
 ) -> dict[int, float]:
     """Predicted global mass of each target attractor at digit length D.
 
-    The first iterate is modelled as a digit-count mixture of Gaussians,
-    restricted to the residue classes feeding ``signature``, then convolved
-    with the exact labelling and scaled by the signature's modular weight p_i.
+    The first iterate is modelled as a digit-count mixture of Gaussians.
+    Digit-sum congruence is S_b(n^k) ≡ n^k (mod b-1), so the lattice is
+    v ≡ r^k for each residue r feeding ``signature`` — not v ≡ r. Then
+    convolved with the exact labelling and scaled by the modular weight p_i.
     """
     k, b = system.k, system.b
     m = b - 1
@@ -77,6 +78,7 @@ def predict_split(
     feeding = [r for r in range(m) if frozenset(mod.cycles[mod.owner[r]]) == signature]
     if not feeding:
         raise ValueError(f"no residue class feeds signature {sorted(signature)}")
+    images = [pow(r, k, m) for r in feeding]
 
     V = len(labels) - 1
     density: dict[int, float] = {}
@@ -85,8 +87,8 @@ def predict_split(
         sigma = math.sqrt(L * (b * b - 1) / 12)
         lo = max(1, int(mu - 6 * sigma))
         hi = min(V, int(mu + 6 * sigma))
-        for r in feeding:
-            v = lo + ((r - lo) % m)
+        for q in images:
+            v = lo + ((q - lo) % m)
             while v <= hi:
                 if v >= 1:
                     density[v] = density.get(v, 0.0) + weight * _gaussian(v, mu, sigma)

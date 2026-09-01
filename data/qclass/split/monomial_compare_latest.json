@@ -1,0 +1,149 @@
+{
+  "stamp": "20260901T162154Z",
+  "lengths": [
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60,
+    64
+  ],
+  "samples_per_band": 8000,
+  "note": "Classic predict_split uses v \u2261 r^k (mod m); sidecar uses v \u2261 Q(r).",
+  "results": [
+    {
+      "k": 2,
+      "b": 10,
+      "status": "no_split"
+    },
+    {
+      "k": 3,
+      "b": 10,
+      "status": "split",
+      "signature": [
+        8
+      ],
+      "targets": [
+        1,
+        4,
+        5
+      ],
+      "feeding_residues": [
+        2,
+        5,
+        8
+      ],
+      "image_mod_m_classic": [
+        8
+      ],
+      "image_mod_m_sidecar": [
+        8
+      ],
+      "engines_agree": true,
+      "mae_classic_vs_measured_mean": 0.001721,
+      "mae_sidecar_vs_measured_mean": 0.001721,
+      "mae_classic_vs_sidecar_mean": 0.0,
+      "per_D": [
+        {
+          "D": 8,
+          "mae_classic_vs_measured": 0.006738,
+          "mae_sidecar_vs_measured": 0.006738,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 12,
+          "mae_classic_vs_measured": 0.003385,
+          "mae_sidecar_vs_measured": 0.003385,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 16,
+          "mae_classic_vs_measured": 0.001074,
+          "mae_sidecar_vs_measured": 0.001074,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 20,
+          "mae_classic_vs_measured": 0.000972,
+          "mae_sidecar_vs_measured": 0.000972,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 24,
+          "mae_classic_vs_measured": 0.001486,
+          "mae_sidecar_vs_measured": 0.001486,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 28,
+          "mae_classic_vs_measured": 0.002069,
+          "mae_sidecar_vs_measured": 0.002069,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 32,
+          "mae_classic_vs_measured": 0.000319,
+          "mae_sidecar_vs_measured": 0.000319,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 36,
+          "mae_classic_vs_measured": 0.001778,
+          "mae_sidecar_vs_measured": 0.001778,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 40,
+          "mae_classic_vs_measured": 0.001597,
+          "mae_sidecar_vs_measured": 0.001597,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 44,
+          "mae_classic_vs_measured": 0.000778,
+          "mae_sidecar_vs_measured": 0.000778,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 48,
+          "mae_classic_vs_measured": 0.000611,
+          "mae_sidecar_vs_measured": 0.000611,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 52,
+          "mae_classic_vs_measured": 0.002536,
+          "mae_sidecar_vs_measured": 0.002536,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 56,
+          "mae_classic_vs_measured": 0.000715,
+          "mae_sidecar_vs_measured": 0.000715,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 60,
+          "mae_classic_vs_measured": 0.001199,
+          "mae_sidecar_vs_measured": 0.001199,
+          "mae_classic_vs_sidecar": 0.0
+        },
+        {
+          "D": 64,
+          "mae_classic_vs_measured": 0.000556,
+          "mae_sidecar_vs_measured": 0.000556,
+          "mae_classic_vs_sidecar": 0.0
+        }
+      ]
+    }
+  ]
+}

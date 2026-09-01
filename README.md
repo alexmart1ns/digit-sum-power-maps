@@ -20,8 +20,12 @@ exist. Along fixed digit-length they oscillate quasi-periodically, in antiphase,
 the exact aggregate. That is the subject of §7, and it is an instance of the classical log-periodic
 fluctuation of digital functions.
 
-The current paper is **v2**. It corrects four errors in the July 2026 draft; see
+The current paper is **v2**. It corrects five errors in the July 2026 draft; see
 [`docs/ERRATA.md`](docs/ERRATA.md) and [`docs/AUDIT.md`](docs/AUDIT.md).
+
+**Q-class sidecar** (2026-09): `src/dspm/qmaps.py` and `data/qclass/` study
+$S_b(Q(n))$ for general polynomials $Q$ with positive leading coefficient, isolated from the main
+`data/split/` records. See [`data/qclass/README.md`](data/qclass/README.md).
 
 **Zenodo:** [https://zenodo.org/records/22181953](https://zenodo.org/records/22181953) · DOI [10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953)
 
@@ -60,6 +64,7 @@ python scripts/sweep.py --k-max 500 --b-max 40  # the exhaustive sweep behind §
 python scripts/split_scale.py --k 3 --b 10 --d-max 90 --samples 60000
 python scripts/split_predict.py --k 3 --b 10
 python scripts/analyze_patterns.py              # the correlation tables of §9
+python scripts/qclass_split_refine.py           # Q-class split / F_j (writes data/qclass/)
 ```
 
 `verification/verify_theorems.py` shares no code with the package: it reimplements the
@@ -78,8 +83,9 @@ verification/audit/     one script per error found in the v1 draft
 tests/                  pytest suite
 data/sweeps/            sweep datasets (19,500 records for k ≤ 500, b ≤ 40)
 data/split/             measured split curves
-docs/AUDIT.md           how the four v1 errors were found
-docs/ERRATA.md          what changed between v1 and v2
+data/qclass/            Q-class laboratory (isolated from data/split/)
+docs/AUDIT.md           how the v1 errors were found
+docs/ERRATA.md          what changed between v1 and v2 (incl. B.5 lattice fix)
 docs/PUBLICATION.md     publication bundle layout and Zenodo link
 ```
 
@@ -94,11 +100,12 @@ Inside the package:
 | `analysis` | one JSON record per $(k,b)$ pair, consumed by the sweep |
 | `split` | Monte-Carlo measurement of the intra-signature split |
 | `predict` | the parameter-free Gaussian-sweep model |
+| `qmaps` | Q-class engine for $S_b(Q(n))$ (sidecar; see `data/qclass/`) |
 | `patterns` | statistics over a sweep dataset |
 
 ## Verification
 
-Three of the four v1 errors survived because a claim was tested against a statistic that could not
+Three of the v1 errors survived because a claim was tested against a statistic that could not
 distinguish it from its negation: a comparison of group means where constancy was at issue, a local
 slope where a limit was at issue, and a loose inequality where sharpness was at issue. The code here
 prefers exact integer identities where they exist, and reports amplitude, spread and noise floor next

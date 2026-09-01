@@ -23,6 +23,7 @@ k = 2, 4, 16 while #Per is 6 throughout).
 
 from __future__ import annotations
 
+from collections import Counter
 from collections.abc import Sequence
 from dataclasses import dataclass
 from itertools import product
@@ -46,6 +47,7 @@ __all__ = [
     "periodic_point_count",
     "periodic_point_count_formula",
     "cycle_count_formula",
+    "cycle_count_formula_folded",
     "local_cycle_type",
 ]
 
@@ -265,6 +267,41 @@ def local_cycle_type(k: int, p: int, e: int) -> list[int]:
     return lengths
 
 
+def _local_types(k: int, m: int) -> list[list[int]]:
+    return [local_cycle_type(k, p, e) for p, e in factorize(m).items()]
+
+
+def _cycle_count_from_types_naive(types: Sequence[Sequence[int]]) -> int:
+    """Proposition 6.3 as written: sum over tuples of local cycles."""
+    total = 0
+    for combo in product(*types):
+        span = 1
+        for length in combo:
+            span *= length
+        total += span // lcm(*combo)
+    return total
+
+
+def _cycle_count_from_types_folded(types: Sequence[Sequence[int]]) -> int:
+    """CRT fold: a pair of cycles of lengths l1, l2 yields gcd(l1, l2) cycles.
+
+    Cost is in the product of the numbers of *distinct* lengths, not in the
+    expanded cycle lists. This is the polynomial (in log m and ω(m), times
+    local divisor-counts) evaluation asked by Problem 10.8.
+    """
+    if not types:
+        return 0
+    acc: Counter[int] = Counter(types[0])
+    for local in types[1:]:
+        other = Counter(local)
+        nxt: Counter[int] = Counter()
+        for l1, n1 in acc.items():
+            for l2, n2 in other.items():
+                nxt[lcm(l1, l2)] += n1 * n2 * gcd(l1, l2)
+        acc = nxt
+    return int(sum(acc.values()))
+
+
 def cycle_count_formula(k: int, m: int) -> int:
     """Cyc(phi_{k,m}) in closed form, without building the graph.
 
@@ -277,16 +314,27 @@ def cycle_count_formula(k: int, m: int) -> int:
     Note the dependence on k: it enters through the multiplicative orders
     ord_d(k), which is why Cyc -- unlike #Per -- is *not* a function of the
     radical of k.
+
+    The sum is over expanded local cycle lists; ``cycle_count_formula_folded``
+    evaluates the same quantity by folding length-multiplicity maps.
     """
     if m <= 1:
         return 1
     if k == 1:
         return m
-    types = [local_cycle_type(k, p, e) for p, e in factorize(m).items()]
-    total = 0
-    for combo in product(*types):
-        span = 1
-        for length in combo:
-            span *= length
-        total += span // lcm(*combo)
-    return total
+    return _cycle_count_from_types_naive(_local_types(k, m))
+
+
+def cycle_count_formula_folded(k: int, m: int) -> int:
+    """Problem 10.8: Cyc(phi_{k,m}) by pairwise CRT fold of cycle types.
+
+    Mathematically identical to ``cycle_count_formula``. A cycle of length
+    ``l1`` and a cycle of length ``l2`` produce ``gcd(l1, l2)`` cycles of
+    length ``lcm(l1, l2)``; folding components two at a time never enumerates
+    t-tuples.
+    """
+    if m <= 1:
+        return 1
+    if k == 1:
+        return m
+    return _cycle_count_from_types_folded(_local_types(k, m))

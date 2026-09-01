@@ -33,6 +33,7 @@ from .modular import (
     ModularStructure,
     cycle_count,
     cycle_count_formula,
+    cycle_count_formula_folded,
     periodic_point_count,
     periodic_point_count_formula,
     structure,
@@ -54,6 +55,7 @@ __all__ = [
     "structure",
     "cycle_count",
     "cycle_count_formula",
+    "cycle_count_formula_folded",
     "periodic_point_count",
     "periodic_point_count_formula",
 ]

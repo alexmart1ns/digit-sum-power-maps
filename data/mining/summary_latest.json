@@ -1,0 +1,45 @@
+{
+  "generated_at": "20260831T020654Z",
+  "mode": "full",
+  "gmpy2": true,
+  "n_cells": 7470,
+  "n_run": 7470,
+  "ok_pairs": 7470,
+  "status_counts": {
+    "ok": 7470
+  },
+  "stratum_counts": {
+    "A": 2800,
+    "D": 776,
+    "B": 3633,
+    "E": 16,
+    "F": 5,
+    "C": 1221
+  },
+  "elapsed_s": 944.84,
+  "prior": "data\\sweeps\\summary_k1-500_b2-40_20260717T191848Z.csv",
+  "lower_bound_violations": 0,
+  "mass_violations": 0,
+  "excess_identity_failures": 0,
+  "exact_matches": 103,
+  "max_delta": 122,
+  "max_delta_pair": [
+    157,
+    80
+  ],
+  "mean_split_signatures": 6.8423,
+  "n_orbit": 16,
+  "orbit_bound_holds": true,
+  "n_pred": 16,
+  "power_law_plausible": false,
+  "n_split": 2,
+  "mae_gaussian": 0.019513,
+  "mae_fourier": 0.01948,
+  "Nstar_holds": true,
+  "Cyc_as_upper": 1,
+  "files": {
+    "results_jsonl": "results_full_20260831T020654Z.jsonl",
+    "summary_csv": "summary_full_20260831T020654Z.csv",
+    "report": "report_full_20260831T020654Z.md"
+  }
+}

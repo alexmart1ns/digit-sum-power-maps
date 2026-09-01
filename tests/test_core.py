@@ -72,3 +72,10 @@ def test_num_digits(b):
     assert num_digits(0, b) == 1
     for n in range(1, 500):
         assert b ** (num_digits(n, b) - 1) <= n < b ** num_digits(n, b)
+
+
+def test_num_digits_beyond_gmpy2_base_limit():
+    """gmpy2.num_digits rejects bases > 62; the fallback must stay exact."""
+    b, n = 64, 64**5 + 3
+    d = num_digits(n, b)
+    assert b ** (d - 1) <= n < b**d

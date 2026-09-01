@@ -21,6 +21,7 @@
 \newtheorem{problem}[theorem]{Problem}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
 
 \newcommand{\Cyc}{\mathrm{Cyc}}
 \newcommand{\Per}{\mathrm{Per}}
@@ -47,12 +48,12 @@ I study the family of discrete dynamical systems $f_{k,b}(n) = S_b(n^k)$, where 
 
 I prove three structural results. \textbf{(I) Lower Bound Theorem.} The number of attractors satisfies $|C(k,b)| \ge \Cyc(\varphi_{k,b-1})$, the number of cycles of the modular map. \textbf{(II) Basin Density Law.} For each modular cycle $\gamma_i$ with residue basin $R_i$, the aggregate basin $\mathcal{N}_i$ of all attractors carrying the residue signature $\gamma_i$ has a natural density, equal exactly to the modular weight $p_i = |R_i|/(b-1)$; over a window $[1,M]$ the empirical proportion deviates by at most $\min(|R_i|,\,b-2)/M$, and the underlying finite-window statement is an exact identity between integers. \textbf{(III)} Both counting functions of $\varphi_{k,m}$ admit closed forms: the periodic-point count is the classical $\prod_{p^e \| m}\big(1 + \kappa_k(\varphi(p^e))\big)$, with $\kappa_k(N)$ the largest divisor of $N$ coprime to $k$, while the cycle count (the quantity required by the lower bound) is obtained by combining local cycle types through the Chinese remainder theorem. The distinction matters and was missed in an earlier draft: the periodic-point count depends on $k$ only through $\rad(k)$, whereas the cycle count does not.
 
-Results (I) and (II) are elementary consequences of the digit-sum congruence (``casting out nines'') and of residue equidistribution. Novelty is claimed for the organization of these consequences and for isolating the remaining problem: how the mass $p_i$ splits among several physical attractors that share a signature. That partition is not elementary. I resolve it empirically and mechanistically. No individual basin density appears to exist; along fixed digit-length the masses oscillate quasi-periodically, in antiphase between competing attractors, while always summing to $p_i$. A parameter-free model, the Gaussian law of $S_b(n^k)$ (local limit theorem) convolved with the exact integer-to-attractor labelling, reproduces the oscillation to within Monte-Carlo noise (MAE $= 0.0030$). The oscillation is an instance of the classical log-periodic fluctuation of digital functions (Delange; Drmota--Grabner).
+Results (I) and (II) are elementary consequences of the digit-sum congruence (``casting out nines'') and of residue equidistribution. Novelty is claimed for the organization of these consequences and for isolating the remaining problem: how the mass $p_i$ splits among several physical attractors that share a signature. That partition is not elementary. I resolve it empirically and mechanistically. No individual basin density appears to exist; along fixed digit-length the masses oscillate quasi-periodically, in antiphase between competing attractors, while always summing to $p_i$. A parameter-free model, the Gaussian law of $S_b(n^k)$ (local limit theorem) on the image lattice $v \equiv r^k \pmod{b-1}$, convolved with the exact integer-to-attractor labelling, reproduces the oscillation to within Monte-Carlo noise (MAE $= 0.003$ on the $(3,10)$ pilot). The oscillation is an instance of the classical log-periodic fluctuation of digital functions (Delange; Drmota--Grabner).
 
 All claims are verified computationally: an exhaustive sweep of $19{,}500$ parameter pairs $(k,b)$ with $k \le 500$, $b \le 40$, with zero lower-bound violations and with the exact integer form of the aggregate law holding without exception, together with an independent re-implementation reported in Appendix~A.
 
 \smallskip
-\noindent\emph{Erratum.} This version corrects four errors in the July 2026 draft: a false statement about the modular cycle count, a misclassification of which signatures oscillate, an overstated claim of sharpness for the error bound, and a confounded statistic. Each is documented in Appendix~B, with the reasoning that produced it, since the failure modes are instructive.
+\noindent\emph{Erratum.} This version corrects five errors in the July 2026 draft: a false statement about the modular cycle count, a misclassification of which signatures oscillate, an overstated claim of sharpness for the error bound, a confounded statistic, and a wrong congruence lattice in the Gaussian split model. Each is documented in Appendix~B, with the reasoning that produced it, since the failure modes are instructive.
 \end{abstract}
 
 \section{Introduction}
@@ -104,7 +105,7 @@ Theorem~\ref{thm:lb} gives the lower bound $|C(k,b)| \ge \Cyc(\varphi_{k,b-1})$.
 
 The aggregate law turns patterns such as $22/33/44$ into a theorem rather than folklore, and it isolates the remaining object, the intra-signature split. That split is an instance of the log-periodic fluctuation of digital functions (Delange \cite{delange}, Drmota--Grabner \cite{drmota-grabner}). The periodic-point formula of \S\ref{sec:count} is classical power-digraph theory (Somer--K\v{r}\'i\v{z}ek \cite{somer-krizek}, Chou--Shparlinski \cite{chou-shparlinski}). The cycle-count formula of the same section is elementary; I have not found it stated for this purpose.
 
-Both exact theorems were checked without exception on an exhaustive grid of $19{,}500$ pairs $(k,b)$ with $k \le 500$ and $b \le 40$ (Appendix~A). This version corrects four errors of the July 2026 draft (Appendix~B).
+Both exact theorems were checked without exception on an exhaustive grid of $19{,}500$ pairs $(k,b)$ with $k \le 500$ and $b \le 40$ (Appendix~A). This version corrects five errors of the July 2026 draft (Appendix~B).
 
 \section{Definitions and Notation}
 
@@ -196,6 +197,10 @@ Each $R_i$ is forward-invariant under $\varphi_{k,m}$ (if $r$ flows to $\gamma_i
 \textbf{Conclusion.} The $\mathcal{N}_1,\dots,\mathcal{N}_c$ are pairwise disjoint and each contains at least one attractor, so $|C(k,b)| \ge c = \Cyc(\varphi_{k,b-1})$.
 \end{proof}
 
+\begin{remark}[Abstract form]\label{rem:abstract}
+The proof uses only two properties of $f_{k,b}$: (i) a mod-$m$ semiconjugacy $f(n)\equiv\varphi(n\bmod m)$, and (ii) eventual contraction into a finite set. Thus for any eventually contracting $f:\mathbb{Z}^+\to\mathbb{Z}^+$ admitting a mod-$m$ semiconjugacy to a map $\varphi$ on $\mathbb{Z}/m\mathbb{Z}$, $|C(f)|\ge\Cyc(\varphi)$. In particular the bound applies to $f(n)=S_b(Q(n))$ for any $Q\in\mathbb{Z}[x]$. The happy maps $S_{e,b}$ fail (i): $\sum_i d_i^{\,e}$ is not a function of $n\bmod m$ alone (\S1.1).
+\end{remark}
+
 \begin{remark}
 The bound is typically strict: in the verification of \S\ref{sec:verification} exact equality $|C| = \Cyc$ is the exception, not the rule. The excess $\Delta(k,b) \ge 0$ is a digit-dynamics effect (several attractors at different numerical scales sharing one residue signature) and is studied empirically in \S\ref{sec:split} and \S\ref{sec:predictors}.
 \end{remark}
@@ -215,6 +220,16 @@ The modular map on $\mathbb{Z}/9\mathbb{Z}$ has three fixed points $\{0\},\{1\},
 \]
 Both $18$ and $27$ are $\equiv 0 \pmod 9$ but are distinct fixed points at different scales: the modular theory counts one cycle for class $0$ while the real dynamics bifurcates. Hence $\Delta(3,10) = 7 - 3 = 4$.
 \end{example}
+
+\begin{proposition}[The case $k=1$]\label{prop:k1}
+On $\mathbb{Z}^+$, for every $b\ge 2$, $C(1,b)=\{\{1\},\dots,\{b-1\}\}$, so $\Delta(1,b)=0$. Each individual basin $B(\{j\})$ equals $\{\,n\in\mathbb{Z}^+: n\equiv j\pmod{b-1}\,\}$ (taking $j=b-1$ for residue $0$) and has density $1/(b-1)$.
+\end{proposition}
+
+\begin{proof}
+Write $n=\sum_{i<D} d_i b^i$ with $D\ge 2$ and $d_{D-1}\ge 1$. Then $n-S_b(n)=\sum_i d_i(b^i-1)\ge d_{D-1}(b^{D-1}-1)\ge b-1\ge 1$, so $S_b(n)<n$ for all $n\ge b$. Every cycle therefore lies in $[1,b-1]$, where $S_b$ is the identity. The modular map $\varphi_{1,b-1}$ is the identity on $\mathbb{Z}/(b-1)\mathbb{Z}$, hence $\Cyc=b-1=|C|$. The digital-root partition of $\mathbb{Z}^+$ is exactly the residue classes mod $b-1$, each of density $1/(b-1)$. (On $\mathbb{Z}_{\ge 0}$ the extra fixed point $0$ would give $\Delta=1$.)
+\end{proof}
+
+This is the clean extremal case of Remark~\ref{rem:scope}: one attractor per signature, no split, and the individual densities exist.
 
 \section{The Basin Density Law (Aggregate Form)}\label{sec:bdl}
 
@@ -263,7 +278,7 @@ Since $\max\big(0, |R_i|-(m-s)\big) \le \sigma_i \le \min(|R_i|, s)$, evaluating
 The crude estimate $|\theta| \le |R_i| \le m$ gives $(b-1)/M$, which is what an earlier draft reported and described as saturated. It is not: since $s \le m-1$ and $\min(|R_i|, m-|R_i|) \le \lfloor m/2 \rfloor$, the constant $b-1$ is never attained, and over the sweep of \S\ref{sec:verification} the worst observed ratio of actual error to $(b-1)/M$ is $0.25$. The sharp constant $\min(|R_i|, b-2)$ is approached, with observed ratio $0.95$. The practical consequence is that a verification reporting ``$100\%$ of measurements within $(b-1)/M$'' tests very little; the statement with content is the integer identity of Proposition~\ref{prop:partition}, which has no slack.
 \end{remark}
 
-\begin{remark}[Scope of Theorem~\ref{thm:bdl}]
+\begin{remark}[Scope of Theorem~\ref{thm:bdl}]\label{rem:scope}
 The theorem asserts the density of the union $\mathcal{N}_i$. It does not assert that the individual basins $B(A)$ of the several attractors sharing signature $\gamma_i$ each have a natural density. When the local bifurcation excess is zero (one attractor per signature) the two coincide trivially. When it is positive, the decomposition $q_i = \sum_{\sigma(A)=\gamma_i} \delta(A)$ presupposes that the individual limits exist, which is false in general, as \S\ref{sec:split} shows: the individual densities oscillate and do not converge, while their sum remains exactly $p_i$. (A finite family of oscillating densities can sum to a set with exact density.) In the adjacent happy-number family the natural density of the happy set is likewise known not to converge (Gilmer \cite{gilmer}).
 \end{remark}
 
@@ -388,9 +403,11 @@ An earlier version of this subsection reported that signatures $\{1\}$ and $\{8\
 
 \subsection{A parameter-free predictive model}
 
-The oscillation is accounted for by a parameter-free model (\texttt{scripts/split\_predict.py}): model $m_1 = S_b(n^k)$ as Gaussian with mean $\tfrac{b-1}{2}L$ and variance $L\,\tfrac{b^2-1}{12}$ (the digit count $L$ being a computable mixture over the $D$-digit band; this is the local limit theorem of \cite{mauduit-rivat,dmr}), restrict to the residue classes feeding the signature, convolve with the exact integer-to-attractor labelling $a(v)$, and scale by $p_i$. For signature $\{0\}$ of $(3,10)$ this reproduces the measured split curve $\delta_j(D)$ to $\mathrm{MAE} = 0.0030$ across $4 \le D \le 60$, with no fitted parameters. The oscillation is therefore the Gaussian sweep of the digit-sum $m_1$ across the fixed basin labelling of the integers.
+The oscillation is accounted for by a parameter-free model (\texttt{scripts/split\_predict.py}): model $m_1 = S_b(n^k)$ as Gaussian with mean $\tfrac{b-1}{2}L$ and variance $L\,\tfrac{b^2-1}{12}$ (the digit count $L$ being a computable mixture over the $D$-digit band; this is the local limit theorem of \cite{mauduit-rivat,dmr}), place the Gaussian on the \textbf{image lattice} $v \equiv r^k \pmod m$ for each residue $r$ feeding the signature (not $v \equiv r$; casting out nines forces $S_b(n^k) \equiv n^k \pmod m$ exactly), convolve with the exact integer-to-attractor labelling $a(v)$, and scale by $p_i$. For signature $\{0\}$ of $(3,10)$ this reproduces the measured split curve $\delta_j(D)$ to $\mathrm{MAE} = 0.003$ across $4 \le D \le 60$, with no fitted parameters. On the longer band $8 \le D \le 64$ with $12{,}000$ samples per band the same model gives $\mathrm{MAE} = 0.003$. The oscillation is therefore the Gaussian sweep of the digit-sum $m_1$ across the fixed basin labelling of the integers, on the correct congruence classes of $m_1$.
 
-With $40{,}000$ samples per band the measurement noise floor is $0.5/\sqrt{40000} = 0.0025$, so an MAE of $0.0030$ says the model is consistent with the data. It does not single the model out against other candidates that also reproduce the phase and amplitude. The content of the model is mechanistic rather than statistical: it predicts the oscillation from the local limit theorem plus the exact labelling, with nothing tuned. Discriminating it from alternatives would need either a much larger sample or a prediction of the higher-order structure, which is what Problem~\ref{prob:split} asks for.
+An isolated Q-class laboratory (\texttt{src/dspm/qmaps.py}, records in \texttt{data/qclass/}) extends the pipeline to $f(n)=S_b(Q(n))$ with lattice $v \equiv Q(r) \pmod m$. The first non-monomial split, $Q(x)=1+3x+2x^2$ at $b=10$, shows the same antiphase oscillation (amplitude $\approx 0.27$ on $8 \le D \le 64$, Pearson $r=-1$ between the two competing $2$-cycles) with $\mathrm{MAE} = 0.006$ against the corrected model; an earlier $\mathrm{MAE} \approx 0.17$ on the same instance came from placing mass on $v \equiv r$ rather than $v \equiv Q(r)$.
+
+With $40{,}000$ samples per band the measurement noise floor is $0.5/\sqrt{40000} = 0.0025$, so an MAE of $0.003$ says the model is consistent with the data. It does not single the model out against other candidates that also reproduce the phase and amplitude. The content of the model is mechanistic rather than statistical: it predicts the oscillation from the local limit theorem plus the exact labelling, with nothing tuned. Discriminating it from alternatives would need either a much larger sample or a prediction of the higher-order structure, which is what Problem~\ref{prob:split} asks for.
 
 \begin{remark}[Empirical observation, mechanistically explained]\label{rem:result}
 No individual basin density $\delta(A_j)$ appears to exist: along fixed digit-length the masses oscillate quasi-periodically in $D$, for every signature with a positive local excess. Only the per-signature aggregate has a density, equal to $p_i$ (Theorem~\ref{thm:bdl}).
@@ -503,14 +520,14 @@ Odd primes and odd composites differ by $0.93$ in mean $|C|$, against a within-c
 \medskip
 \noindent\textbf{9.4 Transient depth scales with $k$.} Maximum transient depth correlates $R = +0.540$ with $k$; deepest observed: $133$ steps.
 
-\section{Open Problems}
+\section{Open Problems}\label{sec:open}
 
 \begin{problem}[Exact formula]
 Find a closed-form expression or efficient algorithm for $|C(k,b)|$ beyond Theorem~\ref{thm:lb}. In particular, characterize the bifurcation excess $\Delta(k,b)$.
 \end{problem}
 
 \begin{problem}[Tightness characterization]\label{prob:tight}
-For which pairs $(k,b)$ does equality $|C(k,b)| = \Cyc(\varphi_{k,b-1})$ hold? Data suggests small $b$ (especially $b = 2,3$) or trivial modular dynamics; the exact-match frequency is itself range-sensitive.
+For which pairs $(k,b)$ does equality $|C(k,b)| = \Cyc(\varphi_{k,b-1})$ hold? For $k=1$ equality holds for every $b\ge 2$ (Proposition~\ref{prop:k1}). Data otherwise suggests small $b$ (especially $b = 2,3$) or trivial modular dynamics; the exact-match frequency is itself range-sensitive (\S\ref{sec:verification}). A complete census for $b=2,3$ and $1 \le k \le 1500$ finds equality precisely at $k \in \{1,2,3,7,381\}$ when $b=2$ and at $k \in \{1,6,10\}$ when $b=3$; no further exact matches appear after $k=400$. Outside $k=1$ this is a list, not a characterization.
 \end{problem}
 
 \begin{problem}[Orbit length asymptotics]
@@ -518,23 +535,49 @@ Let $L(k,b,N)$ be the maximum orbit length (transient + cycle) among $n \le N$. 
 \end{problem}
 
 \begin{problem}[Predecessor graph structure]
-For fixed $(k,b)$ and $A \in C(k,b)$, the basin tree rooted at $A$: what is its degree distribution? Does it follow a power law?
+For fixed $(k,b)$ and $A \in C(k,b)$, the basin tree rooted at $A$: what is its degree distribution? Does it follow a power law? On the functional graph of $f_{k,b}$ restricted to $[1,M]$, a Clauset--Shalizi--Newman discrete power-law fit is not plausible for any of the systems checked.
 \end{problem}
 
 \begin{problem}[Upper bound]
-Prove a complementary upper bound on $|C(k,b)|$; a natural candidate is the contraction threshold $N^*(k,b)$ of Lemma~\ref{lem:contraction}.
+Prove a complementary upper bound on $|C(k,b)|$; a natural candidate is the contraction threshold $N^*(k,b)$ of Lemma~\ref{lem:contraction}. The inequality $|C| \le N^*$ holds and is uninformative: $N^*$ bounds attractor \emph{values}, not their count. Empirically, $\Cyc$ times the number of attractor digit layers already fails as an upper bound on most pairs of a stratified follow-up grid; no sharp complementary inequality survived.
 \end{problem}
 
 \begin{problem}[Rigorous theory of the split]\label{prob:split}
-Replace the numerical Gaussian of \S\ref{sec:split} by the exact Mellin--Perron Fourier term for $S_b(n^k)$ and prove the quasi-periodic oscillation of the per-digit split rigorously; determine whether the statement is already implied by \cite{delange,drmota-poly,drmota-grabner}.
+Prove that the per-digit split does not converge when a signature splits; determine whether non-convergence is already implied by \cite{delange,drmota-poly,drmota-grabner}. No single period-1 Delange factor $P_j(\{\log_b D\})$ is claimed. The target statements are as follows. Nothing below is claimed as a theorem.
+
+\medskip\noindent\textbf{Setup.} Fix $k\ge 2$, $b\ge 2$, and write $m=b-1$, $M=M(k,b)$ for the contraction bound of Lemma~\ref{lem:contraction}. Let $N_D=\{n: b^{D-1}\le n<b^D\}$. For $v\ge 1$ let $g(v)$ be the first iterate of $f_{k,b}$ that lies in $[1,M]$ (so $g(v)=v$ if $v\le M$). For an attractor $A_j$ write $\beta_j=B(A_j)\cap[1,M]$ and
+\[
+\delta_j(D)\;=\;\frac1{|N_D|}\,\bigl|\{\,n\in N_D: g\bigl(S_b(n^k)\bigr)\in\beta_j\,\}\bigr|.
+\]
+This is the per-digit split of \S\ref{sec:split}. The map $g$ is completely explicit: it is determined by the finite functional graph on $[1,M]$. Theorem~\ref{thm:bdl} already gives $\sum_{A_j\subset\gamma_i}\delta_j(D)\to p_i$ as $D\to\infty$ (in fact the finite-window identity of Proposition~\ref{prop:partition} controls every prefix). The remaining claim is that no individual $\delta_j(D)$ converges when $\gamma_i$ splits.
+
+\medskip\noindent\textbf{Hypothesis LLT$(k,b,r)$.} For each residue $r\bmod m$, writing $N_D^{(r)}=N_D\cap(r+m\mathbb{Z})$ and taking $n$ uniform in $N_D^{(r)}$, the law of $S_b(n^k)$ admits a local Gaussian limit with mean $\mu_D\asymp D$ and standard deviation $\sigma_D\asymp\sqrt{D}$: for every fixed $C<\infty$,
+\[
+\sup_{\lvert v-\mu_D\rvert\le C\sigma_D}\Bigl\lvert \sigma_D\,\mathbb{P}\bigl(S_b(n^k)=v\bigr)-\varphi\bigl((v-\mu_D)/\sigma_D\bigr)\Bigr\rvert\;\longrightarrow\;0
+\]
+as $D\to\infty$, and the tails $\mathbb{P}(\lvert S_b(n^k)-\mu_D\rvert>C\sigma_D)$ vanish as $C\to\infty$ uniformly in $D$. (Casting out nines forces $S_b(n^k)\equiv n^k\pmod m$ exactly.) This is the form in which a restriction of the local limit theorem of Drmota--Mauduit--Rivat \cite{dmr} to a dyadic band and an arithmetic progression would be used. It is an input, not a claim of the present paper.
+
+\medskip\noindent\textbf{Hypothesis LM$(k,b,j)$.} Let $h_j(v)=1_{g(v)\in\beta_j}$. Write $\Psi_j(V)$ for the mean of $h_j$ on the window $[V-\sqrt{V},\,V+\sqrt{V}]$ restricted to integers $v \equiv r^k \pmod m$ on the image lattice of residues $r$ feeding the signature of $A_j$. The hypothesis is that $\Psi_j(V)$ does not converge as $V\to\infty$. This is a statement about the labelling, parallel to Hypothesis LLT and independent of it. It is diagnosed computationally by \texttt{scripts/local\_mean.py}; it is not deduced from a Delange expansion of $h_j$.
+
+\medskip\noindent\textbf{Remark (thin window; retracted).} An earlier draft of this section asked to prove that if $\sum_{n\le x}f(n)=x\,P(\log_b x)+o(x)$ with $P$ continuous of period $1$, and if $I_x\subset[c_1 x,\,c_2 x]$ satisfies $|I_x|/x\to 0$, then the window mean equals $P(\log_b x)+o(1)$. That implication is false for every remainder rate. If $P$ is $C^1$ of period $1$, $h=|I_x|\to\infty$, $h=o(x)$, and $\sup|E|=o(h)$ on the window, the mean is $Q(\log_b x)+o(1)$ with $Q=P+P'/\ln b$, not $P$; $Q$ is constant if and only if $P$ is. Counterexample: in base $10$, $f(v)=1_{\text{leading digit of }v=1}$ has remainder $O(1)$; along $x=1.5\cdot 10^t$ one has $P(\log_{10}x)\approx 0.4074$ while the $\sqrt{x}$-window average is $1$, matching $Q=1$. Delange's periodic function for $s_b$ is continuous and nowhere differentiable, so the $C^1$ hypotheses fail in the intended regime and no such $Q$ should be expected. The lemma is withdrawn; its role is taken by Hypothesis LM.
 \end{problem}
+
+\begin{conjecture}\label{con:split}
+Assume Hypothesis LLT$(k,b,r)$ for every residue $r$ feeding a split signature $\gamma_i$ (that is, $a_i\ge 2$), and Hypothesis LM$(k,b,j)$ for each attractor $A_j$ of that signature. Then $\lim_{D\to\infty}\delta_j(D)$ does not exist. The same non-existence passes to the cumulative density $|B(A_j)\cap[1,b^D]|/b^D$, because band $D$ carries geometric weight $1-1/b$ (\S\ref{sec:split}). No identity $\delta_j(D)=P_j(\{\log_b D\})+o(1)$ is claimed: under the Gaussian model the decade-collapse $\delta_j(D)\approx\delta_j(bD)$ already fails for the pilot of Conjecture~\ref{con:splitpilot}, consistently with the absence of a $C^1$ Delange local mean.
+\end{conjecture}
+
+\begin{conjecture}[Pilot]\label{con:splitpilot}
+Take $(k,b)=(3,10)$ and the signature $\gamma=\{0\}$, whose physical attractors are $\{18\}$ and $\{27\}$ (Example~\ref{ex:bif}). Then $\delta_{18}(D)+\delta_{27}(D)\to 1/3$, yet neither factor converges: $\limsup\delta_{18}-\liminf\delta_{18}>0$, and the two curves are in antiphase. This is the content of Remark~\ref{rem:result} for the largest split, upgraded from a finite-$D$ measurement to a statement about all $D$.
+\end{conjecture}
+
+The Gaussian of \S\ref{sec:split} is the leading LLT term. Comparing MAE of a truncated Fourier inversion against the Gaussian does not prove the conjecture (the two already agree to sampling noise). The work is: (i) Hypothesis LM for the labelling, diagnosed by the $v$-space means $\Psi_j(V)$; (ii) whether \cite{delange,drmota-poly,drmota-grabner} imply LM; (iii) the LLT input.
 
 \begin{problem}[Count side of the excess]\label{prob:excess}
 The modular count side is now fully closed: both the periodic-point count (Proposition~\ref{prop:per}) and the cycle count (Proposition~\ref{prop:cyc}) have closed forms. Characterize the physical excess $\Delta = |C| - \Cyc$, extra attractors from digit dynamics rather than modular structure. Empirically $\Delta$ responds to the parity of $k$ and to $\omega(b-1)$ (\S\ref{sec:predictors}), but no closed form is known.
 \end{problem}
 
-\begin{problem}[Complexity of the cycle count]
-Proposition~\ref{prop:cyc} evaluates $\Cyc(\varphi_{k,m})$ from the factorization of $m$ and multiplicative orders modulo divisors of $\lambda(m)$, so it is polynomial given the factorization; the naive sum over tuples of local cycles is not. Is there an evaluation whose cost is polynomial in $\log m$ and the number of prime factors, without enumerating tuples?
+\begin{problem}[Complexity of the cycle count; resolved]
+Proposition~\ref{prop:cyc} evaluates $\Cyc(\varphi_{k,m})$ from the factorization of $m$ and multiplicative orders modulo divisors of $\lambda(m)$, so it is polynomial given the factorization; the naive sum over $t$-tuples of local cycles is not. The same quantity is obtained by folding multiplicity maps of cycle lengths: a cycle of length $\ell_1$ and a cycle of length $\ell_2$ produce $\gcd(\ell_1,\ell_2)$ cycles of length $\lcmop(\ell_1,\ell_2)$. Pairwise CRT folding never enumerates $t$-tuples (\texttt{cycle\_count\_formula\_folded} in \texttt{dspm.modular}; equal to the graph and to the expanded product in \texttt{tests/test\_modular.py}). Cost is polynomial in the size of the local cycle-type maps, given the factorization.
 \end{problem}
 
 \section{Conclusion}
@@ -547,7 +590,7 @@ These exact results quotient out the elementary part of the distribution and iso
 
 \section{Reproducibility and Independent Verification}
 
-\textbf{Primary pipeline.} Everything is reproducible from the \texttt{dspm} package accompanying this article. The exhaustive sweep behind \S8.2 is \texttt{scripts/sweep.py}, producing \texttt{data/sweeps/results\_k1-500\_b2-40\_*.jsonl.gz} (19,500 records). The split programme of \S\ref{sec:split} is \texttt{scripts/split\_scale.py} (measurement) and \texttt{scripts/split\_predict.py} (the parameter-free model); the count side of \S\ref{sec:count} is \texttt{scripts/cycle\_structure.py}. Statistics of \S\ref{sec:predictors} are \texttt{scripts/analyze\_patterns.py}. Figures: \texttt{paper/figures/split\_oscillation.svg}, \texttt{split\_predict\_overlay.svg}.
+\textbf{Primary pipeline.} Everything is reproducible from the \texttt{dspm} package accompanying this article. The exhaustive sweep behind \S8.2 is \texttt{scripts/sweep.py}, producing \texttt{data/sweeps/results\_k1-500\_b2-40\_*.jsonl.gz} (19,500 records). The split programme of \S\ref{sec:split} is \texttt{scripts/split\_scale.py} (measurement) and \texttt{scripts/split\_predict.py} (the parameter-free model); the $v$-space local means of Hypothesis LM are \texttt{scripts/local\_mean.py}. An isolated Q-class laboratory for $S_b(Q(n))$ lives in \texttt{src/dspm/qmaps.py} with records in \texttt{data/qclass/}. The count side of \S\ref{sec:count} is \texttt{scripts/cycle\_structure.py}. Statistics of \S\ref{sec:predictors} are \texttt{scripts/analyze\_patterns.py}. The computational remarks in \S\ref{sec:open} (tightness census, predecessor degrees, bound candidates, folded cycle count) are \texttt{scripts/analyze\_topic10.py} and \texttt{dspm.mining}. Figures: \texttt{paper/figures/split\_oscillation.svg}, \texttt{split\_predict\_overlay.svg}.
 
 \begin{verbatim}
 pip install -e ".[fast,dev]"
@@ -555,6 +598,7 @@ pytest                                        # theorem-level test suite
 python verification/verify_theorems.py        # independent re-derivation
 python scripts/cycle_structure.py             # both closed forms vs brute force
 python scripts/split_scale.py --k 3 --b 10 --d-max 90 --samples 60000
+python scripts/local_mean.py --k 3 --b 10 --v-max 1000000
 \end{verbatim}
 
 \medskip
@@ -589,7 +633,10 @@ Four claims in the July 2026 draft were wrong. Each is recorded with the reasoni
 \noindent\textbf{B.4. Prime exponents amplify attractors by $\approx 74\%$.} \emph{Reinterpreted.} The number replicates but the contrast is confounded with the parity of $k$, which is the actual driver (Proposition~\ref{prop:per}). Controlled comparison in \S9.3.
 
 \medskip
-\noindent\textbf{A methodological note.} Three of the four errors survived because the verification was run against a statistic that could not distinguish the claim from its negation: a comparison of means where constancy was at issue, a local slope where a limit was at issue, and a loose inequality where sharpness was at issue. The countermeasure adopted throughout the accompanying code is to prefer exact integer identities where they exist, as in Proposition~\ref{prop:partition}, and, where they do not, to report amplitude, spread and noise floor next to every verdict.
+\noindent\textbf{B.5. The Gaussian lattice used feeding residues of $n$.} \emph{Corrected.} An earlier implementation of \S\ref{sec:split} placed the Gaussian on $v \equiv r \pmod m$ for each residue $r$ feeding the signature. Casting out nines forces $S_b(n^k) \equiv n^k \pmod m$, so the correct lattice is $v \equiv r^k \pmod m$. On signature $\{0\}$ of $(3,10)$ the wrong lattice gave $\mathrm{MAE} \approx 0.041$ on the band $8 \le D \le 64$; the image lattice restores $\mathrm{MAE} \approx 0.003$. For a general polynomial $Q$, the sidecar uses $v \equiv Q(r) \pmod m$ (\texttt{predict\_split\_Q} in \texttt{src/dspm/qmaps.py}). Corrected in \texttt{predict\_split} and documented in \S\ref{sec:split}; diagnostic records in \texttt{data/qclass/split/twostep\_latest.md}.
+
+\medskip
+\noindent\textbf{A methodological note.} Four of the five errors survived because the verification was run against a statistic that could not distinguish the claim from its negation: a comparison of means where constancy was at issue, a local slope where a limit was at issue, a loose inequality where sharpness was at issue, and a congruence lattice where the pushforward of $m_1$ was at issue. The countermeasure adopted throughout the accompanying code is to prefer exact integer identities where they exist, as in Proposition~\ref{prop:partition}, and, where they do not, to report amplitude, spread and noise floor next to every verdict.
 
 \begin{thebibliography}{99}
 

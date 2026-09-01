@@ -66,3 +66,65 @@ def test_predict_split_sums_to_the_modular_weight():
     for D in (8, 20, 40):
         predicted = predict_split(D, system, signature, labels, targets, weight)
         assert abs(sum(predicted.values()) - weight) < 0.02
+
+
+def test_gaussian_label_sweep_pilot_stays_oscillatory():
+    """Conjecture 10.6' diagnostic: the Gaussian window does not flatten at modest D.
+
+    No sampling of n. If amplitude already collapsed here, the D=300 sweep
+    would be pointless.
+    """
+    system = build_system(3, 10)
+    mod = structure(3, 9)
+    signature = mod.signature_of_residue(0)
+    weight = mod.weights[mod.owner[0]]
+    targets = [i for i in range(system.count) if system.signature(i) == signature]
+    names = {i: str(list(system.attractors[i])) for i in targets}
+    assert "[18]" in names.values() and "[27]" in names.values()
+    d_max = 80
+    L = 3 * d_max
+    ceiling = int(4.5 * L + 8 * (L * 8.25) ** 0.5) + 50
+    labels = attractor_labels_upto(ceiling, system)
+    Ds = list(range(10, d_max + 1, 5))
+    curves = {i: [] for i in targets}
+    for D in Ds:
+        pred = predict_split(D, system, signature, labels, targets, weight)
+        assert abs(sum(pred.values()) - weight) < 0.02
+        for i in targets:
+            curves[i].append(pred[i])
+    by_name = {names[i]: curves[i] for i in targets}
+    a, c = by_name["[18]"], by_name["[27]"]
+    assert max(a) - min(a) > 0.05
+    assert max(c) - min(c) > 0.05
+    ma, mc = sum(a) / len(a), sum(c) / len(c)
+    num = sum((x - ma) * (y - mc) for x, y in zip(a, c))
+    den = (sum((x - ma) ** 2 for x in a) * sum((y - mc) ** 2 for y in c)) ** 0.5
+    assert den > 0
+    assert num / den < -0.5
+
+
+def test_v_space_psi_on_signature_zero_sums_to_one():
+    """Hypothesis LM diagnostic: feeding residues of {0} label only {18} and {27}."""
+    system = build_system(3, 10)
+    mod = structure(3, 9)
+    signature = mod.signature_of_residue(0)
+    targets = [i for i in range(system.count) if system.signature(i) == signature]
+    names = {i: str(list(system.attractors[i])) for i in targets}
+    assert set(names.values()) == {"[18]", "[27]"}
+    labels = attractor_labels_upto(8000, system)
+    feeding = [r for r in range(9) if frozenset(mod.cycles[mod.owner[r]]) == signature]
+    V = 4000
+    h = int(V**0.5)
+    lo, hi = V - h, V + h
+    counts = {i: 0 for i in targets}
+    n = 0
+    for r in feeding:
+        v = lo + ((r - lo) % 9)
+        while v <= hi:
+            counts[labels[v]] += 1
+            n += 1
+            v += 9
+    assert n > 20
+    shares = {i: counts[i] / n for i in targets}
+    assert abs(sum(shares.values()) - 1.0) < 1e-12
+    assert max(shares.values()) < 0.95

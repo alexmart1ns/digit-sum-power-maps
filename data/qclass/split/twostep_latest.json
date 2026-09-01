@@ -1,0 +1,545 @@
+{
+  "stamp": "20260901T161041Z",
+  "D": [
+    8,
+    16,
+    24,
+    40,
+    56,
+    64
+  ],
+  "samples": 8000,
+  "note": "Does not overwrite refine_latest or split_latest. Gaussian then one iterate equals predict_split_Q; this file compares laws.",
+  "results": [
+    {
+      "name": "2x^2+3x+1",
+      "Q": "1 + 3x + 2x^2",
+      "b": 10,
+      "M": 41,
+      "signature": [
+        1,
+        6
+      ],
+      "targets": [
+        0,
+        1
+      ],
+      "p_i": 1.0,
+      "Q_image_mod_m": [
+        0,
+        1,
+        3,
+        6
+      ],
+      "refine_mae_Fj_mean": 0.170168,
+      "mae_gaussian_mean": 0.182027,
+      "mae_image_mean": 0.006976,
+      "mae_idigit_mean": 0.182261,
+      "mae_emp_m1_mean": 0.005972,
+      "tv_residue_vs_Q_image_mean": 0.0066,
+      "verdict": "lattice of m1 is Q(n) mod m, not feeding residues of n; image Gaussian is the F_j correction",
+      "per_D": [
+        {
+          "D": 8,
+          "n": 8000,
+          "skew_m1": -0.0155,
+          "tv_m1_vs_gaussian": 0.5568,
+          "tv_m1_vs_image": 0.0763,
+          "tv_m1_vs_idigit": 0.5572,
+          "tv_m2_emp_vs_gauss_push": 0.4844,
+          "tv_m2_emp_vs_image_push": 0.0268,
+          "tv_m1_residue_vs_uniform_feeding": 0.5556,
+          "tv_m1_residue_vs_Q_image": 0.0052,
+          "frac_m2_le_M": 1.0,
+          "mean_m1": 70.41,
+          "mean_m2": 19.69,
+          "Q_image_mod_m": [
+            0,
+            1,
+            3,
+            6
+          ],
+          "mae_gaussian": 0.168285,
+          "mae_image": 0.023119,
+          "mae_idigit": 0.170519,
+          "mae_emp_m1": 0.001458,
+          "F_image": {
+            "0": 0.388952,
+            "1": 0.611048
+          },
+          "F_idigit": {
+            "0": 0.536352,
+            "1": 0.463648
+          },
+          "F_emp_m1": {
+            "0": 0.364375,
+            "1": 0.635625
+          },
+          "measured": {
+            "0": 0.365833,
+            "1": 0.634167
+          }
+        },
+        {
+          "D": 16,
+          "n": 8000,
+          "skew_m1": -0.018,
+          "tv_m1_vs_gaussian": 0.5567,
+          "tv_m1_vs_image": 0.0758,
+          "tv_m1_vs_idigit": 0.557,
+          "tv_m2_emp_vs_gauss_push": 0.4444,
+          "tv_m2_emp_vs_image_push": 0.0369,
+          "tv_m1_residue_vs_uniform_feeding": 0.5556,
+          "tv_m1_residue_vs_Q_image": 0.0092,
+          "frac_m2_le_M": 1.0,
+          "mean_m1": 141.88,
+          "mean_m2": 20.9,
+          "Q_image_mod_m": [
+            0,
+            1,
+            3,
+            6
+          ],
+          "mae_gaussian": 0.220121,
+          "mae_image": 0.00447,
+          "mae_idigit": 0.220913,
+          "mae_emp_m1": 0.00575,
+          "F_image": {
+            "0": 0.18472,
+            "1": 0.81528
+          },
+          "F_idigit": {
+            "0": 0.401163,
+            "1": 0.598837
+          },
+          "F_emp_m1": {
+            "0": 0.1745,
+            "1": 0.8255
+          },
+          "measured": {
+            "0": 0.18025,
+            "1": 0.81975
+          }
+        },
+        {
+          "D": 24,
+          "n": 8000,
+          "skew_m1": -0.0086,
+          "tv_m1_vs_gaussian": 0.5565,
+          "tv_m1_vs_image": 0.0521,
+          "tv_m1_vs_idigit": 0.5565,
+          "tv_m2_emp_vs_gauss_push": 0.4731,
+          "tv_m2_emp_vs_image_push": 0.0139,
+          "tv_m1_residue_vs_uniform_feeding": 0.5556,
+          "tv_m1_residue_vs_Q_image": 0.0063,
+          "frac_m2_le_M": 1.0,
+          "mean_m1": 214.25,
+          "mean_m2": 22.22,
+          "Q_image_mod_m": [
+            0,
+            1,
+            3,
+            6
+          ],
+          "mae_gaussian": 0.118636,
+          "mae_image": 0.001759,
+          "mae_idigit": 0.118564,
+          "mae_emp_m1": 0.01125,
+          "F_image": {
+            "0": 0.288741,
+            "1": 0.711259
+          },
+          "F_idigit": {
+            "0": 0.409064,
+            "1": 0.590936
+          },
+          "F_emp_m1": {
+            "0": 0.30175,
+            "1": 0.69825
+          },
+          "measured": {
+            "0": 0.2905,
+            "1": 0.7095
+          }
+        },
+        {
+          "D": 40,
+          "n": 8000,
+          "skew_m1": -0.016,
+          "tv_m1_vs_gaussian": 0.5566,
+          "tv_m1_vs_image": 0.0527,
+          "tv_m1_vs_idigit": 0.5567,
+          "tv_m2_emp_vs_gauss_push": 0.4444,
+          "tv_m2_emp_vs_image_push": 0.0098,
+          "tv_m1_residue_vs_uniform_feeding": 0.5556,
+          "tv_m1_residue_vs_Q_image": 0.0092,
+          "frac_m2_le_M": 1.0,
+          "mean_m1": 358.16,
+          "mean_m2": 23.56,
+          "Q_image_mod_m": [
+            0,
+            1,
+            3,
+            6
+          ],
+          "mae_gaussian": 0.165962,
+          "mae_image": 0.000111,
+          "mae_idigit": 0.165234,
+          "mae_emp_m1": 0.00625,
+          "F_image": {
+            "0": 0.210611,
+            "1": 0.789389
+          },
+          "F_idigit": {
+            "0": 0.375734,
+            "1": 0.624266
+          },
+          "F_emp_m1": {
+            "0": 0.20425,
+            "1": 0.79575
+          },
+          "measured": {
+            "0": 0.2105,
+            "1": 0.7895
+          }
+        },
+        {
+          "D": 56,
+          "n": 8000,
+          "skew_m1": 0.0055,
+          "tv_m1_vs_gaussian": 0.5563,
+          "tv_m1_vs_image": 0.0462,
+          "tv_m1_vs_idigit": 0.5563,
+          "tv_m2_emp_vs_gauss_push": 0.4455,
+          "tv_m2_emp_vs_image_push": 0.0122,
+          "tv_m1_residue_vs_uniform_feeding": 0.5556,
+          "tv_m1_residue_vs_Q_image": 0.0051,
+          "frac_m2_le_M": 0.9849,
+          "mean_m1": 502.41,
+          "mean_m2": 26.17,
+          "Q_image_mod_m": [
+            0,
+            1,
+            3,
+            6
+          ],
+          "mae_gaussian": 0.185158,
+          "mae_image": 0.011994,
+          "mae_idigit": 0.184658,
+          "mae_emp_m1": 0.009042,
+          "F_image": {
+            "0": 0.185673,
+            "1": 0.814327
+          },
+          "F_idigit": {
+            "0": 0.382325,
+            "1": 0.617675
+          },
+          "F_emp_m1": {
+            "0": 0.188625,
+            "1": 0.811375
+          },
+          "measured": {
+            "0": 0.197667,
+            "1": 0.802333
+          }
+        },
+        {
+          "D": 64,
+          "n": 8000,
+          "skew_m1": 0.0199,
+          "tv_m1_vs_gaussian": 0.5562,
+          "tv_m1_vs_image": 0.0436,
+          "tv_m1_vs_idigit": 0.5562,
+          "tv_m2_emp_vs_gauss_push": 0.4536,
+          "tv_m2_emp_vs_image_push": 0.013,
+          "tv_m1_residue_vs_uniform_feeding": 0.5556,
+          "tv_m1_residue_vs_Q_image": 0.0047,
+          "frac_m2_le_M": 0.9748,
+          "mean_m1": 574.74,
+          "mean_m2": 28.14,
+          "Q_image_mod_m": [
+            0,
+            1,
+            3,
+            6
+          ],
+          "mae_gaussian": 0.234003,
+          "mae_image": 0.000405,
+          "mae_idigit": 0.23368,
+          "mae_emp_m1": 0.002083,
+          "F_image": {
+            "0": 0.093262,
+            "1": 0.906738
+          },
+          "F_idigit": {
+            "0": 0.327347,
+            "1": 0.672653
+          },
+          "F_emp_m1": {
+            "0": 0.09575,
+            "1": 0.90425
+          },
+          "measured": {
+            "0": 0.093667,
+            "1": 0.906333
+          }
+        }
+      ]
+    },
+    {
+      "name": "x^3",
+      "Q": "x^3",
+      "b": 10,
+      "M": 57,
+      "signature": [
+        0
+      ],
+      "targets": [
+        2,
+        6
+      ],
+      "p_i": 0.3333333333333333,
+      "Q_image_mod_m": [
+        0
+      ],
+      "refine_mae_Fj_mean": 0.035263,
+      "mae_gaussian_mean": 0.041021,
+      "mae_image_mean": 0.002434,
+      "mae_idigit_mean": 0.040805,
+      "mae_emp_m1_mean": 0.003416,
+      "tv_residue_vs_Q_image_mean": 0.0,
+      "verdict": "lattice of m1 is Q(n) mod m, not feeding residues of n; image Gaussian is the F_j correction",
+      "per_D": [
+        {
+          "D": 8,
+          "n": 8000,
+          "skew_m1": -0.0276,
+          "tv_m1_vs_gaussian": 0.6667,
+          "tv_m1_vs_image": 0.0449,
+          "tv_m1_vs_idigit": 0.6667,
+          "tv_m2_emp_vs_gauss_push": 0.2015,
+          "tv_m2_emp_vs_image_push": 0.0058,
+          "tv_m1_residue_vs_uniform_feeding": 0.6667,
+          "tv_m1_residue_vs_Q_image": 0.0,
+          "frac_m2_le_M": 1.0,
+          "mean_m1": 103.98,
+          "mean_m2": 24.86,
+          "Q_image_mod_m": [
+            0
+          ],
+          "mae_gaussian": 0.055429,
+          "mae_image": 0.000333,
+          "mae_idigit": 0.054401,
+          "mae_emp_m1": 0.001666,
+          "F_image": {
+            "2": 0.15957,
+            "6": 0.173763
+          },
+          "F_idigit": {
+            "2": 0.104849,
+            "6": 0.228485
+          },
+          "F_emp_m1": {
+            "2": 0.160917,
+            "6": 0.172417
+          },
+          "measured": {
+            "2": 0.158917,
+            "6": 0.17375
+          }
+        },
+        {
+          "D": 16,
+          "n": 8000,
+          "skew_m1": -0.0287,
+          "tv_m1_vs_gaussian": 0.6667,
+          "tv_m1_vs_image": 0.0313,
+          "tv_m1_vs_idigit": 0.6667,
+          "tv_m2_emp_vs_gauss_push": 0.2181,
+          "tv_m2_emp_vs_image_push": 0.011,
+          "tv_m1_residue_vs_uniform_feeding": 0.6667,
+          "tv_m1_residue_vs_Q_image": 0.0,
+          "frac_m2_le_M": 1.0,
+          "mean_m1": 211.89,
+          "mean_m2": 33.32,
+          "Q_image_mod_m": [
+            0
+          ],
+          "mae_gaussian": 0.050627,
+          "mae_image": 0.002292,
+          "mae_idigit": 0.050341,
+          "mae_emp_m1": 0.005333,
+          "F_image": {
+            "2": 0.090872,
+            "6": 0.242461
+          },
+          "F_idigit": {
+            "2": 0.13955,
+            "6": 0.193784
+          },
+          "F_emp_m1": {
+            "2": 0.094542,
+            "6": 0.238792
+          },
+          "measured": {
+            "2": 0.086917,
+            "6": 0.241833
+          }
+        },
+        {
+          "D": 24,
+          "n": 8000,
+          "skew_m1": 0.0163,
+          "tv_m1_vs_gaussian": 0.6667,
+          "tv_m1_vs_image": 0.0315,
+          "tv_m1_vs_idigit": 0.6667,
+          "tv_m2_emp_vs_gauss_push": 0.2873,
+          "tv_m2_emp_vs_image_push": 0.0198,
+          "tv_m1_residue_vs_uniform_feeding": 0.6667,
+          "tv_m1_residue_vs_Q_image": 0.0,
+          "frac_m2_le_M": 1.0,
+          "mean_m1": 319.96,
+          "mean_m2": 31.69,
+          "Q_image_mod_m": [
+            0
+          ],
+          "mae_gaussian": 0.001123,
+          "mae_image": 0.00133,
+          "mae_idigit": 0.001331,
+          "mae_emp_m1": 0.001875,
+          "F_image": {
+            "2": 0.074336,
+            "6": 0.258997
+          },
+          "F_idigit": {
+            "2": 0.076997,
+            "6": 0.256336
+          },
+          "F_emp_m1": {
+            "2": 0.073792,
+            "6": 0.259542
+          },
+          "measured": {
+            "2": 0.0755,
+            "6": 0.2575
+          }
+        },
+        {
+          "D": 40,
+          "n": 8000,
+          "skew_m1": -0.0048,
+          "tv_m1_vs_gaussian": 0.6667,
+          "tv_m1_vs_image": 0.0276,
+          "tv_m1_vs_idigit": 0.6667,
+          "tv_m2_emp_vs_gauss_push": 0.1856,
+          "tv_m2_emp_vs_image_push": 0.0029,
+          "tv_m1_residue_vs_uniform_feeding": 0.6667,
+          "tv_m1_residue_vs_Q_image": 0.0,
+          "frac_m2_le_M": 1.0,
+          "mean_m1": 535.43,
+          "mean_m2": 33.67,
+          "Q_image_mod_m": [
+            0
+          ],
+          "mae_gaussian": 0.054765,
+          "mae_image": 0.002901,
+          "mae_idigit": 0.054905,
+          "mae_emp_m1": 0.003875,
+          "F_image": {
+            "2": 0.061984,
+            "6": 0.27135
+          },
+          "F_idigit": {
+            "2": 0.113988,
+            "6": 0.219346
+          },
+          "F_emp_m1": {
+            "2": 0.062958,
+            "6": 0.270375
+          },
+          "measured": {
+            "2": 0.059583,
+            "6": 0.27475
+          }
+        },
+        {
+          "D": 56,
+          "n": 8000,
+          "skew_m1": -0.0212,
+          "tv_m1_vs_gaussian": 0.6668,
+          "tv_m1_vs_image": 0.0253,
+          "tv_m1_vs_idigit": 0.6668,
+          "tv_m2_emp_vs_gauss_push": 0.039,
+          "tv_m2_emp_vs_image_push": 0.013,
+          "tv_m1_residue_vs_uniform_feeding": 0.6667,
+          "tv_m1_residue_vs_Q_image": 0.0,
+          "frac_m2_le_M": 1.0,
+          "mean_m1": 751.64,
+          "mean_m2": 38.23,
+          "Q_image_mod_m": [
+            0
+          ],
+          "mae_gaussian": 0.008632,
+          "mae_image": 0.003,
+          "mae_idigit": 0.008266,
+          "mae_emp_m1": 0.003,
+          "F_image": {
+            "2": 0.159199,
+            "6": 0.174135
+          },
+          "F_idigit": {
+            "2": 0.1514,
+            "6": 0.181933
+          },
+          "F_emp_m1": {
+            "2": 0.161083,
+            "6": 0.17225
+          },
+          "measured": {
+            "2": 0.162667,
+            "6": 0.176667
+          }
+        },
+        {
+          "D": 64,
+          "n": 8000,
+          "skew_m1": -0.0263,
+          "tv_m1_vs_gaussian": 0.6667,
+          "tv_m1_vs_image": 0.0201,
+          "tv_m1_vs_idigit": 0.6667,
+          "tv_m2_emp_vs_gauss_push": 0.2683,
+          "tv_m2_emp_vs_image_push": 0.01,
+          "tv_m1_residue_vs_uniform_feeding": 0.6667,
+          "tv_m1_residue_vs_Q_image": 0.0,
+          "frac_m2_le_M": 0.9775,
+          "mean_m1": 860.63,
+          "mean_m2": 41.95,
+          "Q_image_mod_m": [
+            0
+          ],
+          "mae_gaussian": 0.075549,
+          "mae_image": 0.00475,
+          "mae_idigit": 0.075586,
+          "mae_emp_m1": 0.00475,
+          "F_image": {
+            "2": 0.242088,
+            "6": 0.091245
+          },
+          "F_idigit": {
+            "2": 0.167165,
+            "6": 0.166169
+          },
+          "F_emp_m1": {
+            "2": 0.243333,
+            "6": 0.09
+          },
+          "measured": {
+            "2": 0.238,
+            "6": 0.085833
+          }
+        }
+      ]
+    }
+  ]
+}

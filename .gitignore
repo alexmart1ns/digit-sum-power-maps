@@ -26,3 +26,27 @@ paper/**/*.pdf
 # archived ones referenced by the paper. Keep new large runs out of git.
 data/sweeps/results_*.jsonl
 !data/sweeps/results_*.jsonl.gz
+data/mining/results_*.jsonl
+
+# Agent / IDE indexes (regenerable)
+.basinfy/
+.agents/
+.cursor/
+.devin/
+.claude/
+.continue/
+.vscode/
+.windsurf/
+.mcp.json
+.cursorrules
+.windsurfrules
+.clinerules
+.basinfyignore
+
+# Q-class stamped runs (commit *_latest only)
+data/qclass/**/*_202[0-9][0-9][0-9][0-9]T*
+!data/qclass/**/*_latest*
+
+# Mining stamped runs (commit *_latest only)
+data/mining/**/*_202[0-9][0-9][0-9][0-9]T*
+!data/mining/**/*_latest*

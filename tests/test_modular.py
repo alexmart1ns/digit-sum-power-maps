@@ -7,6 +7,7 @@ import pytest
 from dspm.modular import (
     cycle_count,
     cycle_count_formula,
+    cycle_count_formula_folded,
     periodic_point_count,
     periodic_point_count_formula,
     structure,
@@ -51,6 +52,23 @@ def test_cycle_count_formula(m_max, k_max):
     for m in range(1, m_max):
         for k in range(1, k_max + 1):
             assert cycle_count(k, m) == cycle_count_formula(k, m)
+
+
+@pytest.mark.parametrize("m_max, k_max", [(80, 20)])
+def test_cycle_count_formula_folded_matches_naive_and_graph(m_max, k_max):
+    """Problem 10.8: the CRT fold equals the expanded product and the graph."""
+    for m in range(1, m_max):
+        for k in range(1, k_max + 1):
+            folded = cycle_count_formula_folded(k, m)
+            assert folded == cycle_count_formula(k, m)
+            assert folded == cycle_count(k, m)
+
+
+def test_cycle_count_formula_folded_high_omega():
+    """Fold stays exact on a highly composite modulus where tuples would bite."""
+    m = 210  # 2*3*5*7
+    for k in (1, 2, 3, 4, 5, 8, 16, 15, 30):
+        assert cycle_count_formula_folded(k, m) == cycle_count(k, m)
 
 
 def test_periodic_count_covers_non_cyclic_unit_group():

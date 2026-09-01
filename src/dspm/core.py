@@ -105,7 +105,8 @@ def num_digits(y: int, b: int) -> int:
     """
     if y == 0:
         return 1
-    if HAVE_GMPY2:
+    # gmpy2.num_digits only accepts bases in [2, 62].
+    if HAVE_GMPY2 and 2 <= b <= 62:
         count = int(gmpy2.num_digits(mpz(y), b))
         if count > 1 and mpz(b) ** (count - 1) > y:
             count -= 1

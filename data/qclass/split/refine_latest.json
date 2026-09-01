@@ -1,0 +1,695 @@
+{
+  "stamp": "20260901T162150Z",
+  "lengths": [
+    8,
+    12,
+    16,
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60,
+    64
+  ],
+  "samples_per_band": 12000,
+  "note": "Does not overwrite split_latest.json from the first sidecar run.",
+  "results": [
+    {
+      "name": "2x^2+3x+1",
+      "Q": "1 + 3x + 2x^2",
+      "b": 10,
+      "status": "split",
+      "M": 41,
+      "signature": [
+        1,
+        6
+      ],
+      "targets": [
+        0,
+        1
+      ],
+      "attractor_labels": [
+        "[6, 10]",
+        "[15, 19]"
+      ],
+      "p_i": 1.0,
+      "samples_per_band": 12000,
+      "noise_floor": 0.004564,
+      "mae_Fj_mean": 0.006074,
+      "mae_Fj_tail": 0.003198,
+      "within_3_noise": false,
+      "any_oscillates": true,
+      "antiphase_pearson": -1.0,
+      "oscillation": [
+        {
+          "attractor": "[6, 10]",
+          "signature": [
+            1,
+            6
+          ],
+          "min": 0.09366666666666666,
+          "max": 0.36583333333333334,
+          "amplitude": 0.27216666666666667,
+          "mean_first_half": 0.26539285714285715,
+          "mean_second_half": 0.18548958333333332,
+          "monotone": false,
+          "oscillates": true
+        },
+        {
+          "attractor": "[15, 19]",
+          "signature": [
+            1,
+            6
+          ],
+          "min": 0.6341666666666667,
+          "max": 0.9063333333333333,
+          "amplitude": 0.27216666666666667,
+          "mean_first_half": 0.7346071428571429,
+          "mean_second_half": 0.8145104166666667,
+          "monotone": false,
+          "oscillates": true
+        }
+      ],
+      "Fj_failure_mode": "labelling / higher iterates; Gaussian location is roughly right",
+      "landing_diagnostics": [
+        {
+          "D": 8,
+          "n": 5000,
+          "tv_digit_length": 0.021,
+          "mean_L_empirical": 16.18,
+          "mean_L_mixture_Q": 16.188,
+          "mean_m1_empirical": 70.32,
+          "mean_m1_gaussian": 72.85,
+          "std_m1_empirical": 11.37,
+          "std_m1_gaussian": 11.93,
+          "mean_m1_over_4.5L": 0.9658,
+          "mean_m1_given_L_vs_indep": 0.9644,
+          "frac_needs_iterate_past_M": 0.9972,
+          "mean_steps_to_trap": 1.997,
+          "M": 41
+        },
+        {
+          "D": 16,
+          "n": 5000,
+          "tv_digit_length": 0.0015,
+          "mean_L_empirical": 32.185,
+          "mean_L_mixture_Q": 32.188,
+          "mean_m1_empirical": 142.1,
+          "mean_m1_gaussian": 144.85,
+          "std_m1_empirical": 16.0,
+          "std_m1_gaussian": 16.56,
+          "mean_m1_over_4.5L": 0.9811,
+          "mean_m1_given_L_vs_indep": 0.9825,
+          "frac_needs_iterate_past_M": 1.0,
+          "mean_steps_to_trap": 2.0,
+          "M": 41
+        },
+        {
+          "D": 24,
+          "n": 5000,
+          "tv_digit_length": 0.0025,
+          "mean_L_empirical": 48.183,
+          "mean_L_mixture_Q": 48.188,
+          "mean_m1_empirical": 214.39,
+          "mean_m1_gaussian": 216.85,
+          "std_m1_empirical": 19.8,
+          "std_m1_gaussian": 20.15,
+          "mean_m1_over_4.5L": 0.9888,
+          "mean_m1_given_L_vs_indep": 0.9899,
+          "frac_needs_iterate_past_M": 1.0,
+          "mean_steps_to_trap": 2.0,
+          "M": 41
+        },
+        {
+          "D": 40,
+          "n": 5000,
+          "tv_digit_length": 0.0104,
+          "mean_L_empirical": 80.204,
+          "mean_L_mixture_Q": 80.188,
+          "mean_m1_empirical": 358.01,
+          "mean_m1_gaussian": 360.85,
+          "std_m1_empirical": 25.41,
+          "std_m1_gaussian": 25.89,
+          "mean_m1_over_4.5L": 0.9919,
+          "mean_m1_given_L_vs_indep": 0.9918,
+          "frac_needs_iterate_past_M": 1.0,
+          "mean_steps_to_trap": 2.0,
+          "M": 41
+        },
+        {
+          "D": 56,
+          "n": 5000,
+          "tv_digit_length": 0.0026,
+          "mean_L_empirical": 112.191,
+          "mean_L_mixture_Q": 112.188,
+          "mean_m1_empirical": 502.14,
+          "mean_m1_gaussian": 504.85,
+          "std_m1_empirical": 30.41,
+          "std_m1_gaussian": 30.56,
+          "mean_m1_over_4.5L": 0.9946,
+          "mean_m1_given_L_vs_indep": 0.9944,
+          "frac_needs_iterate_past_M": 1.0,
+          "mean_steps_to_trap": 2.015,
+          "M": 41
+        }
+      ],
+      "per_D": [
+        {
+          "D": 8,
+          "mae_Fj": 0.023119,
+          "F_j": {
+            "0": 0.388952,
+            "1": 0.611048
+          },
+          "measured": {
+            "0": 0.365833,
+            "1": 0.634167
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 12,
+          "mae_Fj": 0.024407,
+          "F_j": {
+            "0": 0.230593,
+            "1": 0.769407
+          },
+          "measured": {
+            "0": 0.255,
+            "1": 0.745
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 16,
+          "mae_Fj": 0.00447,
+          "F_j": {
+            "0": 0.18472,
+            "1": 0.81528
+          },
+          "measured": {
+            "0": 0.18025,
+            "1": 0.81975
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 20,
+          "mae_Fj": 0.007279,
+          "F_j": {
+            "0": 0.306529,
+            "1": 0.693471
+          },
+          "measured": {
+            "0": 0.29925,
+            "1": 0.70075
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 24,
+          "mae_Fj": 0.001759,
+          "F_j": {
+            "0": 0.288741,
+            "1": 0.711259
+          },
+          "measured": {
+            "0": 0.2905,
+            "1": 0.7095
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 28,
+          "mae_Fj": 0.003062,
+          "F_j": {
+            "0": 0.227562,
+            "1": 0.772438
+          },
+          "measured": {
+            "0": 0.2245,
+            "1": 0.7755
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 32,
+          "mae_Fj": 0.002256,
+          "F_j": {
+            "0": 0.244673,
+            "1": 0.755327
+          },
+          "measured": {
+            "0": 0.242417,
+            "1": 0.757583
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 36,
+          "mae_Fj": 0.005457,
+          "F_j": {
+            "0": 0.192126,
+            "1": 0.807874
+          },
+          "measured": {
+            "0": 0.197583,
+            "1": 0.802417
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 40,
+          "mae_Fj": 0.000111,
+          "F_j": {
+            "0": 0.210611,
+            "1": 0.789389
+          },
+          "measured": {
+            "0": 0.2105,
+            "1": 0.7895
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 44,
+          "mae_Fj": 0.000931,
+          "F_j": {
+            "0": 0.204569,
+            "1": 0.795431
+          },
+          "measured": {
+            "0": 0.2055,
+            "1": 0.7945
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 48,
+          "mae_Fj": 0.000665,
+          "F_j": {
+            "0": 0.212335,
+            "1": 0.787665
+          },
+          "measured": {
+            "0": 0.213,
+            "1": 0.787
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 52,
+          "mae_Fj": 0.001164,
+          "F_j": {
+            "0": 0.236836,
+            "1": 0.763164
+          },
+          "measured": {
+            "0": 0.238,
+            "1": 0.762
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 56,
+          "mae_Fj": 0.011994,
+          "F_j": {
+            "0": 0.185673,
+            "1": 0.814327
+          },
+          "measured": {
+            "0": 0.197667,
+            "1": 0.802333
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 60,
+          "mae_Fj": 0.004027,
+          "F_j": {
+            "0": 0.123973,
+            "1": 0.876027
+          },
+          "measured": {
+            "0": 0.128,
+            "1": 0.872
+          },
+          "aggregate": 1.0
+        },
+        {
+          "D": 64,
+          "mae_Fj": 0.000405,
+          "F_j": {
+            "0": 0.093262,
+            "1": 0.906738
+          },
+          "measured": {
+            "0": 0.093667,
+            "1": 0.906333
+          },
+          "aggregate": 1.0
+        }
+      ]
+    },
+    {
+      "name": "x^3",
+      "Q": "x^3",
+      "b": 10,
+      "status": "split",
+      "M": 57,
+      "signature": [
+        0
+      ],
+      "targets": [
+        2,
+        6
+      ],
+      "attractor_labels": [
+        "[18]",
+        "[27]"
+      ],
+      "p_i": 0.3333333333333333,
+      "samples_per_band": 12000,
+      "noise_floor": 0.004564,
+      "mae_Fj_mean": 0.002853,
+      "mae_Fj_tail": 0.002872,
+      "within_3_noise": true,
+      "any_oscillates": true,
+      "antiphase_pearson": -0.9964,
+      "oscillation": [
+        {
+          "attractor": "[18]",
+          "signature": [
+            0
+          ],
+          "min": 0.059583333333333335,
+          "max": 0.238,
+          "amplitude": 0.17841666666666667,
+          "mean_first_half": 0.11098809523809523,
+          "mean_second_half": 0.16110416666666666,
+          "monotone": false,
+          "oscillates": true
+        },
+        {
+          "attractor": "[27]",
+          "signature": [
+            0
+          ],
+          "min": 0.08583333333333333,
+          "max": 0.27475,
+          "amplitude": 0.18891666666666668,
+          "mean_first_half": 0.22016666666666665,
+          "mean_second_half": 0.17172916666666668,
+          "monotone": false,
+          "oscillates": true
+        }
+      ],
+      "Fj_failure_mode": "labelling / higher iterates; Gaussian location is roughly right",
+      "landing_diagnostics": [
+        {
+          "D": 8,
+          "n": 5000,
+          "tv_digit_length": 0.0075,
+          "mean_L_empirical": 23.476,
+          "mean_L_mixture_Q": 23.467,
+          "mean_m1_empirical": 103.89,
+          "mean_m1_gaussian": 105.6,
+          "std_m1_empirical": 14.9,
+          "std_m1_gaussian": 14.28,
+          "mean_m1_over_4.5L": 0.9834,
+          "mean_m1_given_L_vs_indep": 0.9801,
+          "frac_needs_iterate_past_M": 0.9982,
+          "mean_steps_to_trap": 1.998,
+          "M": 57
+        },
+        {
+          "D": 16,
+          "n": 5000,
+          "tv_digit_length": 0.0084,
+          "mean_L_empirical": 47.46,
+          "mean_L_mixture_Q": 47.467,
+          "mean_m1_empirical": 211.88,
+          "mean_m1_gaussian": 213.6,
+          "std_m1_empirical": 20.36,
+          "std_m1_gaussian": 20.05,
+          "mean_m1_over_4.5L": 0.9921,
+          "mean_m1_given_L_vs_indep": 0.9912,
+          "frac_needs_iterate_past_M": 1.0,
+          "mean_steps_to_trap": 2.0,
+          "M": 57
+        },
+        {
+          "D": 24,
+          "n": 5000,
+          "tv_digit_length": 0.0112,
+          "mean_L_empirical": 71.468,
+          "mean_L_mixture_Q": 71.467,
+          "mean_m1_empirical": 320.42,
+          "mean_m1_gaussian": 321.6,
+          "std_m1_empirical": 24.85,
+          "std_m1_gaussian": 24.49,
+          "mean_m1_over_4.5L": 0.9963,
+          "mean_m1_given_L_vs_indep": 0.9979,
+          "frac_needs_iterate_past_M": 1.0,
+          "mean_steps_to_trap": 2.0,
+          "M": 57
+        },
+        {
+          "D": 40,
+          "n": 5000,
+          "tv_digit_length": 0.0053,
+          "mean_L_empirical": 119.457,
+          "mean_L_mixture_Q": 119.467,
+          "mean_m1_empirical": 535.93,
+          "mean_m1_gaussian": 537.6,
+          "std_m1_empirical": 31.9,
+          "std_m1_gaussian": 31.56,
+          "mean_m1_over_4.5L": 0.997,
+          "mean_m1_given_L_vs_indep": 0.9978,
+          "frac_needs_iterate_past_M": 1.0,
+          "mean_steps_to_trap": 2.0,
+          "M": 57
+        },
+        {
+          "D": 56,
+          "n": 5000,
+          "tv_digit_length": 0.0031,
+          "mean_L_empirical": 167.463,
+          "mean_L_mixture_Q": 167.467,
+          "mean_m1_empirical": 752.28,
+          "mean_m1_gaussian": 753.6,
+          "std_m1_empirical": 36.34,
+          "std_m1_gaussian": 37.31,
+          "mean_m1_over_4.5L": 0.9983,
+          "mean_m1_given_L_vs_indep": 0.9986,
+          "frac_needs_iterate_past_M": 1.0,
+          "mean_steps_to_trap": 2.0,
+          "M": 57
+        }
+      ],
+      "per_D": [
+        {
+          "D": 8,
+          "mae_Fj": 0.000333,
+          "F_j": {
+            "2": 0.15957,
+            "6": 0.173763
+          },
+          "measured": {
+            "2": 0.158917,
+            "6": 0.17375
+          },
+          "aggregate": 0.332667
+        },
+        {
+          "D": 12,
+          "mae_Fj": 0.00266,
+          "F_j": {
+            "2": 0.151868,
+            "6": 0.181465
+          },
+          "measured": {
+            "2": 0.1495,
+            "6": 0.184417
+          },
+          "aggregate": 0.333917
+        },
+        {
+          "D": 16,
+          "mae_Fj": 0.002292,
+          "F_j": {
+            "2": 0.090872,
+            "6": 0.242461
+          },
+          "measured": {
+            "2": 0.086917,
+            "6": 0.241833
+          },
+          "aggregate": 0.32875
+        },
+        {
+          "D": 20,
+          "mae_Fj": 0.002588,
+          "F_j": {
+            "2": 0.132088,
+            "6": 0.201245
+          },
+          "measured": {
+            "2": 0.1275,
+            "6": 0.201833
+          },
+          "aggregate": 0.329333
+        },
+        {
+          "D": 24,
+          "mae_Fj": 0.00133,
+          "F_j": {
+            "2": 0.074336,
+            "6": 0.258997
+          },
+          "measured": {
+            "2": 0.0755,
+            "6": 0.2575
+          },
+          "aggregate": 0.333
+        },
+        {
+          "D": 28,
+          "mae_Fj": 0.004083,
+          "F_j": {
+            "2": 0.069049,
+            "6": 0.264284
+          },
+          "measured": {
+            "2": 0.065917,
+            "6": 0.25925
+          },
+          "aggregate": 0.325167
+        },
+        {
+          "D": 32,
+          "mae_Fj": 0.006802,
+          "F_j": {
+            "2": 0.118511,
+            "6": 0.214823
+          },
+          "measured": {
+            "2": 0.112667,
+            "6": 0.222583
+          },
+          "aggregate": 0.33525
+        },
+        {
+          "D": 36,
+          "mae_Fj": 0.002566,
+          "F_j": {
+            "2": 0.091351,
+            "6": 0.241983
+          },
+          "measured": {
+            "2": 0.095833,
+            "6": 0.241333
+          },
+          "aggregate": 0.337167
+        },
+        {
+          "D": 40,
+          "mae_Fj": 0.0029,
+          "F_j": {
+            "2": 0.061984,
+            "6": 0.27135
+          },
+          "measured": {
+            "2": 0.059583,
+            "6": 0.27475
+          },
+          "aggregate": 0.334333
+        },
+        {
+          "D": 44,
+          "mae_Fj": 0.004708,
+          "F_j": {
+            "2": 0.124693,
+            "6": 0.20864
+          },
+          "measured": {
+            "2": 0.121333,
+            "6": 0.202583
+          },
+          "aggregate": 0.323917
+        },
+        {
+          "D": 48,
+          "mae_Fj": 0.000219,
+          "F_j": {
+            "2": 0.201177,
+            "6": 0.132156
+          },
+          "measured": {
+            "2": 0.200833,
+            "6": 0.13225
+          },
+          "aggregate": 0.333083
+        },
+        {
+          "D": 52,
+          "mae_Fj": 0.001917,
+          "F_j": {
+            "2": 0.182411,
+            "6": 0.150922
+          },
+          "measured": {
+            "2": 0.1855,
+            "6": 0.151667
+          },
+          "aggregate": 0.337167
+        },
+        {
+          "D": 56,
+          "mae_Fj": 0.003,
+          "F_j": {
+            "2": 0.159199,
+            "6": 0.174135
+          },
+          "measured": {
+            "2": 0.162667,
+            "6": 0.176667
+          },
+          "aggregate": 0.339333
+        },
+        {
+          "D": 60,
+          "mae_Fj": 0.00264,
+          "F_j": {
+            "2": 0.222194,
+            "6": 0.11114
+          },
+          "measured": {
+            "2": 0.225083,
+            "6": 0.10875
+          },
+          "aggregate": 0.333833
+        },
+        {
+          "D": 64,
+          "mae_Fj": 0.00475,
+          "F_j": {
+            "2": 0.242088,
+            "6": 0.091245
+          },
+          "measured": {
+            "2": 0.238,
+            "6": 0.085833
+          },
+          "aggregate": 0.323833
+        }
+      ]
+    }
+  ]
+}

@@ -98,6 +98,27 @@ def test_example_5_5_the_22_33_44_law():
     assert abs(counts[(13, 16)] / window - 4 / 9) < 0.003
 
 
+def test_proposition_4_5_k1_is_always_tight():
+    """On Z^+, C(1,b) = {{1},...,{b-1}} and Delta = 0."""
+    for b in range(2, 16):
+        system = build_system(1, b)
+        assert set(system.attractors) == {(j,) for j in range(1, b)}
+        assert system.count == cycle_count(1, b - 1) == b - 1
+
+
+def test_proposition_4_5_individual_densities():
+    """Digital-root basins: B({j}) has density 1/(b-1)."""
+    b = 10
+    m = b - 1
+    system = build_system(1, b)
+    window = 9 * 1000
+    counts = defaultdict(int)
+    for n in range(1, window + 1):
+        counts[system.attractors[system.attractor_of(n)]] += 1
+    for j in range(1, b):
+        assert counts[(j,)] == window // m
+
+
 def test_basins_partition_the_window():
     system = build_system(3, 10)
     assert sum(system.basin_sizes) == system.M
