@@ -38,7 +38,7 @@ a completed proof.
 | Gaussian label sweep D≤300 | amp 0.11–0.19, cross-decade r=0.735 | paper §10.6′ |
 | Gaussian label sweep D≤1000 | amp survives; cross-decade r=**0.26** | `label_sweep_latest.md` |
 | Bridge MAE | ≈ 0.002 (F_j vs MC) | `audit_05_lattice.py`, `bridge_check.py` |
-| Local mean LM | inconclusive | `local_mean_latest.md` |
+| Local mean LM | suggests non-convergence | `lm_liminf_latest.md`, `local_mean_latest.md` |
 
 **Nuance (D=1000):** amplitude does not collapse, but **phase correlation**
 between decades weakens (0.26 vs 0.735). Do not overclaim long-scale phase

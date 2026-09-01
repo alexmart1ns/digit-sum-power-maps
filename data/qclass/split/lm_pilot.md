@@ -26,12 +26,14 @@ Fix `(k,b)=(3,10)`, `m=9`, `M=57`. Signature `γ={0}`; physical attractors
 | Diagnostic | Result | File |
 |------------|--------|------|
 | Decade collapse `Ψ(V)` vs `Ψ(bV)` | Pearson **0.57**, MAE **0.09** | `local_mean_latest.md` |
-| Amplitude `Ψ_{18}` at V≤10⁷ | ≈ **0.67** | same |
-| Labelling vs digit length `L` | Amplitude across `L` in `[1,M]` | `lm_structure_latest.md` |
+| Global `liminf` / `limsup` on Ψ_{18} | **0.09** / **0.76** (range **0.67**) | `lm_liminf_latest.md` |
+| Subsequence `V ≈ 10^n` range Ψ_{18} | **0.24**–**0.64** (range **0.40**) | `lm_liminf_latest.md` |
+| Labelling vs digit length `L` in `[1,M]` | amplitude **0.6** across L | `lm_structure_latest.md` |
 | Delange [13] for `s_b` | Log-periodic; **not** for `h_j` | `LITERATURE.md` |
 
-**Interpretation:** Neither confirms a period-1 factor in `log_b V`, nor proves LM.
-Pearson 0.57 is **inconclusive** — between “collapse” and “random”.
+**Verdict (computational):** `suggests_non_convergence` — Ψ_j has range 0.67 on
+`V ≤ 10^7` and 0.40 on decade anchors alone. This **supports** LM but is **not**
+a proof (`lim inf ≠ lim sup` along a specific infinite sequence remains to be shown).
 
 ---
 
@@ -82,6 +84,7 @@ not Monte Carlo.
 ```bash
 python scripts/local_mean.py --k 3 --b 10 --v-max 10000000
 python scripts/lm_structure.py --k 3 --b 10 --signature 0
+python scripts/lm_liminf.py
 ```
 
 ---

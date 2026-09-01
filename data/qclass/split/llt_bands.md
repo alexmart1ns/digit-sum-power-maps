@@ -89,9 +89,46 @@ the bridge `δ_j(D) = F_j(D) + o(1)` (modulo gap G4 on first landing).
 
 ---
 
-## 6. Next actions
+## 6. What [9] actually proves (scope check)
 
-1. Locate exact DMR theorem number for local limit on `s_b(n^k)` at scale `√D`.
-2. Write band-to-interval comparison lemma: `N_D` vs `[b^{D−1}, b^D)`.
-3. Check whether [15] Ch. on polynomial sequences gives uniform `D` error.
-4. Only after (1)–(3): promote G2 from sidecar to paper §10 as “Lemma (input)”.
+Drmota–Mauduit–Rivat, *J. London Math. Soc.* **84**(1) (2011), 81–102 ([arXiv:1001.4169](https://arxiv.org/abs/1001.4169)):
+
+| Result in [9] | Statement (paraphrase) | Usable for G2? |
+|---------------|------------------------|----------------|
+| Main theorem | For large prime `q` with `(a_h,q)=1`, equidistribution of `s_q(P(n))` in AP mod `m`: count = `N/m · Q*(g,d) + O(N^{1−σ})` | **AP yes**; base `q` large prime |
+| Monomial remark | Improved lower bounds for `P(x)=x^h`, `h≥3` | Supports density, not LLT |
+| Irrational rotation | Uniform distribution of `{α s_q(P(n))}` for `α ∉ ℚ` when `q` large prime | Suggests **fluctuation** of digit sums |
+
+**Pilot `(3,10)`:** base `10` is **composite**; [9] as stated targets large **prime** bases. The paper's Hypothesis LLT treats [9] as the **analytic input** for the monomial family at `b=10` — consistent with applied use in §7.5, but G2 must either:
+
+- (a) cite a composite-base extension (survey / [15]), or  
+- (b) prove G2 directly for `b=10`, `k=3` from digit-layer methods.
+
+**Gap G2c (new):** formal citation chain for **composite** `b=10`, not only prime `q` in [9].
+
+---
+
+## 7. Band comparison lemma (draft)
+
+**Lemma (band vs interval).** For fixed `b` and `r mod m`,
+
+`|N_D^{(r)}| = (b^D - b^{D-1})/m + O(1)`.
+
+If a digit-sum counting estimate holds on `[1,N]` with error `O(N^{1-σ})`, then on
+`N_D^{(r)}` with `N = b^D` the error is `O(b^{D(1-σ)}) = o(b^D)` for `σ>0`.
+
+**Proof sketch:** `N_D^{(r)}` is a union of progressions with density `1/m` in the band;
+boundary effects at `b^{D-1}` contribute `O(1)`.
+
+This reduces G2a to verifying that DMR-type bounds apply to **initial segments**
+`n < b^D` restricted to residue `r`, not only `n < N` globally.
+
+---
+
+## 8. Next actions
+
+1. ~~Locate DMR theorem~~ — Main equidistribution theorem + prime-base caveat (§6).
+2. Write band-to-interval lemma (§7) as numbered sidecar lemma.
+3. For pilot: either find composite-base LLT in [15] or prove CLT for `s_{10}(n^3)`
+   on `N_D^{(r)}` directly (Peter 2002 for summatory function).
+4. Only after (2)–(3): promote G2 from sidecar to paper §10 as “Lemma (input)”.
