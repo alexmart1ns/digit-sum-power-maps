@@ -50,3 +50,15 @@ data/qclass/**/*_202[0-9][0-9][0-9][0-9]T*
 # Mining stamped runs (commit *_latest only)
 data/mining/**/*_202[0-9][0-9][0-9][0-9]T*
 !data/mining/**/*_latest*
+
+# Split diagnostics stamped runs (commit *_latest only)
+data/split/**/*_202[0-9][0-9][0-9][0-9]T*
+!data/split/**/*_latest*
+
+# Agent instruction copies (local IDE tooling)
+.github/copilot-instructions.md
+AGENTS.md
+CLAUDE.md
+CONVENTIONS.md
+GEMINI.md
+KIMI.md
