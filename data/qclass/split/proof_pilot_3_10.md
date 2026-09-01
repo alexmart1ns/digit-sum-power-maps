@@ -84,7 +84,7 @@ See [`ATTACK_PLAN.md`](ATTACK_PLAN.md) for the full PhD roadmap. Summary:
 python scripts/bridge_check.py --k 3 --b 10
 python scripts/split_predict.py --k 3 --b 10 --d-max 90 --samples-hint 120000
 python scripts/local_mean.py --k 3 --b 10 --v-max 10000000
-python scripts/lm_stratum.py --k 3 --b 10 --n-max 14
+python scripts/lm_suffix.py --k 3 --b 10 --n-max 14
 python scripts/lm_oscillation.py --k 3 --b 10 --n-max 14
 python scripts/g4_landing.py --k 3 --b 10
 ```

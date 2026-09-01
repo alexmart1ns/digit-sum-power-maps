@@ -54,6 +54,7 @@ Results promoted to paper §7.5 and Appendix B.5 (`paper/*/paper.md`).
 | `scripts/lm_deterministic.py` | `split/lm_deterministic_latest.*` — exact trap ρ_L and decade Ψ |
 | `scripts/g4_landing.py` | `split/g4_landing_latest.*` — G4 landing depth / periodicity scan |
 | `scripts/lm_stratum.py` | `split/lemma_b_stratum_latest.*` — Lemma B weights and parity |
+| `scripts/lm_suffix.py` | `split/lemma_c_route_ca_latest.*` — Route C-A suffix-class rho |
 | `scripts/lm_oscillation.py` | `split/lemma_c_oscillation_latest.*` — Lemma C decade oscillation |
 
 Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.

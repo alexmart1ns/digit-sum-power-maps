@@ -56,13 +56,26 @@ refutes naive convergence hypotheses (§4.3).
 
 ## 4. Proof routes (Week 3)
 
-### Route C-A — Alternating `ρ_n` from suffix classes
+### Route C-A — Alternating `ρ_n` from suffix classes ✓ **closed (empirical)**
 
 Since `g(v)` has landing depth `≤2` ([`g4_landing_latest.md`](g4_landing_latest.md)),
-classify `v` by `(v mod 10^2, v mod 10^3)` and show two suffix classes yield
-`ρ` differing by `≥ c`. No simple `b^T` periodicity; use **2-step** digit suffix.
+classify `v` by `v mod 10^2` at stratum `L=n` in the window at `V=10^n`.
 
-**Status:** open (analytic).
+**Compute:** `scripts/lm_suffix.py` → [`lemma_c_route_ca_latest.md`](lemma_c_route_ca_latest.md)
+
+| Metric | Value (`n=9…14`, mod 100) |
+|--------|---------------------------|
+| Min per-decade max suffix gap | **≥0.175** (`n=11`) |
+| Max per-decade gap | **0.371** (`n=9`, suffixes `1` vs `59`) |
+| Best stable pair (all 6 decades) | `[50,55]`, min gap **≥0.12** |
+| At `n=14` | gap **0.289** (suffixes `0` vs `49`) |
+
+**Interpretation:** `ρ_n` aggregates suffix classes with **intrinsic** labelling rates
+differing by `≥0.12` persistently. Window mix shifts with `n` → aggregate `ρ_n` oscillates.
+This explains Lemma C mechanism; **analytic** bound `|ρ(s₁)−ρ(s₂)|≥c` on fixed suffix
+classes remains open (finite carry-depth argument).
+
+**Status:** empirical closure; not a `limsup≠liminf` proof.
 
 ### Route C-B — Log-periodic inheritance
 
@@ -122,7 +135,8 @@ Lemma C is the **last pilot-specific** gap before conditional 10.6.
 |------|--------|
 | Empirical gap `c ≥ 0.32` | **Done** (`n≤14`) |
 | Route C-C convergence refutation | **Done** (`n≤14`, all models fail) |
-| Analytic proof of `limsup ≠ liminf` | **Open** (Route C-A or C-B) |
+| Route C-A suffix-class gap | **Done** (`c≥0.12` stable, `n=9…14`) | `lemma_c_route_ca_latest.md` |
+| Analytic proof of `limsup ≠ liminf` | **Open** (carry-depth bound) | Route C-A analytic |
 | Promotion to paper | **Blocked** on analytic Lemma C |
 
 ---

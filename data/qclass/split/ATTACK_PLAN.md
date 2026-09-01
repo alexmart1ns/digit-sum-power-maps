@@ -345,4 +345,5 @@ python scripts/split_predict.py --k 3 --b 10 --d-max 90
 **Paper merge blocked** on analytic Lemma C and G2d. Optional v2.2 footnotes (Tier B):
 bridge MAE 0.0017, D=1000 label sweep caveat, script pipeline, landing depth ≤2 remark.
 
-**Next analytic work:** Route C-A (suffix-class bound on `ρ_n`); parallel G2d literature track.
+**Next analytic work:** carry-depth bound for fixed suffix classes (Route C-A analytic);
+parallel G2d literature track.
