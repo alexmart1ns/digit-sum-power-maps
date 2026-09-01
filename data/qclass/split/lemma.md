@@ -66,14 +66,17 @@ LM(Q,b,j) for labelling Ψ_j(V)  ──┘         (bridge)              (§7.5 
 
 | Step | Status | Action |
 |------|--------|--------|
-| 1. LLT on dyadic bands + progressions | Input for monomials [9]; open for general `Q` | Restrict DMR to `N_D^(r)`; cite Hare–Laishram–Stoll for size only |
-| 2. Bridge LLT → `F_j` | Open (mechanistic §7.5) | Formalize Gaussian mixture + exact labelling as theorem |
-| 3. LM for dynamics-induced `h_j` | Open; diagnosed by `local_mean.py` | Literature [13–15]; see `checks/LITERATURE.md` |
-| 4. Cumulative density | Elementary given (2)+(3) | §7.5 Remark after Observation 7.6 |
+| 1. LLT (G2d) | **Hypothesis** — no citation | [`g2d_feasibility.md`](g2d_feasibility.md); CLT via [`clt_citation.md`](clt_citation.md) |
+| 2. Bridge `δ_j = F_j + o(1)` | Conditional on LLT + G4-depth | [`bridge_lemma.md`](bridge_lemma.md) §7 |
+| 3. LM / `Ψ_j` | **Empirical** Lemma B+C (`c≥0.32`) | [`lemma_b_stratum.md`](lemma_b_stratum.md), [`lemma_c_oscillation.md`](lemma_c_oscillation.md) |
+| 4. Cumulative density | Elementary given (2)+(3) | §7.5 Remark |
+
+**Pilot conditional chain (2026-09-01):** Hypothesis LLT + Lemma B (`w_n→1/2`) +
+empirical Lemma C (`Ψ_{18}(10^n)` gap `≥0.32`, `n≤12`) + Lemma D-depth (`≤2` steps)
+⟹ **conditional** non-existence of `lim δ_j` via bridge + LM.
 
 **Retracted route:** thin-window Delange lemma with `C^1` period-1 factor (Appendix
 B, Remark after LM). Do not use.
 
-**Pilot:** `(k,b)=(3,10)`, signature `{0}`. DMR covers LLT for `n^3`; LM remains
-the analytic gap. See also [`bridge_lemma.md`](bridge_lemma.md) and
-[`proof_pilot_3_10.md`](proof_pilot_3_10.md).
+**Pilot:** `(k,b)=(3,10)`, signature `{0}`. See [`bridge_lemma.md`](bridge_lemma.md),
+[`proof_pilot_3_10.md`](proof_pilot_3_10.md), [`EXECUTION_PLAN.md`](EXECUTION_PLAN.md).

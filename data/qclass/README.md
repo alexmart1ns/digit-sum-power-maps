@@ -54,6 +54,7 @@ Results promoted to paper §7.5 and Appendix B.5 (`paper/*/paper.md`).
 | `scripts/lm_deterministic.py` | `split/lm_deterministic_latest.*` — exact trap ρ_L and decade Ψ |
 | `scripts/g4_landing.py` | `split/g4_landing_latest.*` — G4 landing depth / periodicity scan |
 | `scripts/lm_stratum.py` | `split/lemma_b_stratum_latest.*` — Lemma B weights and parity |
+| `scripts/lm_oscillation.py` | `split/lemma_c_oscillation_latest.*` — Lemma C decade oscillation |
 
 Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 
@@ -74,7 +75,10 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | `split/clt_citation.md` | CLT leg [15] + Lemma A |
 | `split/lemma_d_g4.md` | Lemma D (G4 landing) draft |
 | `split/lemma_b_stratum.md` | Lemma B: stratum weights + rho_L |
+| `split/lemma_c_oscillation.md` | Lemma C: decade oscillation (empirical) |
+| `split/g2d_feasibility.md` | G2d literature blocker memo |
 | `split/lemma_b_stratum_latest.md` | Compute output for Lemma B |
+| `split/lemma_c_oscillation_latest.md` | Compute output for Lemma C |
 | `split/lemma.md` | Conditional LLT + LM ⇒ no limit |
 | `checks/LITERATURE.md` | [13]–[15] vs Hypothesis LM |
 | `universality/THEORY_NOTE.md` | S_b(Q(n)) synthesis |

@@ -2,7 +2,7 @@
 
 Sidecar tracker for [`ATTACK_PLAN.md`](ATTACK_PLAN.md). Paper frozen.
 
-**Start:** 2026-09-01 | **Current phase:** Week 2
+**Start:** 2026-09-01 | **Current phase:** Week 4
 
 ---
 
@@ -44,10 +44,10 @@ Sidecar tracker for [`ATTACK_PLAN.md`](ATTACK_PLAN.md). Paper frozen.
 
 | ID | Task | Output | Status |
 |----|------|--------|--------|
-| W3.1 | Alternating bound on `Ψ_j(b^n)` | `lemma_c_oscillation.md` | pending |
-| W3.2 | Close G4 in `bridge_lemma.md` | §G4 proof sketch | pending |
-| W3.3 | Peter (2002) covariance notes | `llt_bands.md` G2b | pending |
-| W3.4 | [9] Problem 2 feasibility memo | `g2d_feasibility.md` | pending |
+| W3.1 | Alternating bound on `Ψ_j(b^n)` | `lemma_c_oscillation.md` | **done** (empirical `c≥0.32`) |
+| W3.2 | Close G4 in `bridge_lemma.md` | §7 Lemma D-depth | **done** |
+| W3.3 | Peter (2002) covariance notes | `bridge_lemma.md` §9, `g2d_feasibility.md` | **done** |
+| W3.4 | [9] Problem 2 feasibility memo | `g2d_feasibility.md` | **done** |
 
 ---
 
@@ -55,9 +55,9 @@ Sidecar tracker for [`ATTACK_PLAN.md`](ATTACK_PLAN.md). Paper frozen.
 
 | ID | Task | Output | Status |
 |----|------|--------|--------|
-| W4.1 | G2d-A at `q=10` or blocker doc | `llt_bands.md` | pending |
-| W4.2 | Conditional theorem (LLT hyp + C + D) | `lemma.md` | pending |
-| W4.3 | Bridge `o(1)` budget at larger D | `proof_pilot_3_10.md` | pending |
+| W4.1 | G2d-A at `q=10` or blocker doc | `g2d_feasibility.md`, `llt_bands.md` | **done** (blocker memo) |
+| W4.2 | Conditional theorem (LLT hyp + C + D) | `lemma.md` | **done** (sidecar packaging) |
+| W4.3 | Bridge `o(1)` budget at larger D | `proof_pilot_3_10.md` | **done** (MAE 0.0017, D≤90) |
 | W4.4 | Sidecar → paper promotion review | `ATTACK_PLAN.md` §status | pending |
 
 ---

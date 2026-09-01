@@ -112,7 +112,7 @@ Target: show two residue/digit-length regimes with `Ψ_j` differing by ≥ `c_j`
 | 4.2.2 rho_L on trap | **Proven** | `L=1`: `ρ_1=1.0` (`9→18`); `L=2`: `ρ_2=0.4` (`18,45→18`; `27,36,54→27`); amplitude **0.6** |
 | 4.2.2 exact Ψ on `V=b^n` | **Exact** (finite compute) | `n=2…7`: `Ψ_{18}∈[0.238,0.553]`, gap **≥0.315**; antiphase `Ψ_{18}+Ψ_{27}=1` |
 | 4.2.3 weights `w_L(V)` | **Proven** (asymptotic `w_n→1/2`) | Prop. B-weight in `lemma_b_stratum.md`; exact `n≤10` |
-| 4.2.4 infinite liminf/limsup | **Open** | Reduced to oscillation of `ρ_n`; see Lemma C |
+| 4.2.4 infinite liminf/limsup | **Empirical** (`c≥0.32`, `n≤12`) | Reduced to `ρ_n`; see [`lemma_c_oscillation.md`](lemma_c_oscillation.md) |
 
 **Proven (finite):** trap-lattice oscillation `ρ_1−ρ_2=0.6` and explicit `g(v)` map on
 `{9,18,27,36,45,54}` (`lm_deterministic_latest.md`).

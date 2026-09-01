@@ -203,6 +203,6 @@ restricted to progressions. CLT citation: [`clt_citation.md`](clt_citation.md).
 | Gap | Description | Status |
 |-----|-------------|--------|
 | G2a | Uniform LLT on dyadic band index `D` | Open |
-| G2b | Digit-layer covariance / Gaussian mixture | Open (mechanistic in `predict.py`) |
+| G2b | Digit-layer covariance / Gaussian mixture | Open — Peter (2002) notes in [`bridge_lemma.md`](bridge_lemma.md) §9 |
 | G2c | Composite-base citation for `b=10` | **Partial** — CLT via [15] §8.3.2; LLT → G2d |
 | G2d | Pointwise LLT for `S_b(n^k)`, `k≥3` | **Open** — not in [9] or [15]; must prove |

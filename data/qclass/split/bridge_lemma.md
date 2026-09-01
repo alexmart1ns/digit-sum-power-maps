@@ -73,11 +73,34 @@ where `F_j` is the functional implemented by `predict_split` (no fitted paramete
      uniform in `D` on dyadic bands — **not yet formalized** for our `N_D`.
    - **(G3)** Truncation at `μ ± 6σ` in code: exponential tail bound.
    - **(G4)** Identification of “first landing” mass with `a(v)` on the window:
-     requires `M` fixed and `v` large enough; standard for the pilot.
+     see **§7 (Lemma D-revised)** — bounded depth `≤2`, no simple `b^T` periodicity.
 
-**Status:** Sketch with gaps **G2** (uniform LLT on bands) and **G4** (landing
-vs label) the main analytic work. Empirically: MAE ≈ 0.002 on `(3,10)` (audit_05,
-split_scale 120k samples).
+**Status:** Sketch with gaps **G2d** (pointwise LLT) the main analytic blocker.
+**G4** partially closed via bounded-depth lemma. Empirically: MAE ≈ 0.002 on
+`(3,10)` (audit_05, split_scale 120k samples).
+
+---
+
+## 7. Lemma D-revised (G4; bounded landing depth)
+
+Cross-ref: [`lemma_d_g4.md`](lemma_d_g4.md), [`g4_landing_latest.md`](g4_landing_latest.md).
+
+**Lemma D-depth (pilot).** For `(k,b)=(3,10)`, `M=57`, every `v ≥ 1` reaches
+`[1,M]` under at most **2** applications of `f_{3,10}`. API: `first_landing(v)`
+in `src/dspm/predict.py`.
+
+*Evidence:* `scripts/g4_landing.py` on `v ≤ 10^6`: `max_steps = 2`.
+
+**Corollary (bridge step 3).** For `v` in the LLT window at scale `D`, the label
+`a(v)` depends on `v` only through finitely many base-`10` digits altered by
+at most two digit-sum maps. This replaces the retracted naive periodicity
+`a(v) = a(v + 9·b^T)` (falsified: ~47% mismatch at `T=1`).
+
+**Remaining G4 gap:** show the Gaussian-window mass on `{v : a(v)=j}` equals the
+first-landing mass up to `o(1)` — needs G2d or CLT sandwich + tail bounds (G3).
+
+**Bridge impact:** Step 3 of §2 is **conditional on G2d**; G4 reduces to
+finite-digit sufficiency, not full identification.
 
 ---
 
@@ -117,6 +140,27 @@ Monomial bridge: `monomial_compare_latest.md` (classic ≡ sidecar for k=3,4).
 
 | ID | Task |
 |----|------|
-| G2 | Formalize DMR restriction to `N_D^(r)` with explicit `o(1)` |
-| LM | Prove or refute LM for pilot labelling `h_{18}, h_{27}` |
+| G2d | Pointwise LLT — see [`g2d_feasibility.md`](g2d_feasibility.md) |
+| G2b | Peter (2002) summatory input — see §9 below |
+| LM | Lemma C empirical done; analytic proof open — [`lemma_c_oscillation.md`](lemma_c_oscillation.md) |
+| G4 | Depth lemma done; window identification needs G2d — §7 `bridge_lemma.md` |
 | Q | Extend LLT input beyond monomials |
+
+---
+
+## 9. G2b — Peter (2002) summatory input
+
+J. Peter, *On the parity of exponents in the factorization of sums of digits*,
+*Acta Arith.* **104** (2002), 85–96 (cited in [9], [15]).
+
+**What it gives:** Delange-type asymptotics for `Σ_{n≤x} s_q(⌊α n^k⌋)` at any
+`q ≥ 2` (CRT over prime powers). Main term plus **log-periodic** fluctuation.
+
+| Use in repo | Status |
+|-------------|--------|
+| Mean/variance scaling of Gaussian mixture in `predict_split` | Mechanistic validation |
+| Digit-layer covariance bounds (G2b) | **Open** — extract from Peter's error terms |
+| Pointwise LLT (G2d) | **Does not supply** |
+
+**Pilot note:** Peter (2002) supports the **log-periodic philosophy** behind
+oscillating `ρ_n` in Lemma C but does not prove LM for labelling `h_j`.
