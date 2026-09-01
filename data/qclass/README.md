@@ -49,6 +49,7 @@ Results promoted to paper §7.5 and Appendix B.5 (`paper/*/paper.md`).
 | `scripts/qclass_excess.py` | `excess/` — $\Delta$ / digit layers |
 | `scripts/qclass_universality_grid.py` | `universality/` — $Q\times b$ grid |
 | `scripts/bridge_check.py` | (stdout) — per-D $\|\delta_j-F_j\|$ on measured curves |
+| `scripts/lm_structure.py` | `split/lm_structure_latest.*` — labelling vs digit length |
 
 Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 
@@ -57,6 +58,9 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | Path | Role |
 |------|------|
 | `split/bridge_lemma.md` | Draft bridge δ_j = F_j + o(1) |
+| `split/llt_bands.md` | G2: band-restricted LLT from DMR [9] |
+| `split/lm_pilot.md` | LM attack plan (3,10) |
+| `split/lm_structure_latest.md` | Labelling vs digit length in `[1,M]` |
 | `split/proof_pilot_3_10.md` | Checklist for (3,10); LM gap |
 | `split/lemma.md` | Conditional LLT + LM ⇒ no limit |
 | `checks/LITERATURE.md` | [13]–[15] vs Hypothesis LM |

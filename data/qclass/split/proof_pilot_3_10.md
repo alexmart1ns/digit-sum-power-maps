@@ -6,6 +6,8 @@ a completed proof.
 | Artifact | Role |
 |----------|------|
 | [`bridge_lemma.md`](bridge_lemma.md) | Draft bridge δ_j = F_j + o(1) |
+| [`llt_bands.md`](llt_bands.md) | G2: LLT on dyadic bands (DMR reduction) |
+| [`lm_pilot.md`](lm_pilot.md) | LM attack plan for (3,10) |
 | [`lemma.md`](lemma.md) | Conditional LLT + LM ⇒ no limit |
 | [`checks/LITERATURE.md`](../checks/LITERATURE.md) | LM verdict (option ii+iii) |
 | `scripts/bridge_check.py` | Per-D \|δ_j − F_j\| on measured MC curve |
@@ -16,11 +18,11 @@ a completed proof.
 
 | # | Step | Status | Evidence |
 |---|------|--------|----------|
-| 1 | **LLT** for `S_b(n^3)` on `N_D ∩ (r+9ℤ)` feeding `{0}` | Input [9] | Paper §10 Hypothesis LLT; DMR 2011 |
+| 1 | **LLT** for `S_b(n^3)` on `N_D ∩ (r+9ℤ)` feeding `{0}` | Input [9] | `llt_bands.md` (G2 draft) |
 | 2 | **Image lattice** `v ≡ r^3 (mod 9)` | Done | Errata B.5; audit_05 MAE 0.002 vs 0.033 |
 | 3 | **F_j** = `predict_split` (parameter-free) | Done | `split_predict.py`; MAE ≈ 0.002 |
 | 4 | **Bridge** δ_j(D) = F_j(D) + o(1) | Open (sketch) | Gaps G2, G4 in `bridge_lemma.md` |
-| 5 | **LM** for Ψ_{18}, Ψ_{27} | Open | `local_mean_latest.md`: Pearson 0.57 @ V≤10⁷ |
+| 5 | **LM** for Ψ_{18}, Ψ_{27} | Open | `lm_pilot.md`, `lm_structure_latest.md` |
 | 6 | **Non-convergence** of δ_j | Conditional | Conjecture 10.6; needs (4)+(5) |
 | 7 | **10.6′ pilot** antiphase, sum 1/3 | Empirical | MC + Gaussian sweep SURVIVES |
 
