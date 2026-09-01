@@ -8,7 +8,7 @@ a completed proof.
 | [`bridge_lemma.md`](bridge_lemma.md) | Draft bridge δ_j = F_j + o(1) |
 | [`llt_bands.md`](llt_bands.md) | G2: LLT on dyadic bands (DMR reduction) |
 | [`lm_pilot.md`](lm_pilot.md) | LM attack plan for (3,10) |
-| [`lemma.md`](lemma.md) | Conditional LLT + LM ⇒ no limit |
+| [`ATTACK_PLAN.md`](ATTACK_PLAN.md) | PhD roadmap for G2d, G4, LM |
 | [`checks/LITERATURE.md`](../checks/LITERATURE.md) | LM verdict (option ii+iii) |
 | `scripts/bridge_check.py` | Per-D \|δ_j − F_j\| on measured MC curve |
 
@@ -68,10 +68,12 @@ stability; amplitude survival alone supports 10.6′ under LLT, not full LM.
 
 ## Suggested order of attack
 
-1. Formalize **G2**: CLT via [15] Thm 8.3.13 on `N_D^{(r)}`; prove **G2d** LLT
-   for `s_{10}(n³)` directly (no [9]/[15] citation).
-2. Prove **LM** for `h_{18}, h_{27}` OR find a counterexample (would refute 10.6).
-3. Only then promote bridge + conditional lemma to the main paper.
+See [`ATTACK_PLAN.md`](ATTACK_PLAN.md) for the full PhD roadmap. Summary:
+
+1. **LM-shadow lemma** (carry periodicity of `g(v)`) — highest feasibility
+2. **G4-finite** (first-landing depends on `v mod b^T`) — in-house
+3. **G2d** (pointwise LLT) — literature gap; external collaboration likely
+4. Promote bridge + conditional lemma only after (1)–(2) or explicit G2d hypothesis
 
 ---
 

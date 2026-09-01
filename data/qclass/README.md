@@ -67,6 +67,7 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | `split/lm_deterministic_latest.md` | Trap ρ_L + exact decade Ψ (psi_sharp parity) |
 | `split/CODE_MAP.md` | Symbol → file dependency map for (3,10) pilot |
 | `split/proof_pilot_3_10.md` | Checklist for (3,10); LM gap |
+| `split/ATTACK_PLAN.md` | PhD roadmap: G2d, G4, LM attack routes |
 | `split/lemma.md` | Conditional LLT + LM ⇒ no limit |
 | `checks/LITERATURE.md` | [13]–[15] vs Hypothesis LM |
 | `universality/THEORY_NOTE.md` | S_b(Q(n)) synthesis |
