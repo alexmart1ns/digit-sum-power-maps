@@ -33,7 +33,7 @@
 
 \title{\textbf{Mapas Iterados de Soma de Dígitos de Potências:\\ um Teorema de Cota Inferior, uma Lei Exata de Densidade de Bacias\\ e a Oscilação da Divisão Intra-Assinatura}}
 \author{Alex Martins\\ \small Pesquisa Independente}
-\date{Agosto de 2026 (v2, corrigida; ver Apêndice~B)}
+\date{Agosto de 2026 (v2.1.0; patch empírico Tier B, setembro de 2026; ver Apêndice~B)}
 
 \begin{document}
 \maketitle
@@ -403,6 +403,8 @@ Uma versão anterior desta seção relatou que as assinaturas $\{1\}$ e $\{8\}$ 
 \end{remark}
 
 \subsection{Um modelo preditivo sem parâmetros}
+
+Duas métricas de ajuste aparecem abaixo e não devem ser confundidas: \textbf{MAE em faixa curta} em $4 \le D \le 60$ (e em $8 \le D \le 64$ com $12{,}000$ amostras por faixa) versus \textbf{MAE de ponte} na faixa medida completa $D=4\ldots 90$ com $120{,}000$ amostras por faixa (\texttt{scripts/bridge\_check.py}).
 
 A oscilação é explicada por um modelo sem parâmetros (\texttt{scripts/split\_predict.py}): modele $m_1 = S_b(n^k)$ como gaussiana de média $\tfrac{b-1}{2}L$ e variância $L\,\tfrac{b^2-1}{12}$ (o número de dígitos $L$ sendo uma mistura computável sobre a faixa de $D$ dígitos; este é o teorema do limite local de \cite{mauduit-rivat,dmr}), coloque a gaussiana na \textbf{rede de imagem} $v \equiv r^k \pmod m$ para cada resíduo $r$ que alimenta a assinatura (não $v \equiv r$; a prova dos noves força $S_b(n^k) \equiv n^k \pmod m$ exatamente), convolua com a rotulação exata inteiro-para-atrator $a(v)$ e escalone por $p_i$. Para a assinatura $\{0\}$ de $(3,10)$ isso reproduz a curva medida $\delta_j(D)$ com MAE $= 0{,}003$ ao longo de $4 \le D \le 60$, sem nenhum parâmetro ajustado. Na faixa longa $8 \le D \le 64$ com $12{,}000$ amostras por faixa o mesmo modelo dá MAE $= 0{,}003$. Comparando a curva medida completa com \texttt{predict\_split} em $D=4\ldots 90$ ($120{,}000$ amostras por faixa; \texttt{scripts/bridge\_check.py}) obtém-se erro absoluto médio por atrator \textbf{$\approx 0{,}0017$}, no piso de ruído ($\approx 0{,}0014$). A oscilação é portanto a varredura gaussiana da soma de dígitos $m_1$ sobre a rotulação fixa de bacias dos inteiros, nas classes de congruência corretas de $m_1$.
 

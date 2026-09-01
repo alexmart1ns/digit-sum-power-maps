@@ -2,7 +2,7 @@
 
 **Alex Martins**
 
-*Pesquisa Independente, Agosto de 2026 (v2, corrigida; ver Apêndice B)* ·
+*Pesquisa Independente, Agosto de 2026 (v2.1.0; patch empírico Tier B, setembro de 2026; ver Apêndice B)* ·
 [Zenodo](https://zenodo.org/records/22181953) · [10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953)
 
 **MSC 2020:** 37P35, 11A63, 11K06, 11A25, 05C20
@@ -295,6 +295,8 @@ cada uma pequena mas contendo um elemento bem acima dos demais; esses elementos 
 
 ### 7.5 Um modelo preditivo sem parâmetros
 
+Duas métricas de ajuste aparecem abaixo e não devem ser confundidas: **MAE em faixa curta** em $4 \le D \le 60$ (e em $8 \le D \le 64$ com $12{,}000$ amostras por faixa) versus **MAE de ponte** na faixa medida completa $D=4\ldots 90$ com $120{,}000$ amostras por faixa (`scripts/bridge_check.py`).
+
 A oscilação é explicada por um modelo sem parâmetros (`scripts/split_predict.py`): modele $m_1 = S_b(n^k)$ como gaussiana de média $\tfrac{b-1}{2}L$ e variância $L\,\tfrac{b^2-1}{12}$ (o número de dígitos $L$ sendo uma mistura computável sobre a faixa de $D$ dígitos; este é o teorema do limite local de [8,9]), coloque a gaussiana na **rede de imagem** $v \equiv r^k \pmod m$ para cada resíduo $r$ que alimenta a assinatura (não $v \equiv r$; a prova dos noves força $S_b(n^k) \equiv n^k \pmod m$ exatamente), convolua com a rotulação exata inteiro-para-atrator $a(v)$ e escalone por $p_i$. Para a assinatura $\{0\}$ de $(3,10)$ isso reproduz a curva medida $\delta_j(D)$ com MAE $= 0{,}003$ ao longo de $4 \le D \le 60$, sem nenhum parâmetro ajustado. Na faixa longa $8 \le D \le 64$ com $12{,}000$ amostras por faixa o mesmo modelo dá MAE $= 0{,}003$. Comparando a curva medida completa com `predict_split` em $D=4\ldots 90$ ($120{,}000$ amostras por faixa; `scripts/bridge_check.py`) obtém-se erro absoluto médio por atrator **$\approx 0{,}0017$**, no piso de ruído ($\approx 0{,}0014$). A oscilação é portanto a varredura gaussiana da soma de dígitos $m_1$ sobre a rotulação fixa de bacias dos inteiros, nas classes de congruência corretas de $m_1$.
 
 Na rede alimentadora de $(3,10)$, todo $v$ amostrado atinge a região de aprisionamento $[1,M]$ sob no máximo **duas** aplicações de $f_{3,10}$ (`first_landing` em `src/dspm/predict.py`; varredura até $v \le 10^6$ em `scripts/g4_landing.py`). Prova para todo $v$ permanece aberta.
@@ -305,7 +307,7 @@ O mesmo modelo gaussiano, estendido a $4 \le D \le 300$ via `scripts/sweep_label
 
 ![Previsão por varredura gaussiana sobreposta à divisão medida](../figures/split_predict_overlay.svg)
 
-**Figura 2.** Previsão sem parâmetros por varredura gaussiana (curvas) contra a divisão de Monte Carlo da Figura 1 para a assinatura $\{0\}$, $(k,b)=(3,10)$. MAE $= 0{,}003$ em $4 \le D \le 60$ (rede de imagem $v \equiv r^k \pmod 9$).
+**Figura 2.** Previsão sem parâmetros por varredura gaussiana (curvas) contra a divisão de Monte Carlo da Figura 1 para a assinatura $\{0\}$, $(k,b)=(3,10)$. MAE em faixa curta $= 0{,}003$ em $4 \le D \le 60$; MAE de ponte $\approx 0{,}0017$ em $D=4\ldots 90$ (rede de imagem $v \equiv r^k \pmod 9$).
 
 Com $120.000$ amostras por faixa o piso de ruído da medição é $0{,}5/\sqrt{120000} \approx 0{,}0014$, de modo que um MAE de ponte de $0{,}0017$ diz que o modelo é compatível com os dados no piso de ruído. Este resultado não distingue o modelo de outros candidatos que também reproduzam fase e amplitude. O conteúdo do modelo é mecanístico, não estatístico: ele prevê a oscilação a partir do teorema do limite local mais a rotulação exata, sem nada ajustado. Distingui-lo de alternativas exigiria ou uma amostra muito maior ou uma previsão da estrutura de ordem superior, que é o que o Problema 10.6 pede.
 

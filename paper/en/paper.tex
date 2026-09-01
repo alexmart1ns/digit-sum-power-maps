@@ -32,7 +32,7 @@
 
 \title{\textbf{Iterated Digit-Sum Power Maps:\\ A Lower Bound Theorem, an Exact Basin Density Law,\\ and the Oscillation of Intra-Signature Basin Splits}}
 \author{Alex Martins\\ \small Independent Research}
-\date{August 2026 (v2, corrected; see Appendix~B)}
+\date{August 2026 (v2.1.0; Tier B empirical patch, September 2026; see Appendix~B)}
 
 \begin{document}
 \maketitle
@@ -402,6 +402,8 @@ An earlier version of this subsection reported that signatures $\{1\}$ and $\{8\
 \end{remark}
 
 \subsection{A parameter-free predictive model}
+
+Two fit metrics appear below and should not be conflated: \textbf{short-band MAE} on $4 \le D \le 60$ (and on $8 \le D \le 64$ with $12{,}000$ samples per band) versus \textbf{bridge MAE} on the full measured range $D=4\ldots 90$ with $120{,}000$ samples per band (\texttt{scripts/bridge\_check.py}).
 
 The oscillation is accounted for by a parameter-free model (\texttt{scripts/split\_predict.py}): model $m_1 = S_b(n^k)$ as Gaussian with mean $\tfrac{b-1}{2}L$ and variance $L\,\tfrac{b^2-1}{12}$ (the digit count $L$ being a computable mixture over the $D$-digit band; this is the local limit theorem of \cite{mauduit-rivat,dmr}), place the Gaussian on the \textbf{image lattice} $v \equiv r^k \pmod m$ for each residue $r$ feeding the signature (not $v \equiv r$; casting out nines forces $S_b(n^k) \equiv n^k \pmod m$ exactly), convolve with the exact integer-to-attractor labelling $a(v)$, and scale by $p_i$. For signature $\{0\}$ of $(3,10)$ this reproduces the measured split curve $\delta_j(D)$ to $\mathrm{MAE} = 0.003$ across $4 \le D \le 60$, with no fitted parameters. On the longer band $8 \le D \le 64$ with $12{,}000$ samples per band the same model gives $\mathrm{MAE} = 0.003$. Comparing the full measured curve to \texttt{predict\_split} on $D=4\ldots 90$ ($120{,}000$ samples per band; \texttt{scripts/bridge\_check.py}) gives mean per-attractor absolute error \textbf{$\approx 0.0017$}, at the measurement noise floor ($\approx 0.0014$). The oscillation is therefore the Gaussian sweep of the digit-sum $m_1$ across the fixed basin labelling of the integers, on the correct congruence classes of $m_1$.
 

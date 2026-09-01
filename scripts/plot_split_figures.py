@@ -71,12 +71,20 @@ def write_overlay_svg(
         title = "Oscilacao do split delta(18) — PREVISTO (gaussiana) vs MEDIDO"
         leg_pred = "previsto (modelo, sem MC)"
         leg_meas = "medido (Monte Carlo)"
-        mae_note = f"MAE = {mae:.4f} (nivel do ruido)" if mae is not None else ""
+        mae_note = (
+            f"ponte MAE = {mae:.4f} (D={d_values[0]}..{d_values[-1]}, ruido ~0.0014)"
+            if mae is not None
+            else ""
+        )
     else:
         title = "Split oscillation delta(18) — PREDICTED (Gaussian) vs MEASURED"
         leg_pred = "predicted (model, no MC)"
         leg_meas = "measured (Monte Carlo)"
-        mae_note = f"MAE = {mae:.4f} (noise level)" if mae is not None else ""
+        mae_note = (
+            f"bridge MAE = {mae:.4f} (D={d_values[0]}..{d_values[-1]}, noise ~0.0014)"
+            if mae is not None
+            else ""
+        )
 
     d_min, d_max = d_values[0], d_values[-1]
     pred_pts = [
@@ -183,7 +191,7 @@ def main(argv=None) -> int:
     ap.add_argument("--b", type=int, default=10)
     ap.add_argument("--signature", type=int, default=0)
     ap.add_argument("--d-min", type=int, default=4)
-    ap.add_argument("--d-max", type=int, default=60)
+    ap.add_argument("--d-max", type=int, default=90)
     ap.add_argument("--measured-dir", type=Path, default=REPO_ROOT / "data" / "split")
     ap.add_argument("--out-dir", type=Path, default=FIG_DIR)
     ap.add_argument("--lang", choices=("en", "pt"), default="pt")
