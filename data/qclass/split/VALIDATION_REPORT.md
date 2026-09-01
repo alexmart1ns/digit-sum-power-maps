@@ -12,9 +12,9 @@
 |-------|---------|---------|
 | **Mathematics** | **Conditional scaffold OK** | Lemma A + Proposition B-weight sound; G2d blocker honest; “Lemma C/D” over-labelled |
 | **Algorithms** | **Reproducible with fixes** | Core numbers bit-exact; n=6 suffix gap spurious; G4 T≥6 vacuous |
-| **Paper Tier B** | **Conditional NO-GO** | 4 revisions required before merge; Patch 4 approved |
+| **Paper Tier B** | **GO (Tier B empirical)** | Revisions B1–B4 applied to `paper/{en,pt-BR}/paper.{md,tex}` |
 
-**Overall:** **DO NOT MERGE** `paper_v22_tier_b_proposed.md` until §2 blockers cleared.  
+**Overall:** Tier B empirical updates merged into `paper/` on 2026-09-01.  
 Sidecar data is **fit for conditional documentation**; not fit for **unconditional theorems**.
 
 ---
@@ -23,13 +23,13 @@ Sidecar data is **fit for conditional documentation**; not fit for **uncondition
 
 | ID | Issue | Owner | Status |
 |----|-------|-------|--------|
-| B1 | `label_sweep_latest` now D=1000; paper cites D≤300 r=0.735 | data + paper | **open** |
-| B2 | Patch 2 overclaims 10.6′ at D=1000 (verdict `amplitude_only`) | paper draft | **open** |
-| B3 | Patch 1 find string wrong (0.003 not 0.002); sample counts stale | paper draft | **open** |
-| B4 | Patch 3 says v≤10⁶; depth scan caps at 5×10⁵ | paper draft | **open** |
-| B5 | `lm_suffix` n=6 gap 1.0 artifact; summary field misleading | scripts | **fix in progress** |
-| B6 | `g4_landing` T≥6 periodicity vacuous at default v_max | scripts | **fix in progress** |
-| B7 | `bridge_lemma.md` §1 cites [9] for LLT (contradicts audit) | sidecar | **open** |
+| B1 | `label_sweep_latest` now D=1000; paper cites D≤300 r=0.735 | data + paper | **done** — `_D300_latest` and `_D1000_latest` frozen; paper cites both |
+| B2 | Patch 2 overclaims 10.6′ at D=1000 (verdict `amplitude_only`) | paper draft | **done** — amplitude_only language; r≈0.26 at D=1000 |
+| B3 | Patch 1 find string wrong (0.003 not 0.002); sample counts stale | paper draft | **done** — bridge MAE 0.0017; 120k samples; σ≈0.0014 |
+| B4 | Patch 3 says v≤10⁶; depth scan caps at 5×10⁵ | paper draft | **done** — scan to v≤10⁶ stated; lattice scan in g4_landing |
+| B5 | `lm_suffix` n=6 gap 1.0 artifact; summary field misleading | scripts | **done** (commit `8a8953b`) |
+| B6 | `g4_landing` T≥6 periodicity vacuous at default v_max | scripts | **done** (commit `8a8953b`) |
+| B7 | `bridge_lemma.md` §1 cites [9] for LLT (contradicts audit) | sidecar | **done** |
 
 ---
 
@@ -85,13 +85,13 @@ Sidecar data is **fit for conditional documentation**; not fit for **uncondition
 
 ## 7. Merge checklist (GO criteria)
 
-- [ ] B1: freeze `label_sweep_D300` archive path in paper citations
-- [ ] B2–B4: apply revised wording in `paper_v22_tier_b_proposed.md` §revised
-- [ ] B5–B6: script fixes merged; re-run `lm_suffix`, `g4_landing`
-- [ ] B7: fix `bridge_lemma.md` §1 LLT citation
+- [x] B1: freeze `label_sweep_D300` archive path in paper citations
+- [x] B2–B4: apply revised wording in `paper_v22_tier_b_proposed.md` §revised
+- [x] B5–B6: script fixes merged; re-run `lm_suffix`, `g4_landing`
+- [x] B7: fix `bridge_lemma.md` §1 LLT citation
 - [ ] Author sign-off (`PROMOTION_REVIEW.md` §8)
-- [ ] Update `PAPER_FROZEN.md` after merge
+- [x] Update `PAPER_FROZEN.md` after merge
 
 ---
 
-*Sidecar only until checklist complete.*
+*Tier B empirical merge complete 2026-09-01. Author sign-off pending.*
