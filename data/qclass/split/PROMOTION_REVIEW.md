@@ -150,7 +150,7 @@ Execution programme **complete**. Open work ranked:
 **Signed: Alex Martins, 2026-09-02.**
 
 Paper v2.1.0 text at `25eb4b2` approved for release. Tag `v2.1.1` pushed;
-Zenodo upload pending (see `docs/RELEASE_v2.1.0.md`).
+Zenodo published [10.5281/zenodo.22181952](https://doi.org/10.5281/zenodo.22181952).
 
 ---
 

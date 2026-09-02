@@ -39,7 +39,7 @@ dev = ["pytest>=7.4", "ruff>=0.4"]
 
 [project.urls]
 Homepage = "https://github.com/alexmart1ns/digit-sum-power-maps"
-Documentation = "https://zenodo.org/records/22181953"
+Documentation = "https://doi.org/10.5281/zenodo.22181952"
 
 [tool.setuptools]
 package-dir = { "" = "src" }

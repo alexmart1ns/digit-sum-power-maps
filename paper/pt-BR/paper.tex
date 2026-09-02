@@ -43,11 +43,11 @@
 \begin{center}
 \small \textbf{MSC 2020:} 37P35, 11A63, 11K06, 11A25, 05C20\\
 \small \textbf{Palavras-chave:} sistemas dinâmicos discretos, funções soma de dígitos, números felizes generalizados, aritmética modular, bacias de atração, densidade natural, equidistribuição, grafos funcionais, funções digitais.\\
-\small \textbf{Zenodo:} \url{https://zenodo.org/records/22181953} \quad \textbf{DOI:} \url{https://doi.org/10.5281/zenodo.22181953}
+\small \textbf{DOI:} \url{https://doi.org/10.5281/zenodo.22181952}
 \end{center}
 
 \begin{abstract}
-Estudo a família de sistemas dinâmicos discretos $f_{k,b}(n) = S_b(n^k)$, em que $S_b$ é a função soma dos dígitos em base $b$ e $k \ge 1$ é um expoente fixo. O mapa relaciona-se com, mas distingue-se das, funções felizes generalizadas $S_{e,b}(n) = \sum_i d_i^{\,e}$ de Grundman e Teeple; a distinção, e a estrutura modular que dela se segue, é precisada na \S1. Toda órbita é eventualmente periódica, e o sistema organiza-se por um esqueleto algébrico: o grafo funcional do mapa de potência modular $\varphi_{k,b-1}(x) = x^k \bmod (b-1)$.
+Estudo a família de sistemas dinâmicos discretos $f_{k,b}(n) = S_b(n^k)$, em que $S_b$ é a função soma dos dígitos em base $b$ e $k \ge 1$ é um expoente fixo. O mapa relaciona-se com, mas distingue-se das, funções felizes generalizadas $S_{e,b}(n) = \sum_i d_i^{\,e}$ de Grundman e Teeple; a distinção, e a estrutura modular que dela se segue, é precisada na Seção~1. Toda órbita é eventualmente periódica, e o sistema organiza-se por um esqueleto algébrico: o grafo funcional do mapa de potência modular $\varphi_{k,b-1}(x) = x^k \bmod (b-1)$.
 
 Demonstro três resultados estruturais. \textbf{(I) Teorema da Cota Inferior.} O número de atratores satisfaz $|C(k,b)| \ge \Cyc(\varphi_{k,b-1})$, o número de ciclos do mapa modular. \textbf{(II) Lei de Densidade de Bacias.} Para cada ciclo modular $\gamma_i$ com bacia de resíduos $R_i$, a bacia agregada $\mathcal{N}_i$ de todos os atratores que carregam a assinatura de resíduos $\gamma_i$ possui densidade natural, igual exatamente ao peso modular $p_i = |R_i|/(b-1)$; sobre uma janela $[1,M]$ a proporção empírica desvia no máximo $\min(|R_i|,\,b-2)/M$, e a afirmação subjacente em janela finita é uma identidade exata entre inteiros. \textbf{(III)} Ambas as funções de contagem de $\varphi_{k,m}$ admitem formas fechadas: a contagem de pontos periódicos é a clássica $\prod_{p^e \| m}\big(1 + \kappa_k(\varphi(p^e))\big)$, com $\kappa_k(N)$ o maior divisor de $N$ coprimo com $k$, enquanto a contagem de ciclos (a quantidade de que a cota inferior precisa) obtém-se combinando tipos de ciclo locais pelo teorema chinês dos restos. A distinção importa e passou batida em um rascunho anterior: a contagem de pontos periódicos depende de $k$ apenas via $\rad(k)$, ao passo que a contagem de ciclos não.
 
@@ -478,7 +478,7 @@ Isto verifica a lei agregada; nada diz sobre a divisão, que a \S\ref{sec:split}
 
 \subsection{Verificação amostrada anterior (superada)}
 
-Uma varredura protótipo anterior testou $1{,}990$ pares amostrados (uma amostra incremental, não uma grade exaustiva) com $k$ atingindo $158$ e $b$ atingindo $20$, usando uma amostra finita $n \le 500$ por célula: zero violações, com igualdade exata $|C| = \Cyc$ em apenas $2$ de $1{,}990$ pares ($\approx 0{,}1\%$). Uma reamostragem independente mais densa sobre $k \in [1,25]$, $b \in [2,12]$ (275 pares, $N = 300$) encontrou 0 violações e uma taxa de igualdade exata de $7{,}64\%$. A frequência de igualdade exata é sensível à faixa amostrada, ela própria uma questão em aberto (Problema~\ref{prob:tight}). Essas cifras são superadas pela varredura exaustiva acima, mas são relatadas por proveniência.
+Uma varredura protótipo anterior testou $1{,}990$ pares amostrados (uma amostra incremental, não uma grade exaustiva) com $k$ atingindo $158$ e $b$ atingindo $20$, usando uma amostra finita $n \le 500$ por célula: zero violações, com igualdade exata $|C| = \Cyc$ em apenas $2$ de $1{,}990$ pares ($\approx 0{,}1\%$). Uma reamostragem independente mais densa sobre $k \in [1,25]$, $b \in [2,12]$ (275 pares, $N = 300$) encontrou 0 violações e uma taxa de igualdade exata de $7{,}64\%$. A frequência de igualdade exata é sensível à faixa amostrada, ela própria uma questão em aberto (Problema~\ref{prob:tight}). Essas cifras são superadas pela varredura exaustiva acima, mas são relatadas para fins de registro.
 
 \subsection{Fenomenologia do mapa de calor de bifurcação}
 
@@ -513,7 +513,7 @@ $32$ & $3{,}73$ (mín.) & & \\
 \end{tabular}
 \end{center}
 
-Potências de dois baixam $\Delta$; gcds ímpares (especialmente com vários primos ímpares) inflacionam-no.
+Potências de dois baixam $\Delta$; mdcs ímpares (especialmente com vários primos ímpares) inflacionam-no.
 
 \textbf{Cautela na leitura desta tabela.} Cada linha agrega pares de muitos módulos diferentes, e $v_2(\gcd(k,b-1))$ é grande só quando $b-1$ ele próprio carrega estrutura de potência de $2$, de modo que as linhas não são populações comparáveis. Dentro de um único módulo a contagem de ciclos não é nem monótona nem plana em $v_2(k)$: pelo Corolário~\ref{cor:notradical}, $m=41$ dá $\Cyc = 3, 4, 3, 6, 3$ para $k = 2, 4, 8, 16, 32$. A tendência decrescente na coluna das potências de dois é portanto um efeito de agregação entre módulos, e nenhuma lei por sistema deve ser lida nela. \texttt{scripts/analyze\_patterns.py} relata o desvio padrão intra-grupo e o número de módulos distintos em cada linha exatamente por esta razão. Um rascunho anterior foi além e afirmou um colapso geométrico graduado $\overline{\Delta}(v_2) \approx 12{,}68 \cdot (0{,}764)^{v_2}$; um posterior substituiu-o pela afirmação de que a contagem de ciclos é plana para todo $v_2 \ge 1$. Ambos estão retratados; ver Apêndice~B.1.
 
@@ -540,7 +540,7 @@ par (qualquer) & $660$ & $8{,}66$ & $3{,}68$ \\
 Primos ímpares e compostos ímpares diferem de $0{,}93$ na média $|C|$, contra um desvio padrão intra-classe de cerca de $9{,}7$; ímpares e pares diferem de $9{,}01$. O efeito é a paridade. A correlação relacionada $R = -0{,}391$ entre a função número-de-divisores de $k$ e $\Cyc$ está sujeita ao mesmo confundidor, pois $k$ par tende a ter mais divisores. (\texttt{verification/audit/audit\_04\_parity\_confound.py}; Apêndice~B.4.)
 
 \medskip
-\noindent\textbf{9.4 A profundidade transiente escala com $k$.} A profundidade transiente máxima correlaciona $R = +0{,}540$ com $k$; a mais profunda observada: $133$ passos.
+\noindent\textbf{9.4 A profundidade do transiente escala com $k$.} A profundidade transiente máxima correlaciona $R = +0{,}540$ com $k$; a mais profunda observada: $133$ passos.
 
 \section{Problemas em Aberto}\label{sec:open}
 
@@ -581,7 +581,7 @@ quando $D\to\infty$, e as caudas $\mathbb{P}(\lvert S_b(n^k)-\mu_D\rvert>C\sigma
 
 \medskip\noindent\textbf{Hipótese LM$(k,b,j)$.} Seja $h_j(v)=1_{g(v)\in\beta_j}$. Escreva $\Psi_j(V)$ para a média de $h_j$ na janela $[V-\sqrt{V},\,V+\sqrt{V}]$ restrita a inteiros $v \equiv r^k \pmod m$ na rede de imagem dos resíduos $r$ que alimentam a assinatura de $A_j$. A hipótese é que $\Psi_j(V)$ não converge quando $V\to\infty$. É um enunciado sobre a rotulação, paralelo à Hipótese LLT e independente dela. Diagnostica-se computacionalmente por \texttt{scripts/local\_mean.py}; não se deduz de uma expansão de Delange de $h_j$.
 
-\medskip\noindent\textbf{Observação (janela fina; retirada).} Um rascunho anterior desta seção pedia para provar que se $\sum_{n\le x}f(n)=x\,P(\log_b x)+o(x)$ com $P$ contínua de período $1$, e se $I_x\subset[c_1 x,\,c_2 x]$ satisfaz $|I_x|/x\to 0$, então a média na janela vale $P(\log_b x)+o(1)$. Essa implicação é falsa para qualquer taxa de resto. Se $P$ é $C^1$ de período $1$, $h=|I_x|\to\infty$, $h=o(x)$, e $\sup|E|=o(h)$ na janela, a média é $Q(\log_b x)+o(1)$ com $Q=P+P'/\ln b$, não $P$; $Q$ é constante se e somente se $P$ o é. Contraexemplo: em base $10$, $f(v)=1_{\text{primeiro dígito de }v=1}$ tem resto $O(1)$; ao longo de $x=1{,}5\cdot 10^t$ tem-se $P(\log_{10}x)\approx 0{,}4074$ enquanto a média na janela $\sqrt{x}$ é $1$, coincidindo com $Q=1$. A função periódica de Delange para $s_b$ é contínua e em nenhum ponto derivável, logo as hipóteses $C^1$ falham no regime pretendido e nenhum $Q$ desse tipo deve ser esperado. O lema está retirado; o seu papel passa à Hipótese LM.
+\medskip\noindent\textbf{Observação (janela estreita; retirada).} Um rascunho anterior desta seção pedia para provar que se $\sum_{n\le x}f(n)=x\,P(\log_b x)+o(x)$ com $P$ contínua de período $1$, e se $I_x\subset[c_1 x,\,c_2 x]$ satisfaz $|I_x|/x\to 0$, então a média na janela vale $P(\log_b x)+o(1)$. Essa implicação é falsa para qualquer taxa de resto. Se $P$ é $C^1$ de período $1$, $h=|I_x|\to\infty$, $h=o(x)$, e $\sup|E|=o(h)$ na janela, a média é $Q(\log_b x)+o(1)$ com $Q=P+P'/\ln b$, não $P$; $Q$ é constante se e somente se $P$ o é. Contraexemplo: em base $10$, $f(v)=1_{\text{primeiro dígito de }v=1}$ tem resto $O(1)$; ao longo de $x=1{,}5\cdot 10^t$ tem-se $P(\log_{10}x)\approx 0{,}4074$ enquanto a média na janela $\sqrt{x}$ é $1$, coincidindo com $Q=1$. A função periódica de Delange para $s_b$ é contínua e em nenhum ponto derivável, logo as hipóteses $C^1$ falham no regime pretendido e nenhum $Q$ desse tipo deve ser esperado. O lema está retirado; o seu papel passa à Hipótese LM.
 \end{problem}
 
 \begin{conjecture}\label{con:split}

@@ -50,7 +50,7 @@ Author sign-off recorded 2026-09-02 (`PROMOTION_REVIEW.md` §8).
 2. ~~`git push origin v2.1.1`~~ done
 3. Upload bundle: code, paper (md+tex+pdf), figures, `data/qclass/*_latest`,
    `data/split/*_latest`, `data/mining/*_latest`, sweep `results_*.jsonl.gz`
-4. New version at [Zenodo 22181953](https://zenodo.org/records/22181953)
+4. ~~Zenodo upload~~ done — [DOI 10.5281/zenodo.22181952](https://doi.org/10.5281/zenodo.22181952)
 5. Release notes: five errata; Tier B bridge MAE 0.0017; label_sweep D300/D1000;
    tex figures; post-programme pilots (`g2b_layer_cov`, `g2b_suffix_phase`, `n≤16`)
 

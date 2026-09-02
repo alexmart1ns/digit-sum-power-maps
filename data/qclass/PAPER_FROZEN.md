@@ -15,7 +15,8 @@ sidecar-only — not promoted as theorems.
 (`6c8b149`), prose fixes (rad(k), b-adic band, σ-sum notation), post-programme
 Route C-A/C-B empirical pilots (`g2b_*_latest`, `n≤16`). **Author sign-off §8
 recorded** 2026-09-02 in [`split/PROMOTION_REVIEW.md`](split/PROMOTION_REVIEW.md).
-Tag `v2.1.1` at `25eb4b2`; Zenodo upload pending.
+Tag `v2.1.1` at `25eb4b2`; Zenodo published
+[10.5281/zenodo.22181952](https://doi.org/10.5281/zenodo.22181952) (2026-09-02).
 
 The isolated laboratory (`data/qclass/`, `src/dspm/qmaps.py`) remains separate
 from `data/sweeps/`, `data/mining/`, and `data/split/`.

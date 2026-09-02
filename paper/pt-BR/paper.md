@@ -3,7 +3,7 @@
 **Alex Martins**
 
 *Pesquisa Independente, Agosto de 2026 (v2.1.0; patch empírico Tier B, setembro de 2026; ver Apêndice B)* ·
-[Zenodo](https://zenodo.org/records/22181953) · [10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953)
+[10.5281/zenodo.22181952](https://doi.org/10.5281/zenodo.22181952)
 
 **MSC 2020:** 37P35, 11A63, 11K06, 11A25, 05C20
 **Palavras-chave:** sistemas dinâmicos discretos, funções soma de dígitos, números felizes generalizados, aritmética modular, bacias de atração, densidade natural, equidistribuição, grafos funcionais, funções digitais.

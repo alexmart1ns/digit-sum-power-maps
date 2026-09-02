@@ -28,7 +28,7 @@ $S_b(Q(n))$ for general polynomials $Q$ with positive leading coefficient, isola
 `data/split/` records. Post-v2.1 **Problem B** proof notes (bridge lemma, LM verdict) live in
 `data/qclass/split/` — sidecar only until external review. See [`data/qclass/README.md`](data/qclass/README.md).
 
-**Zenodo:** [https://zenodo.org/records/22181953](https://zenodo.org/records/22181953) · DOI [10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953)
+**DOI:** [10.5281/zenodo.22181952](https://doi.org/10.5281/zenodo.22181952)
 
 ## Install
 
@@ -123,8 +123,7 @@ to every numerical verdict where they do not. `docs/AUDIT.md` has the details.
 
 ## Publication
 
-The article is published on Zenodo ([record](https://zenodo.org/records/22181953),
-[DOI 10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953)) with PDFs in English and Brazilian Portuguese.
+The article is published on Zenodo ([DOI 10.5281/zenodo.22181952](https://doi.org/10.5281/zenodo.22181952)) with PDFs in English and Brazilian Portuguese.
 Source versions: [`paper/en/paper.md`](paper/en/paper.md) and [`paper/pt-BR/paper.md`](paper/pt-BR/paper.md).
 To build a PDF from LaTeX locally:
 
@@ -141,5 +140,5 @@ See [`docs/PUBLICATION.md`](docs/PUBLICATION.md) for the publication bundle layo
 
 ## Citation
 
-See [`CITATION.cff`](CITATION.cff). Article DOI: [10.5281/zenodo.22181953](https://doi.org/10.5281/zenodo.22181953).
+See [`CITATION.cff`](CITATION.cff). Article DOI: [10.5281/zenodo.22181952](https://doi.org/10.5281/zenodo.22181952).
 MIT licensed; see [`LICENSE`](LICENSE).

@@ -6,10 +6,10 @@ authors:
   - family-names: Martins
     given-names: Alex
 version: 2.1.0
-date-released: "2026-09-01"
+date-released: "2026-09-02"
 license: MIT
 repository-code: "https://github.com/alexmart1ns/digit-sum-power-maps"
-url: "https://zenodo.org/records/22181953"
+url: "https://doi.org/10.5281/zenodo.22181952"
 keywords:
   - discrete dynamical systems
   - digit-sum functions
@@ -31,8 +31,8 @@ preferred-citation:
   authors:
     - family-names: Martins
       given-names: Alex
-  doi: 10.5281/zenodo.22181953
-  url: "https://zenodo.org/records/22181953"
+  doi: 10.5281/zenodo.22181952
+  url: "https://doi.org/10.5281/zenodo.22181952"
   year: 2026
   month: 8
 references:
