@@ -43,10 +43,11 @@ python verification/audit/audit_05_lattice.py
 
 ## Zenodo upload checklist
 
-**Recommended tag:** `v2.1.1` at commit `25eb4b2` (supersedes `v2.1.0` at `a535052`).
+**Tag:** `v2.1.1` at commit `25eb4b2` (supersedes `v2.1.0` at `a535052`) — **pushed**.
+Author sign-off recorded 2026-09-02 (`PROMOTION_REVIEW.md` §8).
 
-1. `git tag -a v2.1.1 25eb4b2 -m "v2.1.1: Tier B paper production + Route C-A/C-B pilots"`
-2. `git push origin v2.1.1`
+1. ~~`git tag -a v2.1.1 25eb4b2`~~ done
+2. ~~`git push origin v2.1.1`~~ done
 3. Upload bundle: code, paper (md+tex+pdf), figures, `data/qclass/*_latest`,
    `data/split/*_latest`, `data/mining/*_latest`, sweep `results_*.jsonl.gz`
 4. New version at [Zenodo 22181953](https://zenodo.org/records/22181953)

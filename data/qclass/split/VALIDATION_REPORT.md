@@ -94,9 +94,9 @@ Sidecar data is **fit for conditional documentation**; not fit for **uncondition
 - [x] B7: fix `bridge_lemma.md` §1 LLT citation
 - [x] Paper production hygiene (`6c8b149`: tex figures, appendix commands)
 - [x] Post-programme empirical pilots (`ec82044`–`3985981`: Route C-A/C-B)
-- [ ] Author sign-off (`PROMOTION_REVIEW.md` §8)
+- [x] Author sign-off (`PROMOTION_REVIEW.md` §8) — Alex Martins, 2026-09-02
 - [x] Update `PAPER_FROZEN.md` after merge
 
 ---
 
-*Tier B empirical merge complete 2026-09-01. Post-programme pilots 2026-09-02. Author sign-off pending.*
+*Tier B empirical merge complete 2026-09-01. Post-programme pilots 2026-09-02. Author sign-off recorded.*
