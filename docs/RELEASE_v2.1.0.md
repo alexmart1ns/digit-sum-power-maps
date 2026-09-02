@@ -43,8 +43,9 @@ python verification/audit/audit_05_lattice.py
 
 ## Zenodo upload checklist
 
-1. Tag `v2.1.0` on this commit
+1. Tag `v2.1.0` on commit `6c8b149` (or `v2.1.1` if tag already published at `a535052`)
 2. Upload bundle: code, paper (md+tex+pdf), figures, `data/qclass/*_latest`,
    `data/split/*_latest`, `data/mining/*_latest`, sweep `results_*.jsonl.gz`
 3. New version at [Zenodo 22181953](https://zenodo.org/records/22181953)
-4. Release notes: cite five errata, Q-class sidecar, label_sweep D=300
+4. Release notes: cite five errata, Q-class sidecar, label_sweep D=300/D=1000,
+   Tier B bridge MAE 0.0017, tex figures + appendix sync (`6c8b149`)

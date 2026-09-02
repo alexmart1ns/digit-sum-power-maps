@@ -30,11 +30,20 @@ This decomposition is **exact** (finite counting).
    `n ∈ {9,…,14}` with **c ≥ 0.12** (witness `[50,55]` in latest run).
 2. **Mixture drift:** suffix rates `ρ_n(s)` vary with `n` (max adjacent drift
    **≈0.27** on some classes); mixture weights `α_n(s)` are stable (max drift **≈7×10⁻⁵**).
-3. **Consequence (conditional):** uniform witness gap + varying `ρ_n(s)` ⇒ `(ρ_n)`
-   cannot approach a constant via homogenisation of suffix classes.
+3. **Consequence (conditional):** If `α_n(s)` is stable in `n` on the witness
+   suffixes and `|ρ_n(s₁) − ρ_n(s₂)| ≥ c` for all `n ≥ n₀`, then `(ρ_n)` cannot
+   converge to a constant.
 
-*Status:* (1)–(2) **verified computationally** `n=9…14`; step (3) needs a short
-limit argument (not yet written).
+   *Sketch.* Suppose `ρ_n → L`. Stability of `α_n(s₁)` and `α_n(s₂)` on a set
+   with fixed positive mass forces both class rates toward limits
+   `L_{s₁}, L_{s₂}` with `|L_{s₁} − L_{s₂}| ≥ c`. Then
+   `ρ_n = α_n(s₁)ρ_n(s₁) + α_n(s₂)ρ_n(s₂) + (remainder)` cannot satisfy
+   `ρ_n → L` unless the witness gap vanishes — contradiction. A fully rigorous
+   version must quantify the remainder when `α_n(s₁)+α_n(s₂) < 1`; the pilot
+   witness `[50,55]` has `min_gap ≥ 0.12` on common buckets for `n=9…14`.
+
+*Status:* (1)–(2) **verified computationally** `n=9…14`; step (3) **drafted**
+(limit sketch; remainder bound still open).
 
 ---
 
@@ -60,11 +69,15 @@ class rates `ρ_n(s)`), not a 2-digit carry lemma alone.
 | A2 | ∃ witness pair with uniform gap `c ≥ 0.12` for `n ≥ n₀` | **Empirical** `n₀=9` |
 | A3 | `ρ_n(s)` varies with `n` (suffix rate drift) | **Empirical** (drift ≈0.27) |
 | A4 | `α_n(s)` stable in `n` | **Empirical** (drift ≈7×10⁻⁵) |
-| A5 | `limsup ρ_n − liminf ρ_n ≥ c'` | **Open** — needs uniform witness for all large `n` |
+| A5 | `limsup ρ_n − liminf ρ_n ≥ c'` | **Open** — extend uniform witness to `n > 14` (run `lm_suffix.py --n-max 16+`) |
 
 **Honest gap:** empirical witness + mixture drift explain oscillation
 mechanistically; a **theorem** still requires controlling `ρ_n(s)` as `n→∞`
 (Route C-B / G2b) or a finite carry certificate for two suffix classes.
+
+**Compute note:** extending the witness scan beyond `n=14` (`V=10^n`, window
+`≈√V`) is expensive — `lm_suffix.py --n-max 16` needs ~10⁸ landing calls per
+decade; run offline if a larger uniform witness is required.
 
 ---
 
