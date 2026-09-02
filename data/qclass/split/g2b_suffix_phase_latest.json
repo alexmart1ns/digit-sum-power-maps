@@ -1,0 +1,239 @@
+{
+  "pilot": "(k,b)=(3,10), suffix mod 100",
+  "n_lo": 9,
+  "n_max": 16,
+  "suffixes": [
+    50,
+    55,
+    95
+  ],
+  "decades_used": 8,
+  "suffix_fits": [
+    {
+      "suffix": 50,
+      "points": [
+        {
+          "n": 9,
+          "rho": 0.628571
+        },
+        {
+          "n": 10,
+          "rho": 0.528529
+        },
+        {
+          "n": 11,
+          "rho": 0.382353
+        },
+        {
+          "n": 12,
+          "rho": 0.524752
+        },
+        {
+          "n": 13,
+          "rho": 0.463049
+        },
+        {
+          "n": 14,
+          "rho": 0.336753
+        },
+        {
+          "n": 15,
+          "rho": 0.230341
+        },
+        {
+          "n": 16,
+          "rho": 0.232158
+        }
+      ],
+      "amplitude_range": 0.39823,
+      "constant_sse": 0.14756889,
+      "cosine_fit": {
+        "period": 7,
+        "mean": 0.413714,
+        "amplitude": 0.075458,
+        "sse": 0.12739339,
+        "sse_improvement": 0.0201755
+      }
+    },
+    {
+      "suffix": 55,
+      "points": [
+        {
+          "n": 9,
+          "rho": 0.4
+        },
+        {
+          "n": 10,
+          "rho": 0.405405
+        },
+        {
+          "n": 11,
+          "rho": 0.531309
+        },
+        {
+          "n": 12,
+          "rho": 0.40264
+        },
+        {
+          "n": 13,
+          "rho": 0.288493
+        },
+        {
+          "n": 14,
+          "rho": 0.190592
+        },
+        {
+          "n": 15,
+          "rho": 0.288201
+        },
+        {
+          "n": 16,
+          "rho": 0.445683
+        }
+      ],
+      "amplitude_range": 0.340717,
+      "constant_sse": 0.08048172,
+      "cosine_fit": {
+        "period": 7,
+        "mean": 0.365198,
+        "amplitude": 0.138134,
+        "sse": 0.01287143,
+        "sse_improvement": 0.0676103
+      }
+    },
+    {
+      "suffix": 95,
+      "points": [
+        {
+          "n": 9,
+          "rho": 0.342857
+        },
+        {
+          "n": 10,
+          "rho": 0.426426
+        },
+        {
+          "n": 11,
+          "rho": 0.505693
+        },
+        {
+          "n": 12,
+          "rho": 0.385539
+        },
+        {
+          "n": 13,
+          "rho": 0.273124
+        },
+        {
+          "n": 14,
+          "rho": 0.200582
+        },
+        {
+          "n": 15,
+          "rho": 0.327391
+        },
+        {
+          "n": 16,
+          "rho": 0.447564
+        }
+      ],
+      "amplitude_range": 0.305111,
+      "constant_sse": 0.06817092,
+      "cosine_fit": {
+        "period": 7,
+        "mean": 0.360149,
+        "amplitude": 0.125749,
+        "sse": 0.01214094,
+        "sse_improvement": 0.05602998
+      }
+    }
+  ],
+  "witness_gaps": [
+    {
+      "pair": [
+        50,
+        55
+      ],
+      "min_gap": 0.05786,
+      "mean_gap": 0.151858,
+      "points": [
+        {
+          "n": 9,
+          "gap": 0.22857099999999997
+        },
+        {
+          "n": 10,
+          "gap": 0.12312400000000001
+        },
+        {
+          "n": 11,
+          "gap": 0.14895600000000003
+        },
+        {
+          "n": 12,
+          "gap": 0.122112
+        },
+        {
+          "n": 13,
+          "gap": 0.174556
+        },
+        {
+          "n": 14,
+          "gap": 0.146161
+        },
+        {
+          "n": 15,
+          "gap": 0.057859999999999995
+        },
+        {
+          "n": 16,
+          "gap": 0.213525
+        }
+      ]
+    },
+    {
+      "pair": [
+        50,
+        95
+      ],
+      "min_gap": 0.09705,
+      "mean_gap": 0.161115,
+      "points": [
+        {
+          "n": 9,
+          "gap": 0.28571399999999997
+        },
+        {
+          "n": 10,
+          "gap": 0.102103
+        },
+        {
+          "n": 11,
+          "gap": 0.12333999999999995
+        },
+        {
+          "n": 12,
+          "gap": 0.13921299999999998
+        },
+        {
+          "n": 13,
+          "gap": 0.189925
+        },
+        {
+          "n": 14,
+          "gap": 0.13617100000000001
+        },
+        {
+          "n": 15,
+          "gap": 0.09705
+        },
+        {
+          "n": 16,
+          "gap": 0.21540600000000001
+        }
+      ]
+    }
+  ],
+  "verdict": "log_periodic_phenomenology",
+  "note": "Route C-B step 2 (empirical): suffix-restricted labelling rates rho_n(s) on the decade window. Cosine-in-n fits test log-periodic phenomenology (Peter 2002 philosophy) without a summatory proof. Does not establish limsup rho_n(s) != liminf."
+}

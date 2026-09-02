@@ -105,4 +105,21 @@ not captured by independent-mixture semantics at the suffix level.
 
 ---
 
-*2026-09-01. Sidecar only; §5–6 added 2026-09-02.*
+## 7. Suffix log-periodic pilot (Route C-B step 2)
+
+**Compute:** `scripts/lm_g2b_suffix.py` → [`g2b_suffix_phase_latest.md`](g2b_suffix_phase_latest.md)
+
+Witness suffixes `50, 55, 95` on `n=9…16`: each shows amplitude range **0.31–0.40**
+and a cosine-in-`n` fit (best period **7**) beats the constant model (SSE gain
+**0.02–0.07**). Verdict: **`log_periodic_phenomenology`** (empirical).
+
+Witness gaps on eight decades: `[50,95]` min **0.097**; `[50,55]` min **0.058**
+(weaker uniform witness than Route C-A on `n≤14` alone).
+
+**Honest limit:** cosine fit in discrete `n` is a phenomenological proxy for
+Peter log-periodicity in `log V`; not a summatory theorem on
+`Σ_{v≡s (mod 100)} h(v)`.
+
+---
+
+*2026-09-01. Sidecar only; §5–7 added 2026-09-02.*
