@@ -65,4 +65,25 @@ with external analytic number theorist.
 
 ---
 
-*2026-09-01. Sidecar only.*
+## 5. G2b scaling check (pilot mechanistic)
+
+`predict_split` uses `digit_count_mixture(D,k,b)` weights `w_L` and per-layer
+Gaussian parameters (CLT / [15] §8.3.13 template):
+
+- `μ_L = (b−1)/2 · L`  (mean digit sum at layer `L`; for `b=10`, `μ_L = 4.5 L`)
+- `σ_L² = L · (b²−1)/12`  (variance; for `b=10`, `σ_L² = 8.25 L`)
+
+Peter (2002) gives the same **Θ(L)** main term and **Θ(√L)** fluctuation scale
+for summatory `Σ s_{10}(⌊α n³⌋)`; the mixture in `src/dspm/predict.py` is the
+discrete digit-length analogue used in §7.5.
+
+**What this validates:** G2b mean/variance scaling in `F_j` — already consistent
+with bridge MAE `≈0.0017` on `D≤90`.
+
+**What remains open:** covariance across layers and suffix-restricted partial
+sums (Route C-B §3 steps 2–3); Peter does not supply point masses for
+`P(s_{10}(n³)=v)` (G2d).
+
+---
+
+*2026-09-01. Sidecar only; §5 added 2026-09-02.*

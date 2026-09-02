@@ -89,26 +89,25 @@ oscillation in `ρ_n` via first landing — see [`g2d_feasibility.md`](g2d_feasi
 **Hypothesis tested:** `ρ_n → L` (constant, `1/n`-decay, linear drift, or
 low-period cosine).
 
-**Protocol:** train on `n=2…8`, hold-out `n=9…14`; tolerance `ε=0.05` on
+**Protocol:** train on `n=2…8`, hold-out `n=9…16`; tolerance `ε=0.05` on
 `|ρ_n − ρ̂_n|`.
 
 | Model | Fit on `n≤8` | max hold-out error | at worst `n` |
 |-------|--------------|-------------------|--------------|
-| Constant `L̂=0.424` | mean | **0.183** | 14 |
-| `ρ_n = a + b/n` | OLS | **0.354** | 14 |
-| `ρ_n = a + b·n` | OLS | **0.729** | 14 |
-| `ρ_n = L + A·cos(2πn/6)` | best period | **0.315** | 14 |
+| Constant `L̂=0.424` | mean | **0.183** | 16 |
+| `ρ_n = a + b/n` | OLS | **0.354** | 16 |
+| `ρ_n = a + b·n` | OLS | **0.779** | 16 |
+| `ρ_n = L + A·cos(2πn/T)` | best period | **0.315** | 16 |
 
 **Additional checks:**
 
-- Running range `max ρ − min ρ` at `n=8`: **0.400**; at `n=14`: **0.400** (no shrink).
-- `ρ_{14}=0.241` misses every model by `≥0.18` (constant) or predicts upward drift
-  while data falls.
+- Running range `max ρ − min ρ` at `n=8`: **0.400**; at `n=16`: **0.400** (no shrink).
+- `ρ_{16}=0.380` misses constant model by **0.183**; linear-in-`n` model by **0.779**.
 
 **Verdict:** **`convergence_refuted`** on all tested models. The sequence does not
-settle toward a limit or a simple asymptotic law up to `n=14`.
+settle toward a limit or a simple asymptotic law up to `n=16`.
 
-**Compute:** `python scripts/lm_oscillation.py --n-max 14` (also refreshes
+**Compute:** `python scripts/lm_oscillation.py --n-max 16` (also refreshes
 `lemma_b_stratum_latest.*`).
 
 **Limitation:** empirical refutation only; does not prove `limsup ρ_n ≠ liminf ρ_n`.
@@ -134,7 +133,7 @@ Lemma C is the **last pilot-specific** gap before conditional 10.6.
 | Item | Status |
 |------|--------|
 | Empirical gap `c ≥ 0.32` | **Done** (`n≤14`) |
-| Route C-C convergence refutation | **Done** (`n≤14`, all models fail) |
+| Route C-C convergence refutation | **Done** (`n≤16`, all models fail) |
 | Route C-A suffix-class gap | **Done** (`c≥0.12` on `n=9…14`; `c≈0.097` on `n=9…16`) | `lemma_c_route_ca_latest.md` |
 | Analytic proof of `limsup ≠ liminf` | **Open** (uniform witness + rate drift control) | `lemma_c_analytic.md` |
 | Promotion to paper | **Blocked** on analytic Lemma C |

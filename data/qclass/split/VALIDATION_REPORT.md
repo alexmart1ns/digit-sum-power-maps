@@ -40,7 +40,7 @@ Sidecar data is **fit for conditional documentation**; not fit for **uncondition
 | Two-stratum Ψ = wₙρₙ + wₙ₊₁ρₙ₊₁ exact | **Proven** (finite) | n≥2 | `lemma_b_stratum_latest` |
 | wₙ, wₙ₊₁ → ½ | **Proven** (asymptotic) | n≥7 exact | combinatorial counts |
 | Ψ₁₈ gap ≥ 0.32 | **Empirical** | n=2…14 subseq. | `lemma_c_oscillation_latest` |
-| Route C-C refutes 4 model families | **Empirical** | hold-out n=9…14 | `lemma_c_oscillation` route_cc |
+| Route C-C refutes 4 model families | **Empirical** | hold-out n=9…16 | `lemma_c_oscillation` route_cc |
 | Suffix witness [50,55] gap ≥ 0.12 | **Empirical** | n=9…14 | `lemma_c_analytic_latest` |
 | Suffix witness [50,95] gap ≥ 0.097 | **Empirical** | n=9…16 | `lemma_c_route_ca_latest` |
 | ρₙ = Σαₙ(s)ρₙ(s) exact | **Identity** | n≥9 | `lemma_c_analytic_latest` |
