@@ -11,6 +11,11 @@ survival language (r≈0.37 at D≤300; r≈0.26 at D≤1000; `amplitude_only`),
 landing depth ≤2 remark, and LM sidecar script references. Lemma B/C/D remain
 sidecar-only — not promoted as theorems.
 
+**Production polish (2026-09-02, `25eb4b2`):** tex figures + appendix commands
+(`6c8b149`), prose fixes (rad(k), b-adic band, σ-sum notation), post-programme
+Route C-A/C-B empirical pilots (`g2b_*_latest`, `n≤16`). **Author sign-off §8
+pending** in [`split/PROMOTION_REVIEW.md`](split/PROMOTION_REVIEW.md).
+
 The isolated laboratory (`data/qclass/`, `src/dspm/qmaps.py`) remains separate
 from `data/sweeps/`, `data/mining/`, and `data/split/`.
 

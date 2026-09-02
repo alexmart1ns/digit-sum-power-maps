@@ -43,9 +43,20 @@ python verification/audit/audit_05_lattice.py
 
 ## Zenodo upload checklist
 
-1. Tag `v2.1.0` on commit `6c8b149` (or `v2.1.1` if tag already published at `a535052`)
-2. Upload bundle: code, paper (md+tex+pdf), figures, `data/qclass/*_latest`,
+**Recommended tag:** `v2.1.1` at commit `25eb4b2` (supersedes `v2.1.0` at `a535052`).
+
+1. `git tag -a v2.1.1 25eb4b2 -m "v2.1.1: Tier B paper production + Route C-A/C-B pilots"`
+2. `git push origin v2.1.1`
+3. Upload bundle: code, paper (md+tex+pdf), figures, `data/qclass/*_latest`,
    `data/split/*_latest`, `data/mining/*_latest`, sweep `results_*.jsonl.gz`
-3. New version at [Zenodo 22181953](https://zenodo.org/records/22181953)
-4. Release notes: cite five errata, Q-class sidecar, label_sweep D=300/D=1000,
-   Tier B bridge MAE 0.0017, tex figures + appendix sync (`6c8b149`)
+4. New version at [Zenodo 22181953](https://zenodo.org/records/22181953)
+5. Release notes: five errata; Tier B bridge MAE 0.0017; label_sweep D300/D1000;
+   tex figures; post-programme pilots (`g2b_layer_cov`, `g2b_suffix_phase`, `n≤16`)
+
+## Post-v2.1.0 patches (included in `v2.1.1`)
+
+| Commit | Summary |
+|--------|---------|
+| `6c8b149` | Tex figures, appendix commands, B.2 footnote |
+| `ec82044`–`3985981` | Route C-A witness `n≤16`; G2b layer/suffix pilots |
+| `25eb4b2` | Paper prose (rad(k), b-adic band); dspm input guards |

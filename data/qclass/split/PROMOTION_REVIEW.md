@@ -114,9 +114,17 @@ Execution programme **complete**. Open work ranked:
 - [x] No promotion of empirical Lemma C as theorem
 - [x] Paper production hygiene (figures in `.tex`, appendix commands, B.2 footnote)
 - [x] Post-programme Route C-A/C-B empirical pilots (`g2b_*`, `n≤16`)
-- [ ] Author formal sign-off
+- [ ] Author formal sign-off — tick when approved (see §8.1 below)
 - [ ] External reviewer confirms Lemma A appendix if included
+
+### 8.1 Author sign-off (pending)
+
+When you approve paper v2.1.0 text at `25eb4b2`:
+
+1. Replace `[ ]` with `[x]` on **Author formal sign-off** above.
+2. Add line: `Signed: Alex Martins, YYYY-MM-DD.`
+3. Tag `v2.1.1` and upload Zenodo (see `docs/RELEASE_v2.1.0.md`).
 
 ---
 
-*Tier B merge complete. Paper v2.1.0 production-ready (md+tex). Post-programme empirical pilots complete. Author sign-off pending.*
+*Tier B merge complete. Paper v2.1.0 production-ready (`25eb4b2`). Post-programme empirical pilots complete. Awaiting author sign-off.*
