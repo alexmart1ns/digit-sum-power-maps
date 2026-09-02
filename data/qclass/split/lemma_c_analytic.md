@@ -27,7 +27,10 @@ This decomposition is **exact** (finite counting).
 **Lemma C-A-mix (suffix mixture).** For `n ≥ 9` on the pilot:
 
 1. **Witness pair:** suffixes `s₁, s₂` with `|ρ_n(s₁) − ρ_n(s₂)| ≥ c` for all
-   `n ∈ {9,…,14}` with **c ≥ 0.12** (witness `[50,55]` in latest run).
+   `n ∈ {9,…,16}` with **c ≥ 0.097** on the best stable pair `[50,95]` across
+   eight decades (`lemma_c_route_ca_latest.md`; per-decade max gap remains
+   **≥ 0.17** at every `n ≥ 9`). On `n ∈ {9,…,14}` alone, witness `[50,55]`
+   still has **c ≥ 0.12**.
 2. **Mixture drift:** suffix rates `ρ_n(s)` vary with `n` (max adjacent drift
    **≈0.27** on some classes); mixture weights `α_n(s)` are stable (max drift **≈7×10⁻⁵**).
 3. **Consequence (conditional):** If `α_n(s)` is stable in `n` on the witness
@@ -40,9 +43,10 @@ This decomposition is **exact** (finite counting).
    `ρ_n = α_n(s₁)ρ_n(s₁) + α_n(s₂)ρ_n(s₂) + (remainder)` cannot satisfy
    `ρ_n → L` unless the witness gap vanishes — contradiction. A fully rigorous
    version must quantify the remainder when `α_n(s₁)+α_n(s₂) < 1`; the pilot
-   witness `[50,55]` has `min_gap ≥ 0.12` on common buckets for `n=9…14`.
+   witness `[50,55]` has `min_gap ≥ 0.12` on common buckets for `n=9…14`; on
+   `n=9…16` the best stable pair is `[50,95]` with `min_gap ≈ 0.097`.
 
-*Status:* (1)–(2) **verified computationally** `n=9…14`; step (3) **drafted**
+*Status:* (1)–(2) **verified computationally** `n=9…16`; step (3) **drafted**
 (limit sketch; remainder bound still open).
 
 ---
@@ -66,18 +70,17 @@ class rates `ρ_n(s)`), not a 2-digit carry lemma alone.
 | Step | Statement | Status |
 |------|-----------|--------|
 | A1 | Exact mixture `ρ_n = Σ α_n(s) ρ_n(s)` | **Proven** (definition) |
-| A2 | ∃ witness pair with uniform gap `c ≥ 0.12` for `n ≥ n₀` | **Empirical** `n₀=9` |
+| A2 | ∃ witness pair with uniform gap `c ≥ 0.12` for `n ≥ n₀` | **Empirical** `n₀=9`, `n≤14` (`[50,55]`); `n≤16` gives `c≈0.097` (`[50,95]`) |
 | A3 | `ρ_n(s)` varies with `n` (suffix rate drift) | **Empirical** (drift ≈0.27) |
 | A4 | `α_n(s)` stable in `n` | **Empirical** (drift ≈7×10⁻⁵) |
-| A5 | `limsup ρ_n − liminf ρ_n ≥ c'` | **Open** — extend uniform witness to `n > 14` (run `lm_suffix.py --n-max 16+`) |
+| A5 | `limsup ρ_n − liminf ρ_n ≥ c'` | **Open** — per-decade max suffix gap `≥0.17` for `n=9…16`; uniform pair gap weakens past `n=14` |
 
 **Honest gap:** empirical witness + mixture drift explain oscillation
 mechanistically; a **theorem** still requires controlling `ρ_n(s)` as `n→∞`
 (Route C-B / G2b) or a finite carry certificate for two suffix classes.
 
-**Compute note:** extending the witness scan beyond `n=14` (`V=10^n`, window
-`≈√V`) is expensive — `lm_suffix.py --n-max 16` needs ~10⁸ landing calls per
-decade; run offline if a larger uniform witness is required.
+**Compute note:** `lm_suffix.py --n-max 16` completes in ~5–8 min on the pilot;
+`lm_carry_depth.py --n-max 16` ~5 min. Extending further scales as `√(10^n)`.
 
 ---
 
