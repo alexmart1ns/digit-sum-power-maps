@@ -72,7 +72,7 @@ scripts contained the defective verifications described above and were replaced 
 New in v2: `dspm.modular.cycle_count_formula` (Proposition 6.3), `dspm.numtheory` (exact integer
 helpers extracted from the old scripts), `dspm.split` and `dspm.predict` (the measurement and model,
 importable rather than script-only), `dspm.patterns` (the §9 statistics, with spread reported next to
-each group mean), the `tests/` suite, and the four `verification/audit/` scripts.
+each group mean), the `tests/` suite, and the five `verification/audit/` scripts.
 
 New in v2.1 (Q-class, 2026-09): `dspm.qmaps` (sidecar for $S_b(Q(n))$), `scripts/qclass_*.py`,
 `tests/test_qmaps.py`, and `data/qclass/` (isolated laboratory outputs).

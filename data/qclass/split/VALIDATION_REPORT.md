@@ -39,7 +39,7 @@ Sidecar data is **fit for conditional documentation**; not fit for **uncondition
 |-------|------|---------|----------|
 | Two-stratum Ψ = wₙρₙ + wₙ₊₁ρₙ₊₁ exact | **Proven** (finite) | n≥2 | `lemma_b_stratum_latest` |
 | wₙ, wₙ₊₁ → ½ | **Proven** (asymptotic) | n≥7 exact | combinatorial counts |
-| Ψ₁₈ gap ≥ 0.32 | **Empirical** | n=2…14 subseq. | `lemma_c_oscillation_latest` |
+| Ψ₁₈ gap ≥ 0.32 | **Empirical** | n=2…16 subseq. | `lemma_c_oscillation_latest` |
 | Route C-C refutes 4 model families | **Empirical** | hold-out n=9…16 | `lemma_c_oscillation` route_cc |
 | Suffix witness [50,55] gap ≥ 0.12 | **Empirical** | n=9…14 | `lemma_c_analytic_latest` |
 | Suffix witness [50,95] gap ≥ 0.097 | **Empirical** | n=9…16 | `lemma_c_route_ca_latest` |
@@ -92,9 +92,11 @@ Sidecar data is **fit for conditional documentation**; not fit for **uncondition
 - [x] B2–B4: apply revised wording in `paper_v22_tier_b_proposed.md` §revised
 - [x] B5–B6: script fixes merged; re-run `lm_suffix`, `g4_landing`
 - [x] B7: fix `bridge_lemma.md` §1 LLT citation
+- [x] Paper production hygiene (`6c8b149`: tex figures, appendix commands)
+- [x] Post-programme empirical pilots (`ec82044`–`3985981`: Route C-A/C-B)
 - [ ] Author sign-off (`PROMOTION_REVIEW.md` §8)
 - [x] Update `PAPER_FROZEN.md` after merge
 
 ---
 
-*Tier B empirical merge complete 2026-09-01. Author sign-off pending.*
+*Tier B empirical merge complete 2026-09-01. Post-programme pilots 2026-09-02. Author sign-off pending.*

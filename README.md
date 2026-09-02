@@ -63,7 +63,6 @@ python verification/verify_theorems.py          # independent re-derivation, imp
 python scripts/cycle_structure.py               # both closed forms vs. brute force
 python scripts/sweep.py --k-max 500 --b-max 40  # the exhaustive sweep behind §8 (hours; 28 workers)
 python scripts/split_scale.py --k 3 --b 10 --d-max 90 --samples 120000
-python scripts/bridge_check.py --k 3 --b 10
 python scripts/split_predict.py --k 3 --b 10
 python scripts/sweep_label.py --k 3 --b 10 --d-max 300
 python scripts/sweep_label.py --k 3 --b 10 --d-max 1000

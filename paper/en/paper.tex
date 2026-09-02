@@ -315,7 +315,7 @@ For $(k,m) = (2,9)$: $\varphi(9) = 6$, $\kappa_2(6) = 3$, so $\#\Per = 1 + 3 = 4
 The formula was checked against brute-force enumeration with 0 discrepancies across all $k \in [2,60]$, $m \in [2,259]$ (\texttt{scripts/cycle\_structure.py}), and independently re-verified in Appendix~A. It is classical in the theory of power digraphs $x \mapsto x^k \bmod n$ (Somer--K\v{r}\'i\v{z}ek \cite{somer-krizek}; Chou--Shparlinski \cite{chou-shparlinski}); it is included as the base for Proposition~\ref{prop:cyc}, not as a new result.
 
 \begin{corollary}[Radical dependence of the periodic-point count]\label{cor:radical}
-$\#\Per(k,m)$ depends on $k$ only through $\rad(k)$, the set of primes dividing $k$; in particular its $2$-part collapses entirely at the single transition $2 \nmid k \to 2 \mid k$ and is unchanged for all higher $2$-adic valuations $v_2(k)$.
+$\#\Per(k,m)$ depends on $k$ only through $\rad(k)$, the product of the distinct primes dividing $k$; in particular its $2$-part collapses entirely at the single transition $2 \nmid k \to 2 \mid k$ and is unchanged for all higher $2$-adic valuations $v_2(k)$.
 \end{corollary}
 
 \begin{proof}
@@ -571,13 +571,13 @@ Prove that the per-digit split does not converge when a signature splits; determ
 \[
 \delta_j(D)\;=\;\frac1{|N_D|}\,\bigl|\{\,n\in N_D: g\bigl(S_b(n^k)\bigr)\in\beta_j\,\}\bigr|.
 \]
-This is the per-digit split of \S\ref{sec:split}. The map $g$ is completely explicit: it is determined by the finite functional graph on $[1,M]$. Theorem~\ref{thm:bdl} already gives $\sum_{A_j\subset\gamma_i}\delta_j(D)\to p_i$ as $D\to\infty$ (in fact the finite-window identity of Proposition~\ref{prop:partition} controls every prefix). The remaining claim is that no individual $\delta_j(D)$ converges when $\gamma_i$ splits.
+This is the per-digit split of \S\ref{sec:split}. The map $g$ is completely explicit: it is determined by the finite functional graph on $[1,M]$. Theorem~\ref{thm:bdl} already gives $\sum_{\sigma(A_j)=\gamma_i}\delta_j(D)\to p_i$ as $D\to\infty$ (in fact the finite-window identity of Proposition~\ref{prop:partition} controls every prefix). The remaining claim is that no individual $\delta_j(D)$ converges when $\gamma_i$ splits.
 
 \medskip\noindent\textbf{Hypothesis LLT$(k,b,r)$.} For each residue $r\bmod m$, writing $N_D^{(r)}=N_D\cap(r+m\mathbb{Z})$ and taking $n$ uniform in $N_D^{(r)}$, the law of $S_b(n^k)$ admits a local Gaussian limit with mean $\mu_D\asymp D$ and standard deviation $\sigma_D\asymp\sqrt{D}$: for every fixed $C<\infty$,
 \[
 \sup_{\lvert v-\mu_D\rvert\le C\sigma_D}\Bigl\lvert \sigma_D\,\mathbb{P}\bigl(S_b(n^k)=v\bigr)-\varphi\bigl((v-\mu_D)/\sigma_D\bigr)\Bigr\rvert\;\longrightarrow\;0
 \]
-as $D\to\infty$, and the tails $\mathbb{P}(\lvert S_b(n^k)-\mu_D\rvert>C\sigma_D)$ vanish as $C\to\infty$ uniformly in $D$. (Casting out nines forces $S_b(n^k)\equiv n^k\pmod m$ exactly.) This is the form in which a restriction of the local limit theorem of Drmota--Mauduit--Rivat \cite{dmr} to a dyadic band and an arithmetic progression would be used. It is an input, not a claim of the present paper.
+as $D\to\infty$, and the tails $\mathbb{P}(\lvert S_b(n^k)-\mu_D\rvert>C\sigma_D)$ vanish as $C\to\infty$ uniformly in $D$. (Casting out nines forces $S_b(n^k)\equiv n^k\pmod m$ exactly.) This is the form in which a restriction of the local limit theorem of Drmota--Mauduit--Rivat \cite{dmr} to a $b$-adic band and an arithmetic progression would be used. It is an input, not a claim of the present paper.
 
 \medskip\noindent\textbf{Hypothesis LM$(k,b,j)$.} Let $h_j(v)=1_{g(v)\in\beta_j}$. Write $\Psi_j(V)$ for the mean of $h_j$ on the window $[V-\sqrt{V},\,V+\sqrt{V}]$ restricted to integers $v \equiv r^k \pmod m$ on the image lattice of residues $r$ feeding the signature of $A_j$. The hypothesis is that $\Psi_j(V)$ does not converge as $V\to\infty$. This is a statement about the labelling, parallel to Hypothesis LLT and independent of it. It is diagnosed computationally by \texttt{scripts/local\_mean.py}; it is not deduced from a Delange expansion of $h_j$.
 

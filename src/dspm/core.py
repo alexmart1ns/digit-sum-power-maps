@@ -103,6 +103,8 @@ def num_digits(y: int, b: int) -> int:
     right matters: the value feeds `contraction_bound`, and an overestimate
     silently inflates the trapping region.
     """
+    if y < 0:
+        raise ValueError(f"num_digits requires y >= 0, got {y}")
     if y == 0:
         return 1
     # gmpy2.num_digits only accepts bases in [2, 62].

@@ -294,7 +294,13 @@ def build_system_Q(
         M = contraction_bound_Q(trimmed, b)
     nxt = _int_array(M + 1)
     for n in range(1, M + 1):
-        v = f_Qb(n, trimmed, b)
+        try:
+            v = f_Qb(n, trimmed, b)
+        except ValueError:
+            raise ValueError(
+                f"Q({n}) < 0 in [1, M={M}]; polynomial must be non-negative "
+                f"on this range for build_system_Q to construct the finite system"
+            ) from None
         while v > M:
             v = f_Qb(v, trimmed, b)
         nxt[n] = v

@@ -12,7 +12,7 @@
 
 ## Resumo
 
-O presente trabalho estuda a família de sistemas dinâmicos discretos $f_{k,b}(n) = S_b(n^k)$, em que $S_b$ é a função soma dos dígitos em base $b$ e $k \ge 1$ é um expoente fixo. O mapa relaciona-se com, mas distingue-se das, funções felizes generalizadas $S_{e,b}(n) = \sum_i d_i^{\,e}$ de Grundman e Teeple; a distinção, e a estrutura modular que dela se segue, é precisada na §1. Toda órbita é eventualmente periódica, e o sistema organiza-se por um esqueleto algébrico: o grafo funcional do mapa de potência modular $\varphi_{k,b-1}(x) = x^k \bmod (b-1)$.
+O presente trabalho estuda a família de sistemas dinâmicos discretos $f_{k,b}(n) = S_b(n^k)$, em que $S_b$ é a função soma dos dígitos em base $b$ e $k \ge 1$ é um expoente fixo. O mapa relaciona-se com, mas distingue-se das, funções felizes generalizadas $S_{e,b}(n) = \sum_i d_i^{\,e}$ de Grundman e Teeple; a distinção, e a estrutura modular que dela se segue, é precisada na Seção 1. Toda órbita é eventualmente periódica, e o sistema organiza-se por um esqueleto algébrico: o grafo funcional do mapa de potência modular $\varphi_{k,b-1}(x) = x^k \bmod (b-1)$.
 
 Três resultados estruturais são demonstrados. **(I) Teorema da Cota Inferior.** O número de atratores satisfaz $|C(k,b)| \ge \mathrm{Cyc}(\varphi_{k,b-1})$, o número de ciclos do mapa modular. **(II) Lei de Densidade de Bacias.** Para cada ciclo modular $\gamma_i$ com bacia de resíduos $R_i$, a bacia agregada $\mathcal{N}_i$ de todos os atratores que carregam a assinatura de resíduos $\gamma_i$ possui densidade natural, igual exatamente ao peso modular $p_i = |R_i|/(b-1)$; sobre uma janela $[1,M]$ a proporção empírica desvia no máximo $\min(|R_i|,\,b-2)/M$, e a afirmação subjacente em janela finita é uma identidade exata entre inteiros. **(III)** Ambas as funções de contagem de $\varphi_{k,m}$ admitem formas fechadas: a contagem de pontos periódicos é a clássica $\prod_{p^e \| m}\big(1 + \kappa_k(\varphi(p^e))\big)$, com $\kappa_k(N)$ o maior divisor de $N$ coprimo com $k$, enquanto a contagem de ciclos (a quantidade de que a cota inferior precisa) obtém-se combinando tipos de ciclo locais pelo teorema chinês dos restos. A distinção importa e passou despercebida em um rascunho anterior: a contagem de pontos periódicos depende de $k$ apenas via $\mathrm{rad}(k)$, ao passo que a contagem de ciclos não.
 
@@ -215,7 +215,7 @@ $$\#\mathrm{Per}(k,m) \;=\; \prod_{p^{e} \,\|\, m} \Big( 1 + \kappa_k\big(\varph
 
 *Verificação.* Checado contra enumeração por força bruta com 0 discrepâncias em todos os $k \in [2,79]$, $m \in [2,300)$ (`scripts/cycle_structure.py`), e reverificado independentemente em $k \in [2,39]$, $m \in [2,199)$ (Apêndice A). A fórmula é clássica na teoria de digrafos de potências $x \mapsto x^k \bmod n$ (Somer–Křížek [11]; Chou–Shparlinski [12]); inclui-se para fixar notação e por ser o insumo da Proposição 6.3, não como resultado novo.
 
-**Corolário 6.2 (Dependência radical da contagem de pontos periódicos).** *$\#\mathrm{Per}(k,m)$ depende de $k$ apenas via $\mathrm{rad}(k)$, o conjunto dos primos que dividem $k$; em particular sua parte $2$-ádica colapsa inteiramente na única transição $2 \nmid k \to 2 \mid k$ e permanece inalterada para todas as valuações $2$-ádicas superiores $v_2(k)$.*
+**Corolário 6.2 (Dependência radical da contagem de pontos periódicos).** *$\#\mathrm{Per}(k,m)$ depende de $k$ apenas via $\mathrm{rad}(k)$, o produto dos primos distintos que dividem $k$; em particular sua parte $2$-ádica colapsa inteiramente na única transição $2 \nmid k \to 2 \mid k$ e permanece inalterada para todas as valuações $2$-ádicas superiores $v_2(k)$.*
 
 *Demonstração.* Imediato da Proposição 6.1, pois $\kappa_k(N)$ retira de $N$ exatamente os primos que dividem $k$. $\square$
 
@@ -353,7 +353,7 @@ Isto verifica a lei agregada; nada diz sobre a divisão, que a §7.4 resolve à 
 
 ### 8.3 Verificação amostrada anterior (superada)
 
-Uma varredura protótipo anterior testou $1{,}990$ pares amostrados (uma amostra incremental, não uma grade exaustiva) com $k$ atingindo $158$ e $b$ atingindo $20$, usando uma amostra finita $n \le 500$ por célula: zero violações, com igualdade exata $|C| = \mathrm{Cyc}$ em apenas $2$ de $1{,}990$ pares ($\approx 0{,}1\%$). Uma reamostragem independente mais densa sobre $k \in [1,25]$, $b \in [2,12]$ (275 pares, $N = 300$) encontrou 0 violações e uma taxa de igualdade exata de $7{,}64\%$. A frequência de igualdade exata é sensível à faixa amostrada, ela própria uma questão em aberto (Problema 10.2). Essas cifras são superadas pela varredura exaustiva da §8.2, mas são relatadas por proveniência.
+Uma varredura protótipo anterior testou $1{,}990$ pares amostrados (uma amostra incremental, não uma grade exaustiva) com $k$ atingindo $158$ e $b$ atingindo $20$, usando uma amostra finita $n \le 500$ por célula: zero violações, com igualdade exata $|C| = \mathrm{Cyc}$ em apenas $2$ de $1{,}990$ pares ($\approx 0{,}1\%$). Uma reamostragem independente mais densa sobre $k \in [1,25]$, $b \in [2,12]$ (275 pares, $N = 300$) encontrou 0 violações e uma taxa de igualdade exata de $7{,}64\%$. A frequência de igualdade exata é sensível à faixa amostrada, ela própria uma questão em aberto (Problema 10.2). Essas cifras são superadas pela varredura exaustiva da §8.2, mas são relatadas para fins de registro.
 
 ### 8.4 Fenomenologia do mapa de calor de bifurcação
 
@@ -382,7 +382,7 @@ O Teorema 5.3 fixa os $p_i$, mas é silencioso sobre quantos atratores físicos 
 | $16$ | $4{,}06$ | | | |
 | $32$ | $3{,}73$ (mín.) | | | |
 
-Potências de dois baixam $\Delta$; gcds ímpares (especialmente com vários primos ímpares) inflacionam-no.
+Potências de dois baixam $\Delta$; mdcs ímpares (especialmente com vários primos ímpares) inflacionam-no.
 
 **Cautela na leitura desta tabela.** Cada linha agrega pares de muitos módulos diferentes, e $v_2(\gcd(k,b-1))$ é grande só quando $b-1$ ele próprio carrega estrutura de potência de $2$, de modo que as linhas não são populações comparáveis. Dentro de um único módulo a contagem de ciclos não é nem monótona nem plana em $v_2(k)$: pelo Corolário 6.4, $m=41$ dá $\mathrm{Cyc} = 3, 4, 3, 6, 3$ para $k = 2, 4, 8, 16, 32$. A tendência decrescente na coluna das potências de dois é portanto um efeito de agregação entre módulos, e nenhuma lei por sistema deve ser lida nela. `scripts/analyze_patterns.py` relata o desvio padrão intra-grupo e o número de módulos distintos em cada linha exatamente por esta razão.
 
@@ -403,7 +403,7 @@ Um rascunho anterior foi além e afirmou um colapso geométrico graduado $\overl
 
 Primos ímpares e compostos ímpares diferem de $0{,}93$ na média $|C|$, contra um desvio padrão intra-classe de cerca de $9{,}7$; ímpares e pares diferem de $9{,}01$. O efeito é a paridade. A correlação relacionada $R = -0{,}391$ entre a função número-de-divisores de $k$ e $\mathrm{Cyc}$ está sujeita ao mesmo confundidor, pois $k$ par tende a ter mais divisores. (`verification/audit/audit_04_parity_confound.py`; Apêndice B.4.)
 
-**9.4 A profundidade transiente escala com $k$.** A profundidade transiente máxima correlaciona $R = +0{,}540$ com $k$; a mais profunda observada: $133$ passos.
+**9.4 A profundidade do transiente escala com $k$.** A profundidade transiente máxima correlaciona $R = +0{,}540$ com $k$; a mais profunda observada: $133$ passos.
 
 ---
 
@@ -425,17 +425,17 @@ Primos ímpares e compostos ímpares diferem de $0{,}93$ na média $|C|$, contra
 
 $$\delta_j(D)\;=\;\frac1{|N_D|}\,\bigl|\{\,n\in N_D: g\bigl(S_b(n^k)\bigr)\in\beta_j\,\}\bigr|.$$
 
-Esta é a divisão por dígito da §7.4. O mapa $g$ é completamente explícito: fica determinado pelo grafo funcional finito em $[1,M]$. O Teorema 5.3 já dá $\sum_{A_j\subset\gamma_i}\delta_j(D)\to p_i$ quando $D\to\infty$ (de fato a identidade em janela finita da Proposição 5.2 controla todo prefixo). A afirmação restante é que nenhum $\delta_j(D)$ individual converge quando $\gamma_i$ se divide.
+Esta é a divisão por dígito da §7.4. O mapa $g$ é completamente explícito: fica determinado pelo grafo funcional finito em $[1,M]$. O Teorema 5.3 já dá $\sum_{\sigma(A_j)=\gamma_i}\delta_j(D)\to p_i$ quando $D\to\infty$ (de fato a identidade em janela finita da Proposição 5.2 controla todo prefixo). A afirmação restante é que nenhum $\delta_j(D)$ individual converge quando $\gamma_i$ se divide.
 
 *Hipótese LLT$(k,b,r)$.* Para cada resíduo $r\bmod m$, escrevendo $N_D^{(r)}=N_D\cap(r+m\mathbb{Z})$ e tomando $n$ uniforme em $N_D^{(r)}$, a lei de $S_b(n^k)$ admite um limite local gaussiano com média $\mu_D\asymp D$ e desvio padrão $\sigma_D\asymp\sqrt{D}$: para todo $C<\infty$ fixo,
 
 $$\sup_{\lvert v-\mu_D\rvert\le C\sigma_D}\Bigl\lvert \sigma_D\,\mathbb{P}\bigl(S_b(n^k)=v\bigr)-\varphi\bigl((v-\mu_D)/\sigma_D\bigr)\Bigr\rvert\;\longrightarrow\;0$$
 
-quando $D\to\infty$, e as caudas $\mathbb{P}(\lvert S_b(n^k)-\mu_D\rvert>C\sigma_D)$ desaparecem quando $C\to\infty$, uniformemente em $D$. (O lançamento dos noves força $S_b(n^k)\equiv n^k\pmod m$ exatamente.) Esta é a forma em que uma restrição do teorema limite local de Drmota–Mauduit–Rivat [9] a uma faixa diádica e a uma progressão aritmética seria usada. É um input, não uma afirmação deste artigo.
+quando $D\to\infty$, e as caudas $\mathbb{P}(\lvert S_b(n^k)-\mu_D\rvert>C\sigma_D)$ desaparecem quando $C\to\infty$, uniformemente em $D$. (A prova dos noves força $S_b(n^k)\equiv n^k\pmod m$ exatamente.) Esta é a forma em que uma restrição do teorema limite local de Drmota–Mauduit–Rivat [9] a uma faixa $b$-ádica e a uma progressão aritmética seria usada. É um input, não uma afirmação deste artigo.
 
 *Hipótese LM$(k,b,j)$.* Seja $h_j(v)=1_{g(v)\in\beta_j}$. Escreva $\Psi_j(V)$ para a média de $h_j$ na janela $[V-\sqrt{V},\,V+\sqrt{V}]$ restrita a inteiros $v \equiv r^k \pmod m$ na rede de imagem dos resíduos $r$ que alimentam a assinatura de $A_j$. A hipótese é que $\Psi_j(V)$ não converge quando $V\to\infty$. É um enunciado sobre a rotulação, paralelo à Hipótese LLT e independente dela. Diagnostica-se computacionalmente por `scripts/local_mean.py`; não se deduz de uma expansão de Delange de $h_j$.
 
-*Observação (janela fina; retirada).* Um rascunho anterior desta seção pedia para provar que se $\sum_{n\le x}f(n)=x\,P(\log_b x)+o(x)$ com $P$ contínua de período $1$, e se $I_x\subset[c_1 x,\,c_2 x]$ satisfaz $|I_x|/x\to 0$, então a média na janela vale $P(\log_b x)+o(1)$. Essa implicação é falsa para qualquer taxa de resto. Se $P$ é $C^1$ de período $1$, $h=|I_x|\to\infty$, $h=o(x)$, e $\sup|E|=o(h)$ na janela, a média é $Q(\log_b x)+o(1)$ com $Q=P+P'/\ln b$, não $P$; $Q$ é constante se e somente se $P$ o é. Contraexemplo: em base $10$, $f(v)=1_{\text{primeiro dígito de }v=1}$ tem resto $O(1)$; ao longo de $x=1{,}5\cdot 10^t$ tem-se $P(\log_{10}x)\approx 0{,}4074$ enquanto a média na janela $\sqrt{x}$ é $1$, coincidindo com $Q=1$. A função periódica de Delange para $s_b$ é contínua e em nenhum ponto derivável, logo as hipóteses $C^1$ falham no regime pretendido e nenhum $Q$ desse tipo deve ser esperado. O lema está retirado; o seu papel passa à Hipótese LM.
+*Observação (janela estreita; retirada).* Um rascunho anterior desta seção pedia para provar que se $\sum_{n\le x}f(n)=x\,P(\log_b x)+o(x)$ com $P$ contínua de período $1$, e se $I_x\subset[c_1 x,\,c_2 x]$ satisfaz $|I_x|/x\to 0$, então a média na janela vale $P(\log_b x)+o(1)$. Essa implicação é falsa para qualquer taxa de resto. Se $P$ é $C^1$ de período $1$, $h=|I_x|\to\infty$, $h=o(x)$, e $\sup|E|=o(h)$ na janela, a média é $Q(\log_b x)+o(1)$ com $Q=P+P'/\ln b$, não $P$; $Q$ é constante se e somente se $P$ o é. Contraexemplo: em base $10$, $f(v)=1_{\text{primeiro dígito de }v=1}$ tem resto $O(1)$; ao longo de $x=1{,}5\cdot 10^t$ tem-se $P(\log_{10}x)\approx 0{,}4074$ enquanto a média na janela $\sqrt{x}$ é $1$, coincidindo com $Q=1$. A função periódica de Delange para $s_b$ é contínua e em nenhum ponto derivável, logo as hipóteses $C^1$ falham no regime pretendido e nenhum $Q$ desse tipo deve ser esperado. O lema está retirado; o seu papel passa à Hipótese LM.
 
 *Conjectura 10.6.* Assuma a Hipótese LLT$(k,b,r)$ para todo resíduo $r$ que alimenta uma assinatura dividida $\gamma_i$ (isto é, $a_i\ge 2$), e a Hipótese LM$(k,b,j)$ para cada atrator $A_j$ dessa assinatura. Então $\lim_{D\to\infty}\delta_j(D)$ não existe. A mesma não-existência passa à densidade cumulativa $|B(A_j)\cap[1,b^D]|/b^D$, porque a faixa $D$ carrega peso geométrico $1-1/b$ (§7.5). Não se reivindica a identidade $\delta_j(D)=P_j(\{\log_b D\})+o(1)$: no modelo gaussiano o colapso de década $\delta_j(D)\approx\delta_j(bD)$ já falha para o piloto da Conjectura 10.6$'$, de modo coerente com a ausência de uma média local de Delange $C^1$.
 

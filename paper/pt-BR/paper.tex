@@ -316,7 +316,7 @@ Para $(k,m) = (2,9)$: $\varphi(9) = 6$, $\kappa_2(6) = 3$, logo $\#\Per = 1 + 3 
 Checado contra enumeração por força bruta com 0 discrepâncias em todos os $k \in [2,79]$, $m \in [2,300)$ (\texttt{scripts/cycle\_structure.py}), e reverificado independentemente em $k \in [2,39]$, $m \in [2,199)$ (Apêndice~A). A fórmula é clássica na teoria de digrafos de potências $x \mapsto x^k \bmod n$ (Somer--K\v{r}\'i\v{z}ek \cite{somer-krizek}; Chou--Shparlinski \cite{chou-shparlinski}); inclui-se para fixar notação e por ser o insumo da Proposição~\ref{prop:cyc}, não como resultado novo.
 
 \begin{corollary}[Dependência radical da contagem de pontos periódicos]\label{cor:radical}
-$\#\Per(k,m)$ depende de $k$ apenas via $\rad(k)$, o conjunto dos primos que dividem $k$; em particular sua parte $2$-ádica colapsa inteiramente na única transição $2 \nmid k \to 2 \mid k$ e permanece inalterada para todas as valuações $2$-ádicas superiores $v_2(k)$.
+$\#\Per(k,m)$ depende de $k$ apenas via $\rad(k)$, o produto dos primos distintos que dividem $k$; em particular sua parte $2$-ádica colapsa inteiramente na única transição $2 \nmid k \to 2 \mid k$ e permanece inalterada para todas as valuações $2$-ádicas superiores $v_2(k)$.
 \end{corollary}
 
 \begin{proof}
@@ -571,13 +571,13 @@ Provar que a divisão por dígito não converge quando uma assinatura se divide;
 \[
 \delta_j(D)\;=\;\frac1{|N_D|}\,\bigl|\{\,n\in N_D: g\bigl(S_b(n^k)\bigr)\in\beta_j\,\}\bigr|.
 \]
-Esta é a divisão por dígito da \S\ref{sec:split}. O mapa $g$ é completamente explícito: fica determinado pelo grafo funcional finito em $[1,M]$. O Teorema~\ref{thm:bdl} já dá $\sum_{A_j\subset\gamma_i}\delta_j(D)\to p_i$ quando $D\to\infty$ (de fato a identidade em janela finita da Proposição~\ref{prop:partition} controla todo prefixo). A afirmação restante é que nenhum $\delta_j(D)$ individual converge quando $\gamma_i$ se divide.
+Esta é a divisão por dígito da \S\ref{sec:split}. O mapa $g$ é completamente explícito: fica determinado pelo grafo funcional finito em $[1,M]$. O Teorema~\ref{thm:bdl} já dá $\sum_{\sigma(A_j)=\gamma_i}\delta_j(D)\to p_i$ quando $D\to\infty$ (de fato a identidade em janela finita da Proposição~\ref{prop:partition} controla todo prefixo). A afirmação restante é que nenhum $\delta_j(D)$ individual converge quando $\gamma_i$ se divide.
 
 \medskip\noindent\textbf{Hipótese LLT$(k,b,r)$.} Para cada resíduo $r\bmod m$, escrevendo $N_D^{(r)}=N_D\cap(r+m\mathbb{Z})$ e tomando $n$ uniforme em $N_D^{(r)}$, a lei de $S_b(n^k)$ admite um limite local gaussiano com média $\mu_D\asymp D$ e desvio padrão $\sigma_D\asymp\sqrt{D}$: para todo $C<\infty$ fixo,
 \[
 \sup_{\lvert v-\mu_D\rvert\le C\sigma_D}\Bigl\lvert \sigma_D\,\mathbb{P}\bigl(S_b(n^k)=v\bigr)-\varphi\bigl((v-\mu_D)/\sigma_D\bigr)\Bigr\rvert\;\longrightarrow\;0
 \]
-quando $D\to\infty$, e as caudas $\mathbb{P}(\lvert S_b(n^k)-\mu_D\rvert>C\sigma_D)$ desaparecem quando $C\to\infty$, uniformemente em $D$. (O lançamento dos noves força $S_b(n^k)\equiv n^k\pmod m$ exatamente.) Esta é a forma em que uma restrição do teorema limite local de Drmota--Mauduit--Rivat \cite{dmr} a uma faixa diádica e a uma progressão aritmética seria usada. É um input, não uma afirmação deste artigo.
+quando $D\to\infty$, e as caudas $\mathbb{P}(\lvert S_b(n^k)-\mu_D\rvert>C\sigma_D)$ desaparecem quando $C\to\infty$, uniformemente em $D$. (A prova dos noves força $S_b(n^k)\equiv n^k\pmod m$ exatamente.) Esta é a forma em que uma restrição do teorema limite local de Drmota--Mauduit--Rivat \cite{dmr} a uma faixa $b$-ádica e a uma progressão aritmética seria usada. É um input, não uma afirmação deste artigo.
 
 \medskip\noindent\textbf{Hipótese LM$(k,b,j)$.} Seja $h_j(v)=1_{g(v)\in\beta_j}$. Escreva $\Psi_j(V)$ para a média de $h_j$ na janela $[V-\sqrt{V},\,V+\sqrt{V}]$ restrita a inteiros $v \equiv r^k \pmod m$ na rede de imagem dos resíduos $r$ que alimentam a assinatura de $A_j$. A hipótese é que $\Psi_j(V)$ não converge quando $V\to\infty$. É um enunciado sobre a rotulação, paralelo à Hipótese LLT e independente dela. Diagnostica-se computacionalmente por \texttt{scripts/local\_mean.py}; não se deduz de uma expansão de Delange de $h_j$.
 

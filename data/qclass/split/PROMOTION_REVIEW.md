@@ -98,12 +98,12 @@ Patches applied to `paper/{en,pt-BR}/paper.{md,tex}`:
 
 Execution programme **complete**. Open work ranked:
 
-| Priority | Target | Route |
-|----------|--------|-------|
-| 1 | Analytic Lemma C | Route C-A (suffix classes, depth ≤2) |
-| 2 | G2b covariance | Peter (2002) extraction → Route C-B |
-| 3 | G2d | Literature / collaboration ([9] Problem 2) |
-| 4 | Paper v2.2 Tier C | Lemma A appendix after external review |
+| Priority | Target | Route | Status |
+|----------|--------|-------|--------|
+| 1 | Analytic Lemma C | Route C-A (suffix classes, depth ≤2) | **empirical** `n≤16` |
+| 2 | G2b covariance | Peter (2002) → Route C-B | **empirical pilots** (`g2b_*_latest`) |
+| 3 | G2d | Literature / collaboration ([9] Problem 2) | open |
+| 4 | Paper v2.2 Tier C | Lemma A appendix after external review | open |
 
 ---
 
@@ -113,9 +113,10 @@ Execution programme **complete**. Open work ranked:
 - [x] `PAPER_FROZEN.md` updated after merge
 - [x] No promotion of empirical Lemma C as theorem
 - [x] Paper production hygiene (figures in `.tex`, appendix commands, B.2 footnote)
+- [x] Post-programme Route C-A/C-B empirical pilots (`g2b_*`, `n≤16`)
 - [ ] Author formal sign-off
 - [ ] External reviewer confirms Lemma A appendix if included
 
 ---
 
-*Tier B merge complete. Paper v2.1.0 production-ready (md+tex). Author sign-off pending.*
+*Tier B merge complete. Paper v2.1.0 production-ready (md+tex). Post-programme empirical pilots complete. Author sign-off pending.*

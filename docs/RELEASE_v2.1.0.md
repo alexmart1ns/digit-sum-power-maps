@@ -26,7 +26,7 @@ fix for F_j, and audit B.5.
 | MC split scale | `data/split/split_scale_k3_b10_latest.json` (120k samples) |
 | Q-class grid | `data/qclass/universality/grid_latest.*` |
 | Excess campaign | `data/qclass/excess/excess_latest.*` |
-| Proof roadmap | `data/qclass/split/lemma.md`, `checks/LITERATURE.md` |
+| Proof roadmap | `data/qclass/split/lemma.md`, `data/qclass/checks/LITERATURE.md` |
 | Mining | `data/mining/`, `scripts/mine_topic10.py`, `analyze_topic10.py` |
 
 ## Verification (all pass)

@@ -215,7 +215,7 @@ $$\#\mathrm{Per}(k,m) \;=\; \prod_{p^{e} \,\|\, m} \Big( 1 + \kappa_k\big(\varph
 
 *Verification.* Checked against brute-force enumeration with 0 discrepancies across all $k \in [2,79]$, $m \in [2,300)$ (`scripts/cycle_structure.py`), and independently re-verified across $k \in [2,39]$, $m \in [2,199)$ (Appendix A). The formula is classical in the theory of power digraphs $x \mapsto x^k \bmod n$ (Somer–Křížek [11]; Chou–Shparlinski [12]); it is included to fix notation and because it is the input to Proposition 6.3, not as a new result.
 
-**Corollary 6.2 (Radical dependence of the periodic-point count).** *$\#\mathrm{Per}(k,m)$ depends on $k$ only through $\mathrm{rad}(k)$, the set of primes dividing $k$; in particular its $2$-part collapses entirely at the single transition $2 \nmid k \to 2 \mid k$ and is unchanged for all higher $2$-adic valuations $v_2(k)$.*
+**Corollary 6.2 (Radical dependence of the periodic-point count).** *$\#\mathrm{Per}(k,m)$ depends on $k$ only through $\mathrm{rad}(k)$, the product of the distinct primes dividing $k$; in particular its $2$-part collapses entirely at the single transition $2 \nmid k \to 2 \mid k$ and is unchanged for all higher $2$-adic valuations $v_2(k)$.*
 
 *Proof.* Immediate from Proposition 6.1, since $\kappa_k(N)$ strips from $N$ exactly the primes dividing $k$. $\square$
 
@@ -425,13 +425,13 @@ Odd primes and odd composites differ by $0.93$ in mean $|C|$, against a within-c
 
 $$\delta_j(D)\;=\;\frac1{|N_D|}\,\bigl|\{\,n\in N_D: g\bigl(S_b(n^k)\bigr)\in\beta_j\,\}\bigr|.$$
 
-This is the per-digit split of §7.4. The map $g$ is completely explicit: it is determined by the finite functional graph on $[1,M]$. Theorem 5.3 already gives $\sum_{A_j\subset\gamma_i}\delta_j(D)\to p_i$ as $D\to\infty$ (in fact the finite-window identity of Proposition 5.2 controls every prefix). The remaining claim is that no individual $\delta_j(D)$ converges when $\gamma_i$ splits.
+This is the per-digit split of §7.4. The map $g$ is completely explicit: it is determined by the finite functional graph on $[1,M]$. Theorem 5.3 already gives $\sum_{\sigma(A_j)=\gamma_i}\delta_j(D)\to p_i$ as $D\to\infty$ (in fact the finite-window identity of Proposition 5.2 controls every prefix). The remaining claim is that no individual $\delta_j(D)$ converges when $\gamma_i$ splits.
 
 *Hypothesis LLT$(k,b,r)$.* For each residue $r\bmod m$, writing $N_D^{(r)}=N_D\cap(r+m\mathbb{Z})$ and taking $n$ uniform in $N_D^{(r)}$, the law of $S_b(n^k)$ admits a local Gaussian limit with mean $\mu_D\asymp D$ and standard deviation $\sigma_D\asymp\sqrt{D}$: for every fixed $C<\infty$,
 
 $$\sup_{\lvert v-\mu_D\rvert\le C\sigma_D}\Bigl\lvert \sigma_D\,\mathbb{P}\bigl(S_b(n^k)=v\bigr)-\varphi\bigl((v-\mu_D)/\sigma_D\bigr)\Bigr\rvert\;\longrightarrow\;0$$
 
-as $D\to\infty$, and the tails $\mathbb{P}(\lvert S_b(n^k)-\mu_D\rvert>C\sigma_D)$ vanish as $C\to\infty$ uniformly in $D$. (Casting out nines forces $S_b(n^k)\equiv n^k\pmod m$ exactly.) This is the form in which a restriction of the local limit theorem of Drmota–Mauduit–Rivat [9] to a dyadic band and an arithmetic progression would be used. It is an input, not a claim of the present paper.
+as $D\to\infty$, and the tails $\mathbb{P}(\lvert S_b(n^k)-\mu_D\rvert>C\sigma_D)$ vanish as $C\to\infty$ uniformly in $D$. (Casting out nines forces $S_b(n^k)\equiv n^k\pmod m$ exactly.) This is the form in which a restriction of the local limit theorem of Drmota–Mauduit–Rivat [9] to a $b$-adic band and an arithmetic progression would be used. It is an input, not a claim of the present paper.
 
 *Hypothesis LM$(k,b,j)$.* Let $h_j(v)=1_{g(v)\in\beta_j}$. Write $\Psi_j(V)$ for the mean of $h_j$ on the window $[V-\sqrt{V},\,V+\sqrt{V}]$ restricted to integers $v \equiv r^k \pmod m$ on the image lattice of residues $r$ feeding the signature of $A_j$. The hypothesis is that $\Psi_j(V)$ does not converge as $V\to\infty$. This is a statement about the labelling, parallel to Hypothesis LLT and independent of it. It is diagnosed computationally by `scripts/local_mean.py`; it is not deduced from a Delange expansion of $h_j$.
 
