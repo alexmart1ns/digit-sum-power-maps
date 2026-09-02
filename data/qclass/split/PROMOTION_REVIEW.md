@@ -112,9 +112,10 @@ Execution programme **complete**. Open work ranked:
 - [x] Tier B text patches merged (`e67692b`)
 - [x] `PAPER_FROZEN.md` updated after merge
 - [x] No promotion of empirical Lemma C as theorem
+- [x] Paper production hygiene (figures in `.tex`, appendix commands, B.2 footnote)
 - [ ] Author formal sign-off
 - [ ] External reviewer confirms Lemma A appendix if included
 
 ---
 
-*Tier B merge complete. Author sign-off pending.*
+*Tier B merge complete. Paper v2.1.0 production-ready (md+tex). Author sign-off pending.*

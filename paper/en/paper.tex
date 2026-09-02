@@ -6,6 +6,8 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[margin=1in]{geometry}
 \usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{svg}
 \usepackage{hyperref}
 \usepackage{microtype}
 
@@ -391,6 +393,13 @@ Monte-Carlo measurement of the split restricted to $n$ with exactly $D$ base-$b$
 \item The three small fixed points $\{1\},\{8\},\{17\}$ do not decay to zero. Each sits at or near zero for long stretches of $D$ and then returns: $\{17\}$ reaches $0.100$ at $D = 10$, is numerically zero throughout $22 \le D \le 70$, and comes back to $0.027$ at $D = 79$; $\{8\}$ is zero throughout $13 \le D \le 49$ and peaks at $0.028$ at $D = 58$; $\{1\}$ reaches $0.068$ at $D = 7$, vanishes over $13 \le D \le 64$, and returns to $0.026$ at $D = 73$. The returns are well above the sampling noise $\sigma \approx 0.0014$.
 \end{itemize}
 
+\begin{figure}[htbp]
+\centering
+\includesvg[width=0.95\linewidth]{../figures/split_oscillation}
+\caption{Measured intra-signature split for $(k,b)=(3,10)$ as a function of digit length $D$. Competing attractors exchange mass in antiphase; the per-signature totals remain $1/3$.}
+\label{fig:split-osc}
+\end{figure}
+
 \textbf{Mechanism.} In the reduction above the landing site is governed by the iterates $m_1 = S_b(n^k) \approx \tfrac{b-1}{2} k D$, which grows linearly in $D$, and then $m_2 = S_b(m_1^{\,k})$, whose mean grows only like $\log D$. Because the trapping region $[1,M]$ is a fixed window (here $M = 57$), the first-passage landing distribution lives on a fixed finite set and never escapes to infinity; it merely drifts and spreads slowly. As it sweeps across the fixed basin labelling of the integers, comparable basins alternate capture, and small basins sitting low in the window are revisited whenever the multi-step cascade produces a low landing value. The relevant basins inside $[1,57]$ are
 \[
 \beta_{\{1\}} = \{1,4,7,10,40\}, \quad \beta_{\{8\}} = \{2,5,8,11,20,50\}, \quad \beta_{\{17\}} = \{14,17,23,47\},
@@ -412,6 +421,13 @@ On the feeding lattice for $(3,10)$, every sampled $v$ reaches the trapping regi
 An isolated Q-class laboratory (\texttt{src/dspm/qmaps.py}, records in \texttt{data/qclass/}) extends the pipeline to $f(n)=S_b(Q(n))$ with lattice $v \equiv Q(r) \pmod m$. The first non-monomial split, $Q(x)=1+3x+2x^2$ at $b=10$, shows the same antiphase oscillation (amplitude $\approx 0.27$ on $8 \le D \le 64$, Pearson $r=-1$ between the two competing $2$-cycles) with $\mathrm{MAE} = 0.006$ against the corrected model; an earlier $\mathrm{MAE} \approx 0.17$ on the same instance came from placing mass on $v \equiv r$ rather than $v \equiv Q(r)$.
 
 The same Gaussian model, pushed to $4 \le D \le 300$ via \texttt{scripts/sweep\_label.py} (\texttt{data/split/label\_sweep\_k3\_b10\_sig0\_D300\_latest.md}), does not flatten: decade amplitude on $10 \le D \le 99$ is $0.192$ (full $\{\log_{10} D\}$ period), on $100 \le D \le 300$ is $0.132$, and cross-decade phase correlation is Pearson $r \approx 0.37$ ($n=201$ overlapping $\{\log_{10} D\}$ points between decades $10^1$ and $10^2$). The curves remain in exact antiphase (Pearson $-1$, algebraic). This is \textbf{model output}, not Monte Carlo measurement. Extending the diagnostic to $D=1000$ (\texttt{data/split/label\_sweep\_k3\_b10\_sig0\_D1000\_latest.md}) shows \textbf{amplitude survival} ($0.19$ on $10 \le D \le 99$; $0.13$ on $100 \le D \le 1000$), but cross-decade phase correlation on the overlapping $10^1$--$10^2$ interval weakens to $r \approx 0.26$. Long-scale phase organization is \textbf{not} claimed.
+
+\begin{figure}[htbp]
+\centering
+\includesvg[width=0.95\linewidth]{../figures/split_predict_overlay}
+\caption{Parameter-free Gaussian-sweep prediction (curves) against the Monte-Carlo split of Figure~\ref{fig:split-osc} for signature $\{0\}$, $(k,b)=(3,10)$. Short-band MAE $= 0.003$ on $4 \le D \le 60$; bridge MAE $\approx 0.0017$ on $D=4\ldots 90$ (image lattice $v \equiv r^k \pmod 9$).}
+\label{fig:split-predict}
+\end{figure}
 
 With $120{,}000$ samples per band the measurement noise floor is $0.5/\sqrt{120000} \approx 0.0014$, so a bridge MAE of $0.0017$ says the model is consistent with the data at the noise floor. It does not single the model out against other candidates that also reproduce the phase and amplitude. The content of the model is mechanistic rather than statistical: it predicts the oscillation from the local limit theorem plus the exact labelling, with nothing tuned. Discriminating it from alternatives would need either a much larger sample or a prediction of the higher-order structure, which is what Problem~\ref{prob:split} asks for.
 
@@ -609,8 +625,8 @@ python scripts/split_scale.py --k 3 --b 10 --d-max 90 --samples 120000
 python scripts/bridge_check.py --k 3 --b 10
 python scripts/sweep_label.py --k 3 --b 10 --d-max 300
 python scripts/sweep_label.py --k 3 --b 10 --d-max 1000
-python scripts/local_mean.py --k 3 --b 10 --v-max 1000000
-python scripts/plot_split_figures.py --k 3 --b 10 --oscillation
+python scripts/local_mean.py --k 3 --b 10 --v-max 10000000
+python scripts/plot_split_figures.py --k 3 --b 10 --d-max 90 --lang en --oscillation
 \end{verbatim}
 
 \medskip
@@ -636,7 +652,7 @@ Four claims in the July 2026 draft were wrong. Each is recorded with the reasoni
 \noindent\textbf{B.1. The modular cycle count is flat for $v_2(k) \ge 1$.} \emph{Withdrawn.} The claim was stated as a consequence of Proposition~\ref{prop:per} and ``verified for $m = 16, 17, 32, 37, 41, 64$''. Two independent defects. First, Proposition~\ref{prop:per} counts periodic points, and $\#\Per$ is indeed a function of $\rad(k)$; the cycle count is not, because cycle lengths are multiplicative orders $\ord_d(k)$ (Proposition~\ref{prop:cyc}, Corollary~\ref{cor:notradical}). Second, the supporting computation grouped $k$ by the odd part and $v_2$ of $\gcd(k,\lambda(m))$ and compared group means. For the two non-degenerate moduli in the list the within-group values are $\{4,6,10\}$ for $m=37$ and $\{3,4,6\}$ for $m=41$; the means agree across $v_2$ groups because each group contains the same multiset in the same proportions. The other four moduli are degenerate: $\kappa_k$ collapses the unit part, $\#\Per = 2$, and flatness is vacuous. The lesson is that a test comparing group means cannot detect non-constancy, and that four of six test cases were incapable of failing. Replaced by Proposition~\ref{prop:cyc} and Corollary~\ref{cor:notradical}.
 
 \medskip
-\noindent\textbf{B.2. Signatures $\{1\}$ and $\{8\}$ have convergent splits.} \emph{Withdrawn.} The measurement script decided convergence from the change in the split across one step of $D$, calling it stabilized when that change fell below the sampling noise. Because the curves are quasi-periodic with long flat stretches, the rule reports convergence whenever the window sampled lies inside one, and the original run stopped at $D = 60$, inside such a stretch for two of the three fixed points. Re-measuring on $4 \le D \le 90$ with $60{,}000$ samples per band shows all three ``vanishing'' fixed points returning after long silences, with peaks of $0.027$ at $D = 79$ for $\{17\}$, $0.028$ at $D = 58$ for $\{8\}$, and $0.026$ at $D = 73$ for $\{1\}$; all seven curves are non-monotone. Corrected in \S7.4. The correction strengthens the main empirical claim: every individual density fails to settle, not merely the one in signature $\{0\}$.
+\noindent\textbf{B.2. Signatures $\{1\}$ and $\{8\}$ have convergent splits.} \emph{Withdrawn.} The measurement script decided convergence from the change in the split across one step of $D$, calling it stabilized when that change fell below the sampling noise. Because the curves are quasi-periodic with long flat stretches, the rule reports convergence whenever the window sampled lies inside one, and the original run stopped at $D = 60$, inside such a stretch for two of the three fixed points. Re-measuring on $4 \le D \le 90$ with $60{,}000$ samples per band shows all three ``vanishing'' fixed points returning after long silences, with peaks of $0.027$ at $D = 79$ for $\{17\}$, $0.028$ at $D = 58$ for $\{8\}$, and $0.026$ at $D = 73$ for $\{1\}$; all seven curves are non-monotone.\footnote{The current Tier~B measurement uses $120{,}000$ samples per band on $4 \le D \le 90$; the $60{,}000$ figure records the August 2026 erratum re-measurement.} Corrected in \S7.4. The correction strengthens the main empirical claim: every individual density fails to settle, not merely the one in signature $\{0\}$.
 
 \medskip
 \noindent\textbf{B.3. The finite-window bound $(b-1)/M$ is ``saturated''.} \emph{Withdrawn.} It is not: over the grid the worst ratio of actual error to bound is $0.25$. The proof of Theorem~\ref{thm:bdl} bounds the deviation of one residue class by $|R_i|$, but the deviations across all $m$ classes sum to zero, so the sharp constant is $\min(|R_i|,\,m-|R_i|)$, and in a window $M = qm + s$ it is $\min(|R_i|, s) \le \min(|R_i|, b-2)$. Section~8.2 already displayed the gap (worst error $0.10$ against a bound of $0.40$) without drawing the conclusion. Corrected in \S1.3, \S8.2 and \S11; the sharp bound is verified in \texttt{verification/audit/audit\_03\_bound\_sharpness.py}.

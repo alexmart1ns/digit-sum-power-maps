@@ -27,6 +27,17 @@ python scripts/plot_split_figures.py --k 3 --b 10 --d-max 90 --lang pt --oscilla
 
 Outputs: `split_predict_overlay.svg`, `split_oscillation.svg`.
 
+## LaTeX build
+
+`paper.{tex}` includes figures via the `svg` package (`\includesvg`). Build with shell-escape so Inkscape can convert SVG:
+
+```bash
+cd paper/en && pdflatex -shell-escape paper.tex
+cd paper/pt-BR && pdflatex -shell-escape paper.tex
+```
+
+Appendix A uses `--v-max 10000000` for `local_mean.py` (matches frozen run at $10^7$).
+
 ## §7.5 error metrics (do not conflate)
 
 | Metric | Window | Typical value | Script |
