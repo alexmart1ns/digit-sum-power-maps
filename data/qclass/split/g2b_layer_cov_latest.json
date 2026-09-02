@@ -1,0 +1,102 @@
+{
+  "pilot": "(k,b)=(3,10), attractor {18}",
+  "n_lo": 9,
+  "n_max": 16,
+  "decades": [
+    {
+      "n": 9,
+      "rho_L_n": 0.517218,
+      "rho_L_n1": 0.48003,
+      "delta_rho_layers": 0.037188,
+      "w_n": 0.5,
+      "w_n1": 0.5,
+      "psi_18": 0.498624,
+      "psi_two_stratum": 0.498624,
+      "two_stratum_error": 0.0
+    },
+    {
+      "n": 10,
+      "rho_L_n": 0.429681,
+      "rho_L_n1": 0.528065,
+      "delta_rho_layers": 0.098384,
+      "w_n": 0.500007,
+      "w_n1": 0.499993,
+      "psi_18": 0.478872,
+      "psi_two_stratum": 0.478872,
+      "two_stratum_error": 0.0
+    },
+    {
+      "n": 11,
+      "rho_L_n": 0.489825,
+      "rho_L_n1": 0.553188,
+      "delta_rho_layers": 0.063363,
+      "w_n": 0.5,
+      "w_n1": 0.5,
+      "psi_18": 0.521506,
+      "psi_two_stratum": 0.521506,
+      "two_stratum_error": 0.0
+    },
+    {
+      "n": 12,
+      "rho_L_n": 0.451184,
+      "rho_L_n1": 0.520327,
+      "delta_rho_layers": 0.069143,
+      "w_n": 0.500001,
+      "w_n1": 0.499999,
+      "psi_18": 0.485755,
+      "psi_two_stratum": 0.485755,
+      "two_stratum_error": 0.0
+    },
+    {
+      "n": 13,
+      "rho_L_n": 0.347945,
+      "rho_L_n1": 0.466319,
+      "delta_rho_layers": 0.118374,
+      "w_n": 0.5,
+      "w_n1": 0.5,
+      "psi_18": 0.407132,
+      "psi_two_stratum": 0.407132,
+      "two_stratum_error": 0.0
+    },
+    {
+      "n": 14,
+      "rho_L_n": 0.240655,
+      "rho_L_n1": 0.461093,
+      "delta_rho_layers": 0.220438,
+      "w_n": 0.5,
+      "w_n1": 0.5,
+      "psi_18": 0.350874,
+      "psi_two_stratum": 0.350874,
+      "two_stratum_error": 0.0
+    },
+    {
+      "n": 15,
+      "rho_L_n": 0.250987,
+      "rho_L_n1": 0.475036,
+      "delta_rho_layers": 0.224049,
+      "w_n": 0.5,
+      "w_n1": 0.5,
+      "psi_18": 0.363012,
+      "psi_two_stratum": 0.363012,
+      "two_stratum_error": 0.0
+    },
+    {
+      "n": 16,
+      "rho_L_n": 0.380399,
+      "rho_L_n1": 0.459575,
+      "delta_rho_layers": 0.079176,
+      "w_n": 0.5,
+      "w_n1": 0.5,
+      "psi_18": 0.419987,
+      "psi_two_stratum": 0.419987,
+      "two_stratum_error": 0.0
+    }
+  ],
+  "pearson_rho_L_n_vs_n_plus_1": 0.623147,
+  "pearson_rho_L_n_lag1": 0.631219,
+  "pearson_psi_exact_vs_two_stratum": 1.0,
+  "mean_abs_rho_n_minus_rho_n1": 0.113764,
+  "max_two_stratum_error": 0.0,
+  "verdict": "layer_correlation_detected",
+  "note": "Route C-B proxy: at anchor V=10^n, labelling rates at digit layers L=n and L=n+1 are measured on the same window. Pearson r quantifies co-movement (G2b covariance phenomenology). predict_split treats layers as independent Gaussians; two-stratum error near 0 shows the dominant mass is in {n,n+1} but does not imply layer independence for suffix-restricted rates rho_n(s)."
+}

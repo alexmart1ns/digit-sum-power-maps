@@ -83,6 +83,7 @@ Code: `src/dspm/qmaps.py`. Tests: `tests/test_qmaps.py`.
 | `split/lemma_b_stratum_latest.md` | Compute output for Lemma B |
 | `split/lemma_c_oscillation_latest.md` | Compute output for Lemma C |
 | `scripts/lm_carry_depth.py` | `split/lemma_c_analytic_latest.*` — Route C-A mixture analytic |
+| `scripts/lm_g2b_layer.py` | `split/g2b_layer_cov_latest.*` — Route C-B layer covariance proxy |
 | `split/lemma_c_analytic.md` | Lemma C analytic (mixture + witness) |
 | `split/g2b_peter_notes.md` | Route C-B / G2b Peter (2002) programme |
 | `split/paper_v22_tier_b_proposed.md` | Tier B patch history (**merged** 2026-09-01) |

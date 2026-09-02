@@ -43,6 +43,7 @@ Sidecar data is **fit for conditional documentation**; not fit for **uncondition
 | Route C-C refutes 4 model families | **Empirical** | hold-out n=9…16 | `lemma_c_oscillation` route_cc |
 | Suffix witness [50,55] gap ≥ 0.12 | **Empirical** | n=9…14 | `lemma_c_analytic_latest` |
 | Suffix witness [50,95] gap ≥ 0.097 | **Empirical** | n=9…16 | `lemma_c_route_ca_latest` |
+| G2b layer correlation ρ(L=n) vs ρ(L=n+1) | **Empirical** | r≈0.62, n=9…16 | `g2b_layer_cov_latest` |
 | ρₙ = Σαₙ(s)ρₙ(s) exact | **Identity** | n≥9 | `lemma_c_analytic_latest` |
 | Landing depth ≤ 2 | **Empirical** | v≤5×10⁵ lattice | `g4_landing_latest` |
 | Bridge MAE ≈ 0.0017 | **MC empirical** | D=4…90 | `bridge_check.py` |

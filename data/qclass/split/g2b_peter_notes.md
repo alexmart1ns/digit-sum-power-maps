@@ -86,4 +86,23 @@ sums (Route C-B §3 steps 2–3); Peter does not supply point masses for
 
 ---
 
-*2026-09-01. Sidecar only; §5 added 2026-09-02.*
+## 6. Layer covariance pilot (empirical)
+
+**Compute:** `scripts/lm_g2b_layer.py` → [`g2b_layer_cov_latest.md`](g2b_layer_cov_latest.md)
+
+At decade anchors `V=10^n`, `n=9…16`, labelling rates `ρ(L=n)` and `ρ(L=n+1)` on
+the same window show **Pearson r ≈ 0.62** (co-movement). Lag-1 autocorrelation of
+`ρ(L=n)` across decades is **≈ 0.63**. Mean `|ρ(L=n) − ρ(L=n+1)| ≈ 0.11`.
+
+**Interpretation:** `predict_split` convolves **independent** per-layer Gaussians;
+this pilot detects **positive layer correlation** in the landing labelling rates.
+That supports Route C-B phenomenology (log-periodic / correlated layer structure)
+without proving a Peter-type expansion on suffix-restricted windows.
+
+Two-stratum `Ψ̂ = w_n ρ_n + w_{n+1} ρ_{n+1}` matches `Ψ` exactly (error 0) because
+only layers `{n,n+1}` carry mass — correlation is **within** the two-layer support,
+not captured by independent-mixture semantics at the suffix level.
+
+---
+
+*2026-09-01. Sidecar only; §5–6 added 2026-09-02.*
